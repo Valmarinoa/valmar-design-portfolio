@@ -2,11 +2,13 @@
 
 import LogoSvg from "@/components/svg/LogoSvg";
 import { useTheme } from "@/components/providers/theme-context";
+import FadeIn from "../animations/FadeIn";
 
 export default function MobileNavbar() {
   const { theme } = useTheme();
 
   return (
+    <FadeIn delay={1}>
     <div className="md:hidden fixed top-0 left-0 right-0 z-50 p-3 pointer-events-none">
       <div className="flex items-center justify-between pointer-events-auto">
       <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
@@ -23,6 +25,6 @@ export default function MobileNavbar() {
           </div>
         </button>
       </div>
-    </div>
+    </div></FadeIn>
   );
 }
