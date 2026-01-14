@@ -21,7 +21,7 @@ const INACTIVITY_DELAY_MS = 4_000; // ✅ 4 seconds
 
 /* ================= SLUG HANDLING ================= */
 
-const ROOT_SLUGS = new Set(["totemica"]);
+const ROOT_SLUGS = new Set(["totemica", "rurales"]);
 
 function normalizeSlug(slug: string) {
   return slug.replace(/^\/+/, "");
