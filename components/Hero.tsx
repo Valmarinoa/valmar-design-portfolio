@@ -9,7 +9,7 @@ import LogoSvg from "./svg/LogoSvg";
 
 export default function Hero() {
     return (
-        <section className="relative h-svh w-full overflow-hidden">
+        <section className="relative h-svh w-full overflow-hidden z-9999">
             {/* Shader background */}
            
             <div className="w-full h-screen flex-col inset-0 px-6 absolute top-1/2 left-1/2 -translate-1/2 z-999 flex items-center justify-center mix-blend-exclusion ">

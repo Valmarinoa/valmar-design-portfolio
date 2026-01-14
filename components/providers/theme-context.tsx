@@ -4,7 +4,7 @@ import React, { createContext, useContext, useMemo } from "react";
 import type { ThemeKey } from "@/data/projects";
 import { getTheme } from "@/data/projects";
 
-export type ThemeClasses = { text: string; bg: string; border: string, mobileModalBg: string };
+export type ThemeClasses = { text: string; bg: string; border: string, mobileModalBg: string, logo: string, nav: string };
 
 type ThemeContextValue = {
   themeKey: ThemeKey;

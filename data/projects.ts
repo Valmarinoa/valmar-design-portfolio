@@ -2,28 +2,55 @@
 import type { GridItem, Project, ThemeClasses } from '@/types/project';
 
 export type ThemeKey =
+  | "home"
   | "totemica"
-  | "rurales"
+  | "rurales";
 
-  export const THEMES: Record<ThemeKey, ThemeClasses> = {
-    // Project-level themes (recommended)
-    totemica: {
-      text: "text-amber-500",
-      bg: "transparent",
-      border: "border-amber-500",
-      mobileModalBg: "bg-amber-500",
-    },
-    rurales: {
-      text: "text-blue-950",
-      bg: "transparent",
-      border: "border-blue-950",
-      mobileModalBg: "transparent",
-    },
-  }
+export const THEMES: Record<ThemeKey, ThemeClasses> = {
+  home: {
+    text: "text-neutral-800",
+    bg: "transparent",
+    border: "border-neutral-800",
+    mobileModalBg: "transparent",
+    logo: "text-neutral-800",
+    nav: "text-neutral-800 mix-blend-exclusion",
+  },
+
+  totemica: {
+    text: "text-amber-500",
+    bg: "transparent",
+    border: "border-amber-500",
+    mobileModalBg: "bg-amber-500",
+    logo: "text-amber-500",
+    nav: "text-amber-500",
+  },
+
+  rurales: {
+    text: "text-blue-950",
+    bg: "transparent",
+    border: "border-blue-950",
+    mobileModalBg: "transparent",
+    logo: "text-blue-950",
+    nav: "text-blue-950",
+  },
+};
+
+export function getTheme(theme: ThemeKey): ThemeClasses {
+  return THEMES[theme] ?? THEMES.home;
+}
+
+  export const menuItems = [
+    { label: 'Home', ariaLabel: 'Go to home page', link: '/' },
+    { label: 'About', ariaLabel: 'Learn about us', link: '/about' },
+    { label: 'Services', ariaLabel: 'View our services', link: '/services' },
+    { label: 'Contact', ariaLabel: 'Get in touch', link: '/contact' }
+  ];
   
-  export function getTheme(theme: ThemeKey): ThemeClasses {
-    return THEMES[theme] ?? THEMES.rurales;
-  }
+  export const socialItems = [
+    { label: 'Twitter', link: 'https://twitter.com' },
+    { label: 'GitHub', link: 'https://github.com' },
+    { label: 'LinkedIn', link: 'https://linkedin.com' }
+  ];
 
 export const totemicaItems: GridItem[] = [
   {

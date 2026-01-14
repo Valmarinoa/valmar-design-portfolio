@@ -2,8 +2,20 @@ export type ThemeClasses = {
   text: string;
   bg: string;
   border: string;
-  mobileModalBg: string,
+  mobileModalBg: string;
+  logo: string;
+  nav: string; 
 };
+
+export interface StaggeredMenuItem {
+  label: string;
+  ariaLabel: string;
+  link: string;
+}
+export interface StaggeredMenuSocialItem {
+  label: string;
+  link: string;
+}
 
 export type GridItem = {
   id: string;

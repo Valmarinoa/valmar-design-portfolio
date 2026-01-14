@@ -11,10 +11,11 @@ export default function HomePage() {
    
       {/* mobile: hero + grid */}
       <div className="block md:hidden">
+        
              <div className="w-full h-screen flex-col inset-0 px-6 absolute top-1/2 left-1/2 -translate-1/2 z-999 flex items-center justify-center mix-blend-exclusion ">
             <BlurText
                 as="h1"
-                text="Valentina Marino"
+                text="Valentina Mariño"
                 delay={0.4}
                 mode="words"
                 className=" mix-blend-difference font-helvetica-neue  text-lg tracking-widest pb-10"

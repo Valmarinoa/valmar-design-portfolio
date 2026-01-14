@@ -7,17 +7,14 @@ type Props = React.SVGProps<SVGSVGElement> & {
   color?: string;
 };
 
-export default function LogoSvg({
-  color = "currentColor",
-  className,
-  ...props
-}: React.SVGProps<SVGSVGElement> & { color?: string }) {
+export default function LogoSvg({ color = "currentColor", ...props }: Props) {
   return (
     <svg
       viewBox="0 0 952 196"
-      xmlns="http://www.w3.org/2000/svg"
       fill="none"
-      className={className}
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden={props["aria-label"] ? undefined : true}
+      role={props["aria-label"] ? "img" : "presentation"}
       {...props}
     >
       <g filter="url(#filter0_g_2676_66)" fill={color}>

@@ -3,7 +3,9 @@ import "lenis/dist/lenis.css";
 import type { ReactNode } from "react";
 import { helveticaNeue, mixtaPro } from "./fonts";
 import SmoothScroll from "@/components/providers/SmoothScroll";
-import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider"; // ✅ add
+import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
+import MobileNavbar from "@/components/nav/MobileNavbar";
+
 
 export const metadata = {
   title: "My App",
@@ -22,21 +24,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         {/* Background layer */}
         <div
-          className="
-            fixed inset-0
-            -z-10
-            bg-cover bg-center bg-no-repeat
-          "
-          style={{
-            backgroundImage: "url('/media/sky2.png')",
-          }}
+          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/media/sky2.png')" }}
         />
-
-        {/* Optional overlay for readability */}
         <div className="fixed inset-0 -z-10" />
 
-        {/* ✅ Auto theme from route */}
         <AutoThemeProvider>
+          {/* ✅ persistent mobile navbar */}
+          <MobileNavbar />
+
           {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
         </AutoThemeProvider>
