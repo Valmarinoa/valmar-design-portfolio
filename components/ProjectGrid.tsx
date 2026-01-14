@@ -3,9 +3,9 @@ import { projects } from "@/data/projects";
 
 export default function ProjectGrid() {
     return (
-        <section className="">
+        <section className="pt-14">
             
-            <p className="px-4 pb-14 w-full text-xl text-neutral-800 leading-snug">
+            <p className="px-4 pb-10 w-full text-xl text-neutral-800 leading-snug">
 
             Hi! I’m Valentina Marino,
 born and raised in Colombia, currently based in the Netherlands.
