@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 type Props = {
   title: string;
@@ -15,7 +16,6 @@ const containSlugs = new Set(["rurales", "merged-landscapes", "frozen-woods"]);
 const rootSlugs = new Set(["totemica"]); // projects that live at root (no /projects)
 
 function normalizeSlug(slug: string) {
-  // remove leading slashes so "/totemica" -> "totemica"
   return slug.replace(/^\/+/, "");
 }
 
@@ -42,11 +42,36 @@ export default function ProjectCard({ title, slug, image, description, video }: 
         ) : video ? (
           <video
             src={video}
+            // autoplay requirements (esp iOS)
             muted
-            autoPlay
-            loop
             playsInline
-            preload="metadata"
+            loop
+            autoPlay
+            // important: helps iOS autoplay thumbnails
+            preload="auto"
+            controls={false}
+            disablePictureInPicture
+            // TS-safe way to set webkit-playsinline:
+            {...({ "webkit-playsinline": "true" } as any)}
+            // make sure iOS really treats it as muted
+            ref={(el) => {
+              if (!el) return;
+              el.muted = true;
+              (el as any).defaultMuted = true;
+            }}
+            onLoadedMetadata={(e) => {
+              const v = e.currentTarget;
+              v.muted = true;
+              (v as any).defaultMuted = true;
+
+              const p = v.play();
+              if (p && typeof (p as any).catch === "function") (p as any).catch(() => {});
+            }}
+            onCanPlay={(e) => {
+              const v = e.currentTarget;
+              const p = v.play();
+              if (p && typeof (p as any).catch === "function") (p as any).catch(() => {});
+            }}
             className={`w-full h-auto ${fitClass} transition-transform duration-300 group-hover:scale-105`}
           />
         ) : null}

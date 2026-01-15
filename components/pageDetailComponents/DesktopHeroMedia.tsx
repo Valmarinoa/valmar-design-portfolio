@@ -119,17 +119,37 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                 >
                     {isVideo ? (
                         <video
-                            src={heroVideo}
-                            muted
-                            loop
-                            autoPlay
-                            playsInline
-                            // IMPORTANT: for heavy videos, don't download fully upfront
-                            preload="metadata"
-                            // Fade only once it can actually play
-                            onCanPlay={() => setReady(true)}
-                            className="h-full w-full object-cover rounded-xs md:rounded-sm origin-bottom"
-                        />
+                        src={heroVideo}
+                        muted
+                        playsInline
+                        webkit-playsinline="true"
+                        loop
+                        autoPlay
+                        preload="auto"
+                        controls={false}
+                        disablePictureInPicture
+                        controlsList="nodownload noplaybackrate"
+                        poster={thumbnail}
+                        onLoadedMetadata={(e) => {
+                          const v = e.currentTarget;
+                          // iOS can be picky; these help a lot
+                          v.muted = true;
+                          // @ts-ignore
+                          v.defaultMuted = true;
+                      
+                          const p = v.play();
+                          if (p && typeof p.catch === "function") p.catch(() => {});
+                        }}
+                        onCanPlay={(e) => {
+                          // Fade in only when it can play (your existing behavior)
+                          setReady(true);
+                      
+                          const v = e.currentTarget;
+                          const p = v.play();
+                          if (p && typeof p.catch === "function") p.catch(() => {});
+                        }}
+                        className="h-full w-full object-cover rounded-xs md:rounded-sm origin-bottom"
+                      />
                     ) : (
                         <Image
                             src={src}

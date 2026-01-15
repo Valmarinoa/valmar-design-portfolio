@@ -66,17 +66,6 @@ export default function MobileGallery({ gridItems }: Props) {
           style={{ pointerEvents: "auto" }}
         />
 
-        <motion.button
-          onClick={closeModal}
-          className="absolute top-4 right-4 z-10 bg-white/90 px-3 py-2 text-sm font-semibold"
-          variants={buttonVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          Close
-        </motion.button>
-
         {/* Modal content: clicking inside should NOT close */}
         <motion.div
           className="relative z-1"
