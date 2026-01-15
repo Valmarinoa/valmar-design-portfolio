@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { nocturnaFrag as frag } from "@/components/shaders/nocturnaFrag";
 
@@ -31,6 +31,7 @@ type Props = {
 
   chromatic?: number;
 
+  /** NEW */
   onReady?: () => void;
   fadeInMs?: number;
 };
@@ -65,9 +66,8 @@ export default function NocturnaShader({
   // cache image ratios so we can set uniform properly
   const ratioCache = useRef(new Map<string, number>());
 
-  // ✅ wrapper: stable on mobile, normal on desktop
   const wrapperClass = fixed
-    ? "fixed inset-0 w-screen h-[100svh] md:h-screen z-0 overflow-hidden"
+    ? "fixed inset-0 w-screen h-screen z-0 overflow-hidden"
     : "absolute inset-0 w-full h-full z-0 overflow-hidden";
 
   const bgSrc = images?.[bgIndex];
@@ -78,32 +78,18 @@ export default function NocturnaShader({
 
     let cancelled = false;
 
-    // ✅ detect mobile-ish environments (bar show/hide behavior)
-    const isMobile =
-      typeof window !== "undefined" &&
-      (window.matchMedia?.("(pointer: coarse)").matches ||
-        window.matchMedia?.("(max-width: 768px)").matches);
-
-    // ✅ lock height on mobile so it never shrinks due to browser bars
-    const lockedHRef = { current: 0 };
-
+    // ✅ No resizing: just lock canvas to viewport at mount + on real resize only.
+    // (No scroll listeners, no parent measurement.)
     const setCanvasToViewport = () => {
       const dpi = window.devicePixelRatio || 1;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
 
-      // Prefer visualViewport when available (more accurate on mobile)
-      const vv = window.visualViewport;
-      const w = Math.floor(vv?.width ?? window.innerWidth);
-      const rawH = Math.floor(vv?.height ?? window.innerHeight);
-
-      // ✅ Mobile: never shrink height -> stops scroll “breathing”
-      const h = isMobile ? Math.max(lockedHRef.current || 0, rawH) : rawH;
-      if (isMobile) lockedHRef.current = h;
-
-      // Backing store size
+      // set backing store size
       canvas.width = Math.floor(w * dpi);
       canvas.height = Math.floor(h * dpi);
 
-      // CSS size
+      // set CSS size
       canvas.style.width = `${w}px`;
       canvas.style.height = `${h}px`;
     };
@@ -131,47 +117,42 @@ export default function NocturnaShader({
     };
 
     const setImageUniform = async () => {
+      const sb = sandboxRef.current;
       const src = images?.[currentRef.current];
-      if (!sandboxRef.current || !src) return;
+      if (!sb || !src) return;
 
       safeSetUniform("image", src);
 
       const ratio = await computeRatio(src);
       if (cancelled) return;
+
       safeSetUniform("u_textureRatio", ratio);
     };
 
     const init = () => {
       if (!window.GlslCanvas) return;
 
+      // always start hidden until we explicitly mark ready
       setReady(false);
 
-      // ✅ set size once, then update on "real" resizes
+      // size canvas once
       setCanvasToViewport();
-
-      const onResize = () => setCanvasToViewport();
-
-      window.addEventListener("resize", onResize);
-      window.visualViewport?.addEventListener("resize", onResize);
+      window.addEventListener("resize", setCanvasToViewport);
 
       const sb = new window.GlslCanvas(canvas);
       sandboxRef.current = sb;
 
+      // load shader
       sb.load(frag);
 
-      // uniforms ASAP
+      // set uniforms ASAP
       safeSetUniform("seed", stableSeed.current);
       safeSetUniform("u_useBlocks", useBlocks ? 1 : 0);
       safeSetUniform("u_speed", speed);
       safeSetUniform("u_imageScale", imageScale);
       safeSetUniform("u_fitMode", imageFit === "cover" ? 1 : 0);
       safeSetUniform("u_chromatic", chromatic);
-      safeSetUniform(
-        "u_bg",
-        bgColor[0] / 255,
-        bgColor[1] / 255,
-        bgColor[2] / 255
-      );
+      safeSetUniform("u_bg", bgColor[0] / 255, bgColor[1] / 255, bgColor[2] / 255);
 
       setBgIndex(0);
 
@@ -184,6 +165,7 @@ export default function NocturnaShader({
 
       if (clickToCycle) canvas.addEventListener("click", handleClick);
 
+      // ✅ critical: don’t reveal canvas until texture+ratio uniform is set AND we’ve had 1 RAF
       (async () => {
         await setImageUniform();
         if (cancelled) return;
@@ -197,8 +179,7 @@ export default function NocturnaShader({
 
       return () => {
         if (clickToCycle) canvas.removeEventListener("click", handleClick);
-        window.removeEventListener("resize", onResize);
-        window.visualViewport?.removeEventListener("resize", onResize);
+        window.removeEventListener("resize", setCanvasToViewport);
       };
     };
 
@@ -229,6 +210,7 @@ export default function NocturnaShader({
     images,
     fixed,
     clickToCycle,
+    // do NOT include `seed` here; we use stableSeed.current
     bgColor,
     useBlocks,
     speed,
@@ -236,7 +218,6 @@ export default function NocturnaShader({
     imageFit,
     chromatic,
     onReady,
-    fadeInMs,
   ]);
 
   return (
@@ -249,7 +230,7 @@ export default function NocturnaShader({
         />
       ) : null}
 
-      {/* Fade the canvas IN only when ready */}
+      {/* Fade the canvas IN only when ready (prevents wrong first frame flash) */}
       <motion.canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"

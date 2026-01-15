@@ -50,64 +50,65 @@ export default function MobileGallery({ gridItems }: Props) {
       ) : (
         <TotemicaGrid items={items} theme={theme} onOpen={openItem} />
       )}
-
       {/* MODAL (shared) */}
-      {mounted && (
-        <AnimatePresence initial={false} mode="sync">
-          {active ? (
-            <motion.div
-              className="fixed inset-0 z-999 flex items-center justify-center"
-              onClick={closeModal}
-            >
-              <motion.div
-                className={`absolute inset-0 ${theme.mobileModalBg}`}
-                variants={backdropVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-              />
+{mounted && (
+  <AnimatePresence initial={false} mode="sync">
+    {active ? (
+      <motion.div className="fixed inset-0 z-9999 flex items-center justify-center">
+        {/* Backdrop: clicking this closes */}
+        <motion.div
+          className={`absolute inset-0 ${theme.mobileModalBg}`}
+          variants={backdropVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          onClick={closeModal}
+          style={{ pointerEvents: "auto" }}
+        />
 
-              <motion.button
-                onClick={closeModal}
-                className="absolute top-4 right-4 z-10 bg-white/90 px-3 py-2 text-sm font-semibold"
-                variants={buttonVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-              >
-                Close
-              </motion.button>
+        <motion.button
+          onClick={closeModal}
+          className="absolute top-4 right-4 z-10 bg-white/90 px-3 py-2 text-sm font-semibold"
+          variants={buttonVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+        >
+          Close
+        </motion.button>
 
-              <motion.div
-                className="relative z-1"
-                onClick={(e) => e.stopPropagation()}
-                variants={imageVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                style={{
-                  width: "min(92vw, 560px)",
-                  height: "min(80vh, 680px)",
-                }}
-              >
-                <div className="relative w-full h-full overflow-hidden">
-                  <Image
-                    src={active.src}
-                    alt={active.alt ?? active.id}
-                    fill
-                    sizes="100vw"
-                    className={active.imgClassName ?? "object-contain"}
-                    priority
-                  />
-                  <div className={`${theme.bg} self-end absolute -bottom-px right-0`}>
-                    <p className={`${theme.text} px-px`}>{active.ref ?? "ref. ###"}</p>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-      )}
+        {/* Modal content: clicking inside should NOT close */}
+        <motion.div
+          className="relative z-1"
+          onClick={(e) => e.stopPropagation()}
+          variants={imageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          style={{
+            width: "min(92vw, 560px)",
+            height: "min(80vh, 680px)",
+          }}
+        >
+          <div className="relative w-full h-full overflow-hidden">
+            <Image
+              src={active.src}
+              alt={active.alt ?? active.id}
+              fill
+              sizes="100vw"
+              className={active.imgClassName ?? "object-contain"}
+              priority
+            />
+            <div className={`${theme.bg} self-end absolute -bottom-px right-0`}>
+              <p className={`${theme.text} px-px`}>{active.ref ?? "ref. ###"}</p>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    ) : null}
+  </AnimatePresence>
+)}
+
     </>
   );
 }

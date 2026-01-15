@@ -9,7 +9,7 @@ export default function MobileNavbar() {
 
   return (
     <FadeIn delay={1}>
-    <div className="md:hidden fixed top-0 left-0 right-0 z-50 p-3 pointer-events-none">
+    <div className="md:hidden fixed top-0 left-0 right-0 z-0 p-3">
       <div className="flex items-center justify-between pointer-events-auto">
       <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
 
