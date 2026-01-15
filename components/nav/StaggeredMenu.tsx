@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import { useTheme } from "@/components/providers/theme-context";
 
@@ -27,10 +28,7 @@ export interface StaggeredMenuProps {
   accentColor?: string;
   isFixed?: boolean;
 
-  /** still lets you close by clicking anywhere outside the panel */
-  closeOnClickAway?: boolean;
-
-  /** panel appearance */
+  /** panel appearance (tint/border only – blur handled inline for iOS reliability) */
   panelBgClassName?: string;
 
   onMenuOpen?: () => void;
@@ -48,18 +46,33 @@ export default function StaggeredMenu({
 
   accentColor = "#5227FF",
   isFixed = true,
-  closeOnClickAway = true,
 
-  panelBgClassName = "bg-white/5 backdrop-blur-3xl",
+  // tint/border only; blur is inline
+  panelBgClassName = "",
 
   onMenuOpen,
   onMenuClose,
 }: StaggeredMenuProps) {
-  const [mounted, setMounted] = useState(open);
   const { theme } = useTheme();
+
+  const [mounted, setMounted] = useState(open);
+  const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
+
   const panelRef = useRef<HTMLDivElement | null>(null);
   const openTlRef = useRef<gsap.core.Timeline | null>(null);
   const closeTweenRef = useRef<gsap.core.Tween | null>(null);
+
+  // Portal container (fixes iOS backdrop-filter inconsistencies across routes)
+  React.useEffect(() => {
+    const el = document.createElement("div");
+    el.setAttribute("data-staggered-menu-portal", "true");
+    document.body.appendChild(el);
+    setPortalEl(el);
+
+    return () => {
+      document.body.removeChild(el);
+    };
+  }, []);
 
   // mount immediately when opening
   React.useEffect(() => {
@@ -89,18 +102,12 @@ export default function StaggeredMenu({
     closeTweenRef.current?.kill();
 
     const itemEls = Array.from(panel.querySelectorAll(".sm-panel-itemLabel")) as HTMLElement[];
-
-    const numberEls = Array.from(
-      panel.querySelectorAll(".sm-panel-list[data-numbering] .sm-panel-item")
-    ) as HTMLElement[];
-
     const socialTitle = panel.querySelector(".sm-socials-title") as HTMLElement | null;
     const socialLinks = Array.from(panel.querySelectorAll(".sm-socials-link")) as HTMLElement[];
 
     const panelStart = Number(gsap.getProperty(panel, "xPercent"));
 
     if (itemEls.length) gsap.set(itemEls, { yPercent: 140, rotate: 10 });
-    if (numberEls.length) gsap.set(numberEls, { ["--sm-num-opacity" as any]: 0 });
     if (socialTitle) gsap.set(socialTitle, { opacity: 0 });
     if (socialLinks.length) gsap.set(socialLinks, { y: 25, opacity: 0 });
 
@@ -125,25 +132,14 @@ export default function StaggeredMenu({
         },
         0.65 * 0.15
       );
-
-      if (numberEls.length) {
-        tl.to(
-          numberEls,
-          {
-            duration: 0.6,
-            ease: "power2.out",
-            ["--sm-num-opacity" as any]: 1,
-            stagger: { each: 0.08, from: "start" },
-          },
-          0.65 * 0.15 + 0.1
-        );
-      }
     }
 
     if (socialTitle || socialLinks.length) {
       const socialsStart = 0.65 * 0.4;
 
-      if (socialTitle) tl.to(socialTitle, { opacity: 1, duration: 0.5, ease: "power2.out" }, socialsStart);
+      if (socialTitle) {
+        tl.to(socialTitle, { opacity: 1, duration: 0.5, ease: "power2.out" }, socialsStart);
+      }
 
       if (socialLinks.length) {
         tl.to(
@@ -212,54 +208,58 @@ export default function StaggeredMenu({
     }
   }, [open, mounted, playOpen, playClose, onMenuOpen, onMenuClose]);
 
-  // click-away close (NO overlay element, just a document listener)
-  React.useEffect(() => {
-    if (!closeOnClickAway || !open || !mounted) return;
-
-    const onPointerDown = (e: PointerEvent) => {
-      const panel = panelRef.current;
-      if (!panel) return;
-      if (!panel.contains(e.target as Node)) onClose();
-    };
-
-    document.addEventListener("pointerdown", onPointerDown);
-    return () => document.removeEventListener("pointerdown", onPointerDown);
-  }, [closeOnClickAway, open, mounted, onClose]);
-
+  // ✅ Lock background scroll while open (mobile + iOS, no white flash)
   React.useEffect(() => {
     if (!open || !mounted) return;
-  
+
     const body = document.body;
     const html = document.documentElement;
-  
-    // Save scroll position and existing inline styles
+
     const scrollY = window.scrollY;
+
     const prevBodyPosition = body.style.position;
     const prevBodyTop = body.style.top;
+    const prevBodyLeft = body.style.left;
+    const prevBodyRight = body.style.right;
     const prevBodyWidth = body.style.width;
     const prevBodyOverflow = body.style.overflow;
+
     const prevHtmlOverflow = html.style.overflow;
-  
-    // Lock scroll (works well across mobile/desktop)
+
+    const prevBodyBg = body.style.backgroundColor;
+    const prevHtmlBg = html.style.backgroundColor;
+
+    const computedBodyBg = window.getComputedStyle(body).backgroundColor;
+
     html.style.overflow = "hidden";
     body.style.overflow = "hidden";
+
     body.style.position = "fixed";
     body.style.top = `-${scrollY}px`;
+    body.style.left = "0";
+    body.style.right = "0";
     body.style.width = "100%";
-  
+
+    body.style.backgroundColor = computedBodyBg;
+    html.style.backgroundColor = computedBodyBg;
+
     return () => {
-      // Restore styles
       html.style.overflow = prevHtmlOverflow;
       body.style.overflow = prevBodyOverflow;
+
       body.style.position = prevBodyPosition;
       body.style.top = prevBodyTop;
+      body.style.left = prevBodyLeft;
+      body.style.right = prevBodyRight;
       body.style.width = prevBodyWidth;
-  
-      // Restore scroll position
+
+      body.style.backgroundColor = prevBodyBg;
+      html.style.backgroundColor = prevHtmlBg;
+
       window.scrollTo(0, scrollY);
     };
   }, [open, mounted]);
-  
+
   // ESC close
   React.useEffect(() => {
     if (!open || !mounted) return;
@@ -270,36 +270,38 @@ export default function StaggeredMenu({
     return () => window.removeEventListener("keydown", onKey);
   }, [open, mounted, onClose]);
 
-  if (!mounted) return null;
+  if (!mounted || !portalEl) return null;
 
-  return (
+  const ui = (
     <div
-      className={`sm-scope ${isFixed ? "fixed inset-0" : "relative"} z-30 overflow-hidden pointer-events-none`}
+      className={`sm-scope ${isFixed ? "fixed inset-0" : "relative"} z-9996 overflow-hidden pointer-events-none`}
       style={accentColor ? ({ ["--sm-accent" as any]: accentColor } as React.CSSProperties) : undefined}
       data-position={position}
       data-open={open || undefined}
     >
-      {/* Only the panel is clickable */}
       <aside
         ref={panelRef}
         className={`staggered-menu-panel pointer-events-auto absolute top-0 ${
           position === "left" ? "left-0" : "right-0"
-        } h-full ${panelBgClassName} flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10 backdrop-blur-xl`}
-        style={{ WebkitBackdropFilter: "blur(12px)" }}
+        } h-full ${panelBgClassName} flex flex-col p-[6em_2em_2em_2em] overflow-y-auto z-10`}
+        style={{
+          // frosted glass
+          backdropFilter: "blur(32px)",
+          WebkitBackdropFilter: "blur(32px)",
+          backgroundColor: "rgba(255,255,255,0.08)",
+
+          WebkitOverflowScrolling: "touch",
+        }}
       >
         <div className="sm-panel-inner flex-1 flex flex-col gap-5">
-          <ul
-            className="sm-panel-list list-none m-0 p-0 flex flex-col gap-5"
-            role="list"
-            // data-numbering={displayItemNumbering || undefined}
-          >
+          <ul className="sm-panel-list list-none m-0 p-0 flex flex-col gap-5" role="list">
             {items.map((it, idx) => (
               <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
                 <a
                   className={`sm-panel-item relative ${theme.text} font-semibold text-3xl cursor-pointer leading-none tracking-[-2px] uppercase inline-block no-underline pr-[1.4em]`}
                   href={it.link}
                   aria-label={it.ariaLabel}
-                  onClick={onClose}
+                  onClick={onClose} // ✅ closes menu after navigating
                 >
                   <span className="sm-panel-itemLabel inline-block origin-[50%_100%] will-change-transform">
                     {it.label}
@@ -311,17 +313,17 @@ export default function StaggeredMenu({
 
           {displaySocials && socialItems.length > 0 && (
             <div className="sm-socials mt-auto pt-8 flex flex-col gap-3" aria-label="Social links">
-              <h3 className="sm-socials-title m-0 text-base font-medium [color:var(--sm-accent,#ff0000)]">
-                Socials
-              </h3>
-              <ul className="sm-socials-list list-none m-0 p-0 flex flex-row items-center gap-4 flex-wrap" role="list">
+              <ul
+                className="sm-socials-list list-none m-0 p-0 flex flex-row items-center gap-4 flex-wrap"
+                role="list"
+              >
                 {socialItems.map((s, i) => (
                   <li key={s.label + i} className="sm-socials-item">
                     <a
                       href={s.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="sm-socials-link text-[1.2rem] font-medium text-[#111] no-underline relative inline-block py-[2px]"
+                      className={`sm-socials-link text-[1.2rem] ${theme.text} no-underline relative inline-block py-[2px]`}
                     >
                       {s.label}
                     </a>
@@ -336,21 +338,9 @@ export default function StaggeredMenu({
       <style>{`
         .sm-scope .staggered-menu-panel { width: clamp(260px, 38vw, 420px); }
         @media (max-width: 1024px) { .sm-scope .staggered-menu-panel { width: 100%; } }
-        .sm-scope .sm-panel-list[data-numbering] { counter-reset: smItem; }
-        .sm-scope .sm-panel-list[data-numbering] .sm-panel-item::after {
-          counter-increment: smItem;
-          content: counter(smItem, decimal-leading-zero);
-          position: absolute;
-          top: 0.1em;
-          right: 3.2em;
-          font-size: 18px;
-          font-weight: 400;
-          color: var(--sm-accent, #ff0000);
-          opacity: var(--sm-num-opacity, 0);
-          pointer-events: none;
-          user-select: none;
-        }
       `}</style>
     </div>
   );
+
+  return createPortal(ui, portalEl);
 }

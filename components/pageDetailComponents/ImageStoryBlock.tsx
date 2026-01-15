@@ -14,7 +14,7 @@ export default function ImageStoryBlock({ block }: Props) {
 
     return (
         <section className="w-full relative max-w-[1440px] ">
-            <div className="mx-auto h-full max-w-[1440px] grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-12 md:mt-0">
+            <div className="mx-auto h-full max-w-[1440px] grid grid-cols-1 md:grid-cols-2 md:gap-8 mt-0">
                 {/* LEFT LARGE IMAGE */}
                 <div className="relative w-full h-full max-h-[850px] md:min-h-[700px]" >
                     <Image
@@ -27,16 +27,19 @@ export default function ImageStoryBlock({ block }: Props) {
                 </div>
 
                 {/* RIGHT TEXT + SMALL IMAGE */}
-                <div className="flex flex-col h-full text-left">
+                 
+                    <div className="flex flex-col h-full text-left">
                     {/* Title + body */}
-                    <div className="mb-8 mt-6 px-4 md:px-0">
-                        {title &&  <MaskText lineAs='h3' className="text-3xl md:text-4xl pb-4" text={title} />}
+                    {title && <div className="mb-8 mt-6 px-3 md:px-0">
+                        <MaskText lineAs='h3' className="text-3xl md:text-4xl" text={title} />
                        
-                       {subtitle && <MaskText lineAs='p' className="opacity-70 text-xs pb-4 pt-2" text={subtitle} />} 
+                       {subtitle && <MaskText lineAs='p' className="opacity-70 text-xs md:pt-2" text={subtitle} />} 
                         
-                        <p className="text-md md:text-base" > {body}  </p>
+                        
 
                     </div>
+                    }
+                    <p className="text-base px-3 md:px-0" > {body}  </p>
 
                     {/* Small image aligned bottom-right */}
                     {rightImage && (

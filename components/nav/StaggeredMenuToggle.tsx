@@ -69,7 +69,7 @@ export default function StaggeredMenuToggle({ open, onToggle, className }: Props
       aria-expanded={open}
       className={[
         "inline-flex items-center justify-center",
-        theme.nav, 
+        theme.nav, // ✅ uses theme color classes
         className ?? "",
       ].join(" ")}
     >

@@ -8,8 +8,8 @@ import MobileNavbar from "@/components/nav/MobileNavbar";
 
 
 export const metadata = {
-  title: "My App",
-  description: "…",
+  title: "Valmar",
+  description: "Product & Experience Design",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

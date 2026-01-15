@@ -21,7 +21,7 @@ export default function SecondaryMobileLayout({
   gridItems,
 }: Props) {
   return (
-    <div className="w-full relative pt-10 z-40 flex flex-col py-24 px-4">
+    <div className="w-full relative pt-10 z-40 flex flex-col py-24 px-0">
       <MobileHeroComponent
         title={title}
         tagLine={tagLine}

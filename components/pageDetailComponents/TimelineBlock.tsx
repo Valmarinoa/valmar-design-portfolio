@@ -125,7 +125,7 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
   }, [wheelToHorizontal]);
 
   return (
-    <section className={`w-screen max-w-[1244px] relative px-6 ${heightClassName} ${className}`}>
+    <section className={`w-screen max-w-[1244px] relative px-3 md:px-6 ${heightClassName} ${className}`}>
      
         <div className="mx-auto w-full max-w-[1240px]">
   {(title || description) && (
@@ -139,7 +139,7 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
       {description ? (
         <p
           className="
-            mt-4 text-sm md:text-base leading-snug text-neutral-900
+            mt-4 text-base  text-neutral-900
             max-w-none
             md:columns-2 md:gap-10
             [column-fill:balance]

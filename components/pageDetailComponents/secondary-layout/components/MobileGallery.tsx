@@ -54,10 +54,10 @@ export default function MobileGallery({ gridItems }: Props) {
 {mounted && (
   <AnimatePresence initial={false} mode="sync">
     {active ? (
-      <motion.div className="fixed inset-0 z-9999 flex items-center justify-center">
+      <motion.div className="fixed inset-0 z-[9999] flex items-center justify-center">
         {/* Backdrop: clicking this closes */}
         <motion.div
-          className={`absolute inset-0 ${theme.mobileModalBg}`}
+          className={`absolute inset-0 backdrop-blur-3xl`}
           variants={backdropVariants}
           initial="initial"
           animate="animate"

@@ -10,7 +10,7 @@ export default function VideoBlock({ block }: Props) {
     const { caption, media } = block;
 
     return (
-        <section className="w-full h-full relative max-w-[1440px] mx-auto">
+        <section className="md:w-full w-screen h-full relative max-w-[1440px] mx-auto">
             <div
                 key={media.src}
                 className="relative w-full overflow-hidden aspect-video"

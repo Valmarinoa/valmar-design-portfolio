@@ -13,7 +13,7 @@ export default function InspirationBlock({ block }: Props) {
     const { heading, intro, items } = block;
 
     return (
-        <section className="w-full max-w-[1440px] px-6 flex flex-col items-center gap-10 md:gap-16">
+        <section className="w-full max-w-[1440px] px-3 md:px-6 flex flex-col items-center gap-10 md:gap-16">
             <div className="w-full flex justify-end">
                 <div className="md:w-1/2 md:text-left flex flex-col">
                     <MaskText lineAs='h3' className="text-3xl md:text-4xl mb-4" text={heading} />

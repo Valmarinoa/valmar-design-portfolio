@@ -49,7 +49,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
 
 
     return (
-        <section className="w-full flex flex-col h-fit pt-20 md:pt-32 overflw-hidden">
+        <section className="w-full flex flex-col h-fit pt-28 md:pt-32 overflw-hidden">
             <div className="md:flex-row flex flex-col">
                 <div className="flex flex-col justify-end w-full md:w-1/2 pb-4 px-3 gap-1 md:gap-0">
                     {/* <FadeIn>
@@ -81,7 +81,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                             text={project.description}
                             delay={1.6}
                             mode="block"
-                            className="w-full text-sm md:text-2xl text-left leading-snug"
+                            className="w-full text-base md:text-2xl text-left leading-snug"
                         />
                     )}
 

@@ -26,7 +26,7 @@ export default function MagazineBlock({ block }: Props) {
         h-screen
         ${maxHeightClassName ?? ""}
         relative
-        px-6
+        px-3
         ${className}
       `}
     >
