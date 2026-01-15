@@ -17,18 +17,27 @@ const ANGLE_SMOOTH_MS = 180;
 const WHEEL_SENSITIVITY = 0.06;
 const WHEEL_SPEED_BOOST = 10;
 
-const INACTIVITY_DELAY_MS = 4_000; // ✅ 4 seconds
+const INACTIVITY_DELAY_MS = 4_000;
 
-/* ================= SLUG HANDLING ================= */
+/* ================= LINK HANDLING ================= */
 
 const ROOT_SLUGS = new Set(["totemica", "rurales"]);
 
-function normalizeSlug(slug: string) {
+function normalizeSlug(slug?: string) {
+  if (!slug) return null;
   return slug.replace(/^\/+/, "");
 }
 
-function hrefForProject(slug: string) {
-  const clean = normalizeSlug(slug);
+function isExternalUrl(url: string) {
+  return /^https?:\/\//i.test(url) || /^mailto:/i.test(url);
+}
+
+function hrefForProject(project: { slug?: string; link?: string }) {
+  if (project.link) return project.link;
+
+  const clean = normalizeSlug(project.slug);
+  if (!clean) return null;
+
   return ROOT_SLUGS.has(clean) ? `/${clean}` : `/projects/${clean}`;
 }
 
@@ -64,7 +73,6 @@ export default function ProjectRing3D() {
   const targetAngleRef = useRef(0);
   const speedRef = useRef(BASE_SPEED);
 
-  // ✅ inactivity tracking (start auto-spin immediately on mount)
   const lastInteractionRef = useRef<number>(0);
 
   useEffect(() => {
@@ -74,15 +82,12 @@ export default function ProjectRing3D() {
   const count = projects.length || 1;
   const step = 360 / count;
 
-  /* ================= MAIN LOOP ================= */
-
   useAnimationFrame((_, delta) => {
     const deltaSeconds = delta / 1000;
     const now = performance.now();
 
     const inactiveFor = now - lastInteractionRef.current > INACTIVITY_DELAY_MS;
 
-    // Auto-spin only when inactive + not hovered
     if (!hoveredSlug && inactiveFor) {
       const speedSmoothing = 1 - Math.exp(-delta / SPEED_SMOOTH_MS);
       speedRef.current += (BASE_SPEED - speedRef.current) * speedSmoothing;
@@ -92,12 +97,8 @@ export default function ProjectRing3D() {
     const currentAngle = angle.get();
     const angleSmoothing = 1 - Math.exp(-delta / ANGLE_SMOOTH_MS);
 
-    angle.set(
-      currentAngle + (targetAngleRef.current - currentAngle) * angleSmoothing
-    );
+    angle.set(currentAngle + (targetAngleRef.current - currentAngle) * angleSmoothing);
   });
-
-  /* ================= WHEEL ================= */
 
   useEffect(() => {
     const el = ringRef.current;
@@ -108,9 +109,7 @@ export default function ProjectRing3D() {
 
       lastInteractionRef.current = performance.now();
 
-      const dominant =
-        Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
-
+      const dominant = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
       const deltaAngle = -dominant * WHEEL_SENSITIVITY;
 
       targetAngleRef.current += deltaAngle;
@@ -121,27 +120,20 @@ export default function ProjectRing3D() {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
-  /* ================= RENDER ================= */
-
   return (
     <section className="w-full h-screen flex items-center justify-center">
-      <div
-        ref={ringRef}
-        className="relative h-[420px] w-full max-w-4xl"
-        style={{ perspective: "1400px" }}
-      >
+      <div ref={ringRef} className="relative h-[420px] w-full max-w-4xl" style={{ perspective: "1400px" }}>
         <motion.div
           className="absolute inset-0"
-          style={{
-            rotateY: angle,
-            transformStyle: "preserve-3d",
-          }}
+          style={{ rotateY: angle, transformStyle: "preserve-3d" }}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
-          {projects.map((project, index) => {
-            const cleanSlug = normalizeSlug(project.slug);
+          {projects.map((project: any, index) => {
+            const key = normalizeSlug(project.slug) ?? project.title ?? String(index);
+            const href = hrefForProject(project);
+            const external = href ? isExternalUrl(href) : false;
 
             const baseAngle = step * index;
             const rad = (baseAngle * Math.PI) / 180;
@@ -154,48 +146,62 @@ export default function ProjectRing3D() {
               translateY(${verticalOffset}px)
             `;
 
+            const Media = (
+              <div className="relative h-24 w-32 overflow-hidden rounded-[4px] transition-transform duration-300 group-hover:scale-125 md:h-32 md:w-44 lg:h-40 lg:w-56">
+                {project.videoThumbnail ? (
+                  <video
+                    src={project.videoThumbnail}
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    preload="auto"
+                    controls={false}
+                    disablePictureInPicture
+                    {...({ "webkit-playsinline": "true" } as any)}
+                    className="absolute inset-0 h-full w-full object-contain rounded-[4px]"
+                  />
+                ) : project.thumbnail ? (
+                  <Image
+                    src={project.thumbnail}
+                    alt={project.title}
+                    fill
+                    priority
+                    quality={100}
+                    className="object-contain rounded-[4px]"
+                  />
+                ) : null}
+              </div>
+            );
+
+            const Clickable = !href ? (
+              <div className="block">{Media}</div>
+            ) : external ? (
+              <a href={href} target="_blank" rel="noopener noreferrer" className="block">
+                {Media}
+              </a>
+            ) : (
+              <Link href={href} className="block">
+                {Media}
+              </Link>
+            );
+
             return (
               <div
-                key={cleanSlug}
+                key={key}
                 className="absolute left-1/2 top-1/2"
-                style={{
-                  transform: cardTransform,
-                  transformStyle: "preserve-3d",
-                }}
+                style={{ transform: cardTransform, transformStyle: "preserve-3d" }}
               >
                 <motion.div
                   className="group relative"
                   onMouseEnter={() => {
-                    setHoveredSlug(cleanSlug);
+                    setHoveredSlug(key);
                     lastInteractionRef.current = performance.now();
                   }}
                   onMouseLeave={() => setHoveredSlug(null)}
                   variants={itemVariants}
                 >
-                  <Link href={hrefForProject(project.slug)} className="block">
-                    <div className="relative h-24 w-32 overflow-hidden rounded-[4px] transition-transform duration-300 group-hover:scale-125 md:h-32 md:w-44 lg:h-40 lg:w-56">
-                      {project.videoThumbnail ? (
-                        <video
-                          src={project.videoThumbnail}
-                          muted
-                          autoPlay
-                          loop
-                          playsInline
-                          preload="metadata"
-                          className="absolute inset-0 h-full w-full object-contain rounded-[4px]"
-                        />
-                      ) : project.thumbnail ? (
-                        <Image
-                          src={project.thumbnail}
-                          alt={project.title}
-                          fill
-                          priority
-                          quality={100}
-                          className="object-contain rounded-[4px]"
-                        />
-                      ) : null}
-                    </div>
-                  </Link>
+                  {Clickable}
                 </motion.div>
               </div>
             );

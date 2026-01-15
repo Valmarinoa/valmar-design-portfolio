@@ -1060,6 +1060,25 @@ export const projects: Project[] = [
     tags: ['Wood', 'Composition', 'Color', 'Material', 'Ritual'],
   },
 
+   // MARIANROSAS
+   {
+    title: 'MARIANROSAS',
+    link: 'https://soundcloud.com/marianrosas',
+    heroVideo: '/media/marianrosas.mp4',
+    videoThumbnail: '/media/marianrosas.mp4',
+    description:
+      'I DJ sometimes :)',
+  },
+  
+  // MERGED LANDSCAPES
+  {
+    title: 'Merged Landscapes',
+    slug: 'merged-landscapes',
+    thumbnail: '/media/merged-landscapes.png',
+    description:
+      'Synthetic representations of natural growth through algorithmic textures.',
+  },
+
   // VALUE TUNING
   {
     title: 'Value Tuning',
@@ -1069,12 +1088,5 @@ export const projects: Project[] = [
       'Synthetic representations of natural growth through algorithmic textures.',
   },
 
-  // MERGED LANDSCAPES
-  {
-    title: 'Merged Landscapes',
-    slug: 'merged-landscapes',
-    thumbnail: '/media/merged-landscapes.png',
-    description:
-      'Synthetic representations of natural growth through algorithmic textures.',
-  },
+  
 ];

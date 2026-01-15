@@ -17,10 +17,11 @@ I’m interested in how poetry and a bit of magic can exist in everyday technolo
                 <div className="grid grid-cols-2 gap-x-2 gap-y-10">
                     {projects.map((p) => (
                         <div
-                        key={p.slug}>
+                        key={p.title}>
                         <ProjectCard
-                            key={p.slug}
+                            key={p.title}
                             slug={p.slug}
+                            link={p.link}
                             title={p.title}
                             image={p.thumbnail}
                             video={p.heroVideo}

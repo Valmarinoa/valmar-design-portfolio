@@ -181,7 +181,8 @@ export type ProjectDetailBlock =
 
 export type Project = {
   title: string;
-  slug: string;
+  slug?: string;
+  link?: string;
   thumbnail?: string; // used in ring / grid
   mobileHeroImage?: string;
   year?: string;

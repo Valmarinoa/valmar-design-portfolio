@@ -6,29 +6,46 @@ import React from "react";
 
 type Props = {
   title: string;
-  slug: string; // may come as "totemica" or "/totemica"
+
+  // external link (optional)
+  link?: string;
+
+  // internal slug (optional)
+  slug?: string;
+
   image?: string;
   description?: string;
   video?: string;
 };
 
-const containSlugs = new Set(["rurales", "merged-landscapes", "frozen-woods"]);
-const rootSlugs = new Set(["totemica"]); // projects that live at root (no /projects)
+const containSlugs = new Set(["merged-landscapes", "frozen-woods"]);
+const rootSlugs = new Set(["rurales", "totemica"]);
 
 function normalizeSlug(slug: string) {
   return slug.replace(/^\/+/, "");
 }
 
-export default function ProjectCard({ title, slug, image, description, video }: Props) {
-  const cleanSlug = normalizeSlug(slug);
+function isExternalUrl(url: string) {
+  return /^https?:\/\//i.test(url) || /^mailto:/i.test(url);
+}
 
-  const useContain = containSlugs.has(cleanSlug);
+export default function ProjectCard({ title, slug, image, description, link, video }: Props) {
+  const cleanSlug = slug ? normalizeSlug(slug) : null;
+
+  const useContain = cleanSlug ? containSlugs.has(cleanSlug) : false;
   const fitClass = useContain ? "object-contain" : "object-cover";
 
-  const href = rootSlugs.has(cleanSlug) ? `/${cleanSlug}` : `/projects/${cleanSlug}`;
+  // Decide destination:
+  // 1) external link if provided
+  // 2) internal href built from slug
+  // 3) no destination (non-clickable)
+  const href: string | null =
+    link ? link : cleanSlug ? (rootSlugs.has(cleanSlug) ? `/${cleanSlug}` : `/projects/${cleanSlug}`) : null;
 
-  return (
-    <Link href={href} className="group block">
+  const isExternal = href ? isExternalUrl(href) : false;
+
+  const CardInner = (
+    <>
       {/* MEDIA */}
       <div className={`w-full overflow-hidden ${useContain ? "flex items-center justify-center" : ""}`}>
         {image ? (
@@ -42,18 +59,14 @@ export default function ProjectCard({ title, slug, image, description, video }: 
         ) : video ? (
           <video
             src={video}
-            // autoplay requirements (esp iOS)
             muted
             playsInline
             loop
             autoPlay
-            // important: helps iOS autoplay thumbnails
             preload="auto"
             controls={false}
             disablePictureInPicture
-            // TS-safe way to set webkit-playsinline:
             {...({ "webkit-playsinline": "true" } as any)}
-            // make sure iOS really treats it as muted
             ref={(el) => {
               if (!el) return;
               el.muted = true;
@@ -63,7 +76,6 @@ export default function ProjectCard({ title, slug, image, description, video }: 
               const v = e.currentTarget;
               v.muted = true;
               (v as any).defaultMuted = true;
-
               const p = v.play();
               if (p && typeof (p as any).catch === "function") (p as any).catch(() => {});
             }}
@@ -84,6 +96,31 @@ export default function ProjectCard({ title, slug, image, description, video }: 
           {description ?? "Here goes project small description."}
         </p>
       </div>
+    </>
+  );
+
+  // Render as external <a>, internal <Link>, or non-clickable <div>
+  if (!href) {
+    return <div className="group block">{CardInner}</div>;
+  }
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className="group block"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${title}`}
+      >
+        {CardInner}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className="group block" aria-label={`Open ${title}`}>
+      {CardInner}
     </Link>
   );
 }
