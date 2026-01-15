@@ -1,30 +1,60 @@
 "use client";
 
+import { useState } from "react";
 import LogoSvg from "@/components/svg/LogoSvg";
 import { useTheme } from "@/components/providers/theme-context";
 import FadeIn from "../animations/FadeIn";
+import StaggeredMenu from "./StaggeredMenu";
+import StaggeredMenuToggle from "./StaggeredMenuToggle";
+
+const menuItems = [
+  { label: "Home", ariaLabel: "Go to home page", link: "/" },
+  { label: "About", ariaLabel: "About", link: "/about" },
+  { label: "Dev Work", ariaLabel: "Work as front-end developer", link: "/about" },
+];
+
+const socialItems = [
+  { label: "Instagram", link: "https://instagram.com/vamarino.a" },
+  { label: "GitHub", link: "https://github.com/valmarino" },
+  { label: "LinkedIn", link: "https://linkedin.com/in/valentina-marino-arboleda/" },
+  { label: "email", link: "mailto:valenmarinocol@gmail.com" },
+];
 
 export default function MobileNavbar() {
   const { theme } = useTheme();
+  const [open, setOpen] = useState(false);
 
   return (
-    <FadeIn delay={1}>
-    <div className="md:hidden fixed top-0 left-0 right-0 z-0 p-3">
-      <div className="flex items-center justify-between pointer-events-auto">
-      <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
+    <>
+      <FadeIn delay={1}>
+        {/* Navbar ABOVE menu */}
+        <div className="md:hidden fixed top-0 left-0 right-0 z-40 p-3">
+          <div className="flex items-center justify-between pointer-events-auto">
+            <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
 
-
-        <button
-          type="button"
-          className={`h-10 w-10 rounded-full flex items-center justify-center ${theme.nav}`}
-          aria-label="Open menu"
-        >
-          <div className="flex flex-col gap-1.5">
-            <span className="block h-[2px] w-6 bg-current" />
-            <span className="block h-[2px] w-6 bg-current" />
+            <div className={`h-10 rounded-full flex items-center justify-center px-3 ${theme.nav}`}>
+              <StaggeredMenuToggle
+                open={open}
+                onToggle={() => setOpen((v) => !v)}
+              />
+            </div>
           </div>
-        </button>
-      </div>
-    </div></FadeIn>
+        </div>
+      </FadeIn>
+
+      {/* Menu BELOW navbar */}
+      <StaggeredMenu
+        open={open}
+        onClose={() => setOpen(false)}
+        position="right"
+        items={menuItems}
+        socialItems={socialItems}
+        displaySocials
+        displayItemNumbering
+        accentColor="#ff6b6b"
+        isFixed
+        closeOnClickAway
+      />
+    </>
   );
 }
