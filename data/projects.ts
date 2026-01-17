@@ -996,52 +996,73 @@ export const projects: Project[] = [
   {
     heroMedia: '/media/frozen-woods/fw-hero.png',
     year: '2024',
-    tagline: 'Interpreting silence through color.',
+    tagline: 'Fragments of wood slowly reappear beneath the surface.',
     description:
-      'An interactive light installation that translates the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.',
-    tags: ['Light', 'Low-tech', 'Silence', 'Meditative Interface', 'Color'],
-    title: 'Frozen Woods',
-    slug: 'frozen-woods',
+      'Material research project centered on transformation and repurposing collected wood into sculptural objects.',
+      tags: ['Wood', 'Quiet', 'Material Research', 'Transformation', 'Repurposing'],
+    title: 'Quiet Matter',
+    slug: 'quiet-matter',
     thumbnail: '/media/frozen-woods-1.png',
     blocks: [
       {
         type: 'quote',
         quote:
-          'Light installation exploring how silence can be experienced through slow, shifting fields of deep blue illumination. The piece emerges from an increasing need in our culture to reconnect with what we cannot see but deeply feel.',
+          'The project reflects an ongoing interest in repurposing found materials — allowing traces of their origin to remain visible within more refined, intentional forms.' 
       },
       {
         type: 'magazine',
-        backgroundSrc: "/media/frozen-woods/double.png",
+        backgroundSrc: "/media/frozen-woods/terracota-3.png",
         backgroundType: "image",
         backgroundAlt: "Frozen woods research",
-        text: "'An interactive light installation that translates the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.'",
+        imgFit: "object-cover",
+
+        backgroundSrc2: "/media/frozen-woods/blade.png",
+        backgroundType2: "image",
+        backgroundAlt2: "Frozen woods research",
+        imgFit2: "object-cover",
+
+        text: "", 
         maxHeightClassName: "max-h-[700px]",
         className: "",
         textClassName: "text-md",
-        imgFit: "object-cover rounded-sm"
-        },
-        {
+      },
+      {
           type: 'magazine',
-          backgroundSrc: '/media/frozen-woods-1.png',
+          backgroundSrc: '/media/frozen-woods-1.png', 
           backgroundType: "image",
           backgroundAlt: "Frozen woods research",
           text: "",
           maxHeightClassName: "max-h-[500px]",
           className: "",
           textClassName: "",
-          imgFit: "object-contain"
-          },
-          {
+          imgFit: "object-contain px-14 md:px-0 max-h-[500px]"
+      },
+      {
             type: 'magazine',
             backgroundSrc: '/media/frozen-woods/pairs2.png',
             backgroundType: "image",
             backgroundAlt: "Frozen woods research",
+
             text: "",
             maxHeightClassName: "max-h-[500px]",
             className: "",
             textClassName: "",
-            imgFit: "object-cover rounded-sm"
-            },
+            imgFit: "object-cover"
+      },
+      {
+        type: 'gallery',
+        media: [
+          {
+            src: '/media/tidal/tidal-frag.png',
+          },
+          {
+            src: '/media/tidal/tidal-frag-2.png',
+          },
+          {
+            src: '/media/tidal/tidal-frag-3.png',
+          },
+        ],
+      },
     ],
   },
 
@@ -1067,7 +1088,7 @@ export const projects: Project[] = [
     heroVideo: '/media/marianrosas.mp4',
     videoThumbnail: '/media/marianrosas.mp4',
     description:
-      'I DJ sometimes :)',
+      'I DJ sometimes ◡̈',
   },
   
   // MERGED LANDSCAPES

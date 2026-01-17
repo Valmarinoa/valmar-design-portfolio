@@ -121,15 +121,23 @@ export type InspirationBlock = {
 };
 
 export type MagazineBlock = {
-  type: 'magazine';
+  type: "magazine";
   backgroundSrc: string;
-  backgroundType: string;
-  backgroundAlt: string;
+  backgroundType: "image" | "video";
+  backgroundAlt?: string;
+
+  // optional second media
+  backgroundSrc2?: string;
+  backgroundType2?: "image" | "video";
+  backgroundAlt2?: string;
+
   text?: string;
-  maxHeightClassName?: string; 
+  maxHeightClassName?: string;
   className?: string;
   textClassName?: string;
-  imgFit?: string
+
+  imgFit?: string;
+  imgFit2?: string;
 };
 
 type MediaType = "image" | "video";

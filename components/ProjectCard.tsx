@@ -16,6 +16,9 @@ type Props = {
   image?: string;
   description?: string;
   video?: string;
+
+  // optional poster if you have one
+  poster?: string;
 };
 
 const containSlugs = new Set(["merged-landscapes", "frozen-woods"]);
@@ -29,98 +32,120 @@ function isExternalUrl(url: string) {
   return /^https?:\/\//i.test(url) || /^mailto:/i.test(url);
 }
 
-export default function ProjectCard({ title, slug, image, description, link, video }: Props) {
+export default function ProjectCard({
+  title,
+  slug,
+  image,
+  description,
+  link,
+  video,
+  poster,
+}: Props) {
   const cleanSlug = slug ? normalizeSlug(slug) : null;
 
   const useContain = cleanSlug ? containSlugs.has(cleanSlug) : false;
   const fitClass = useContain ? "object-contain" : "object-cover";
 
-  // Decide destination:
-  // 1) external link if provided
-  // 2) internal href built from slug
-  // 3) no destination (non-clickable)
   const href: string | null =
-    link ? link : cleanSlug ? (rootSlugs.has(cleanSlug) ? `/${cleanSlug}` : `/projects/${cleanSlug}`) : null;
+    link
+      ? link
+      : cleanSlug
+        ? rootSlugs.has(cleanSlug)
+          ? `/${cleanSlug}`
+          : `/projects/${cleanSlug}`
+        : null;
 
-  const isExternal = href ? isExternalUrl(href) : false;
+  const external = href ? isExternalUrl(href) : false;
 
-  const CardInner = (
-    <>
-      {/* MEDIA */}
-      <div className={`w-full overflow-hidden ${useContain ? "flex items-center justify-center" : ""}`}>
-        {image ? (
-          <Image
-            src={image}
-            alt={title}
-            width={800}
-            height={600}
-            className={`w-full h-auto ${fitClass} transition-transform duration-300 group-hover:scale-105`}
-          />
-        ) : video ? (
-          <video
-            src={video}
-            muted
-            playsInline
-            loop
-            autoPlay
-            preload="auto"
-            controls={false}
-            disablePictureInPicture
-            {...({ "webkit-playsinline": "true" } as any)}
-            ref={(el) => {
-              if (!el) return;
-              el.muted = true;
-              (el as any).defaultMuted = true;
-            }}
-            onLoadedMetadata={(e) => {
-              const v = e.currentTarget;
-              v.muted = true;
-              (v as any).defaultMuted = true;
-              const p = v.play();
-              if (p && typeof (p as any).catch === "function") (p as any).catch(() => {});
-            }}
-            onCanPlay={(e) => {
-              const v = e.currentTarget;
-              const p = v.play();
-              if (p && typeof (p as any).catch === "function") (p as any).catch(() => {});
-            }}
-            className={`w-full h-auto ${fitClass} transition-transform duration-300 group-hover:scale-105`}
-          />
-        ) : null}
-      </div>
+  // Media block (NOT wrapped in a Link)
+  const Media = (
+    <div className={`w-full overflow-hidden ${useContain ? "flex items-center justify-center" : ""}`}>
+      {image ? (
+        <Image
+          src={image}
+          alt={title}
+          width={800}
+          height={600}
+          className={`w-full h-auto ${fitClass} transition-transform duration-300 group-hover:scale-105`}
+        />
+      ) : video ? (
+        <video
+          src={video}
+          muted
+          playsInline
+          loop
+          autoPlay
+          preload="auto"
+          controls={false}
+          disablePictureInPicture
+          controlsList="nodownload noplaybackrate"
+          poster={poster}
+          {...({ "webkit-playsinline": "true" } as any)}
+          // ✅ Key bit: make the video non-interactive so iOS doesn't force tap-to-play UI
+          className={`pointer-events-none w-full h-auto ${fitClass} transition-transform duration-300 group-hover:scale-105`}
+          ref={(el) => {
+            if (!el) return;
+            el.muted = true;
+            (el as any).defaultMuted = true;
+          }}
+          onLoadedMetadata={(e) => {
+            const v = e.currentTarget;
+            v.muted = true;
+            (v as any).defaultMuted = true;
 
-      {/* TEXT UNDER MEDIA */}
-      <div className="mt-2 space-y-1">
-        <p className="text-base font-medium leading-tight">{title}</p>
-        <p className="text-xs leading-tight text-neutral-600">
-          {description ?? "Here goes project small description."}
-        </p>
-      </div>
-    </>
+            const p = v.play();
+            if (p && typeof (p as any).catch === "function") (p as any).catch(() => {});
+          }}
+          onCanPlay={(e) => {
+            const v = e.currentTarget;
+            const p = v.play();
+            if (p && typeof (p as any).catch === "function") (p as any).catch(() => {});
+          }}
+        />
+      ) : null}
+    </div>
   );
 
-  // Render as external <a>, internal <Link>, or non-clickable <div>
-  if (!href) {
-    return <div className="group block">{CardInner}</div>;
-  }
+  const Text = (
+    <div className="mt-2 space-y-1">
+      <p className="text-base font-medium leading-tight">{title}</p>
+      <p className="text-xs leading-tight text-neutral-600">
+        {description ?? "Here goes project small description."}
+      </p>
+    </div>
+  );
 
-  if (isExternal) {
+  // If nothing to navigate to, render non-clickable
+  if (!href) {
     return (
-      <a
-        href={href}
-        className="group block"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Open ${title}`}
-      >
-        {CardInner}
-      </a>
+      <div className="group block">
+        {Media}
+        {Text}
+      </div>
     );
   }
 
+  // ✅ Make the whole card clickable via an overlay link (not wrapping the video)
   return (
-    <Link href={href} className="group block" aria-label={`Open ${title}`}>
-      {CardInner}
-    </Link>
+    <div className="group relative block">
+      {Media}
+      {Text}
+
+      {external ? (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${title}`}
+          className="absolute inset-0 z-10"
+        />
+      ) : (
+        <Link
+          href={href}
+          aria-label={`Open ${title}`}
+          className="absolute inset-0 z-10"
+        />
+      )}
+    </div>
   );
 }

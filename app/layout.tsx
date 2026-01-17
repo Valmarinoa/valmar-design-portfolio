@@ -5,6 +5,7 @@ import { helveticaNeue, mixtaPro } from "./fonts";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
 import MobileNavbar from "@/components/nav/MobileNavbar";
+import WithLove from "@/components/nav/WithLove.tsx";
 
 
 export const metadata = {
@@ -32,9 +33,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <AutoThemeProvider>
           {/* ✅ persistent mobile navbar */}
           <MobileNavbar />
-
           {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
+<WithLove />
         </AutoThemeProvider>
       </body>
     </html>
