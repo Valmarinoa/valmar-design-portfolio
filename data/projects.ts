@@ -13,7 +13,7 @@ export const THEMES: Record<ThemeKey, ThemeClasses> = {
     border: "border-neutral-800",
     mobileModalBg: "transparent",
     logo: "text-neutral-800",
-    nav: "text-neutral-800 mix-blend-exclusion",
+    nav: "text-neutral-800",
   },
 
   totemica: {

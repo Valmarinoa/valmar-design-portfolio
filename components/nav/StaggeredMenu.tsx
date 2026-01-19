@@ -288,7 +288,7 @@ export default function StaggeredMenu({
           // frosted glass
           backdropFilter: "blur(32px)",
           WebkitBackdropFilter: "blur(32px)",
-          backgroundColor: "rgba(255,255,255,0.08)",
+          backgroundColor: "rgba(255,255,255,0.001)",
 
           WebkitOverflowScrolling: "touch",
         }}
