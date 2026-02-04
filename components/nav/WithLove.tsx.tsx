@@ -13,8 +13,8 @@ export default function MobileNavbar() {
     <div>
       {/* <FadeIn delay={1}> */}
         {/* Navbar ABOVE menu */}
-        <div className="md:hidden fixed bottom-0 left-1/2 -translate-x-[50%] z-9997 backdrop-blur-xl ">
-        <p className={`text-xs ${theme.nav} px-3 pt-2 pb-1 mix-blend-exclusion `}>{messages.footer.withLove}</p>
+        <div className="fixed bottom-0 left-1/2 -translate-x-[50%] z-9997 ">
+        <p className={`text-xs ${theme.nav} px-3 pt-2 pb-1 mix-blend-exclusion `}>Coded with love ♡ ̆̈</p>
         </div>
       {/* </FadeIn> */}
 

@@ -6,10 +6,9 @@ import LogoSvg from "@/components/svg/LogoSvg";
 import { getMessages } from "@/data/messages";
 import { getServerLocale } from "@/lib/i18n-server";
 
-export default function HomePage() {
-  const locale = getServerLocale();
+export default async function HomePage() {
+  const locale = await getServerLocale();
   const messages = getMessages(locale);
-
   return (
     <main className="w-full">
  

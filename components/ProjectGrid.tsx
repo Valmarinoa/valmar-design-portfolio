@@ -3,8 +3,8 @@ import { getProjects } from "@/data/projects";
 import { getMessages } from "@/data/messages";
 import { getServerLocale } from "@/lib/i18n-server";
 
-export default function ProjectGrid() {
-    const locale = getServerLocale();
+export default async function ProjectGrid() {
+    const locale = await getServerLocale();
     const messages = getMessages(locale);
     const projects = getProjects(locale);
 

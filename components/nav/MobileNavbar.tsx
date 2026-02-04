@@ -44,7 +44,7 @@ export default function MobileNavbar() {
               href={localizePath("/", locale)}
               aria-label={messages.nav.logoAria}
               onClick={() => setOpen(false)}
-              className="inline-flex items-center"
+              className="inline-flex items-center "
             >
               <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
             </Link>
