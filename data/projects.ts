@@ -1,5 +1,179 @@
 // data/projects.ts
-import type { GridItem, Project, ThemeClasses } from '@/types/project';
+import type { GridItem, Project, ThemeClasses } from "@/types/project";
+import type {
+  DoubleBlock,
+  GalleryBlock,
+  ImageStoryBlock,
+  InspirationBlock,
+  MagazineBlock,
+  MediaTextBlock,
+  ProjectDetailBlock,
+  QuoteBlock,
+  TextTripticBlock,
+  TimelineBlock,
+  VideoBlock,
+} from "@/types/project";
+import type { Locale } from "@/lib/i18n";
+
+type Localized<T> = T | { en: T; "pt-br": T };
+
+type LocalizedQuoteBlock = Omit<QuoteBlock, "quote"> & { quote: Localized<string> };
+type LocalizedTextTripticBlock = Omit<TextTripticBlock, "title" | "subtitle" | "body"> & {
+  title?: Localized<string>;
+  subtitle?: Localized<string>;
+  body?: Localized<string>;
+};
+type LocalizedDoubleBlock = DoubleBlock;
+type LocalizedVideoBlock = Omit<VideoBlock, "caption"> & { caption: Localized<string> };
+type LocalizedGalleryBlock = GalleryBlock;
+type LocalizedMediaTextBlock = Omit<MediaTextBlock, "title" | "subtitle" | "text"> & {
+  title: Localized<string>;
+  subtitle: Localized<string>;
+  text: Localized<string>;
+};
+type LocalizedImageStoryBlock = Omit<ImageStoryBlock, "title" | "subtitle" | "body"> & {
+  title: Localized<string>;
+  subtitle: Localized<string>;
+  body: Localized<string>;
+};
+type LocalizedInspirationBlock = Omit<InspirationBlock, "heading" | "intro" | "items"> & {
+  heading: Localized<string>;
+  intro: Localized<string>;
+  items: Array<{
+    title: Localized<string>;
+    subtitle?: Localized<string>;
+    body: Localized<string>;
+    media: InspirationBlock["items"][number]["media"];
+  }>;
+};
+type LocalizedMagazineBlock = Omit<MagazineBlock, "text"> & { text?: Localized<string> };
+type LocalizedTimelineBlock = Omit<TimelineBlock, "title" | "description" | "startLabel" | "items"> & {
+  title?: Localized<string>;
+  description?: Localized<string>;
+  startLabel?: Localized<string>;
+  items: Array<Omit<TimelineBlock["items"][number], "caption"> & { caption?: Localized<string> }>;
+};
+
+type LocalizedProjectDetailBlock =
+  | LocalizedQuoteBlock
+  | LocalizedMediaTextBlock
+  | LocalizedTextTripticBlock
+  | LocalizedImageStoryBlock
+  | LocalizedVideoBlock
+  | LocalizedInspirationBlock
+  | LocalizedDoubleBlock
+  | LocalizedMagazineBlock
+  | LocalizedTimelineBlock
+  | LocalizedGalleryBlock;
+
+type LocalizedProject = Omit<Project, "title" | "tagline" | "description" | "tags" | "blocks"> & {
+  title: Localized<string>;
+  tagline?: Localized<string>;
+  description?: Localized<string>;
+  tags?: Array<Localized<string>>;
+  blocks?: LocalizedProjectDetailBlock[];
+};
+
+const t = (en: string, pt: string) => ({ en, "pt-br": pt });
+
+function resolveLocalized<T>(value: Localized<T>, locale: Locale): T {
+  if (value && typeof value === "object" && "en" in value) {
+    return (value as { en: T; "pt-br": T })[locale] ?? (value as { en: T }).en;
+  }
+  return value as T;
+}
+
+function localizeString(value: Localized<string> | undefined, locale: Locale): string | undefined {
+  if (!value) return value;
+  return resolveLocalized(value, locale);
+}
+
+function localizeTags(tags: Array<Localized<string>> | undefined, locale: Locale) {
+  if (!tags) return tags;
+  return tags.map((tag) => resolveLocalized(tag, locale));
+}
+
+function localizeBlocks(
+  blocks: LocalizedProjectDetailBlock[] | undefined,
+  locale: Locale
+): ProjectDetailBlock[] | undefined {
+  if (!blocks) return undefined;
+
+  return blocks.map((block) => {
+    switch (block.type) {
+      case "quote":
+        return { ...block, quote: resolveLocalized(block.quote, locale) };
+      case "mediaText":
+        return {
+          ...block,
+          title: resolveLocalized(block.title, locale),
+          subtitle: resolveLocalized(block.subtitle, locale),
+          text: resolveLocalized(block.text, locale),
+        };
+      case "tripticGallery":
+        return {
+          ...block,
+          title: localizeString(block.title, locale),
+          subtitle: localizeString(block.subtitle, locale),
+          body: localizeString(block.body, locale),
+        };
+      case "doubleGallery":
+        return block;
+      case "gallery":
+        return block;
+      case "imageStory":
+        return {
+          ...block,
+          title: resolveLocalized(block.title, locale),
+          subtitle: resolveLocalized(block.subtitle, locale),
+          body: resolveLocalized(block.body, locale),
+        };
+      case "videoFull":
+        return { ...block, caption: resolveLocalized(block.caption, locale) };
+      case "inspiration":
+        return {
+          ...block,
+          heading: resolveLocalized(block.heading, locale),
+          intro: resolveLocalized(block.intro, locale),
+          items: block.items.map((item) => ({
+            ...item,
+            title: resolveLocalized(item.title, locale),
+            subtitle: item.subtitle ? resolveLocalized(item.subtitle, locale) : item.subtitle,
+            body: resolveLocalized(item.body, locale),
+          })),
+        };
+      case "magazine":
+        return {
+          ...block,
+          text: block.text ? resolveLocalized(block.text, locale) : block.text,
+        };
+      case "timeline":
+        return {
+          ...block,
+          title: block.title ? resolveLocalized(block.title, locale) : block.title,
+          description: block.description ? resolveLocalized(block.description, locale) : block.description,
+          startLabel: block.startLabel ? resolveLocalized(block.startLabel, locale) : block.startLabel,
+          items: block.items.map((item) => ({
+            ...item,
+            caption: item.caption ? resolveLocalized(item.caption, locale) : item.caption,
+          })),
+        };
+      default:
+        return block;
+    }
+  }) as ProjectDetailBlock[];
+}
+
+export function localizeProject(project: LocalizedProject, locale: Locale): Project {
+  return {
+    ...project,
+    title: resolveLocalized(project.title, locale),
+    tagline: localizeString(project.tagline, locale),
+    description: localizeString(project.description, locale),
+    tags: localizeTags(project.tags, locale),
+    blocks: localizeBlocks(project.blocks, locale),
+  };
+}
 
 export type ThemeKey =
   | "home"
@@ -110,6 +284,20 @@ export const totemicaItems: GridItem[] = [
   },
 ];
 
+function normalizeSlug(slug?: string | null) {
+  if (!slug) return "";
+  return slug.replace(/^\/+/, "");
+}
+
+export function getProjects(locale: Locale): Project[] {
+  return projectsData.map((project) => localizeProject(project, locale));
+}
+
+export function getProjectBySlug(locale: Locale, slug: string) {
+  const normalized = normalizeSlug(slug);
+  return getProjects(locale).find((project) => normalizeSlug(project.slug) === normalized);
+}
+
 export const ruralesItems: GridItem[] = [
   {
     id: '1',
@@ -197,21 +385,33 @@ export const ruralesItems: GridItem[] = [
   },
 ];
 
-export const projects: Project[] = [
+const projectsData: LocalizedProject[] = [
   // SILENCE OF BLUE
   {
-    title: 'Silence of Blue',
+    title: t("Silence of Blue", "Silêncio do Azul"),
     slug: 'silence-of-blue',
     thumbnail: '',
     videoThumbnail: '/media/sob-blue.mp4',
     year: '2024',
-    tagline: 'Interpreting silence through light & color.',
+    tagline: t("Interpreting silence through light & color.", "Interpretando o silêncio por meio da luz e da cor."),
     description:
-    'Could silence be experienced visually?'+
-    ' This project translates stillness into light, inviting moments of\n' +
-     'pause, attention, and presence.',
-    tags: ['Light Interaction', 'Color', 'Silence', 'Meditative Design', 'Research', 'Atmosphere', 'Wellbeing', 'Emotion'],
-    heroVideo: '/media/sob-blue.mp4',
+    t(
+      "Could silence be experienced visually? This project translates stillness into light, inviting moments of\n" +
+        "pause, attention, and presence.",
+      "O silêncio pode ser vivido visualmente? Este projeto traduz a quietude em luz, convidando momentos de\n" +
+        "pausa, atenção e presença."
+    ),
+    tags: [
+      t("Light Interaction", "Interação com Luz"),
+      t("Color Perception", "Percepção de Cor"),
+      t("Silence", "Silêncio"),
+      t("Meditative Design", "Design Meditativo"),
+      t("Research", "Pesquisa"),
+      t("Atmosphere", "Atmosfera"),
+      t("Wellbeing", "Bem-estar"),
+      t("Emotion", "Emoção"),
+    ],
+    heroVideo: '/media/sob/1.mp4',
 
     blocks: [
       {
@@ -553,33 +753,53 @@ export const projects: Project[] = [
 
   // TOTEMICA
   {
-    title: 'TOTÉMICA',
+    title: t("TOTÉMICA", "TOTÉMICA"),
     slug: '/totemica',
     thumbnail: '/media/totemic.png',
     mobileHeroImage: '/media/totemica/rama-doble.png',
     year: '2024',
-    tagline:'Hand-painted driftwood branches',
+    tagline: t("Hand-painted driftwood branches", "Galhos de madeira flutuante pintados à mão"),
     description:
-      'Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.',
+      t(
+        "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
+        "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
+      ),
     videoThumbnail: '',
     heroMedia: '/media/2.png',
-    tags: ['Wood', 'Composition', 'Color', 'Material', 'Ritual'],
+    tags: [
+      t("Wood", "Madeira"),
+      t("Composition", "Composição"),
+      t("Color", "Cor"),
+      t("Material", "Material"),
+      t("Ritual", "Ritual"),
+    ],
 
     // blocks: [] // you can add later if needed
   },
 
   // TIDAL LIGHT
   {
-    title: 'Tidal Light',
+    title: t("Tidal Light", "Luz das Marés"),
     slug: 'tidal-light',
     // thumbnail: '/media/tidal.png',
     heroVideo: '/media/tidal/tidal-dark.mp4',
     videoThumbnail: '/media/tidal/tidal-experiment-1.mp4',
-    tagline: 'Breathing light installation.',
+    tagline: t("Breathing light installation.", "Instalação de luz que respira."),
     year: '2023',
     description:
-      'Translating the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.',
-    tags: ['Breath Interface', 'Water & Light', 'Rhythm', 'Meditative Design', 'Interaction', 'Material Research', 'Wellbeing'],
+      t(
+        "Translating the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.",
+        "Traduzindo o ritmo da respiração humana em pulsos de luz que se transformam ao atravessar moldes de água."
+      ),
+    tags: [
+      t("Breath Interface", "Interface de Respiração"),
+      t("Water & Light", "Água e Luz"),
+      t("Rhythm", "Ritmo"),
+      t("Meditative Design", "Design Meditativo"),
+      t("Interaction", "Interação"),
+      t("Material Research", "Pesquisa de Materiais"),
+      t("Wellbeing", "Bem-estar"),
+    ],
     blocks: [
       {
         type: 'quote',
@@ -882,13 +1102,22 @@ export const projects: Project[] = [
 
   // MOONBAR
   {
-    title: 'Moonbar',
+    title: t("Moonbar", "Moonbar"),
     slug: 'moonbar',
-    tagline: 'Solar-powered bicycle handlebar',
+    tagline: t("Solar-powered bicycle handlebar", "Guidão de bicicleta movido a energia solar"),
     thumbnail: '/media/moonbar2.png',
     heroMedia: '/media/moonbar/moonbar-hero.png',
-    description: 'Bicycle handlebar concept powered by a small solar panel, integrating stored sunlight directly into the grip.',
-    tags: ['Product Design', 'Solar Power',  'Urban Mobility', 'Lighting', 'Sustainable Design'],
+    description: t(
+      "Bicycle handlebar concept powered by a small solar panel, integrating stored sunlight directly into the grip.",
+      "Conceito de guidão de bicicleta alimentado por um pequeno painel solar, integrando a luz armazenada diretamente na empunhadura."
+    ),
+    tags: [
+      t("Product Design", "Design de Produto"),
+      t("Solar Power", "Energia Solar"),
+      t("Urban Mobility", "Mobilidade Urbana"),
+      t("Lighting", "Iluminação"),
+      t("Sustainable Design", "Design Sustentável"),
+    ],
     blocks: [
       {
         type: 'quote',
@@ -996,11 +1225,23 @@ export const projects: Project[] = [
   {
     heroMedia: '/media/frozen-woods/fw-hero.png',
     year: '2024',
-    tagline: 'Fragments of wood reappear beneath the surface.',
+    tagline: t(
+      "Fragments of wood slowly reappear beneath the surface.",
+      "Fragmentos de madeira reaparecem lentamente sob a superfície."
+    ),
     description:
-      'Material research project centered on transformation and repurposing collected wood into sculptural objects.',
-      tags: ['Wood', 'Quiet', 'Material Research', 'Transformation', 'Repurposing'],
-    title: 'Quiet Matter',
+      t(
+        "Material research project centered on transformation and repurposing collected wood into sculptural objects.",
+        "Projeto de pesquisa de materiais centrado na transformação e reaproveitamento de madeira coletada em objetos escultóricos."
+      ),
+      tags: [
+        t("Wood", "Madeira"),
+        t("Quiet", "Silêncio"),
+        t("Material Research", "Pesquisa de Materiais"),
+        t("Transformation", "Transformação"),
+        t("Repurposing", "Reaproveitamento"),
+      ],
+    title: t("Quiet Matter", "Matéria Silenciosa"),
     slug: 'quiet-matter',
     thumbnail: '/media/frozen-woods-1.png',
     blocks: [
@@ -1055,45 +1296,60 @@ export const projects: Project[] = [
 
   // RURALES
   {
-    title: 'RURALES',
+    title: t("RURALES", "RURALES"),
     slug: '/rurales',
     thumbnail: '/media/rurales.png',
     mobileHeroImage:'/media/rurales/rural-6.png',
     year: '2024',
-    tagline:'Everyday landscapes re-seen',
+    tagline: t("Hand-painted driftwood branches", "Galhos de madeira flutuante pintados à mão"),
     description:
-      'A series of hand-painted rural landscapes, re-shaping ordinary materials into colored,layered compositions.',
+      t(
+        "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
+        "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
+      ),
     videoThumbnail: '',
     heroMedia: '/media/rurales.png',
-    tags: ['Painting', 'Landscape', 'Color', 'composition', 'Everyday'],
+    tags: [
+      t("Wood", "Madeira"),
+      t("Composition", "Composição"),
+      t("Color", "Cor"),
+      t("Material", "Material"),
+      t("Ritual", "Ritual"),
+    ],
   },
 
    // MARIANROSAS
    {
-    title: 'MARIANROSAS',
+    title: t("MARIANROSAS", "MARIANROSAS"),
     link: 'https://soundcloud.com/marianrosas',
     heroVideo: '/media/marianrosas.mp4',
     videoThumbnail: '/media/marianrosas.mp4',
     description:
-      'I DJ sometimes ◡̈',
+      t("I DJ sometimes ◡̈", "Às vezes eu faço sets de DJ ◡̈"),
   },
   
   // MERGED LANDSCAPES
   {
-    title: 'Merged Landscapes',
+    title: t("Merged Landscapes", "Paisagens Fundidas"),
     slug: 'merged-landscapes',
     thumbnail: '/media/merged-landscapes.png',
     description:
-      'Synthetic representations of natural growth through algorithmic textures.',
+      t(
+        "Synthetic representations of natural growth through algorithmic textures.",
+        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
+      ),
   },
 
   // VALUE TUNING
   {
-    title: 'Value Tuning',
+    title: t("Value Tuning", "Ajuste de Valores"),
     slug: 'value-tuning',
     thumbnail: '/media/value-tuning.png',
     description:
-      'Synthetic representations of natural growth through algorithmic textures.',
+      t(
+        "Synthetic representations of natural growth through algorithmic textures.",
+        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
+      ),
   },
 
   

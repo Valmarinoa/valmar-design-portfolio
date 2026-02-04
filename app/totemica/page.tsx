@@ -3,10 +3,13 @@
 import NocturnaShader from "@/components/pageDetailComponents/NocturnaShader";
 import SecondaryDesktopLayout from "@/components/pageDetailComponents/secondary-layout/SecondaryDesktopLayout";
 import SecondaryMobileLayout from "@/components/pageDetailComponents/secondary-layout/SecondaryMobileLayout";
-import { projects, totemicaItems } from "@/data/projects";
+import { getProjects, totemicaItems } from "@/data/projects";
 import { ThemeProvider } from "@/components/providers/theme-context";
+import useLocale from "@/lib/use-locale";
 
 export default function TotemicaPage() {
+  const locale = useLocale();
+  const projects = getProjects(locale);
   const totemicaProject = projects.find(
     (p) => p.slug === "/totemica" || p.slug === "totemica"
   );

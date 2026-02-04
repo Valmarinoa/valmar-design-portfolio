@@ -1,12 +1,13 @@
 "use client";
 
 import { useTheme } from "@/components/providers/theme-context";
-import FadeIn from "../animations/FadeIn";
-
-
+import { getMessages } from "@/data/messages";
+import useLocale from "@/lib/use-locale";
 
 export default function MobileNavbar() {
   const { theme } = useTheme();
+  const locale = useLocale();
+  const messages = getMessages(locale);
 
   return (
     <div>
