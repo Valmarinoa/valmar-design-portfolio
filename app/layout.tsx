@@ -4,8 +4,10 @@ import type { ReactNode } from "react";
 import { helveticaNeue, mixtaPro } from "./fonts";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
+import DesktopNavbar from "@/components/nav/DesktopNavbar";
 import MobileNavbar from "@/components/nav/MobileNavbar";
 import WithLove from "@/components/nav/WithLove.tsx";
+import { getServerLocale } from "@/lib/i18n-server";
 
 
 export const metadata = {
@@ -14,8 +16,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
+  const locale = getServerLocale();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`
           ${helveticaNeue.className}
@@ -31,11 +35,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <div className="fixed inset-0 -z-10" />
 
         <AutoThemeProvider>
+          <DesktopNavbar />
           {/* ✅ persistent mobile navbar */}
           <MobileNavbar />
           {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
-<WithLove />
+          <WithLove />
         </AutoThemeProvider>
       </body>
     </html>

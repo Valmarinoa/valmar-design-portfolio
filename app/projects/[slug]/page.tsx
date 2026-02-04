@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
-import { projects } from "@/data/projects";
+import { getProjectBySlug } from "@/data/projects";
+import { getServerLocale } from "@/lib/i18n-server";
 import ProjectDetailPage from "@/components/templates/ProjectDetailPage";
 
 export default async function ProjectSlugPage({
@@ -10,7 +11,8 @@ export default async function ProjectSlugPage({
     // ⬇️ unwrap the params Promise
     const { slug } = await params;
 
-    const project = projects.find((p) => p.slug === slug);
+    const locale = getServerLocale();
+    const project = getProjectBySlug(locale, slug);
 
     if (!project) {
         notFound();
