@@ -1,5 +1,5 @@
 // data/projects.ts
-import type { GridItem, Project, ThemeClasses } from "@/types/project";
+import type { GridItem, Project, ThemeClasses } from '@/types/project';
 import type {
   DoubleBlock,
   GalleryBlock,
@@ -97,7 +97,7 @@ function localizeBlocks(
   blocks: LocalizedProjectDetailBlock[] | undefined,
   locale: Locale
 ): ProjectDetailBlock[] | undefined {
-  if (!blocks) return blocks as ProjectDetailBlock[];
+  if (!blocks) return undefined;
 
   return blocks.map((block) => {
     switch (block.type) {
@@ -297,7 +297,6 @@ export function getProjectBySlug(locale: Locale, slug: string) {
   const normalized = normalizeSlug(slug);
   return getProjects(locale).find((project) => normalizeSlug(project.slug) === normalized);
 }
-
 export const ruralesItems: GridItem[] = [
   {
     id: '1',
@@ -385,14 +384,17 @@ export const ruralesItems: GridItem[] = [
   },
 ];
 
-const projectsData: LocalizedProject[] = [
+// export const projects: Project[] = [
+  const projectsData: LocalizedProject[] = [
   // SILENCE OF BLUE
   {
+    // title: 'Silence of Blue',
     title: t("Silence of Blue", "Silêncio do Azul"),
     slug: 'silence-of-blue',
     thumbnail: '',
     videoThumbnail: '/media/sob-blue.mp4',
     year: '2024',
+    // tagline: 'Interpreting silence through light & color.',
     tagline: t("Interpreting silence through light & color.", "Interpretando o silêncio por meio da luz e da cor."),
     description:
     t(
@@ -411,7 +413,8 @@ const projectsData: LocalizedProject[] = [
       t("Wellbeing", "Bem-estar"),
       t("Emotion", "Emoção"),
     ],
-    heroVideo: '/media/sob/1.mp4',
+    // tags: ['Light Interaction', 'Color', 'Silence', 'Meditative Design', 'Research', 'Atmosphere', 'Wellbeing', 'Emotion'],
+    heroVideo: '/media/sob-blue.mp4',
 
     blocks: [
       {
@@ -753,18 +756,17 @@ const projectsData: LocalizedProject[] = [
 
   // TOTEMICA
   {
-    title: t("TOTÉMICA", "TOTÉMICA"),
+    title: 'TOTÉMICA',
     slug: '/totemica',
     thumbnail: '/media/totemic.png',
     mobileHeroImage: '/media/totemica/rama-doble.png',
     year: '2024',
-    tagline: t("Hand-painted driftwood branches", "Galhos de madeira flutuante pintados à mão"),
-    description:
-      t(
-        "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
-        "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
-      ),
-    videoThumbnail: '',
+    tagline:t("Hand-painted driftwood branches", "Galhos de madeira flutuante pintados à mão"),
+    description: t(
+      "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
+      "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
+    ),
+       videoThumbnail: '',
     heroMedia: '/media/2.png',
     tags: [
       t("Wood", "Madeira"),
@@ -787,20 +789,20 @@ const projectsData: LocalizedProject[] = [
     tagline: t("Breathing light installation.", "Instalação de luz que respira."),
     year: '2023',
     description:
-      t(
-        "Translating the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.",
-        "Traduzindo o ritmo da respiração humana em pulsos de luz que se transformam ao atravessar moldes de água."
-      ),
-    tags: [
-      t("Breath Interface", "Interface de Respiração"),
-      t("Water & Light", "Água e Luz"),
-      t("Rhythm", "Ritmo"),
-      t("Meditative Design", "Design Meditativo"),
-      t("Interaction", "Interação"),
-      t("Material Research", "Pesquisa de Materiais"),
-      t("Wellbeing", "Bem-estar"),
-    ],
-    blocks: [
+    t(
+      "Translating the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.",
+      "Traduzindo o ritmo da respiração humana em pulsos de luz que se transformam ao atravessar moldes de água."
+    ),
+  tags: [
+    t("Breath Interface", "Interface de Respiração"),
+    t("Water & Light", "Água e Luz"),
+    t("Rhythm", "Ritmo"),
+    t("Meditative Design", "Design Meditativo"),
+    t("Interaction", "Interação"),
+    t("Material Research", "Pesquisa de Materiais"),
+    t("Wellbeing", "Bem-estar"),
+  ],
+  blocks: [
       {
         type: 'quote',
         quote: 'Have you already noticed how your breathing pace sounds like ocean waves?  Tidal Light investigates how internal rhythms relate to natural ones. The installation draws a parallel between the pace of breathing and the movement of ocean waves, both slow, repetitive, and constantly in motion.'      },
@@ -1102,7 +1104,7 @@ const projectsData: LocalizedProject[] = [
 
   // MOONBAR
   {
-    title: t("Moonbar", "Moonbar"),
+    title: 'Moonbar',
     slug: 'moonbar',
     tagline: t("Solar-powered bicycle handlebar", "Guidão de bicicleta movido a energia solar"),
     thumbnail: '/media/moonbar2.png',
@@ -1225,23 +1227,11 @@ const projectsData: LocalizedProject[] = [
   {
     heroMedia: '/media/frozen-woods/fw-hero.png',
     year: '2024',
-    tagline: t(
-      "Fragments of wood slowly reappear beneath the surface.",
-      "Fragmentos de madeira reaparecem lentamente sob a superfície."
-    ),
+    tagline: 'Fragments of wood reappear beneath the surface.',
     description:
-      t(
-        "Material research project centered on transformation and repurposing collected wood into sculptural objects.",
-        "Projeto de pesquisa de materiais centrado na transformação e reaproveitamento de madeira coletada em objetos escultóricos."
-      ),
-      tags: [
-        t("Wood", "Madeira"),
-        t("Quiet", "Silêncio"),
-        t("Material Research", "Pesquisa de Materiais"),
-        t("Transformation", "Transformação"),
-        t("Repurposing", "Reaproveitamento"),
-      ],
-    title: t("Quiet Matter", "Matéria Silenciosa"),
+      'Material research project centered on transformation and repurposing collected wood into sculptural objects.',
+      tags: ['Wood', 'Quiet', 'Material Research', 'Transformation', 'Repurposing'],
+    title: 'Quiet Matter',
     slug: 'quiet-matter',
     thumbnail: '/media/frozen-woods-1.png',
     blocks: [
@@ -1296,60 +1286,45 @@ const projectsData: LocalizedProject[] = [
 
   // RURALES
   {
-    title: t("RURALES", "RURALES"),
+    title: 'RURALES',
     slug: '/rurales',
     thumbnail: '/media/rurales.png',
     mobileHeroImage:'/media/rurales/rural-6.png',
     year: '2024',
-    tagline: t("Hand-painted driftwood branches", "Galhos de madeira flutuante pintados à mão"),
+    tagline:'Everyday landscapes re-seen',
     description:
-      t(
-        "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
-        "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
-      ),
+      'A series of hand-painted rural landscapes, re-shaping ordinary materials into colored,layered compositions.',
     videoThumbnail: '',
     heroMedia: '/media/rurales.png',
-    tags: [
-      t("Wood", "Madeira"),
-      t("Composition", "Composição"),
-      t("Color", "Cor"),
-      t("Material", "Material"),
-      t("Ritual", "Ritual"),
-    ],
+    tags: ['Painting', 'Landscape', 'Color', 'composition', 'Everyday'],
   },
 
    // MARIANROSAS
    {
-    title: t("MARIANROSAS", "MARIANROSAS"),
+    title: 'MARIANROSAS',
     link: 'https://soundcloud.com/marianrosas',
     heroVideo: '/media/marianrosas.mp4',
     videoThumbnail: '/media/marianrosas.mp4',
     description:
-      t("I DJ sometimes ◡̈", "Às vezes eu faço sets de DJ ◡̈"),
+      'I DJ sometimes ◡̈',
   },
   
   // MERGED LANDSCAPES
   {
-    title: t("Merged Landscapes", "Paisagens Fundidas"),
+    title: 'Merged Landscapes',
     slug: 'merged-landscapes',
     thumbnail: '/media/merged-landscapes.png',
     description:
-      t(
-        "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
-      ),
+      'Synthetic representations of natural growth through algorithmic textures.',
   },
 
   // VALUE TUNING
   {
-    title: t("Value Tuning", "Ajuste de Valores"),
+    title: 'Value Tuning',
     slug: 'value-tuning',
     thumbnail: '/media/value-tuning.png',
     description:
-      t(
-        "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
-      ),
+      'Synthetic representations of natural growth through algorithmic textures.',
   },
 
   
