@@ -34,7 +34,6 @@ export default function MobileNavbar() {
     link: isExternalUrl(item.href) ? item.href : localizePath(item.href, locale),
   }));
 
-
   return (
     <div>
       <FadeIn delay={1}>
