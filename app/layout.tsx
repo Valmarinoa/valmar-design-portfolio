@@ -34,7 +34,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <AutoThemeProvider>
           {/* ✅ persistent mobile navbar */}
           <MobileNavbar />
-          <DSKNavbar />
           {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
 <WithLove />
