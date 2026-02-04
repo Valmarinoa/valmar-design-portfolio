@@ -97,7 +97,7 @@ function localizeBlocks(
   blocks: LocalizedProjectDetailBlock[] | undefined,
   locale: Locale
 ): ProjectDetailBlock[] | undefined {
-  if (!blocks) return blocks as ProjectDetailBlock[];
+  if (!blocks) return undefined;
 
   return blocks.map((block) => {
     switch (block.type) {
