@@ -23,10 +23,10 @@ export default function DesktopNavbar() {
   }));
 
   return (
-    <div className="hidden md:flex fixed top-0 left-0 right-0 z-9997 px-8 py-6 items-center justify-between pointer-events-none">
+    <div className="hidden md:flex fixed top-0 left-0 right-0 z-9997 px-8 py-6 items-center justify-between pointer-events-none mix-blend-exclusion">
       <div className="flex items-center gap-10 pointer-events-auto">
         <Link href={localizePath("/", locale)} aria-label={messages.nav.logoAria}>
-          <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
+          <LogoSvg className={`h-10 w-auto ${theme.nav}`} />
         </Link>
         <nav className="flex items-center gap-6">
           {menuItems.map((item) =>
@@ -36,7 +36,7 @@ export default function DesktopNavbar() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-xs uppercase tracking-[0.2em] ${theme.nav}`}
+                className={`text-xs uppercase tracking-[0.15em] ${theme.nav}`}
                 aria-label={item.ariaLabel}
               >
                 {item.label}

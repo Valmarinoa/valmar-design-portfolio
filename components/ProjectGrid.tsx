@@ -10,10 +10,7 @@ export default async function ProjectGrid() {
 
     return (
         <section className="pt-14">
-            
-            <p className="px-4 pb-10 w-full text-xl text-neutral-800 leading-snug">
-            {messages.home.intro}
-            </p>
+            <p className="px-4 pb-10 w-full text-xl text-neutral-800 leading-snug">{messages.home.intro} </p>
             <div className="px-4 py-10">
                 <div className="grid grid-cols-2 gap-x-2 gap-y-10">
                     {projects.map((p) => (
