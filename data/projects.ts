@@ -8,12 +8,12 @@ export type ThemeKey =
 
 export const THEMES: Record<ThemeKey, ThemeClasses> = {
   home: {
-    text: "text-neutral-800",
+    text: "text-white",
     bg: "transparent",
     border: "border-neutral-800",
     mobileModalBg: "transparent",
-    logo: "text-neutral-800",
-    nav: "text-neutral-800",
+    logo: "text-white",
+    nav: "text-white",
   },
 
   totemica: {
@@ -210,8 +210,8 @@ export const projects: Project[] = [
     'Could silence be experienced visually?'+
     ' This project translates stillness into light, inviting moments of\n' +
      'pause, attention, and presence.',
-    tags: ['Light Interaction', 'Color Perception', 'Silence', 'Meditative Design', 'Research', 'Atmosphere', 'Wellbeing', 'Emotion'],
-    heroVideo: '/media/sob/1.mp4',
+    tags: ['Light Interaction', 'Color', 'Silence', 'Meditative Design', 'Research', 'Atmosphere', 'Wellbeing', 'Emotion'],
+    heroVideo: '/media/sob-blue.mp4',
 
     blocks: [
       {
@@ -221,9 +221,7 @@ export const projects: Project[] = [
        'we are slowly losing the ability to contemplate what cannot be seen,\n' +
        'but is deeply felt. Silence of Blue emerges from a need to reconnect with\n' +
        'subtle layers of experience,\n' +
-       'and to explore how design can guide us to sense them again. Through light and color,\n' +
-      'the installation creates a space where perception slows down and silence becomes \n' +
-      'something present, rather than absent.'      
+       'and to explore how design can guide us to sense them again.'    
     },
       // {
       //   type: 'quote',
@@ -292,7 +290,9 @@ export const projects: Project[] = [
         heading: 'Inspiration & References',
         intro:
           'This project draws from natural and artistic moments where light transforms perception. Together, these references explore how stillness, color, and illumination can create contemplative spaces.',
-        items: [
+        mobileMedia: '/media/sob/sob-research.mp4',
+        mobileMediaKind: 'video',
+          items: [
           {
             title: 'Namib Desert Shadows (Smasara)',
             body: 'The slow cinematic movement of shadow and light across dune surfaces. Silence as vastness, light as revelation where shadows reshape landscape.',
@@ -331,221 +331,221 @@ export const projects: Project[] = [
           },
         ],
       },
-      {
-        type: "timeline",
-        title: "Research & Process",
-        description: "The project was developed through iterative experimentation with form, materials, and light behavior. Early research focused on how curved surfaces interact with light, and how color saturation affects spatial perception. Prototyping included: material tests to achieve the desired diffusion, experiments with light intensity and rhythm, mechanical exploration to support slow, continuous movement, and repeated testing of how the blue projection behaved across different surfaces and environments.",
-        baselineAt: 0.6,
-        snap: true,
-        edgeFade: true,
-        wheelToHorizontal: true,
-        items: [
-          {
-            id: "water inspiration",
-            type: "video",
-            src: "/media/tidal/tidal-beach.mp4",
-            x: 21,
-            width: 168,
-            height: 210,
-            caption: "Biocommunication",
-          },
-          {
-            id: "water inspiration 2",
-            type: "video",
-            src: "/media/tidal/research/expo-2.mp4",
-            x: 186,
-            y: 0,
-            width: 168,
-            height: 210,
-            caption: "Biocommunication",
-          },
-          {
-            id: "water inspiration 3",
-            type: "video",
-            src: "/media/tidal/research/exp-1.mp4",
-            x: 292,
-            y: 68,
-            width: 84,
-            height: 126,
-            caption: "Biocommunication",
-          },
+      // {
+      //   type: "timeline",
+      //   title: "Research & Process",
+      //   description: "The project was developed through iterative experimentation with form, materials, and light behavior. Early research focused on how curved surfaces interact with light, and how color saturation affects spatial perception. Prototyping included: material tests to achieve the desired diffusion, experiments with light intensity and rhythm, mechanical exploration to support slow, continuous movement, and repeated testing of how the blue projection behaved across different surfaces and environments.",
+      //   baselineAt: 0.6,
+      //   snap: true,
+      //   edgeFade: true,
+      //   wheelToHorizontal: true,
+      //   items: [
+      //     {
+      //       id: "water inspiration",
+      //       type: "video",
+      //       src: "/media/tidal/tidal-beach.mp4",
+      //       x: 21,
+      //       width: 168,
+      //       height: 210,
+      //       caption: "Biocommunication",
+      //     },
+      //     {
+      //       id: "water inspiration 2",
+      //       type: "video",
+      //       src: "/media/tidal/research/expo-2.mp4",
+      //       x: 186,
+      //       y: 0,
+      //       width: 168,
+      //       height: 210,
+      //       caption: "Biocommunication",
+      //     },
+      //     {
+      //       id: "water inspiration 3",
+      //       type: "video",
+      //       src: "/media/tidal/research/exp-1.mp4",
+      //       x: 292,
+      //       y: 68,
+      //       width: 84,
+      //       height: 126,
+      //       caption: "Biocommunication",
+      //     },
         
-          //////////////////////
+      //     //////////////////////
         
-          {
-            id: "light experiments",
-            type: "video",
-            src: "/media/tidal/research/expo-1.mp4",
-            x: 506,
-            width: 147,
-            height: 210,
-            caption: "Biocommunication",
-          },
-          {
-            id: "light experiments 2",
-            type: "image",
-            src: "/media/tidal/research/exp-2.png",
-            x: 651,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "light experiments",
+      //       type: "video",
+      //       src: "/media/tidal/research/expo-1.mp4",
+      //       x: 506,
+      //       width: 147,
+      //       height: 210,
+      //       caption: "Biocommunication",
+      //     },
+      //     {
+      //       id: "light experiments 2",
+      //       type: "image",
+      //       src: "/media/tidal/research/exp-2.png",
+      //       x: 651,
+      //       y: 0,
+      //       width: 136,
+      //       height: 189,
+      //       caption: "Metabolic Health",
+      //     },
         
-          //////////////////////
+      //     //////////////////////
         
-          {
-            id: "vacuuming shape",
-            type: "video",
-            src: "/media/tidal/research/exec-1.mp4",
-            x: 932,
-            y: 0,
-            width: 210,
-            height: 147,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "vacuuming shape",
+      //       type: "video",
+      //       src: "/media/tidal/research/exec-1.mp4",
+      //       x: 932,
+      //       y: 0,
+      //       width: 210,
+      //       height: 147,
+      //       caption: "Metabolic Health",
+      //     },
         
-          {
-            id: "vacuumed shape",
-            type: "image",
-            src: "/media/tidal/research/exec-2.png",
-            x: 1139,
-            y: 0,
-            width: 147,
-            height: 210,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "vacuumed shape",
+      //       type: "image",
+      //       src: "/media/tidal/research/exec-2.png",
+      //       x: 1139,
+      //       y: 0,
+      //       width: 147,
+      //       height: 210,
+      //       caption: "Metabolic Health",
+      //     },
         
-          //////////////////////
+      //     //////////////////////
         
-          {
-            id: "baked glass",
-            type: "image",
-            src: "/media/tidal/research/exec-3.png",
-            x: 1405,
-            y: 30,
-            width: 210,
-            height: 147,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "baked glass",
+      //       type: "image",
+      //       src: "/media/tidal/research/exec-3.png",
+      //       x: 1405,
+      //       y: 30,
+      //       width: 210,
+      //       height: 147,
+      //       caption: "Metabolic Health",
+      //     },
         
-          {
-            id: "baked glass 2",
-            type: "video",
-            src: "/media/tidal/research/exec-4.mp4",
-            x: 1612,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "baked glass 2",
+      //       type: "video",
+      //       src: "/media/tidal/research/exec-4.mp4",
+      //       x: 1612,
+      //       y: 0,
+      //       width: 136,
+      //       height: 189,
+      //       caption: "Metabolic Health",
+      //     },
         
-          //////////////////////
+      //     //////////////////////
         
-          {
-            id: "gloss layer",
-            type: "image",
-            src: "/media/tidal/research/test-1.png",
-            x: 1922,
-            y: 0,
-            width: 210,
-            height: 147,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "gloss layer",
+      //       type: "image",
+      //       src: "/media/tidal/research/test-1.png",
+      //       x: 1922,
+      //       y: 0,
+      //       width: 210,
+      //       height: 147,
+      //       caption: "Metabolic Health",
+      //     },
         
-          {
-            id: "gloss layer 2",
-            type: "image",
-            src: "/media/tidal/research/test-2.png",
-            x: 2128,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "gloss layer 2",
+      //       type: "image",
+      //       src: "/media/tidal/research/test-2.png",
+      //       x: 2128,
+      //       y: 0,
+      //       width: 136,
+      //       height: 189,
+      //       caption: "Metabolic Health",
+      //     },
         
-          {
-            id: "gloss layer 3",
-            type: "image",
-            src: "/media/tidal/research/test-3.png",
-            x: 2263,
-            y: 0,
-            width: 158,
-            height: 210,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "gloss layer 3",
+      //       type: "image",
+      //       src: "/media/tidal/research/test-3.png",
+      //       x: 2263,
+      //       y: 0,
+      //       width: 158,
+      //       height: 210,
+      //       caption: "Metabolic Health",
+      //     },
         
-          //////////////////////
+      //     //////////////////////
         
-          {
-            id: "exploration against day light",
-            type: "image",
-            src: "/media/tidal/research/expo-0.png",
-            x: 2572,
-            y: 0,
-            width: 158,
-            height: 210,
-            caption: "Metabolic Health",
-          },
-          {
-            id: "exploration against day light 2",
-            type: "image",
-            src: "/media/tidal/research/res-1.png",
-            x: 2727,
-            y: -50,
-            width: 200,
-            height: 189,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "exploration against day light",
+      //       type: "image",
+      //       src: "/media/tidal/research/expo-0.png",
+      //       x: 2572,
+      //       y: 0,
+      //       width: 158,
+      //       height: 210,
+      //       caption: "Metabolic Health",
+      //     },
+      //     {
+      //       id: "exploration against day light 2",
+      //       type: "image",
+      //       src: "/media/tidal/research/res-1.png",
+      //       x: 2727,
+      //       y: -50,
+      //       width: 200,
+      //       height: 189,
+      //       caption: "Metabolic Health",
+      //     },
         
-          //////////////////////
+      //     //////////////////////
         
-          {
-            id: "exploration night",
-            type: "image",
-            src: "/media/tidal/research/exp-3.png",
-            x: 3042,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "exploration night",
+      //       type: "image",
+      //       src: "/media/tidal/research/exp-3.png",
+      //       x: 3042,
+      //       y: 0,
+      //       width: 136,
+      //       height: 189,
+      //       caption: "Metabolic Health",
+      //     },
         
-          {
-            id: "exploration night 2",
-            type: "image",
-            src: "/media/tidal/research/exp-6.png",
-            x: 3171,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "exploration night 2",
+      //       type: "image",
+      //       src: "/media/tidal/research/exp-6.png",
+      //       x: 3171,
+      //       y: 0,
+      //       width: 136,
+      //       height: 189,
+      //       caption: "Metabolic Health",
+      //     },
         
-          {
-            id: "light exploration",
-            type: "image",
-            src: "/media/tidal/research/exp-4.png",
-            x: 3303,
-            y: 0,
-            width: 210,
-            height: 147,
-            caption: "Metabolic Health",
-          },
+      //     {
+      //       id: "light exploration",
+      //       type: "image",
+      //       src: "/media/tidal/research/exp-4.png",
+      //       x: 3303,
+      //       y: 0,
+      //       width: 210,
+      //       height: 147,
+      //       caption: "Metabolic Health",
+      //     },
         
-          {
-            id: "light exploration 2",
-            type: "image",
-            src: "/media/tidal/research/exp-5.png",
-            x: 3509,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: "Metabolic Health",
-          },
-        ]
+      //     {
+      //       id: "light exploration 2",
+      //       type: "image",
+      //       src: "/media/tidal/research/exp-5.png",
+      //       x: 3509,
+      //       y: 0,
+      //       width: 136,
+      //       height: 189,
+      //       caption: "Metabolic Health",
+      //     },
+      //   ]
         
-      }
+      // }
 
     
     ],
@@ -996,7 +996,7 @@ export const projects: Project[] = [
   {
     heroMedia: '/media/frozen-woods/fw-hero.png',
     year: '2024',
-    tagline: 'Fragments of wood slowly reappear beneath the surface.',
+    tagline: 'Fragments of wood reappear beneath the surface.',
     description:
       'Material research project centered on transformation and repurposing collected wood into sculptural objects.',
       tags: ['Wood', 'Quiet', 'Material Research', 'Transformation', 'Repurposing'],
@@ -1049,20 +1049,7 @@ export const projects: Project[] = [
             textClassName: "",
             imgFit: "object-cover"
       },
-      {
-        type: 'gallery',
-        media: [
-          {
-            src: '/media/tidal/tidal-frag.png',
-          },
-          {
-            src: '/media/tidal/tidal-frag-2.png',
-          },
-          {
-            src: '/media/tidal/tidal-frag-3.png',
-          },
-        ],
-      },
+      
     ],
   },
 
@@ -1073,12 +1060,12 @@ export const projects: Project[] = [
     thumbnail: '/media/rurales.png',
     mobileHeroImage:'/media/rurales/rural-6.png',
     year: '2024',
-    tagline:'Hand-painted driftwood branches',
+    tagline:'Everyday landscapes re-seen',
     description:
-      'Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.',
+      'A series of hand-painted rural landscapes, re-shaping ordinary materials into colored,layered compositions.',
     videoThumbnail: '',
     heroMedia: '/media/rurales.png',
-    tags: ['Wood', 'Composition', 'Color', 'Material', 'Ritual'],
+    tags: ['Painting', 'Landscape', 'Color', 'composition', 'Everyday'],
   },
 
    // MARIANROSAS

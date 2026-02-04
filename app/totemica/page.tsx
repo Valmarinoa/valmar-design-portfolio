@@ -20,7 +20,7 @@ export default function TotemicaPage() {
         fixed
         images={["/shaders/tote.png"]}
         useBlocks={false}
-        speed={0.5}
+        speed={0.2}
         imageScale={1.1}
         showImageBackground
         backgroundOpacity={1}

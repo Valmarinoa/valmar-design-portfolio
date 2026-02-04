@@ -17,7 +17,7 @@ export default function RuralesPage() {
   return (
     <section className="w-screen relative">
         <ThemeProvider themeKey="rurales">
-      <NocturnaShader
+      {/* <NocturnaShader
         fixed
         images={["/media/rurales/sky-bg.png"]}
         useBlocks={false}
@@ -26,7 +26,7 @@ export default function RuralesPage() {
         showImageBackground
         backgroundOpacity={1}
         fadeInMs={400}
-      />
+      /> */}
 
 <div className="md:hidden">
           <SecondaryMobileLayout

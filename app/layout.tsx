@@ -6,6 +6,7 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
 import MobileNavbar from "@/components/nav/MobileNavbar";
 import WithLove from "@/components/nav/WithLove.tsx";
+import DSKNavbar from "@/components/nav/DSKNavbar";
 
 
 export const metadata = {
@@ -33,6 +34,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <AutoThemeProvider>
           {/* ✅ persistent mobile navbar */}
           <MobileNavbar />
+          <DSKNavbar />
           {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
 <WithLove />

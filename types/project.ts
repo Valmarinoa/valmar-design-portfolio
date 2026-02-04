@@ -117,6 +117,8 @@ export type InspirationBlock = {
   type: 'inspiration';
   heading: string;
   intro: string;
+  mobileMedia?: string;
+  mobileMediaKind?: string;
   items: InspirationItem[];
 };
 

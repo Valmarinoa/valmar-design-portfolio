@@ -25,22 +25,23 @@ export default function MobileNavbar() {
   const { theme } = useTheme();
   const [open, setOpen] = useState(false);
 
+
   return (
     <div>
       <FadeIn delay={1}>
         {/* Navbar ABOVE menu */}
-        <div className="md:hidden fixed top-0 left-0 right-0 z-9997 p-3 w-screen h-fit backdrop-blur-xl">
-          <div className="flex items-center justify-between pointer-events-auto ">
+        <div className="md:hidden fixed top-0 left-0 right-0 z-9997 p-3 w-screen h-fit mix-blend-exclusion">
+          <div className="flex items-center justify-between pointer-events-auto">
           <Link
               href="/"
               aria-label="Go to homepage"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center"
+              className="inline-flex items-center "
             >
               <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
             </Link>
 
-            <div className={`h-10 rounded-full flex items-center justify-center px-3 ${theme.nav}`}>
+            <div className={`h-10 rounded-full ${theme.nav} flex items-center justify-center px-3 z-9999 `}>
               <StaggeredMenuToggle
                 open={open}
                 onToggle={() => setOpen((v) => !v)}
