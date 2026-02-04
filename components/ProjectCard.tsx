@@ -3,6 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import useLocale from "@/lib/use-locale";
+import { localizePath } from "@/lib/i18n";
+import { getMessages } from "@/data/messages";
 
 type Props = {
   title: string;
@@ -41,12 +44,14 @@ export default function ProjectCard({
   video,
   poster,
 }: Props) {
+  const locale = useLocale();
+  const messages = getMessages(locale);
   const cleanSlug = slug ? normalizeSlug(slug) : null;
 
   const useContain = cleanSlug ? containSlugs.has(cleanSlug) : false;
   const fitClass = useContain ? "object-contain" : "object-cover";
 
-  const href: string | null =
+  const rawHref: string | null =
     link
       ? link
       : cleanSlug
@@ -55,6 +60,7 @@ export default function ProjectCard({
           : `/projects/${cleanSlug}`
         : null;
 
+  const href = rawHref ? (isExternalUrl(rawHref) ? rawHref : localizePath(rawHref, locale)) : null;
   const external = href ? isExternalUrl(href) : false;
 
   // Media block (NOT wrapped in a Link)
@@ -110,7 +116,7 @@ export default function ProjectCard({
     <div className="mt-2 space-y-1">
       <p className="text-base font-medium leading-tight">{title}</p>
       <p className="text-xs leading-tight text-neutral-600">
-        {description ?? "Here goes project small description."}
+        {description ?? messages.home.fallbackDescription}
       </p>
     </div>
   );
