@@ -10,6 +10,7 @@ import WithLove from "@/components/nav/WithLove.tsx";
 import { getServerLocale } from "@/lib/i18n-server";
 
 
+
 export const metadata = {
   title: "Valmar",
   description: "Product & Experience Design",
@@ -38,6 +39,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <DesktopNavbar />
           {/* ✅ persistent mobile navbar */}
           <MobileNavbar />
+          <DSKNavbar />
           {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
           <WithLove />

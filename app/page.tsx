@@ -9,7 +9,6 @@ import { getServerLocale } from "@/lib/i18n-server";
 export default async function HomePage() {
   const locale = await getServerLocale();
   const messages = getMessages(locale);
-
   return (
     <main className="w-full">
  

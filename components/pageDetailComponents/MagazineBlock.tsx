@@ -68,12 +68,13 @@ export default function MagazineBlock({ block }: Props) {
       className={`
         w-screen max-w-[1244px]
         h-screen
+         md:max-h-[600px]
         relative
         px-3
         ${className}
       `}
     >
-      <div className="relative h-full w-full overflow-hidden md:max-h-[600px]">
+      <div className="relative h-full w-full overflow-hidden">
         {/* ✅ Mobile: column. md+: row */}
         <div className="flex h-full w-full flex-col md:flex-row">
           <div className={hasSecond ? "flex-1" : "w-full h-full"}>

@@ -57,7 +57,7 @@ export default function MediaTextBlock({ block }: Props) {
 
             {/* TEXT */}
             <div className="w-full md:w-1/3 text-left text-neutral-900 flex flex-col px-4 md:px-0">
-                { title && <MaskText lineAs='h3' className="text-3xl md:text-4xl pb-4" text={title} />}
+                { title && <MaskText lineAs='h3' className="text-3xl md:text-4xl" text={title} />}
                 { subtitle && <MaskText lineAs='p' className="opacity-70 text-xs pb-4" text={subtitle} /> }
                 { text && <p className="text-md md:text-base"> {text}</p>}
             </div>
