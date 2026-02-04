@@ -3,11 +3,14 @@
 import NocturnaShader from "@/components/pageDetailComponents/NocturnaShader";
 import SecondaryDesktopLayout from "@/components/pageDetailComponents/secondary-layout/SecondaryDesktopLayout";
 import SecondaryMobileLayout from "@/components/pageDetailComponents/secondary-layout/SecondaryMobileLayout";
-import { projects, ruralesItems } from "@/data/projects";
+import { getProjects, ruralesItems } from "@/data/projects";
 import { ThemeProvider } from "@/components/providers/theme-context";
+import useLocale from "@/lib/use-locale";
 
 
 export default function RuralesPage() {
+  const locale = useLocale();
+  const projects = getProjects(locale);
   const ruralesProject = projects.find(
     (p) => p.slug === "/rurales" || p.slug === "rurales"
   );

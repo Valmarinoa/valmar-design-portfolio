@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useAnimationFrame, useMotionValue, easeOut } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/projects";
+import useLocale from "@/lib/use-locale";
+import { localizePath } from "@/lib/i18n";
 
 /* ================= CONFIG ================= */
 
@@ -66,6 +68,8 @@ const itemVariants = {
 
 export default function ProjectRing3D() {
   const [hoveredSlug, setHoveredSlug] = useState<string | null>(null);
+  const locale = useLocale();
+  const projects = getProjects(locale);
 
   const ringRef = useRef<HTMLDivElement | null>(null);
 
@@ -132,7 +136,8 @@ export default function ProjectRing3D() {
         >
           {projects.map((project: any, index) => {
             const key = normalizeSlug(project.slug) ?? project.title ?? String(index);
-            const href = hrefForProject(project);
+            const rawHref = hrefForProject(project);
+            const href = rawHref ? (isExternalUrl(rawHref) ? rawHref : localizePath(rawHref, locale)) : null;
             const external = href ? isExternalUrl(href) : false;
 
             const baseAngle = step * index;
