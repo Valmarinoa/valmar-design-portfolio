@@ -4,6 +4,8 @@ import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import { useTheme } from "@/components/providers/theme-context";
+import { usePathname } from "next/navigation";
+import { stripLocaleFromPathname } from "@/lib/i18n";
 
 export interface StaggeredMenuItem {
   label: string;
@@ -22,6 +24,7 @@ export interface StaggeredMenuProps {
   position?: "left" | "right";
   items?: StaggeredMenuItem[];
   socialItems?: StaggeredMenuSocialItem[];
+  footerContent?: React.ReactNode;
   displaySocials?: boolean;
   displayItemNumbering?: boolean;
 
@@ -42,6 +45,7 @@ export default function StaggeredMenu({
   position = "right",
   items = [],
   socialItems = [],
+  footerContent,
   displaySocials = true,
 
   accentColor = "#5227FF",
@@ -54,6 +58,8 @@ export default function StaggeredMenu({
   onMenuClose,
 }: StaggeredMenuProps) {
   const { theme } = useTheme();
+  const pathname = usePathname();
+  const normalizedPath = stripLocaleFromPathname(pathname ?? "/");
 
   const [mounted, setMounted] = useState(open);
   const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
@@ -272,6 +278,8 @@ export default function StaggeredMenu({
 
   if (!mounted || !portalEl) return null;
 
+  const isExternalUrl = (url: string) => /^https?:\/\//i.test(url) || /^mailto:/i.test(url);
+
   const ui = (
     <div
       className={`sm-scope ${isFixed ? "fixed inset-0" : "relative"} z-9996 overflow-hidden pointer-events-none`}
@@ -295,24 +303,40 @@ export default function StaggeredMenu({
       >
         <div className="sm-panel-inner flex-1 flex flex-col gap-5">
           <ul className="sm-panel-list list-none m-0 p-0 flex flex-col gap-5" role="list">
-            {items.map((it, idx) => (
-              <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
-                <a
-                  className={`sm-panel-item relative ${theme.text} font-semibold text-3xl cursor-pointer leading-none tracking-[-2px] uppercase inline-block no-underline pr-[1.4em]`}
-                  href={it.link}
-                  aria-label={it.ariaLabel}
-                  onClick={onClose} // ✅ closes menu after navigating
-                >
-                  <span className="sm-panel-itemLabel inline-block origin-[50%_100%] will-change-transform">
-                    {it.label}
-                  </span>
-                </a>
-              </li>
-            ))}
+            {items.map((it, idx) => {
+              const isActive = !isExternalUrl(it.link) && stripLocaleFromPathname(it.link) === normalizedPath;
+
+              return (
+                <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
+                  <a
+                    className={`sm-panel-item relative ${theme.text} font-semibold text-3xl cursor-pointer leading-none tracking-[-2px] uppercase inline-block no-underline pr-[1.4em]`}
+                    href={it.link}
+                    aria-label={it.ariaLabel}
+                    onClick={onClose} // ✅ closes menu after navigating
+                  >
+                    <span className="sm-panel-itemLabel inline-flex items-center gap-3 origin-[50%_100%] will-change-transform">
+                      {it.label}
+                      <span
+                        aria-hidden="true"
+                        className={`inline-block h-2 w-2 rounded-full bg-current transition-opacity ${
+                          isActive ? "opacity-100" : "opacity-0"
+                        }`}
+                      />
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
+          {footerContent && (
+            <div className="sm-footer mt-auto pt-6 flex flex-col gap-3" aria-label="Language switcher">
+              {footerContent}
+            </div>
+          )}
+
           {displaySocials && socialItems.length > 0 && (
-            <div className="sm-socials mt-auto pt-8 flex flex-col gap-3" aria-label="Social links">
+            <div className={`sm-socials ${footerContent ? "pt-4" : "mt-auto pt-8"} flex flex-col gap-3`} aria-label="Social links">
               <ul
                 className="sm-socials-list list-none m-0 p-0 flex flex-row items-center gap-4 flex-wrap"
                 role="list"
