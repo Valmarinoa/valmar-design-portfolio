@@ -32,34 +32,34 @@ export default function LocaleToggle() {
         aria-current={locale === "en" ? "true" : undefined}
         className={`${theme.nav} ${locale === "en" ? "font-semibold" : "opacity-60"}`}
       >
-        <span className="inline-flex items-center gap-1.5">
-          {renderDot(locale === "en")}
+        <div className="items-center gap-1.5 overflow-visible h-[15px]">
           EN
-        </span>
+         <div>{renderDot(locale === "en")}</div> 
+        </div>
       </button>
-      <span className={`${theme.nav} opacity-60`}>/</span>
+      <span className={`${theme.nav} opacity-60`}>|</span>
       <button
         type="button"
         onClick={() => handleLocaleChange("pt-br")}
         aria-current={locale === "pt-br" ? "true" : undefined}
         className={`${theme.nav} ${locale === "pt-br" ? "font-semibold" : "opacity-60"}`}
       >
-        <span className="inline-flex items-center gap-1.5">
-          {renderDot(locale === "pt-br")}
-          PT
-        </span>
+        <div className="items-center gap-1.5 overflow-visible h-[15px]">
+         PT
+         <div>{renderDot(locale === "pt-br")}</div> 
+        </div>
       </button>
-      <span className={`${theme.nav} opacity-60`}>/</span>
+      <span className={`${theme.nav} opacity-60`}>|</span>
       <button
         type="button"
         onClick={() => handleLocaleChange("es")}
         aria-current={locale === "es" ? "true" : undefined}
         className={`${theme.nav} ${locale === "es" ? "font-semibold" : "opacity-60"}`}
       >
-        <span className="inline-flex items-center gap-1.5">
-          {renderDot(locale === "es")}
+        <div className="items-center gap-1.5 overflow-visible h-[15px]">
           ES
-        </span>
+          <div>{renderDot(locale === "es")}</div> 
+        </div>
       </button>
     </div>
   );

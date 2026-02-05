@@ -37,15 +37,9 @@ export default function DesktopNavbar() {
             const isActive = !isExternal && stripLocaleFromPathname(item.href) === normalizedPath;
 
             const label = (
-              <span className="inline-flex items-center gap-2">
+              <div className="items-center flex flex-col justify-center overflow-visible h-[15px]">
                 {item.label}
-                <span
-                  aria-hidden="true"
-                  className={`inline-block h-1.5 w-1.5 rounded-full bg-current transition-opacity ${
-                    isActive ? "opacity-100" : "opacity-0"
-                  }`}
-                />
-              </span>
+              </div>
             );
 
             return isExternal ? (

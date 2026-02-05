@@ -46,7 +46,6 @@ const messages: Record<Locale, Messages> = {
     nav: {
       logoAria: "Go to homepage",
       items: [
-        { label: "Home", ariaLabel: "Go to home page", href: "/" },
         { label: "About", ariaLabel: "About", href: "/about" },
         {
           label: "Dev Work",
@@ -79,7 +78,6 @@ const messages: Record<Locale, Messages> = {
     nav: {
       logoAria: "Ir para a página inicial",
       items: [
-        { label: "Início", ariaLabel: "Ir para a página inicial", href: "/" },
         { label: "Sobre", ariaLabel: "Sobre", href: "/about" },
         {
           label: "Trabalhos Dev",
@@ -112,7 +110,6 @@ const messages: Record<Locale, Messages> = {
     nav: {
       logoAria: "Ir a la página de inicio",
       items: [
-        { label: "Inicio", ariaLabel: "Ir a la página de inicio", href: "/" },
         { label: "Sobre mí", ariaLabel: "Sobre mí", href: "/about" },
         {
           label: "Trabajos Dev",
