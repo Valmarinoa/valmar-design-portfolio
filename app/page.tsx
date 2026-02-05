@@ -2,7 +2,6 @@ import BlurText from "@/components/animations/BlurText";
 import Hero from "@/components/Hero";
 import ProjectGrid from "@/components/ProjectGrid";
 import ProjectRing3DWrapper from "@/components/ProjectRing3DWrapper";
-import LogoSvg from "@/components/svg/LogoSvg";
 import { getMessages } from "@/data/messages";
 import { getServerLocale } from "@/lib/i18n-server";
 
@@ -22,10 +21,7 @@ export default async function HomePage() {
 
       {/* md+ : 3D ring */}
       <div className="hidden md:block">
-        <div className="w-full h-8 px-6 fixed top-6 left-0 z-999 flex items-center justify-center mix-blend-exclusion">
-          <LogoSvg className="h-full w-auto text-white" />   
-        </div>
-         <p className="p-6 z-999 max-w-[450px] left-1/2 -translate-x-[50%] text-center absolute bottom-0 w-full text-neutral-800 leading-4">
+         <p className="p-9 z-999 max-w-[550px] left-1/2 -translate-x-[50%] text-center absolute bottom-0 w-full text-neutral-800 text-sm leading-4.5">
            {messages.home.desktopBlurb}
         </p>
         <ProjectRing3DWrapper />

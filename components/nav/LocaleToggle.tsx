@@ -16,7 +16,7 @@ export default function LocaleToggle() {
   };
 
   return (
-    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em]">
+    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em]">
       <button
         type="button"
         onClick={() => handleLocaleChange("en")}
@@ -25,7 +25,7 @@ export default function LocaleToggle() {
       >
         EN
       </button>
-      <span className={`${theme.nav} opacity-60`}>/</span>
+      <span className={`${theme.nav} opacity-60`}>|</span>
       <button
         type="button"
         onClick={() => handleLocaleChange("pt-br")}
@@ -34,7 +34,7 @@ export default function LocaleToggle() {
       >
         PT
       </button>
-      <span className={`${theme.nav} opacity-60`}>/</span>
+      <span className={`${theme.nav} opacity-60`}>|</span>
       <button
         type="button"
         onClick={() => handleLocaleChange("es")}
