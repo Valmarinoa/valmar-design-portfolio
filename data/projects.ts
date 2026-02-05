@@ -432,7 +432,8 @@ const projectsData: LocalizedProject[] = [
            'e de explorar como o design pode nos guiar para senti-las novamente. Por meio da luz e da cor,\n' +
            'a instalação cria um espaço onde a percepção desacelera e o silêncio se torna \n' +
            'algo presente, e não ausente.'
-       )
+       ),
+      },
       {
         type: 'mediaText',
         media: {
@@ -502,7 +503,6 @@ const projectsData: LocalizedProject[] = [
           alt: 'Small model of Silence of Blue',
         },
       },
-
       {
         type: 'inspiration',
         heading: t("Inspiration & References", "Inspiração e Referências"),
@@ -778,10 +778,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica"),
           },
         ]
-        
-      // }
-
-    
+      }
     ],
   },
 

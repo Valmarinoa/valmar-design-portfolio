@@ -35,4 +35,5 @@ export default function LocaleToggle() {
         PT
       </button>
     </div>
+  )
 }
