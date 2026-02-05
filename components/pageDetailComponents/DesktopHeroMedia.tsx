@@ -49,8 +49,8 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
 
 
     return (
-        <section className="w-full flex flex-col h-fit pt-28 md:pt-32 overflw-hidden">
-            <div className="md:flex-row flex flex-col">
+        <section className="w-full flex flex-col-reverse md:flex-col h-fit pt-0 md:pt-44 overflw-hidden ">
+            <div className="md:flex-row flex flex-col absolute md:flex md:relative bottom-4 left-0 z-9999 text-white md:text-neutral-900 md:mix-blend-normal mix-blend-exclusion">
                 <div className="flex flex-col justify-end w-full md:w-1/2 pb-4 px-3 gap-1 md:gap-0">
                     {/* <FadeIn>
                         <h2 className="w-full text-5xl md:text-6xl text-left md:pb-3 ">{project.title}</h2>
@@ -60,7 +60,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                 text={project.title}
                 delay={1}
                 mode="words"
-                className="w-full text-5xl md:text-6xl text-left md:pb-3 "
+                className="w-full text-5xl md:text-6xl text-left "
                 />
 
                     {project.tagline && (
@@ -69,7 +69,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                             text={project.tagline}
                             delay={1}
                             mode="words"
-                            className="w-full text-xl md:text-2xl text-left leading-4 text-neutral-700 "
+                            className="w-full text-xl md:text-lg text-left leading-snug "
                             />
                     )}
                 </div>
@@ -81,7 +81,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                             text={project.description}
                             delay={1.6}
                             mode="block"
-                            className="w-full text-base md:text-2xl text-left leading-snug"
+                            className="w-full text-base md:text-2xl text-left md:leading-7"
                         />
                     )}
 
@@ -98,7 +98,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                                 <motion.p
                                     key={tag}
                                     variants={tagItem}
-                                    className="border opacity-70 border-black/70 text-[9px] rounded-full px-3 pt-1 pb-0.5 whitespace-nowrap"
+                                    className="border opacity-70 border-white/70 md:border-black/70 text-[9px] rounded-full px-3 pt-1 pb-0.5 whitespace-nowrap"
                                 >
                                     {tag.toUpperCase()}
                                 </motion.p>
@@ -108,9 +108,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                 </div>
                 </div>
 
-
-
-            <div className="relative w-full mt-8 pb-[126.25%] md:pb-[55%] overflow-hidden">
+                <div className="relative w-full mt-0 h-screen md:h-[70vh] overflow-hidden">
                 <motion.div
                     className="absolute inset-0"
                     initial={{ opacity: 0 }}
@@ -128,7 +126,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                         preload="auto"
                         controls={false}
                         disablePictureInPicture
-                        controlsList="nodownload noplaybackrate"
+                        // controlsList="nodownload noplaybackrate"
                         poster={thumbnail}
                         onLoadedMetadata={(e) => {
                           const v = e.currentTarget;
@@ -148,17 +146,17 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                           const p = v.play();
                           if (p && typeof p.catch === "function") p.catch(() => {});
                         }}
-                        className="h-full w-full object-cover rounded-xs md:rounded-sm origin-bottom"
+                        className="h-full w-full object-cover md:rounded-xs origin-bottom"
                       />
                     ) : (
                         <Image
                             src={src}
                             alt={title}
                             fill
-                            className="object-cover rounded-xs md:rounded-sm"
+                            className="object-cover md:rounded-xs"
                             // Next Image is lazy by default (unless priority)
                             loading="lazy"
-                            onLoadingComplete={() => setReady(true)}
+                            // onLoadingComplete={() => setReady(true)}
                             sizes="(min-width: 768px) 100vw, 100vw"
                         />
                     )}

@@ -69,7 +69,7 @@ export default function MagazineBlock({ block }: Props) {
         w-screen max-w-[1244px]
         h-screen
         relative
-        px-3
+        
         ${className}
       `}
     >

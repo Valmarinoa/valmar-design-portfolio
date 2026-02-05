@@ -184,10 +184,10 @@ export const THEMES: Record<ThemeKey, ThemeClasses> = {
   home: {
     text: "text-neutral-800",
     bg: "transparent",
-    border: "border-neutral-800",
+    border: "border-white/70",
     mobileModalBg: "transparent",
-    logo: "text-neutral-800",
-    nav: "text-neutral-800",
+    logo: "text-white",
+    nav: "text-white",
   },
 
   totemica: {
@@ -388,12 +388,12 @@ export const ruralesItems: GridItem[] = [
 const projectsData: LocalizedProject[] = [
   // SILENCE OF BLUE
   {
-    title: t("Silence of Blue", "Silêncio do Azul"),
+    title: t("Silence of Blue", "Silêncio Azul"),
     slug: 'silence-of-blue',
     thumbnail: '',
     videoThumbnail: '/media/sob-blue.mp4',
     year: '2024',
-    tagline: t("Interpreting silence through light & color.", "Interpretando o silêncio por meio da luz e da cor."),
+    tagline: t("Interpreting silence through light & color.", "Interpretando o silêncio por meio de luz e cor."),
     description:
     t(
       "Could silence be experienced visually? This project translates stillness into light, inviting moments of\n" +
@@ -411,7 +411,7 @@ const projectsData: LocalizedProject[] = [
       t("Wellbeing", "Bem-estar"),
       t("Emotion", "Emoção"),
     ],
-    heroVideo: '/media/sob/1.mp4',
+    heroVideo: '/media/sob-blue.mp4',
 
     blocks: [
       {
@@ -1409,7 +1409,7 @@ const projectsData: LocalizedProject[] = [
     heroVideo: '/media/marianrosas.mp4',
     videoThumbnail: '/media/marianrosas.mp4',
     description:
-      t("I DJ sometimes ◡̈", "Às vezes eu faço sets de DJ ◡̈"),
+      t("I DJ sometimes ◡̈", "Às vezes viro DJ ◡̈"),
   },
   
   // MERGED LANDSCAPES
