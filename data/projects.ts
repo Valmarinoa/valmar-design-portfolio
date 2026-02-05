@@ -183,12 +183,12 @@ export type ThemeKey =
 
 export const THEMES: Record<ThemeKey, ThemeClasses> = {
   home: {
-    text: "text-neutral-800",
+    text: "text-white",
     bg: "transparent",
-    border: "border-neutral-800",
+    border: "border-white/70",
     mobileModalBg: "transparent",
-    logo: "text-neutral-800",
-    nav: "text-neutral-800",
+    logo: "text-white",
+    nav: "text-white",
   },
 
   totemica: {
@@ -389,7 +389,7 @@ export const ruralesItems: GridItem[] = [
 const projectsData: LocalizedProject[] = [
   // SILENCE OF BLUE
   {
-    title: t("Silence of Blue", "Silêncio do Azul", "Silencio del Azul"),
+    title: t("Silence of Blue", "Silêncio Azul", "Silencio Azul"),
     slug: 'silence-of-blue',
     thumbnail: '',
     videoThumbnail: '/media/sob-blue.mp4',
@@ -448,10 +448,6 @@ const projectsData: LocalizedProject[] = [
            'algo presente, y no ausente.'
        )
     },
-      // {
-      //   type: 'quote',
-      //   quote:'Light installation exploring how silence can be experienced through slow, shifting fields of deep blue illumination. The piece emerges from an increasing need in our culture to reconnect with what we cannot see but deeply feel.'
-      // },
       {
         type: 'mediaText',
         media: {
@@ -534,7 +530,6 @@ const projectsData: LocalizedProject[] = [
           alt: 'Small model of Silence of Blue',
         },
       },
-
       {
         type: 'inspiration',
         heading: t("Inspiration & References", "Inspiração e Referências", "Inspiración y Referencias"),
@@ -656,7 +651,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "light experiments",
@@ -678,7 +673,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "vacuuming shape",
@@ -702,7 +697,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "baked glass",
@@ -726,7 +721,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "gloss layer",
@@ -761,7 +756,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "exploration against day light",
@@ -784,7 +779,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "exploration night",
@@ -830,10 +825,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         ]
-        
       }
-
-    
     ],
   },
 
@@ -865,28 +857,25 @@ const projectsData: LocalizedProject[] = [
       t("Material", "Material", "Material"),
       t("Ritual", "Ritual", "Ritual"),
     ],
-
-    // blocks: [] // you can add later if needed
   },
 
   // TIDAL LIGHT
   {
-    title: t("Tidal Light", "Luz das Marés", "Luz de las Mareas"),
+    title: t("Tidal Light", "Marés de Luz", "Mareas de Luz"),
     slug: 'tidal-light',
     // thumbnail: '/media/tidal.png',
     heroVideo: '/media/tidal/tidal-dark.mp4',
     videoThumbnail: '/media/tidal/tidal-experiment-1.mp4',
     tagline: t(
       "Breathing light installation.",
-      "Instalação de luz que respira.",
-      "Instalación de luz que respira."
+      "Instalação: luz que respira.",
+      "Instalación: luz que respira."
     ),
     year: '2023',
     description:
       t(
         "Translating the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.",
-        "Traduzindo o ritmo da respiração humana em pulsos de luz que se transformam ao atravessar moldes de água."
-        ,
+        "Traduzindo o ritmo da respiração humana em pulsos de luz que se transformam ao atravessar moldes de água.",
         "Traduciendo el ritmo de la respiración humana en pulsos de luz que se transforman al atravesar moldes de agua."
       ),
     tags: [
@@ -903,8 +892,7 @@ const projectsData: LocalizedProject[] = [
         type: 'quote',
         quote: t(
           'Have you already noticed how your breathing pace sounds like ocean waves?  Tidal Light investigates how internal rhythms relate to natural ones. The installation draws a parallel between the pace of breathing and the movement of ocean waves, both slow, repetitive, and constantly in motion.',
-          'Você já percebeu como o ritmo da sua respiração soa como ondas do oceano? Tidal Light investiga como ritmos internos se relacionam com ritmos naturais. A instalação traça um paralelo entre o ritmo da respiração e o movimento das ondas do mar, ambos lentos, repetitivos e em constante movimento.'
-          ,
+          'Você já percebeu como o ritmo da sua respiração soa como ondas do oceano? Tidal Light investiga como ritmos internos se relacionam com ritmos naturais. A instalação traça um paralelo entre o ritmo da respiração e o movimento das ondas do mar, ambos lentos, repetitivos e em constante movimento.',
           '¿Ya has notado cómo el ritmo de tu respiración suena como las olas del océano? Tidal Light investiga cómo los ritmos internos se relacionan con los ritmos naturales. La instalación traza un paralelo entre el ritmo de la respiración y el movimiento de las olas del mar, ambos lentos, repetitivos y en constante movimiento.'
         )
       },
@@ -1450,20 +1438,7 @@ const projectsData: LocalizedProject[] = [
             textClassName: "",
             imgFit: "object-cover"
       },
-      {
-        type: 'gallery',
-        media: [
-          {
-            src: '/media/tidal/tidal-frag.png',
-          },
-          {
-            src: '/media/tidal/tidal-frag-2.png',
-          },
-          {
-            src: '/media/tidal/tidal-frag-3.png',
-          },
-        ],
-      },
+      
     ],
   },
 
@@ -1515,8 +1490,7 @@ const projectsData: LocalizedProject[] = [
     description:
       t(
         "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
-        ,
+        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas.",
         "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
       ),
   },
@@ -1529,8 +1503,7 @@ const projectsData: LocalizedProject[] = [
     description:
       t(
         "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
-        ,
+        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas.",
         "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
       ),
   },

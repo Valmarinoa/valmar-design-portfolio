@@ -97,7 +97,7 @@ const messages: Record<Locale, Messages> = {
     },
     home: {
       intro:
-        "¡Hola! Soy Valentina Marino,\n" +
+        "Hola! Soy Valentina Marino,\n" +
         "nacida y criada en Colombia, actualmente basada en los Países Bajos.\n" +
         "Me encanta encontrar formas de llevar la poesía a objetos y tecnologías cotidianas.\n" +
         "Mi trabajo explora cómo la sensibilidad del realismo mágico latinoamericano puede vivir en el diseño contemporáneo.\n" +

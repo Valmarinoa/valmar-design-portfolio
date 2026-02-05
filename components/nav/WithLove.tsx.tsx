@@ -16,8 +16,6 @@ export default function MobileNavbar() {
         <div className="fixed bottom-0 left-1/2 -translate-x-[50%] z-9997 ">
         <p className={`text-xs ${theme.nav} px-3 pt-2 pb-1`}>{messages.footer.withLove}</p>
         </div>
-      {/* </FadeIn> */}
-
     </div>
   );
 }
