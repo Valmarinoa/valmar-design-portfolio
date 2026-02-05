@@ -48,7 +48,7 @@ export default function DesktopNavbar() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-xs uppercase tracking-[0.2em] ${theme.nav}`}
+                className={`text-xs uppercase tracking-[0.15em] ${theme.nav}`}
                 aria-label={item.ariaLabel}
               >
                 {label}
@@ -57,7 +57,7 @@ export default function DesktopNavbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-xs uppercase tracking-[0.2em] ${theme.nav}`}
+                className={`text-xs uppercase tracking-[0.15em] ${theme.nav}`}
                 aria-label={item.ariaLabel}
               >
                 {label}

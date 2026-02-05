@@ -316,12 +316,6 @@ export default function StaggeredMenu({
                   >
                     <span className="sm-panel-itemLabel inline-flex items-center gap-3 origin-[50%_100%] will-change-transform">
                       {it.label}
-                      <span
-                        aria-hidden="true"
-                        className={`inline-block h-2 w-2 rounded-full bg-current transition-opacity ${
-                          isActive ? "opacity-100" : "opacity-0"
-                        }`}
-                      />
                     </span>
                   </a>
                 </li>

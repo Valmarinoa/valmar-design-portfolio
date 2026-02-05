@@ -52,15 +52,13 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
         <section className="w-full flex flex-col h-fit pt-28 md:pt-32 overflw-hidden">
             <div className="md:flex-row flex flex-col">
                 <div className="flex flex-col justify-end w-full md:w-1/2 pb-4 px-3 gap-1 md:gap-0">
-                    {/* <FadeIn>
-                        <h2 className="w-full text-5xl md:text-6xl text-left md:pb-3 ">{project.title}</h2>
-                    </FadeIn> */}
+               
                     <BlurText
                 as="h2"
                 text={project.title}
                 delay={1}
                 mode="words"
-                className="w-full text-5xl md:text-6xl text-left md:pb-3 "
+                className="w-full text-5xl md:text-6xl text-left"
                 />
 
                     {project.tagline && (
@@ -69,7 +67,7 @@ export default function DesktopHeroMedia({ title, heroVideo, heroMedia, thumbnai
                             text={project.tagline}
                             delay={1}
                             mode="words"
-                            className="w-full text-xl md:text-2xl text-left leading-4 text-neutral-700 "
+                            className="w-full text-lg text-left leading-5 text-neutral-700 "
                             />
                     )}
                 </div>
