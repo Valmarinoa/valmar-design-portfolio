@@ -26,7 +26,7 @@ export default function DesktopNavbar() {
   }));
 
   return (
-    <div className="hidden md:flex fixed top-0 left-0 right-0 z-9997 px-8 py-6 items-center justify-between pointer-events-none">
+    <div className="hidden md:flex fixed top-0 left-0 right-0 z-9997 px-8 py-6 items-center justify-between pointer-events-none mix-blend-exclusion">
       <div className="flex items-center gap-10 pointer-events-auto">
         <Link href={localizePath("/", locale)} aria-label={messages.nav.logoAria}>
           <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
@@ -43,27 +43,28 @@ export default function DesktopNavbar() {
             );
 
             return isExternal ? (
+
               <a
                 key={item.label}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-xs uppercase tracking-[0.15em] ${theme.nav}`}
+                className={`text-xs uppercase tracking-widest ${theme.nav}`}
                 aria-label={item.ariaLabel}
               >
-                {label}
+                {item.label}
               </a>
             ) : (
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-xs uppercase tracking-[0.15em] ${theme.nav}`}
+                className={`text-xs uppercase tracking-widest ${theme.nav}`}
                 aria-label={item.ariaLabel}
               >
-                {label}
+                {item.label}
               </Link>
-            );
-          })}
+            )
+          )}
         </nav>
       </div>
       <div className="pointer-events-auto">

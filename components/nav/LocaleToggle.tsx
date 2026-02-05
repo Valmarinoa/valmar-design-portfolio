@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { localizePath } from "@/lib/i18n";
 import useLocale from "@/lib/use-locale";
@@ -9,7 +10,6 @@ export default function LocaleToggle() {
   const pathname = usePathname();
   const locale = useLocale();
   const { theme } = useTheme();
-
   const handleLocaleChange = (nextLocale: "en" | "pt-br" | "es") => {
     const href = localizePath(pathname ?? "/", nextLocale);
     window.location.href = href;
@@ -26,6 +26,7 @@ export default function LocaleToggle() {
 
   return (
     <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em]">
+
       <button
         type="button"
         onClick={() => handleLocaleChange("en")}

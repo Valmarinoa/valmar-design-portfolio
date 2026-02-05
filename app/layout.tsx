@@ -9,7 +9,6 @@ import MobileNavbar from "@/components/nav/MobileNavbar";
 import WithLove from "@/components/nav/WithLove.tsx";
 import { getServerLocale } from "@/lib/i18n-server";
 
-
 export const metadata = {
   title: "Valmar",
   description: "Product & Experience Design",
@@ -33,10 +32,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           style={{ backgroundImage: "url('/media/sky2.png')" }}
         />
         <div className="fixed inset-0 -z-10" />
-
         <AutoThemeProvider>
           <DesktopNavbar />
-          {/* ✅ persistent mobile navbar */}
           <MobileNavbar />
           {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
