@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { localizePath } from "@/lib/i18n";
 import useLocale from "@/lib/use-locale";
@@ -9,7 +10,6 @@ export default function LocaleToggle() {
   const pathname = usePathname();
   const locale = useLocale();
   const { theme } = useTheme();
-
   const handleLocaleChange = (nextLocale: "en" | "pt-br") => {
     const href = localizePath(pathname ?? "/", nextLocale);
     window.location.href = href;
@@ -35,5 +35,4 @@ export default function LocaleToggle() {
         PT
       </button>
     </div>
-  );
 }

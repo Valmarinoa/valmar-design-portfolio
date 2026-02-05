@@ -182,7 +182,7 @@ export type ThemeKey =
 
 export const THEMES: Record<ThemeKey, ThemeClasses> = {
   home: {
-    text: "text-neutral-800",
+    text: "text-white",
     bg: "transparent",
     border: "border-white/70",
     mobileModalBg: "transparent",
@@ -433,11 +433,6 @@ const projectsData: LocalizedProject[] = [
            'a instalação cria um espaço onde a percepção desacelera e o silêncio se torna \n' +
            'algo presente, e não ausente.'
        )
-    },
-      // {
-      //   type: 'quote',
-      //   quote:'Light installation exploring how silence can be experienced through slow, shifting fields of deep blue illumination. The piece emerges from an increasing need in our culture to reconnect with what we cannot see but deeply feel.'
-      // },
       {
         type: 'mediaText',
         media: {
@@ -609,7 +604,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Biocommunication", "Biocomunicação"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "light experiments",
@@ -631,7 +626,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "vacuuming shape",
@@ -655,7 +650,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "baked glass",
@@ -679,7 +674,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "gloss layer",
@@ -714,7 +709,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "exploration against day light",
@@ -737,7 +732,7 @@ const projectsData: LocalizedProject[] = [
             caption: t("Metabolic Health", "Saúde Metabólica"),
           },
         
-          //////////////////////
+      //     //////////////////////
         
           {
             id: "exploration night",
@@ -784,7 +779,7 @@ const projectsData: LocalizedProject[] = [
           },
         ]
         
-      }
+      // }
 
     
     ],
@@ -1361,20 +1356,7 @@ const projectsData: LocalizedProject[] = [
             textClassName: "",
             imgFit: "object-cover"
       },
-      {
-        type: 'gallery',
-        media: [
-          {
-            src: '/media/tidal/tidal-frag.png',
-          },
-          {
-            src: '/media/tidal/tidal-frag-2.png',
-          },
-          {
-            src: '/media/tidal/tidal-frag-3.png',
-          },
-        ],
-      },
+      
     ],
   },
 

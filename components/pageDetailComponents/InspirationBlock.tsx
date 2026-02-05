@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function InspirationBlock({ block }: Props) {
-    const { heading, intro, items } = block;
+    const { heading, intro, items, mobileMedia, mobileMediaKind } = block;
 
     return (
         <section className="w-full max-w-[1440px] px-3 md:px-6 flex flex-col items-center gap-10 md:gap-16">
@@ -22,7 +22,31 @@ export default function InspirationBlock({ block }: Props) {
 
                 </div>
             </div>
-            <div className="grid gap-y-0.5 grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] md:w-2/3 w-full ">
+
+            <div className="w-full aspect-auto h-[60vh] relative md:hidden">
+            {mobileMediaKind === "video" ? (
+                            <video
+                                src={mobileMedia}
+                                muted
+                                controls
+                                autoPlay
+                                loop
+                                playsInline
+                                preload="metadata"
+                                className="absolute inset-0 h-full w-full object-cover"
+                            />
+                        
+                    ) : (
+                        mobileMedia ? (
+                            <Image
+                                src={mobileMedia}
+                                alt={mobileMedia}
+                                className="absolute inset-0 h-full w-full object-cover"
+                            />
+                        ) : null
+                    )}
+            </div>
+            <div className=" grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] md:w-2/3 w-full hidden md:grid">
                 {/* Items: text left, small video/image right */}
                 {items.map((item) => {
                     const isVideo = item.media.kind === "video";
