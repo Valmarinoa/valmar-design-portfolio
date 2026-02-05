@@ -50,7 +50,6 @@ export default function MobileNavbar() {
             </Link>
 
             <div className="flex items-center gap-3">
-              <LocaleToggle />
               <div className={`h-10 rounded-full flex items-center justify-center px-3 ${theme.nav}`}>
                 <StaggeredMenuToggle
                   open={open}

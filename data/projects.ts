@@ -396,7 +396,7 @@ const projectsData: LocalizedProject[] = [
     year: '2024',
     tagline: t(
       "Interpreting silence through light & color.",
-      "Interpretando o silêncio por meio da luz e da cor.",
+      "Interpretando o silêncio por meio de luz e cor.",
       "Interpretando el silencio a través de la luz y el color."
     ),
     description:
@@ -418,7 +418,7 @@ const projectsData: LocalizedProject[] = [
       t("Wellbeing", "Bem-estar", "Bienestar"),
       t("Emotion", "Emoção", "Emoción"),
     ],
-    heroVideo: '/media/sob/1.mp4',
+    heroVideo: '/media/sob-blue.mp4',
 
     blocks: [
       {

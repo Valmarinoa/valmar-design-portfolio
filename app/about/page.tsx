@@ -1,17 +1,39 @@
+'use client';
+
+import Image from "next/image";
+import { useTheme } from "@/components/providers/theme-context";
+import { getMessages } from "@/data/messages";
+import useLocale from "@/lib/use-locale";
+
+
 export default function AboutPage() {
+  const locale = useLocale();
+  const messages = getMessages(locale);
+
   return (
-    <main className="min-h-screen w-full px-6 pb-16 pt-28 text-neutral-900">
-      <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
-        <span className="text-xs uppercase tracking-[0.3em] text-neutral-500">About</span>
-        <h1 className="text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl">Storytelling in design</h1>
-        <div className="h-px w-16 bg-neutral-200" />
-        <p className="text-base leading-relaxed text-neutral-700 sm:text-lg">
-          I am a designer passionate about storytelling and focusing on Product and Experience. I am interested in creating
-          immersive solutions that are not only functional but also meaningful. My inspiration comes from the sensibility
-          of magical realism and contemporary technology, always looking for ways to transform the ordinary into something
-          special. I am also a multimedia artist, and my work explores the intersection between physical, digital, and
-          ephemeral.
-        </p>
+    <main className="min-h-screen m-auto max-w-6xl w-full px-6 pb-16 pt-28 text-neutral-900">
+      <div className="mx-auto w-full  flex gap-6 h-[50vh]">
+        <div className="w-1/2 flex text-6xl">
+        <h2>Valentina Marino</h2></div>
+        <div className="w-1/2 flex relative">
+        <div className="aspect-square h-[60%] absolute bottom-0 left-0">
+        <Image
+              src="/media/me.png"
+              alt="About the creator"
+              fill
+              className="object-cover"
+              loading="lazy"
+              sizes="(min-width: 768px) 100vw, 100vw"
+            />
+        </div>
+        </div>
+      </div>
+      <div className="h-[0.5px] w-full bg-neutral-900 my-10"/>
+      <div className="mx-auto w-full  flex gap-6 h-[50vh]">
+        <div className="w-1/2 flex tracking-widest text-[12px]">{messages.about.about.toUpperCase()}</div>
+        <div className="w-1/2 flex relative">
+        <p className="text-sm">{messages.about.content}</p>
+        </div>
       </div>
     </main>
   );

@@ -110,7 +110,7 @@ export default function DesktopHeroMedia({
               text={project.tagline}
               delay={1}
               mode="words"
-              className="w-full text-xl md:text-2xl text-left leading-snug"
+              className="w-full text-lg text-left leading-5"
             />
           )}
         </div>
@@ -122,13 +122,13 @@ export default function DesktopHeroMedia({
               text={project.description}
               delay={1.6}
               mode="block"
-              className="w-full text-base md:text-2xl text-left leading-snug"
+              className="w-full text-base md:text-2xl text-left md:leading-7"
             />
           )}
 
           {project.tags?.length ? (
             <motion.div
-              className="flex flex-wrap gap-1"
+              className="flex flex-wrap gap-2"
               variants={tagsContainer}
               initial="hidden"
               whileInView="show"
@@ -138,7 +138,7 @@ export default function DesktopHeroMedia({
                 <motion.p
                   key={tag}
                   variants={tagItem}
-                  className="border opacity-70 border-white/70 md:border-black/70 text-[9px] rounded-full px-3 pt-1 pb-0.5 whitespace-nowrap"
+                  className="border opacity-70 border-white/70 tracking-widest md:border-black/70 text-[9px] rounded-full px-3 pt-1 pb-0.5 whitespace-nowrap"
                 >
                   {tag.toUpperCase()}
                 </motion.p>
@@ -149,7 +149,7 @@ export default function DesktopHeroMedia({
       </motion.div>
 
       {/* MEDIA (parallax) */}
-      <div className="relative w-full mt-0 pb-[186.25%] md:pb-[50%] overflow-hidden">
+      <div className="relative w-full mt-0 h-screen md:pb-[50%] overflow-hidden">
         <motion.div
           className="absolute inset-0"
           style={{

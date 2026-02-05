@@ -20,6 +20,10 @@ export type Messages = {
     logoAria: string;
     items: NavItem[];
   };
+  about: {
+    about: string;
+    content: string;
+  }
   footer: {
     withLove: string;
   };
@@ -54,6 +58,10 @@ const messages: Record<Locale, Messages> = {
         },
       ],
     },
+    about: {
+      about: "About",
+      content: "I come from Latin America. I was born and raised in Colombia, a place that shaped a sensitivity that runs through everything I do: a way of thinking and creating from a human perspective. I lived for some years in France and later moved to the Netherlands through a Rare Talents scholarship, where I studied art and industrial design. My practice has always been hybrid, moving between the artisanal and the digital, the organic and the technological. This approach took shape during my time at Signify (Philips Lighting), where I worked as a qualitative researcher. My role was to go beyond the functional aspects of objects and explore how people perceive and experience them in everyday life, guiding design decisions that focus on how things are lived, beyond their function. In parallel, I began working with noble and seemingly simple materials — light, water, silence — transforming them into tangible installations and interfaces. I’m drawn to that point where the ordinary becomes landscape, where something everyday can open up a deeper experience. This desire to materialize abstract ideas led me to learn how to code. Code became another form of craftsmanship: not only a tool to build, but a way to give ideas a physical presence, a digital presence, or both at the same time. Today I work at the intersection of design and technology, bringing together the manual and the digital, the sensitive and the technical. Latin American magical realism subtly runs through my practice as a way of connecting worlds and creating experiences with depth, meaning, and warmth. I design and build experiences, translating the invisible into something that can be touched, seen, or inhabited."
+    },
     footer: {
       withLove: "Coded with love ♡ ̆̈",
     },
@@ -78,7 +86,7 @@ const messages: Record<Locale, Messages> = {
     nav: {
       logoAria: "Ir para a página inicial",
       items: [
-        { label: "Biografía", ariaLabel: "Biografía", href: "/about" },
+        { label: "Sobre", ariaLabel: "Sobre", href: "/about" },
         {
           label: "Trabalhos Dev",
           ariaLabel: "Trabalho como desenvolvedora front-end",
@@ -86,8 +94,11 @@ const messages: Record<Locale, Messages> = {
         },
       ],
     },
+    about: {
+      about: "Biografía",
+      content: "Venho da América Latina. Nasci e cresci na Colômbia, um lugar que moldou uma sensibilidade que atravessa tudo o que faço: uma maneira de pensar e criar a partir do humano. Vivi alguns anos na França e, mais tarde, uma bolsa de Rare Talents me levou à Holanda, onde estudei arte e design industrial. Minha prática sempre foi híbrida, transitando entre o artesanal e o digital, entre o orgânico e o tecnológico. Esse olhar ganhou forma durante meu tempo na Signify (Philips Lighting), onde trabalhei como pesquisadora qualitativa. Meu papel era ir além da funcionalidade dos objetos e explorar como as pessoas os percebem e os vivenciam no cotidiano, orientando decisões de design mais focadas em como as coisas são vividas, para além da função. Em paralelo, comecei a trabalhar com materiais nobres e aparentemente simples — luz, água, silêncio — transformando-os em instalações e interfaces tangíveis. Me interessa esse ponto em que o ordinário se torna paisagem, onde algo cotidiano pode abrir uma experiência mais profunda. Esse desejo de materializar ideias abstratas me levou a aprender a programar. O código se tornou outra forma de artesania: não apenas para construir, mas para dar presença física, digital — ou ambas ao mesmo tempo.  Hoje trabalho entre design e tecnologia, unindo o manual ao digital, o sensível ao técnico. O realismo mágico latino-americano atravessa minha prática de forma sutil, como uma maneira de conectar mundos e criar experiências com profundidade, sentido e calor humano. Projeto e construo experiências, traduzindo o invisível em algo que possa ser tocado, visto ou habitado."  },
     footer: {
-      withLove: "Codado com amor ♡ ̆̈",
+      withLove: "Feito com amor ♡ ̆̈",
     },
   },
   es: {
@@ -110,13 +121,17 @@ const messages: Record<Locale, Messages> = {
     nav: {
       logoAria: "Ir a la página de inicio",
       items: [
-        { label: "Biografía", ariaLabel: "Biografía", href: "/about" },
+        { label: "Bio", ariaLabel: "Bio", href: "/about" },
         {
           label: "Trabajos Dev",
           ariaLabel: "Trabajo como desarrolladora front-end",
           href: "https://valenmarino.vercel.app/",
         },
       ],
+    },
+    about: {
+      about: "Biografía",
+      content: "Vengo de Latinoamérica, nací y crecí en Colombia, un lugar que dio forma a una sensibilidad que atraviesa todo lo que hago: una manera de pensar y crear desde lo humano. Viví algunos años en Francia y, más tarde, una beca de Rare Talents me trajo a Holanda, donde estudié arte y diseño industrial. Mi práctica ha sido siempre híbrida, moviéndose entre lo artesanal y lo digital, entre lo orgánico y lo tecnológico. Ese enfoque tomó forma durante mi tiempo en Signify (Philips Lighting), donde trabajé como investigadora cualitativa. Mi rol era ir más allá de la funcionalidad de los objetos y explorar cómo las personas los perciben y experimentan en su vida cotidiana, guiando decisiones de diseño más enfocadas en cómo se viven las cosas, más allá de su función. En paralelo, empecé a trabajar con materiales nobles y aparentemente simples —la luz, el agua, el silencio— transformándolos en instalaciones e interfaces tangibles. Me atrae ese punto donde lo ordinario se vuelve paisaje, donde algo cotidiano puede abrir una experiencia más profunda. Ese deseo de materializar ideas abstractas me llevó a aprender a programar. El código se convirtió en otra forma de artesanía: no solo para construir, sino para darles presencia física, digital o ambas al mismo tiempo. Hoy trabajo entre diseño y tecnología, uniendo lo manual con lo digital, lo sensible con lo técnico. El realismo mágico latinoamericano atraviesa mi práctica como una forma sutil de conectar mundos y crear experiencias con profundidad, sentido y calidez. Diseño y construyo experiencias, traduciendo lo invisible en algo que se pueda tocar, mirar o habitar."    
     },
     footer: {
       withLove: "Hecho con amor ♡ ̆̈",

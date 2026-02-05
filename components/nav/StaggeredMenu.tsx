@@ -47,7 +47,6 @@ export default function StaggeredMenu({
   socialItems = [],
   footerContent,
   displaySocials = true,
-
   accentColor = "#5227FF",
   isFixed = true,
 
@@ -283,7 +282,7 @@ export default function StaggeredMenu({
   const ui = (
     <div
       className={`sm-scope ${isFixed ? "fixed inset-0" : "relative"} z-9996 overflow-hidden pointer-events-none`}
-      style={accentColor ? ({ ["--sm-accent" as any]: accentColor } as React.CSSProperties) : undefined}
+      // style={accentColor ? ({ ["--sm-accent" as any]: accentColor } as React.CSSProperties) : undefined}
       data-position={position}
       data-open={open || undefined}
     >
@@ -301,15 +300,15 @@ export default function StaggeredMenu({
           WebkitOverflowScrolling: "touch",
         }}
       >
-        <div className="sm-panel-inner flex-1 flex flex-col gap-5">
-          <ul className="sm-panel-list list-none m-0 p-0 flex flex-col gap-5" role="list">
+        <div className="sm-panel-inner flex-1 flex flex-col gap-5  justify-center items-center ">
+          <ul className="sm-panel-list list-none m-auto mb-10 p-0 flex flex-col gap-5 text-center" role="list">
             {items.map((it, idx) => {
               const isActive = !isExternalUrl(it.link) && stripLocaleFromPathname(it.link) === normalizedPath;
 
               return (
                 <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
                   <a
-                    className={`sm-panel-item relative ${theme.text} font-semibold text-3xl cursor-pointer leading-none tracking-[-2px] uppercase inline-block no-underline pr-[1.4em]`}
+                    className={`sm-panel-item relative ${theme.text} text-3xl cursor-pointer leading-none tracking-[0.12em] uppercase inline-block no-underline`}
                     href={it.link}
                     aria-label={it.ariaLabel}
                     onClick={onClose} // ✅ closes menu after navigating
@@ -322,26 +321,19 @@ export default function StaggeredMenu({
               );
             })}
           </ul>
-
-          {footerContent && (
-            <div className="sm-footer mt-auto pt-6 flex flex-col gap-3" aria-label="Language switcher">
-              {footerContent}
-            </div>
-          )}
-
-          {displaySocials && socialItems.length > 0 && (
+ {displaySocials && socialItems.length > 0 && (
             <div className={`sm-socials ${footerContent ? "pt-4" : "mt-auto pt-8"} flex flex-col gap-3`} aria-label="Social links">
               <ul
-                className="sm-socials-list list-none m-0 p-0 flex flex-row items-center gap-4 flex-wrap"
+                className="sm-socials-list list-none m-0 p-0 flex flex-col items-center gap-2 flex-wrap"
                 role="list"
               >
                 {socialItems.map((s, i) => (
-                  <li key={s.label + i} className="sm-socials-item">
+                  <li key={s.label + i} className="sm-socials-item ">
                     <a
                       href={s.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`sm-socials-link text-[1.2rem] ${theme.text} no-underline relative inline-block py-[2px]`}
+                      className={`sm-socials-link text-sm ${theme.text} no-underline relative inline-block py-[2px]`}
                     >
                       {s.label}
                     </a>
@@ -350,6 +342,13 @@ export default function StaggeredMenu({
               </ul>
             </div>
           )}
+          {footerContent && (
+            <div className="sm-footer mt-auto pt-6 flex flex-col gap-3 " aria-label="Language switcher">
+              {footerContent}
+            </div>
+          )}
+
+         
         </div>
       </aside>
 
