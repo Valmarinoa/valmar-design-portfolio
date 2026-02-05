@@ -12,10 +12,14 @@ import {
 import BlurText from "./animations/BlurText";
 import NocturnaShader from "./pageDetailComponents/NocturnaShader";
 import LogoSvg from "./svg/LogoSvg";
+import useLocale from "@/lib/use-locale";
+import { getMessages } from "@/data/messages";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const reduceMotion = useReducedMotion();
+  const locale = useLocale();
+  const messages = getMessages(locale);
 
   // Make parallax depend on the hero section
   const { scrollYProgress } = useScroll({
@@ -94,7 +98,7 @@ export default function Hero() {
         >
           <BlurText
             as="h1"
-            text="Valentina Marino"
+            text={messages.hero.name}
             delay={0.6}
             mode="words"
             className="mix-blend-difference font-helvetica-neue text-white text-lg tracking-widest"
@@ -106,7 +110,7 @@ export default function Hero() {
 
           <BlurText
             as="h1"
-            text="Product & Experience Designer"
+            text={messages.hero.role}
             delay={0.7}
             mode="words"
             className="mix-blend-difference font-helvetica-neue text-white text-sm tracking-widest"

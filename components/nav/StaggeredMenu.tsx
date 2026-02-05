@@ -22,6 +22,7 @@ export interface StaggeredMenuProps {
   position?: "left" | "right";
   items?: StaggeredMenuItem[];
   socialItems?: StaggeredMenuSocialItem[];
+  footerContent?: React.ReactNode;
   displaySocials?: boolean;
   displayItemNumbering?: boolean;
 
@@ -42,6 +43,7 @@ export default function StaggeredMenu({
   position = "right",
   items = [],
   socialItems = [],
+  footerContent,
   displaySocials = true,
 
   accentColor = "#5227FF",
@@ -311,8 +313,14 @@ export default function StaggeredMenu({
             ))}
           </ul>
 
+          {footerContent && (
+            <div className="sm-footer mt-auto pt-6 flex flex-col gap-3" aria-label="Language switcher">
+              {footerContent}
+            </div>
+          )}
+
           {displaySocials && socialItems.length > 0 && (
-            <div className="sm-socials mt-auto pt-8 flex flex-col gap-3" aria-label="Social links">
+            <div className={`sm-socials ${footerContent ? "pt-4" : "mt-auto pt-8"} flex flex-col gap-3`} aria-label="Social links">
               <ul
                 className="sm-socials-list list-none m-0 p-0 flex flex-row items-center gap-4 flex-wrap"
                 role="list"
