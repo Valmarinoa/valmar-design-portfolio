@@ -46,7 +46,6 @@ const messages: Record<Locale, Messages> = {
     nav: {
       logoAria: "Go to homepage",
       items: [
-        { label: "Home", ariaLabel: "Go to home page", href: "/" },
         { label: "About", ariaLabel: "About", href: "/about" },
         {
           label: "Dev Work",
@@ -79,8 +78,7 @@ const messages: Record<Locale, Messages> = {
     nav: {
       logoAria: "Ir para a página inicial",
       items: [
-        { label: "Início", ariaLabel: "Ir para a página inicial", href: "/" },
-        { label: "Sobre", ariaLabel: "Sobre", href: "/about" },
+        { label: "Biografía", ariaLabel: "Biografía", href: "/about" },
         {
           label: "Trabalhos Dev",
           ariaLabel: "Trabalho como desenvolvedora front-end",
@@ -90,6 +88,38 @@ const messages: Record<Locale, Messages> = {
     },
     footer: {
       withLove: "Codado com amor ♡ ̆̈",
+    },
+  },
+  es: {
+    hero: {
+      name: "Valentina Marino",
+      role: "Diseñadora de Producto y Experiencia",
+    },
+    home: {
+      intro:
+        "Hola! Soy Valentina Marino,\n" +
+        "nacida y criada en Colombia, actualmente basada en los Países Bajos.\n" +
+        "Me encanta encontrar formas de llevar la poesía a objetos y tecnologías cotidianas.\n" +
+        "Mi trabajo explora cómo la sensibilidad del realismo mágico latinoamericano puede vivir en el diseño contemporáneo.\n" +
+        "Me interesa cómo la poesía y un poco de magia pueden existir en la tecnología diaria, usando tanto herramientas artesanales como digitales.",
+      desktopBlurb:
+        "Valentina Marino es diseñadora y desarrolladora de Producto y Experiencia, traduciendo la sensibilidad del realismo mágico latinoamericano en\n" +
+        "diseño y tecnología contemporáneos.",
+      fallbackDescription: "Descripción del proyecto próximamente.",
+    },
+    nav: {
+      logoAria: "Ir a la página de inicio",
+      items: [
+        { label: "Biografía", ariaLabel: "Biografía", href: "/about" },
+        {
+          label: "Trabajos Dev",
+          ariaLabel: "Trabajo como desarrolladora front-end",
+          href: "https://valenmarino.vercel.app/",
+        },
+      ],
+    },
+    footer: {
+      withLove: "Hecho con amor ♡ ̆̈",
     },
   },
 };

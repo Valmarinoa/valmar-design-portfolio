@@ -6,8 +6,8 @@ import { useTheme } from "@/components/providers/theme-context";
 import FadeIn from "../animations/FadeIn";
 import StaggeredMenu from "./StaggeredMenu";
 import StaggeredMenuToggle from "./StaggeredMenuToggle";
-import Link from "next/link";
 import LocaleToggle from "./LocaleToggle";
+import Link from "next/link";
 import useLocale from "@/lib/use-locale";
 import { getMessages } from "@/data/messages";
 import { localizePath } from "@/lib/i18n";
@@ -69,6 +69,7 @@ export default function MobileNavbar() {
         position="right"
         items={menuItems}
         socialItems={socialItems}
+        footerContent={<LocaleToggle />}
         displaySocials
         displayItemNumbering
         accentColor="#ff6b6b"

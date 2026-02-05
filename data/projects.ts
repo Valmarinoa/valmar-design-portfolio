@@ -15,7 +15,7 @@ import type {
 } from "@/types/project";
 import type { Locale } from "@/lib/i18n";
 
-type Localized<T> = T | { en: T; "pt-br": T };
+type Localized<T> = T | { en: T; "pt-br": T; es?: T };
 
 type LocalizedQuoteBlock = Omit<QuoteBlock, "quote"> & { quote: Localized<string> };
 type LocalizedTextTripticBlock = Omit<TextTripticBlock, "title" | "subtitle" | "body"> & {
@@ -74,11 +74,12 @@ type LocalizedProject = Omit<Project, "title" | "tagline" | "description" | "tag
   blocks?: LocalizedProjectDetailBlock[];
 };
 
-const t = (en: string, pt: string) => ({ en, "pt-br": pt });
+const t = (en: string, pt: string, es?: string) => ({ en, "pt-br": pt, es });
 
 function resolveLocalized<T>(value: Localized<T>, locale: Locale): T {
   if (value && typeof value === "object" && "en" in value) {
-    return (value as { en: T; "pt-br": T })[locale] ?? (value as { en: T }).en;
+    const localized = value as { en: T; "pt-br": T; es?: T };
+    return localized[locale] ?? localized["pt-br"] ?? localized.en;
   }
   return value as T;
 }
@@ -388,30 +389,36 @@ export const ruralesItems: GridItem[] = [
 const projectsData: LocalizedProject[] = [
   // SILENCE OF BLUE
   {
-    title: t("Silence of Blue", "Silêncio Azul"),
+    title: t("Silence of Blue", "Silêncio Azul", "Silencio Azul"),
     slug: 'silence-of-blue',
     thumbnail: '',
     videoThumbnail: '/media/sob-blue.mp4',
     year: '2024',
-    tagline: t("Interpreting silence through light & color.", "Interpretando o silêncio por meio de luz e cor."),
+    tagline: t(
+      "Interpreting silence through light & color.",
+      "Interpretando o silêncio por meio da luz e da cor.",
+      "Interpretando el silencio a través de la luz y el color."
+    ),
     description:
     t(
       "Could silence be experienced visually? This project translates stillness into light, inviting moments of\n" +
         "pause, attention, and presence.",
       "O silêncio pode ser vivido visualmente? Este projeto traduz a quietude em luz, convidando momentos de\n" +
-        "pausa, atenção e presença."
+        "pausa, atenção e presença.",
+      "¿Puede el silencio experimentarse visualmente? Este proyecto traduce la quietud en luz, invitando momentos de\n" +
+        "pausa, atención y presencia."
     ),
     tags: [
-      t("Light Interaction", "Interação com Luz"),
-      t("Color Perception", "Percepção de Cor"),
-      t("Silence", "Silêncio"),
-      t("Meditative Design", "Design Meditativo"),
-      t("Research", "Pesquisa"),
-      t("Atmosphere", "Atmosfera"),
-      t("Wellbeing", "Bem-estar"),
-      t("Emotion", "Emoção"),
+      t("Light Interaction", "Interação com Luz", "Interacción con Luz"),
+      t("Color Perception", "Percepção de Cor", "Percepción del Color"),
+      t("Silence", "Silêncio", "Silencio"),
+      t("Meditative Design", "Design Meditativo", "Diseño Meditativo"),
+      t("Research", "Pesquisa", "Investigación"),
+      t("Atmosphere", "Atmosfera", "Atmósfera"),
+      t("Wellbeing", "Bem-estar", "Bienestar"),
+      t("Emotion", "Emoção", "Emoción"),
     ],
-    heroVideo: '/media/sob-blue.mp4',
+    heroVideo: '/media/sob/1.mp4',
 
     blocks: [
       {
@@ -431,9 +438,16 @@ const projectsData: LocalizedProject[] = [
            'camadas sutis de experiência,\n' +
            'e de explorar como o design pode nos guiar para senti-las novamente. Por meio da luz e da cor,\n' +
            'a instalação cria um espaço onde a percepção desacelera e o silêncio se torna \n' +
-           'algo presente, e não ausente.'
-       ),
-      },
+           'algo presente, e não ausente.',
+         'En un mundo saturado de ruido, velocidad y estímulos constantes, \n' +
+           'estamos perdiendo lentamente la capacidad de contemplar lo que no puede verse,\n' +
+           'pero se siente profundamente. Silence of Blue surge de la necesidad de reconectar con\n' +
+           'capas sutiles de experiencia,\n' +
+           'y de explorar cómo el diseño puede guiarnos a sentirlas de nuevo. A través de la luz y el color,\n' +
+           'la instalación crea un espacio donde la percepción se desacelera y el silencio se vuelve \n' +
+           'algo presente, y no ausente.'
+       )
+    },
       {
         type: 'mediaText',
         media: {
@@ -442,11 +456,17 @@ const projectsData: LocalizedProject[] = [
           src: 'https://www.youtube.com/embed/pVhO3a8txho',
           alt: 'Silence of Blue documentation',
         },
-        title: t("Mechanism & Effect", "Mecanismo e Efeito"),
-        subtitle: t("Melkweg Awards - 2019 nominee", "Melkweg Awards - indicado em 2019"),
+        title: t("Mechanism & Effect", "Mecanismo e Efeito", "Mecanismo y Efecto"),
+        subtitle: t(
+          "Melkweg Awards - 2019 nominee",
+          "Melkweg Awards - indicado em 2019",
+          "Melkweg Awards - nominado en 2019"
+        ),
         text: t(
           "As silence grows in the room, deep blue shadows gradually expand, flooding the surface and reshaping the space. The movement is intentionally minimal.  What matters here is not interaction in the traditional sense, but to stay long enough for silence to reveal itself.",
           "À medida que o silêncio cresce no ambiente, sombras azul‑profundo se expandem lentamente, inundando a superfície e remodelando o espaço. O movimento é intencionalmente mínimo. O que importa aqui não é a interação no sentido tradicional, mas permanecer tempo suficiente para que o silêncio se revele."
+          ,
+          "A medida que el silencio crece en el espacio, sombras azul profundo se expanden lentamente, inundando la superficie y remodelando el espacio. El movimiento es intencionalmente mínimo. Lo importante aquí no es la interacción en el sentido tradicional, sino permanecer el tiempo suficiente para que el silencio se revele."
         ),
       },
       {
@@ -455,6 +475,8 @@ const projectsData: LocalizedProject[] = [
         body: t(
           'Rather than presenting light as a static source, the installation treats it as a temporal material evolving over time. No single image defines the piece. Meaning emerges in the transition, in the movement from one state to the next.',
           'Em vez de apresentar a luz como uma fonte estática, a instalação a trata como um material temporal que evolui com o tempo. Nenhuma imagem isolada define a obra. O sentido surge na transição, no movimento de um estado para o outro.'
+          ,
+          'En lugar de presentar la luz como una fuente estática, la instalación la trata como un material temporal que evoluciona con el tiempo. Ninguna imagen aislada define la obra. El sentido emerge en la transición, en el movimiento de un estado al siguiente.'
         ),       
         media: [
           {
@@ -497,6 +519,11 @@ const projectsData: LocalizedProject[] = [
             'Sua superfície curva e o mecanismo interno sugerem movimento e potencial, mas permanecem imóveis. \n' +
             'Esse estado dual (inativo de dia, vivo pela luz) reforça a ideia central do projeto: \n' +
             'o silêncio como condição, não como falta. Mesmo quando inativo, o objeto mantém presença.'
+          ,
+          'Visto a la luz del día y sin iluminación, el objeto se vuelve escultórico y casi dormido. \n' +
+            'Su superficie curva y el mecanismo interno sugieren movimiento y potencial, pero permanecen inmóviles. \n' +
+            'Este estado dual (inactivo de día, vivo mediante la luz) refuerza la idea central del proyecto: \n' +
+            'el silencio como condición, no como carencia. Incluso cuando está inactivo, el objeto mantiene presencia.'
         ),
         rightImage: {
           src: '/media/sob/sob-5.png',
@@ -505,18 +532,26 @@ const projectsData: LocalizedProject[] = [
       },
       {
         type: 'inspiration',
-        heading: t("Inspiration & References", "Inspiração e Referências"),
+        heading: t("Inspiration & References", "Inspiração e Referências", "Inspiración y Referencias"),
         intro:
           t(
             'This project draws from natural and artistic moments where light transforms perception. Together, these references explore how stillness, color, and illumination can create contemplative spaces.',
             'Este projeto se inspira em momentos naturais e artísticos em que a luz transforma a percepção. Juntas, essas referências exploram como quietude, cor e iluminação podem criar espaços contemplativos.'
+            ,
+            'Este proyecto se inspira en momentos naturales y artísticos en los que la luz transforma la percepción. Juntas, estas referencias exploran cómo la quietud, el color y la iluminación pueden crear espacios contemplativos.'
           ),
         items: [
           {
-            title: t("Namib Desert Shadows (Smasara)", "Sombras do Deserto da Namíbia (Samsara)"),
+            title: t(
+              "Namib Desert Shadows (Smasara)",
+              "Sombras do Deserto da Namíbia (Samsara)",
+              "Sombras del Desierto del Namib (Samsara)"
+            ),
             body: t(
               'The slow cinematic movement of shadow and light across dune surfaces. Silence as vastness, light as revelation where shadows reshape landscape.',
               'O movimento cinematográfico lento de sombra e luz sobre as dunas. Silêncio como vastidão; luz como revelação, onde as sombras remodelam a paisagem.'
+              ,
+              'El movimiento cinematográfico lento de sombra y luz sobre las dunas. Silencio como vastedad; la luz como revelación donde las sombras remodelan el paisaje.'
             ),
             media: {
               kind: 'video',
@@ -525,10 +560,16 @@ const projectsData: LocalizedProject[] = [
             },
           },
           {
-            title: t("Bird-of-Paradise Courtship Displays", "Rituais de Corte do Ave‑do‑paraíso"),
+            title: t(
+              "Bird-of-Paradise Courtship Displays",
+              "Rituais de Corte do Ave‑do‑paraíso",
+              "Rituales de Corte del Ave del Paraíso"
+            ),
             body: t(
               'The preformative unfolding of shape, color, and presence. Transformation through form and light.',
               'O desdobrar performativo de forma, cor e presença. Transformação por meio de forma e luz.'
+              ,
+              'El despliegue performativo de forma, color y presencia. Transformación a través de la forma y la luz.'
             ),
             media: {
               kind: 'video',
@@ -537,10 +578,12 @@ const projectsData: LocalizedProject[] = [
             },
           },
           {
-            title: t('Jonh Cage - 4"33"', 'John Cage - 4"33"'),
+            title: t('Jonh Cage - 4"33"', 'John Cage - 4"33"', 'John Cage - 4"33"'),
             body: t(
               'Silence as a frame for awareness, revealing what is already present.',
               'O silêncio como moldura para a consciência, revelando o que já está presente.'
+              ,
+              'El silencio como marco de conciencia, revelando lo que ya está presente.'
             ),
             media: {
               kind: 'video',
@@ -549,10 +592,12 @@ const projectsData: LocalizedProject[] = [
             },
           },
           {
-            title: t("James Turrel", "James Turrell"),
+            title: t("James Turrel", "James Turrell", "James Turrell"),
             body: t(
               'Light as a spatial and emotional medium, capable of dissolving boundaries and altering perception.',
               'Luz como meio espacial e emocional, capaz de dissolver fronteiras e alterar a percepção.'
+              ,
+              'La luz como medio espacial y emocional, capaz de disolver fronteras y alterar la percepción.'
             ),
             media: {
               kind: 'video',
@@ -564,10 +609,12 @@ const projectsData: LocalizedProject[] = [
       },
       {
         type: "timeline",
-        title: t("Research & Process", "Pesquisa e Processo"),
+        title: t("Research & Process", "Pesquisa e Processo", "Investigación y Proceso"),
         description: t(
           "The project was developed through iterative experimentation with form, materials, and light behavior. Early research focused on how curved surfaces interact with light, and how color saturation affects spatial perception. Prototyping included: material tests to achieve the desired diffusion, experiments with light intensity and rhythm, mechanical exploration to support slow, continuous movement, and repeated testing of how the blue projection behaved across different surfaces and environments.",
           "O projeto foi desenvolvido por meio de experimentação iterativa com forma, materiais e comportamento da luz. As primeiras pesquisas focaram em como superfícies curvas interagem com a luz e como a saturação de cor afeta a percepção espacial. Os protótipos incluíram: testes de materiais para alcançar a difusão desejada, experimentos com intensidade e ritmo da luz, exploração mecânica para apoiar movimento lento e contínuo, e testes repetidos de como a projeção azul se comportava em diferentes superfícies e ambientes."
+          ,
+          "El proyecto se desarrolló mediante experimentación iterativa con forma, materiales y comportamiento de la luz. Las primeras investigaciones se centraron en cómo las superficies curvas interactúan con la luz y cómo la saturación del color afecta la percepción espacial. El prototipado incluyó: pruebas de materiales para lograr la difusión deseada, experimentos con intensidad y ritmo de la luz, exploración mecánica para sostener un movimiento lento y continuo, y pruebas repetidas de cómo la proyección azul se comportaba en distintas superficies y entornos."
         ),
         baselineAt: 0.6,
         snap: true,
@@ -581,7 +628,7 @@ const projectsData: LocalizedProject[] = [
             x: 21,
             width: 168,
             height: 210,
-            caption: t("Biocommunication", "Biocomunicação"),
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
           },
           {
             id: "water inspiration 2",
@@ -591,7 +638,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 168,
             height: 210,
-            caption: t("Biocommunication", "Biocomunicação"),
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
           },
           {
             id: "water inspiration 3",
@@ -601,7 +648,7 @@ const projectsData: LocalizedProject[] = [
             y: 68,
             width: 84,
             height: 126,
-            caption: t("Biocommunication", "Biocomunicação"),
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
           },
         
       //     //////////////////////
@@ -613,7 +660,7 @@ const projectsData: LocalizedProject[] = [
             x: 506,
             width: 147,
             height: 210,
-            caption: t("Biocommunication", "Biocomunicação"),
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
           },
           {
             id: "light experiments 2",
@@ -623,7 +670,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 136,
             height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
       //     //////////////////////
@@ -636,7 +683,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 210,
             height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
           {
@@ -647,7 +694,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 147,
             height: 210,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
       //     //////////////////////
@@ -660,7 +707,7 @@ const projectsData: LocalizedProject[] = [
             y: 30,
             width: 210,
             height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
           {
@@ -671,7 +718,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 136,
             height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
       //     //////////////////////
@@ -684,7 +731,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 210,
             height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
           {
@@ -695,7 +742,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 136,
             height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
           {
@@ -706,7 +753,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 158,
             height: 210,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
       //     //////////////////////
@@ -719,7 +766,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 158,
             height: 210,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
           {
             id: "exploration against day light 2",
@@ -729,7 +776,7 @@ const projectsData: LocalizedProject[] = [
             y: -50,
             width: 200,
             height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
       //     //////////////////////
@@ -742,7 +789,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 136,
             height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
           {
@@ -753,7 +800,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 136,
             height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
           {
@@ -764,7 +811,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 210,
             height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         
           {
@@ -775,7 +822,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 136,
             height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica"),
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
           },
         ]
       }
@@ -784,59 +831,69 @@ const projectsData: LocalizedProject[] = [
 
   // TOTEMICA
   {
-    title: t("TOTÉMICA", "TOTÉMICA"),
+    title: t("TOTÉMICA", "TOTÉMICA", "TOTÉMICA"),
     slug: '/totemica',
     thumbnail: '/media/totemic.png',
     mobileHeroImage: '/media/totemica/rama-doble.png',
     year: '2024',
-    tagline: t("Hand-painted driftwood branches", "Galhos de madeira flutuante pintados à mão"),
+    tagline: t(
+      "Hand-painted driftwood branches",
+      "Galhos de madeira flutuante pintados à mão",
+      "Ramas de madera a la deriva pintadas a mano"
+    ),
     description:
       t(
         "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
         "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
+        ,
+        "Cada rama fue recogida en paisajes costeros y rurales, y animada por ritmo y color. Un juego silencioso entre lo sagrado y lo cotidiano."
       ),
     videoThumbnail: '',
     heroMedia: '/media/2.png',
     tags: [
-      t("Wood", "Madeira"),
-      t("Composition", "Composição"),
-      t("Color", "Cor"),
-      t("Material", "Material"),
-      t("Ritual", "Ritual"),
+      t("Wood", "Madeira", "Madera"),
+      t("Composition", "Composição", "Composición"),
+      t("Color", "Cor", "Color"),
+      t("Material", "Material", "Material"),
+      t("Ritual", "Ritual", "Ritual"),
     ],
-
-    // blocks: [] // you can add later if needed
   },
 
   // TIDAL LIGHT
   {
-    title: t("Tidal Light", "Luz das Marés"),
+    title: t("Tidal Light", "Marés de Luz", "Mareas de Luz"),
     slug: 'tidal-light',
     // thumbnail: '/media/tidal.png',
     heroVideo: '/media/tidal/tidal-dark.mp4',
     videoThumbnail: '/media/tidal/tidal-experiment-1.mp4',
-    tagline: t("Breathing light installation.", "Instalação de luz que respira."),
+    tagline: t(
+      "Breathing light installation.",
+      "Instalação: luz que respira.",
+      "Instalación: luz que respira."
+    ),
     year: '2023',
     description:
       t(
         "Translating the rhythm of human breath into shifting pulses of light refracted through cast tiles of water.",
-        "Traduzindo o ritmo da respiração humana em pulsos de luz que se transformam ao atravessar moldes de água."
+        "Traduzindo o ritmo da respiração humana em pulsos de luz que se transformam ao atravessar moldes de água.",
+        "Traduciendo el ritmo de la respiración humana en pulsos de luz que se transforman al atravesar moldes de agua."
       ),
     tags: [
-      t("Breath Interface", "Interface de Respiração"),
-      t("Water & Light", "Água e Luz"),
-      t("Rhythm", "Ritmo"),
-      t("Meditative Design", "Design Meditativo"),
-      t("Interaction", "Interação"),
-      t("Material Research", "Pesquisa de Materiais"),
-      t("Wellbeing", "Bem-estar"),
+      t("Breath Interface", "Interface de Respiração", "Interfaz de Respiración"),
+      t("Water & Light", "Água e Luz", "Agua y Luz"),
+      t("Rhythm", "Ritmo", "Ritmo"),
+      t("Meditative Design", "Design Meditativo", "Diseño Meditativo"),
+      t("Interaction", "Interação", "Interacción"),
+      t("Material Research", "Pesquisa de Materiais", "Investigación de Materiales"),
+      t("Wellbeing", "Bem-estar", "Bienestar"),
     ],
     blocks: [
       {
         type: 'quote',
         quote: t(
           'Have you already noticed how your breathing pace sounds like ocean waves?  Tidal Light investigates how internal rhythms relate to natural ones. The installation draws a parallel between the pace of breathing and the movement of ocean waves, both slow, repetitive, and constantly in motion.',
-          'Você já percebeu como o ritmo da sua respiração soa como ondas do oceano? Tidal Light investiga como ritmos internos se relacionam com ritmos naturais. A instalação traça um paralelo entre o ritmo da respiração e o movimento das ondas do mar, ambos lentos, repetitivos e em constante movimento.'
+          'Você já percebeu como o ritmo da sua respiração soa como ondas do oceano? Tidal Light investiga como ritmos internos se relacionam com ritmos naturais. A instalação traça um paralelo entre o ritmo da respiração e o movimento das ondas do mar, ambos lentos, repetitivos e em constante movimento.',
+          '¿Ya has notado cómo el ritmo de tu respiración suena como las olas del océano? Tidal Light investiga cómo los ritmos internos se relacionan con los ritmos naturales. La instalación traza un paralelo entre el ritmo de la respiración y el movimiento de las olas del mar, ambos lentos, repetitivos y en constante movimiento.'
         )
       },
 
@@ -848,20 +905,24 @@ const projectsData: LocalizedProject[] = [
           src: '/media/tidal/tidal-beach.mp4',
           alt: 'Silence of Blue documentation',
         },
-        title: t("Concept", "Conceito"),
+        title: t("Concept", "Conceito", "Concepto"),
         subtitle: '',
         text: t(
           'By using breath as an input, the project creates a direct connection between the body and water. Changes in breathing pace influence the behavior of light, which is projected through textured casts of water. The resulting patterns resemble tides advancing and receding, translating an invisible physiological rhythm into a visible, spatial experience.',
           'Ao usar a respiração como entrada, o projeto cria uma conexão direta entre corpo e água. Mudanças no ritmo respiratório influenciam o comportamento da luz, que é projetada através de moldes texturizados de água. Os padrões resultantes lembram marés que avançam e recuam, traduzindo um ritmo fisiológico invisível em uma experiência espacial visível.'
+          ,
+          'Al usar la respiración como entrada, el proyecto crea una conexión directa entre el cuerpo y el agua. Los cambios en el ritmo respiratorio influyen en el comportamiento de la luz, que se proyecta a través de moldes texturizados de agua. Los patrones resultantes recuerdan a mareas que avanzan y retroceden, traduciendo un ritmo fisiológico invisible en una experiencia espacial visible.'
         )
       },
       
       {
         type: 'tripticGallery',
-        title: t("Interaction & Perception", "Interação e Percepção"),
+        title: t("Interaction & Perception", "Interação e Percepção", "Interacción y Percepción"),
         body: t(
           'The installation responds to breathing in real time. As the participant breathes, light pulses, shifts, and flows across the water tiles. Slower breaths produce calmer, wider movements; quicker breaths generate sharper, more restless patterns.',
           'A instalação responde à respiração em tempo real. À medida que a pessoa respira, a luz pulsa, se desloca e flui pelas placas de água. Respirações mais lentas geram movimentos mais calmos e amplos; respirações mais rápidas produzem padrões mais nítidos e inquietos.'
+          ,
+          'La instalación responde a la respiración en tiempo real. A medida que la persona respira, la luz pulsa, se desplaza y fluye por las placas de agua. Las respiraciones más lentas producen movimientos más calmados y amplios; las respiraciones más rápidas generan patrones más nítidos e inquietos.'
         ),
         media: [
           {
@@ -908,11 +969,13 @@ const projectsData: LocalizedProject[] = [
           src: '/media/tidal/tidal-expo-1.png',
           alt: 'Silence of Blue sculptural side view',
         },
-        title: t("Breathing gets Materialised", "A respiração se materializa"),
-        subtitle: t("Embassy of Water - Eindhoven 2019", "Embassy of Water - Eindhoven 2019"),
+        title: t("Breathing gets Materialised", "A respiração se materializa", "La respiración se materializa"),
+        subtitle: t("Embassy of Water - Eindhoven 2019", "Embassy of Water - Eindhoven 2019", "Embassy of Water - Eindhoven 2019"),
         body: t(
           "This project grew from an interest in how humans intuitively relate to water. Long before we understand it intellectually, we respond to its rhythm: the sound of waves, the rise and fall of tides, the sense of continuity they create. I wanted to explore how this natural rhythm could be mirrored back through the body. Breathing felt like the most direct and universal interface, deeply connected to emotional states. By linking breath to light and water, Tidal Light creates a bridge between internal pace and environmental movement.",
           "Este projeto nasceu do interesse em como os humanos se relacionam intuitivamente com a água. Muito antes de compreendê‑la intelectualmente, respondemos ao seu ritmo: o som das ondas, o sobe e desce das marés, a sensação de continuidade que criam. Eu queria explorar como esse ritmo natural poderia ser refletido de volta pelo corpo. A respiração parecia a interface mais direta e universal, profundamente conectada a estados emocionais. Ao ligar respiração, luz e água, Tidal Light cria uma ponte entre o ritmo interno e o movimento do ambiente."
+          ,
+          "Este proyecto nació del interés por cómo los humanos se relacionan intuitivamente con el agua. Mucho antes de comprenderla intelectualmente, respondemos a su ritmo: el sonido de las olas, el subir y bajar de las mareas, la sensación de continuidad que crean. Quería explorar cómo este ritmo natural podría reflejarse de vuelta a través del cuerpo. La respiración parecía la interfaz más directa y universal, profundamente conectada a los estados emocionales. Al vincular respiración, luz y agua, Tidal Light crea un puente entre el ritmo interno y el movimiento del entorno."
         ),
         rightImage: {
           src: '/media/tidal/tidal-expo-2.png',
@@ -921,10 +984,12 @@ const projectsData: LocalizedProject[] = [
       },
       {
         type: "timeline",
-        title: t("Inspiration, Research & Process", "Inspiração, Pesquisa e Processo"),
+        title: t("Inspiration, Research & Process", "Inspiração, Pesquisa e Processo", "Inspiración, Investigación y Proceso"),
         description: t(
           "Material experiments focused on water as a surface rather than a liquid. I created casts that capture the textures, ripples, and distortions of water in solid form, allowing light to behave unpredictably as it passes through them.",
           "Os experimentos de material focaram na água como superfície, e não como líquido. Criei moldes que capturam as texturas, ondulações e distorções da água em forma sólida, permitindo que a luz se comporte de maneira imprevisível ao atravessá-los."
+          ,
+          "Los experimentos de material se centraron en el agua como superficie y no como líquido. Creé moldes que capturan las texturas, ondulaciones y distorsiones del agua en forma sólida, permitiendo que la luz se comporte de manera impredecible al atravesarlos."
         ),
         baselineAt: 0.6,
         snap: true,
@@ -938,7 +1003,7 @@ const projectsData: LocalizedProject[] = [
             x: 20,
             width: 160,
             height: 200,
-            caption: t("Biocommunication", "Biocomunicação")
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación")
           },
           {
             id: "2",
@@ -948,7 +1013,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 160,
             height: 200,
-            caption: t("Biocommunication", "Biocomunicação")
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación")
           },
           {
             id: "0",
@@ -958,7 +1023,7 @@ const projectsData: LocalizedProject[] = [
             y: 68,
             width: 80,
             height: 120,
-            caption: t("Biocommunication", "Biocomunicação")
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación")
           },
 
            //////////////////////
@@ -970,7 +1035,7 @@ const projectsData: LocalizedProject[] = [
             x: 482,
             width: 140,
             height: 200,
-            caption: t("Biocommunication", "Biocomunicação")
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación")
           },
           {
             id: "4",
@@ -980,7 +1045,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 130,
             height: 180,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
            //////////////////////
@@ -993,7 +1058,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 200,
             height: 140,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
           {
@@ -1004,7 +1069,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 140,
             height: 200,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
            //////////////////////
@@ -1017,7 +1082,7 @@ const projectsData: LocalizedProject[] = [
             y: 30,
             width: 200,
             height: 140,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
           {
@@ -1028,7 +1093,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 130,
             height: 180,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
            //////////////////////
@@ -1041,7 +1106,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 200,
             height: 140,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
           {
@@ -1052,7 +1117,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 130,
             height: 180,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
         
           {
@@ -1063,7 +1128,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 150,
             height: 200,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
            //////////////////////
@@ -1076,7 +1141,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 150,
             height: 200,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
           {
             id: "exploration against day light 2",
@@ -1086,7 +1151,7 @@ const projectsData: LocalizedProject[] = [
             y: -50,
             width: 190,
             height: 180,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
           //////////////////////
           {
@@ -1097,7 +1162,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 130,
             height: 180,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
             {
@@ -1108,7 +1173,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 200,
             height: 140,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
           {
@@ -1119,7 +1184,7 @@ const projectsData: LocalizedProject[] = [
             y: 0,
             width: 130,
             height: 180,
-            caption: t("Metabolic Health", "Saúde Metabólica")
+            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica")
           },
 
           {
@@ -1129,7 +1194,7 @@ const projectsData: LocalizedProject[] = [
             x: 3400,
             width: 260,
             height: 170,
-            caption: t("Biocommunication", "Biocomunicação")
+            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación")
           },
         ]
       },
@@ -1149,21 +1214,27 @@ const projectsData: LocalizedProject[] = [
 
   // MOONBAR
   {
-    title: t("Moonbar", "Moonbar"),
+    title: t("Moonbar", "Moonbar", "Moonbar"),
     slug: 'moonbar',
-    tagline: t("Solar-powered bicycle handlebar", "Guidão de bicicleta movido a energia solar"),
+    tagline: t(
+      "Solar-powered bicycle handlebar",
+      "Guidão de bicicleta movido a energia solar",
+      "Manillar de bicicleta alimentado por energía solar"
+    ),
     thumbnail: '/media/moonbar2.png',
     heroMedia: '/media/moonbar/moonbar-hero.png',
     description: t(
       "Bicycle handlebar concept powered by a small solar panel, integrating stored sunlight directly into the grip.",
       "Conceito de guidão de bicicleta alimentado por um pequeno painel solar, integrando a luz armazenada diretamente na empunhadura."
+      ,
+      "Concepto de manillar de bicicleta alimentado por un pequeño panel solar, integrando la luz almacenada directamente en la empuñadura."
     ),
     tags: [
-      t("Product Design", "Design de Produto"),
-      t("Solar Power", "Energia Solar"),
-      t("Urban Mobility", "Mobilidade Urbana"),
-      t("Lighting", "Iluminação"),
-      t("Sustainable Design", "Design Sustentável"),
+      t("Product Design", "Design de Produto", "Diseño de Producto"),
+      t("Solar Power", "Energia Solar", "Energía Solar"),
+      t("Urban Mobility", "Mobilidade Urbana", "Movilidad Urbana"),
+      t("Lighting", "Iluminação", "Iluminación"),
+      t("Sustainable Design", "Design Sustentável", "Diseño Sostenible"),
     ],
     blocks: [
       {
@@ -1171,6 +1242,8 @@ const projectsData: LocalizedProject[] = [
         quote: t(
           'The same way the moon is visible not because it creates light, but because it reflects it, Moonbar works by absorbing sunlight and releases it when needed.',
           'Da mesma forma que a lua é visível não porque cria luz, mas porque a reflete, Moonbar funciona absorvendo a luz do sol e liberando-a quando necessário.'
+          ,
+          'De la misma manera que la luna es visible no porque crea luz, sino porque la refleja, Moonbar funciona absorbiendo la luz del sol y liberándola cuando es necesario.'
         )
       },
       {
@@ -1180,20 +1253,24 @@ const projectsData: LocalizedProject[] = [
           src: '/media/moonbar/moonbar-full.mp4',
           alt: 'Silence of Blue documentation',
         },
-        title: t("Concept", "Conceito"),
-        subtitle: t("Moonbar Prototype", "Protótipo Moonbar"),
+        title: t("Concept", "Conceito", "Concepto"),
+        subtitle: t("Moonbar Prototype", "Protótipo Moonbar", "Prototipo Moonbar"),
         text: t(
           'Grip, light, and energy source are combined into a single object. By embedding the light inside the handlebar, Moonbar removes the need for external bike lights and keeps the design clean. Light runs through the curved handlebar, creating a continuous glow instead of a direct beam. The result is subtle, calm, and functional.',
           'Empunhadura, luz e fonte de energia se combinam em um único objeto. Ao embutir a luz dentro do guidão, o Moonbar elimina a necessidade de luzes externas e mantém o design limpo. A luz percorre o guidão curvo, criando um brilho contínuo em vez de um feixe direto. O resultado é sutil, calmo e funcional.'
+          ,
+          'Empuñadura, luz y fuente de energía se combinan en un solo objeto. Al integrar la luz dentro del manillar, Moonbar elimina la necesidad de luces externas y mantiene el diseño limpio. La luz recorre el manillar curvo, creando un brillo continuo en lugar de un haz directo. El resultado es sutil, calmado y funcional.'
         )
          },
 
       {
         type: 'tripticGallery',
-        title: t("Design & Form", "Design e Forma"),
+        title: t("Design & Form", "Design e Forma", "Diseño y Forma"),
         body: t(
           'Moonbar works automatically. The solar panel charges during the day, and the light turns on at night. The glow follows the curve of the bar, improving visibility without distracting the rider. The handlebar shape is inspired by lunar phases. Different curves were explored to balance ergonomics, light distribution, and material thickness.',
           'Moonbar funciona automaticamente. O painel solar carrega durante o dia, e a luz acende à noite. O brilho acompanha a curva do guidão, melhorando a visibilidade sem distrair o ciclista. A forma do guidão é inspirada nas fases da lua. Diferentes curvas foram exploradas para equilibrar ergonomia, distribuição de luz e espessura do material.'
+          ,
+          'Moonbar funciona automáticamente. El panel solar se carga durante el día y la luz se enciende por la noche. El brillo sigue la curva del manillar, mejorando la visibilidad sin distraer al ciclista. La forma del manillar está inspirada en las fases lunares. Se exploraron diferentes curvas para equilibrar ergonomía, distribución de la luz y grosor del material.'
         ),
          media: [
           {
@@ -1247,11 +1324,13 @@ const projectsData: LocalizedProject[] = [
           src: '/media/moonbar/luna-menguante.png',
           alt: 'Silence of Blue sculptural side view',
         },
-        title: t("The Moon as reference", "A Lua como referência"),
+        title: t("The Moon as reference", "A Lua como referência", "La Luna como referencia"),
         subtitle: "",
         body: t(
           "I was interested in how the moon becomes visible through reflection rather than emission. That idea felt relevant for sustainable design — using what is already available instead of adding more. Moonbar translates this principle into a functional object: sunlight is collected quietly, stored, and later reflected back as light. It’s a small gesture, but one that rethinks how everyday mobility objects can work more gently with their environment.",
           "Eu me interessei por como a lua se torna visível pela reflexão, e não pela emissão. Essa ideia parecia relevante para o design sustentável — usar o que já está disponível em vez de adicionar mais. Moonbar traduz esse princípio em um objeto funcional: a luz do sol é coletada de forma silenciosa, armazenada e depois refletida como luz. É um gesto pequeno, mas que repensa como objetos cotidianos de mobilidade podem operar de forma mais gentil com o ambiente."
+          ,
+          "Me interesó cómo la luna se vuelve visible por reflexión y no por emisión. Esa idea parecía relevante para el diseño sostenible: usar lo que ya está disponible en lugar de añadir más. Moonbar traduce este principio en un objeto funcional: la luz solar se recoge silenciosamente, se almacena y luego se refleja como luz. Es un gesto pequeño, pero que replantea cómo los objetos cotidianos de movilidad pueden funcionar de forma más amable con su entorno."
         ),
         rightImage: {
           src: '/media/moonbar/bar.png',
@@ -1288,20 +1367,24 @@ const projectsData: LocalizedProject[] = [
     tagline: t(
       "Fragments of wood slowly reappear beneath the surface.",
       "Fragmentos de madeira reaparecem lentamente sob a superfície."
+      ,
+      "Fragmentos de madera reaparecen lentamente bajo la superficie."
     ),
     description:
       t(
         "Material research project centered on transformation and repurposing collected wood into sculptural objects.",
         "Projeto de pesquisa de materiais centrado na transformação e reaproveitamento de madeira coletada em objetos escultóricos."
+        ,
+        "Proyecto de investigación de materiales centrado en la transformación y reutilización de madera recolectada en objetos escultóricos."
       ),
       tags: [
-        t("Wood", "Madeira"),
-        t("Quiet", "Silêncio"),
-        t("Material Research", "Pesquisa de Materiais"),
-        t("Transformation", "Transformação"),
-        t("Repurposing", "Reaproveitamento"),
+        t("Wood", "Madeira", "Madera"),
+        t("Quiet", "Silêncio", "Silencio"),
+        t("Material Research", "Pesquisa de Materiais", "Investigación de Materiales"),
+        t("Transformation", "Transformação", "Transformación"),
+        t("Repurposing", "Reaproveitamento", "Reutilización"),
       ],
-    title: t("Quiet Matter", "Matéria Silenciosa"),
+    title: t("Quiet Matter", "Matéria Silenciosa", "Materia Silenciosa"),
     slug: 'quiet-matter',
     thumbnail: '/media/frozen-woods-1.png',
     blocks: [
@@ -1311,6 +1394,8 @@ const projectsData: LocalizedProject[] = [
           t(
             'The project reflects an ongoing interest in repurposing found materials — allowing traces of their origin to remain visible within more refined, intentional forms.',
             'O projeto reflete um interesse contínuo em reaproveitar materiais encontrados — permitindo que traços de sua origem permaneçam visíveis dentro de formas mais refinadas e intencionais.'
+            ,
+            'El proyecto refleja un interés continuo en reutilizar materiales encontrados, permitiendo que los rastros de su origen permanezcan visibles dentro de formas más refinadas e intencionales.'
           )
       },
       {
@@ -1359,59 +1444,67 @@ const projectsData: LocalizedProject[] = [
 
   // RURALES
   {
-    title: t("RURALES", "RURALES"),
+    title: t("RURALES", "RURALES", "RURALES"),
     slug: '/rurales',
     thumbnail: '/media/rurales.png',
     mobileHeroImage:'/media/rurales/rural-6.png',
     year: '2024',
-    tagline: t("Hand-painted driftwood branches", "Galhos de madeira flutuante pintados à mão"),
+    tagline: t(
+      "Hand-painted driftwood branches",
+      "Galhos de madeira flutuante pintados à mão",
+      "Ramas de madera a la deriva pintadas a mano"
+    ),
     description:
       t(
         "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
         "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
+        ,
+        "Cada rama fue recogida en paisajes costeros y rurales, y animada por ritmo y color. Un juego silencioso entre lo sagrado y lo cotidiano."
       ),
     videoThumbnail: '',
     heroMedia: '/media/rurales.png',
     tags: [
-      t("Wood", "Madeira"),
-      t("Composition", "Composição"),
-      t("Color", "Cor"),
-      t("Material", "Material"),
-      t("Ritual", "Ritual"),
+      t("Wood", "Madeira", "Madera"),
+      t("Composition", "Composição", "Composición"),
+      t("Color", "Cor", "Color"),
+      t("Material", "Material", "Material"),
+      t("Ritual", "Ritual", "Ritual"),
     ],
   },
 
    // MARIANROSAS
    {
-    title: t("MARIANROSAS", "MARIANROSAS"),
+    title: t("MARIANROSAS", "MARIANROSAS", "MARIANROSAS"),
     link: 'https://soundcloud.com/marianrosas',
     heroVideo: '/media/marianrosas.mp4',
     videoThumbnail: '/media/marianrosas.mp4',
     description:
-      t("I DJ sometimes ◡̈", "Às vezes viro DJ ◡̈"),
+      t("I DJ sometimes ◡̈", "Às vezes eu faço sets de DJ ◡̈", "A veces hago sets de DJ ◡̈"),
   },
   
   // MERGED LANDSCAPES
   {
-    title: t("Merged Landscapes", "Paisagens Fundidas"),
+    title: t("Merged Landscapes", "Paisagens Fundidas", "Paisajes Fusionados"),
     slug: 'merged-landscapes',
     thumbnail: '/media/merged-landscapes.png',
     description:
       t(
         "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
+        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas.",
+        "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
       ),
   },
 
   // VALUE TUNING
   {
-    title: t("Value Tuning", "Ajuste de Valores"),
+    title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
     slug: 'value-tuning',
     thumbnail: '/media/value-tuning.png',
     description:
       t(
         "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas."
+        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas.",
+        "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
       ),
   },
 

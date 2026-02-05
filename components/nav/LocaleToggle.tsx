@@ -10,13 +10,13 @@ export default function LocaleToggle() {
   const pathname = usePathname();
   const locale = useLocale();
   const { theme } = useTheme();
-  const handleLocaleChange = (nextLocale: "en" | "pt-br") => {
+  const handleLocaleChange = (nextLocale: "en" | "pt-br" | "es") => {
     const href = localizePath(pathname ?? "/", nextLocale);
     window.location.href = href;
   };
 
   return (
-    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em]">
+    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.2em]">
       <button
         type="button"
         onClick={() => handleLocaleChange("en")}
@@ -25,7 +25,7 @@ export default function LocaleToggle() {
       >
         EN
       </button>
-      <span className={`${theme.nav} opacity-60`}>/</span>
+      <span className={`${theme.nav} opacity-60`}>|</span>
       <button
         type="button"
         onClick={() => handleLocaleChange("pt-br")}
@@ -34,6 +34,15 @@ export default function LocaleToggle() {
       >
         PT
       </button>
+      <span className={`${theme.nav} opacity-60`}>|</span>
+      <button
+        type="button"
+        onClick={() => handleLocaleChange("es")}
+        aria-current={locale === "es" ? "true" : undefined}
+        className={`${theme.nav} ${locale === "es" ? "font-semibold underline underline-offset-4" : "opacity-60"}`}
+      >
+        ES
+      </button>
     </div>
-  )
+  );
 }

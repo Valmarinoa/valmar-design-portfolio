@@ -13,6 +13,14 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
   }
 
+  if (pathname.startsWith("/es")) {
+    const url = request.nextUrl.clone();
+    url.pathname = pathname.replace(/^\/es(\/|$)/, "/");
+
+    requestHeaders.set("x-locale", "es");
+    return NextResponse.rewrite(url, { request: { headers: requestHeaders } });
+  }
+
   requestHeaders.set("x-locale", "en");
   return NextResponse.next({ request: { headers: requestHeaders } });
 }

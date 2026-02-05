@@ -23,7 +23,6 @@ export default function DesktopNavbar() {
   }));
 
   return (
-
     <div className="hidden md:flex fixed top-0 left-0 right-0 z-9997 px-8 py-6 items-center justify-between pointer-events-none mix-blend-exclusion">
       <div className="flex items-center gap-10 pointer-events-auto">
         <Link href={localizePath("/", locale)} aria-label={messages.nav.logoAria}>
@@ -37,7 +36,7 @@ export default function DesktopNavbar() {
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-xs uppercase tracking-[0.15em] ${theme.nav}`}
+                className={`text-xs uppercase tracking-widest ${theme.nav}`}
                 aria-label={item.ariaLabel}
               >
                 {item.label}
@@ -46,7 +45,7 @@ export default function DesktopNavbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className={`text-xs uppercase tracking-[0.2em] ${theme.nav}`}
+                className={`text-xs uppercase tracking-widest ${theme.nav}`}
                 aria-label={item.ariaLabel}
               >
                 {item.label}
