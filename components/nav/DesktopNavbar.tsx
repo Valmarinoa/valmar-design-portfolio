@@ -64,7 +64,7 @@ export default function DesktopNavbar() {
                 {item.label}
               </Link>
             )
-          )}
+})}
         </nav>
       </div>
       <div className="pointer-events-auto">
