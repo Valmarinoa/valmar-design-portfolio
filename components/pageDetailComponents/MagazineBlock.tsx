@@ -70,7 +70,7 @@ export default function MagazineBlock({ block }: Props) {
         h-screen
          md:max-h-[600px]
         relative
-        px-3
+        
         ${className}
       `}
     >

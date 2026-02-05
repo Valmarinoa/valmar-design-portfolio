@@ -32,7 +32,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           style={{ backgroundImage: "url('/media/sky2.png')" }}
         />
         <div className="fixed inset-0 -z-10" />
-
         <AutoThemeProvider>
           <DesktopNavbar />
           <MobileNavbar />

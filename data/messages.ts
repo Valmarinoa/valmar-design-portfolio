@@ -39,7 +39,7 @@ const messages: Record<Locale, Messages> = {
         "My work explores how the sensibility of Latin American magical realism can live in contemporary design.\n" +
         "I’m interested in how poetry and a bit of magic can exist in everyday technology, using both handcrafted and digital tools.",
       desktopBlurb:
-        "Valentina Marino is a Product & Experience designer, translating the sensibility of Latin American magical realism into\n" +
+        "Valentina Marino is a Product & Experience designer and developer, translating the sensibility of Latin American magical realism into\n" +
         "contemporary design and technology.",
       fallbackDescription: "Project description coming soon.",
     },
@@ -72,7 +72,7 @@ const messages: Record<Locale, Messages> = {
         "Meu trabalho explora como a sensibilidade do realismo mágico latino-americano pode viver no design contemporâneo.\n" +
         "Tenho interesse em como a poesia e um pouco de magia podem existir na tecnologia cotidiana, usando tanto ferramentas artesanais quanto digitais.",
       desktopBlurb:
-        "Valentina Marino é designer de Produto & Experiência, traduzindo a sensibilidade do realismo mágico latino-americano em\n" +
+        "Valentina Marino é designer e desenvolvedora de Produto & Experiência, traduzindo a sensibilidade do realismo mágico latino-americano em\n" +
         "design e tecnologia contemporâneos.",
       fallbackDescription: "Descrição do projeto em breve.",
     },

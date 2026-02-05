@@ -10,9 +10,9 @@ export default async function ProjectSlugPage({
 }) {
     // ⬇️ unwrap the params Promise
     const { slug } = await params;
+
     const locale = await getServerLocale();
     const project = getProjectBySlug(locale, slug);
-    
 
     if (!project) {
         notFound();

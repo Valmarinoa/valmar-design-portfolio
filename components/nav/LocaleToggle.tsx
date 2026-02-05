@@ -10,18 +10,29 @@ export default function LocaleToggle() {
   const pathname = usePathname();
   const locale = useLocale();
   const { theme } = useTheme();
-
-  const nextLocale = locale === "pt-br" ? "en" : "pt-br";
-  const label = locale === "pt-br" ? "EN" : "PT";
-  const href = localizePath(pathname ?? "/", nextLocale);
+  const handleLocaleChange = (nextLocale: "en" | "pt-br") => {
+    const href = localizePath(pathname ?? "/", nextLocale);
+    window.location.href = href;
+  };
 
   return (
-    <Link
-      href={href}
-      aria-label={`Switch language to ${nextLocale === "pt-br" ? "Português" : "English"}`}
-      className={`text-xs uppercase tracking-[0.2em] ${theme.nav}`}
-    >
-      {label}
-    </Link>
-  );
+    <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em]">
+      <button
+        type="button"
+        onClick={() => handleLocaleChange("en")}
+        aria-current={locale === "en" ? "true" : undefined}
+        className={`${theme.nav} ${locale === "en" ? "font-semibold underline underline-offset-4" : "opacity-60"}`}
+      >
+        EN
+      </button>
+      <span className={`${theme.nav} opacity-60`}>/</span>
+      <button
+        type="button"
+        onClick={() => handleLocaleChange("pt-br")}
+        aria-current={locale === "pt-br" ? "true" : undefined}
+        className={`${theme.nav} ${locale === "pt-br" ? "font-semibold underline underline-offset-4" : "opacity-60"}`}
+      >
+        PT
+      </button>
+    </div>
 }
