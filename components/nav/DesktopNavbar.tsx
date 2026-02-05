@@ -5,8 +5,9 @@ import LogoSvg from "@/components/svg/LogoSvg";
 import { useTheme } from "@/components/providers/theme-context";
 import useLocale from "@/lib/use-locale";
 import { getMessages } from "@/data/messages";
-import { localizePath } from "@/lib/i18n";
+import { localizePath, stripLocaleFromPathname } from "@/lib/i18n";
 import LocaleToggle from "@/components/nav/LocaleToggle";
+import { usePathname } from "next/navigation";
 
 function isExternalUrl(url: string) {
   return /^https?:\/\//i.test(url) || /^mailto:/i.test(url);
@@ -16,6 +17,8 @@ export default function DesktopNavbar() {
   const { theme } = useTheme();
   const locale = useLocale();
   const messages = getMessages(locale);
+  const pathname = usePathname();
+  const normalizedPath = stripLocaleFromPathname(pathname ?? "/");
 
   const menuItems = messages.nav.items.map((item) => ({
     ...item,
@@ -29,8 +32,18 @@ export default function DesktopNavbar() {
           <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
         </Link>
         <nav className="flex items-center gap-6">
-          {menuItems.map((item) =>
-            isExternalUrl(item.href) ? (
+          {menuItems.map((item) => {
+            const isExternal = isExternalUrl(item.href);
+            const isActive = !isExternal && stripLocaleFromPathname(item.href) === normalizedPath;
+
+            const label = (
+              <div className="items-center flex flex-col justify-center overflow-visible h-[15px]">
+                {item.label}
+              </div>
+            );
+
+            return isExternal ? (
+
               <a
                 key={item.label}
                 href={item.href}
@@ -51,7 +64,7 @@ export default function DesktopNavbar() {
                 {item.label}
               </Link>
             )
-          )}
+})}
         </nav>
       </div>
       <div className="pointer-events-auto">

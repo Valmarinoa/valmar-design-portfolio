@@ -4,6 +4,8 @@ import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
 import { useTheme } from "@/components/providers/theme-context";
+import { usePathname } from "next/navigation";
+import { stripLocaleFromPathname } from "@/lib/i18n";
 
 export interface StaggeredMenuItem {
   label: string;
@@ -56,6 +58,8 @@ export default function StaggeredMenu({
   onMenuClose,
 }: StaggeredMenuProps) {
   const { theme } = useTheme();
+  const pathname = usePathname();
+  const normalizedPath = stripLocaleFromPathname(pathname ?? "/");
 
   const [mounted, setMounted] = useState(open);
   const [portalEl, setPortalEl] = useState<HTMLElement | null>(null);
@@ -274,6 +278,8 @@ export default function StaggeredMenu({
 
   if (!mounted || !portalEl) return null;
 
+  const isExternalUrl = (url: string) => /^https?:\/\//i.test(url) || /^mailto:/i.test(url);
+
   const ui = (
     <div
       className={`sm-scope ${isFixed ? "fixed inset-0" : "relative"} z-9996 overflow-hidden pointer-events-none`}
@@ -297,20 +303,24 @@ export default function StaggeredMenu({
       >
         <div className="sm-panel-inner flex-1 flex flex-col gap-5">
           <ul className="sm-panel-list list-none m-0 p-0 flex flex-col gap-5" role="list">
-            {items.map((it, idx) => (
-              <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
-                <a
-                  className={`sm-panel-item relative ${theme.text} font-semibold text-3xl cursor-pointer leading-none tracking-[-2px] uppercase inline-block no-underline pr-[1.4em]`}
-                  href={it.link}
-                  aria-label={it.ariaLabel}
-                  onClick={onClose} // ✅ closes menu after navigating
-                >
-                  <span className="sm-panel-itemLabel inline-block origin-[50%_100%] will-change-transform">
-                    {it.label}
-                  </span>
-                </a>
-              </li>
-            ))}
+            {items.map((it, idx) => {
+              const isActive = !isExternalUrl(it.link) && stripLocaleFromPathname(it.link) === normalizedPath;
+
+              return (
+                <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
+                  <a
+                    className={`sm-panel-item relative ${theme.text} font-semibold text-3xl cursor-pointer leading-none tracking-[-2px] uppercase inline-block no-underline pr-[1.4em]`}
+                    href={it.link}
+                    aria-label={it.ariaLabel}
+                    onClick={onClose} // ✅ closes menu after navigating
+                  >
+                    <span className="sm-panel-itemLabel inline-flex items-center gap-3 origin-[50%_100%] will-change-transform">
+                      {it.label}
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           {footerContent && (
