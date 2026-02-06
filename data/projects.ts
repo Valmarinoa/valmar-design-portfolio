@@ -189,6 +189,7 @@ export const THEMES: Record<ThemeKey, ThemeClasses> = {
     mobileModalBg: "transparent",
     logo: "text-white",
     nav: "text-white",
+    love: "text-neutral-900",
   },
 
   totemica: {
@@ -198,15 +199,17 @@ export const THEMES: Record<ThemeKey, ThemeClasses> = {
     mobileModalBg: "bg-amber-500",
     logo: "text-amber-500",
     nav: "text-amber-500",
+    love: "text-amber-500",
   },
 
   rurales: {
-    text: "text-blue-950",
+    text: "text-[#131b72]",
     bg: "transparent",
-    border: "border-blue-950",
+    border: "border-transparent",
     mobileModalBg: "transparent",
-    logo: "text-blue-950",
-    nav: "text-blue-950",
+    logo: "text-[#131b72]",
+    nav: "text-yellow-200",
+    love: "text-[#131b72]",
   },
 };
 
@@ -1478,7 +1481,7 @@ const projectsData: LocalizedProject[] = [
     heroVideo: '/media/marianrosas.mp4',
     videoThumbnail: '/media/marianrosas.mp4',
     description:
-      t("I DJ sometimes ◡̈", "Às vezes eu faço sets de DJ ◡̈", "A veces hago sets de DJ ◡̈"),
+      t("I DJ sometimes ◡̈", "Às vezes sou DJ ◡̈", "A veces soy DJ ◡̈"),
   },
   
   // MERGED LANDSCAPES

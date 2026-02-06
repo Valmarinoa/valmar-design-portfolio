@@ -53,6 +53,7 @@ export default function MobileNavbar() {
               <div className={`h-10 rounded-full flex items-center justify-center px-3 ${theme.nav}`}>
                 <StaggeredMenuToggle
                   open={open}
+                  className={`${theme.nav}`}
                   onToggle={() => setOpen((v) => !v)}
                 />
               </div>

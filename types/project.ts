@@ -5,6 +5,7 @@ export type ThemeClasses = {
   mobileModalBg: string;
   logo: string;
   nav: string; 
+  love: string;
 };
 
 export interface StaggeredMenuItem {

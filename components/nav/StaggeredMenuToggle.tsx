@@ -2,7 +2,6 @@
 
 import React, { useCallback, useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
-import { useTheme } from "@/components/providers/theme-context";
 
 type Props = {
   open: boolean;
@@ -11,49 +10,88 @@ type Props = {
 };
 
 export default function StaggeredMenuToggle({ open, onToggle, className }: Props) {
-  const { theme } = useTheme();
+  // Three dots positioned in a triangle (like your SVG)
+  const dotBLRef = useRef<HTMLSpanElement | null>(null); // Bottom-left → becomes /
+  const dotBRRef = useRef<HTMLSpanElement | null>(null); // Bottom-right → becomes \
+  const dotTRef = useRef<HTMLSpanElement | null>(null);  // Top → fades out
 
-  const plusHRef = useRef<HTMLSpanElement | null>(null);
-  const plusVRef = useRef<HTMLSpanElement | null>(null);
-  const iconRef = useRef<HTMLSpanElement | null>(null);
+  const tweenRef = useRef<gsap.core.Timeline | null>(null);
 
-  const spinTweenRef = useRef<gsap.core.Timeline | null>(null);
-
+  // Set initial positions (triangle formation matching your SVG proportions)
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      const h = plusHRef.current;
-      const v = plusVRef.current;
-      const icon = iconRef.current;
-      if (!h || !v || !icon) return;
+      const bl = dotBLRef.current;
+      const br = dotBRRef.current;
+      const t = dotTRef.current;
+      if (!bl || !br || !t) return;
 
-      gsap.set(h, { transformOrigin: "50% 50%", rotate: 0 });
-      gsap.set(v, { transformOrigin: "50% 50%", rotate: 90 });
-      gsap.set(icon, { rotate: 0, transformOrigin: "50% 50%" });
+      // Initial: triangle formation (14px container scaled to match 71x66 viewBox ratios)
+      gsap.set(bl, { 
+        x: 0, 
+        y: 6,           // ~65% down
+        scale: 1, 
+        rotate: 0,
+        transformOrigin: "50% 50%",
+        opacity: 1 
+      });
+      gsap.set(br, { 
+        x: 10,          // ~70% across  
+        y: 6,
+        scale: 1,
+        rotate: 0,
+        transformOrigin: "50% 50%",
+        opacity: 1 
+      });
+      gsap.set(t, { 
+        x: 5,           // centered
+        y: 0,           // top
+        scale: 1,
+        opacity: 1,
+        transformOrigin: "50% 50%" 
+      });
     });
 
     return () => ctx.revert();
   }, []);
 
   const animateIcon = useCallback((opening: boolean) => {
-    const h = plusHRef.current;
-    const v = plusVRef.current;
-    const icon = iconRef.current;
-    if (!h || !v || !icon) return;
+    const bl = dotBLRef.current;
+    const br = dotBRRef.current;
+    const t = dotTRef.current;
+    if (!bl || !br || !t) return;
 
-    spinTweenRef.current?.kill();
+    tweenRef.current?.kill();
 
     if (opening) {
-      gsap.set(icon, { rotate: 0, transformOrigin: "50% 50%" });
-      spinTweenRef.current = gsap
-        .timeline({ defaults: { ease: "power4.out" } })
-        .to(h, { rotate: 45, duration: 0.5 }, 0)
-        .to(v, { rotate: -45, duration: 0.5 }, 0);
+      tweenRef.current = gsap
+        .timeline({ defaults: { ease: "power4.out", duration: 0.5 } })
+        .to(t, { scale: 0, opacity: 0, duration: 0.2 }, 0)
+        .to(bl, { 
+          scaleY: 5,      
+          rotate: 45,
+          x: 5,         
+          y: 0,
+          duration: 0.5 
+        }, 0)
+        .to(br, { 
+          scaleY: 5,
+          rotate: -45,
+          x: 5,         
+          y: 0,
+          duration: 0.5 
+        }, 0);
     } else {
-      spinTweenRef.current = gsap
-        .timeline({ defaults: { ease: "power3.inOut" } })
-        .to(h, { rotate: 0, duration: 0.35 }, 0)
-        .to(v, { rotate: 90, duration: 0.35 }, 0)
-        .to(icon, { rotate: 0, duration: 0.001 }, 0);
+      tweenRef.current = gsap
+        .timeline({ defaults: { ease: "power3.inOut", duration: 0.35 } })
+      
+        .to([bl, br], { 
+          scaleY: 1,
+          rotate: 0,
+          duration: 0.35 
+        }, 0)
+        .to(bl, { x: 0, y: 6 }, 0)
+        .to(br, { x: 10, y: 6 }, 0)
+        .to(t, { scale: 1, opacity: 1, duration: 0.25 }, 0.1);
     }
   }, []);
 
@@ -68,23 +106,26 @@ export default function StaggeredMenuToggle({ open, onToggle, className }: Props
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
       className={[
-        "inline-flex items-center justify-center",
-        // theme.nav, // ✅ uses theme color classes
+        "inline-flex items-center justify-center w-10 h-10",
         className ?? "",
       ].join(" ")}
     >
       <span
-        ref={iconRef}
-        className="relative w-[14px] h-[14px] inline-flex items-center justify-center [will-change:transform]"
+        className="relative w-[14px] h-[14px] inline-block"
         aria-hidden="true"
       >
+        {/* Three dots - each 4px to match proportions of your SVG circles */}
         <span
-          ref={plusHRef}
-          className="absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
+          ref={dotBLRef}
+          className="absolute w-1 h-1 bg-current rounded-full [will-change:transform]"
         />
         <span
-          ref={plusVRef}
-          className="absolute left-1/2 top-1/2 w-full h-[2px] bg-current rounded-[2px] -translate-x-1/2 -translate-y-1/2 [will-change:transform]"
+          ref={dotBRRef}
+          className="absolute w-1 h-1 bg-current rounded-full [will-change:transform]"
+        />
+        <span
+          ref={dotTRef}
+          className="absolute w-1 h-1 bg-current rounded-full [will-change:transform]"
         />
       </span>
     </button>

@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import { useTheme } from "@/components/providers/theme-context";
 import { usePathname } from "next/navigation";
 import { stripLocaleFromPathname } from "@/lib/i18n";
+import LocaleToggle from "./LocaleToggle";
 
 export interface StaggeredMenuItem {
   label: string;
@@ -308,7 +309,7 @@ export default function StaggeredMenu({
               return (
                 <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
                   <a
-                    className={`sm-panel-item relative ${theme.nav} text-3xl cursor-pointer leading-none tracking-[0.12em] uppercase inline-block no-underline`}
+                    className={`sm-panel-item relative ${theme.love} text-3xl cursor-pointer leading-none  font-medium uppercase inline-block no-underline`}
                     href={it.link}
                     aria-label={it.ariaLabel}
                     onClick={onClose} // ✅ closes menu after navigating
@@ -333,7 +334,7 @@ export default function StaggeredMenu({
                       href={s.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`sm-socials-link text-sm ${theme.text} no-underline relative inline-block py-[2px]`}
+                      className={`sm-socials-link text-sm ${theme.love} no-underline relative inline-block py-[2px]`}
                     >
                       {s.label}
                     </a>
@@ -342,11 +343,11 @@ export default function StaggeredMenu({
               </ul>
             </div>
           )}
-          {footerContent && (
-            <div className="sm-footer mt-auto pt-6 flex flex-col gap-3 " aria-label="Language switcher">
-              {footerContent}
+          {/* {footerContent && ( */}
+            <div className={`sm-footer mt-auto mb-10 pt-6 flex flex-col gap-3 ${theme.love}`} aria-label="Language switcher">
+              <LocaleToggle/>
             </div>
-          )}
+          {/* )} */}
 
          
         </div>

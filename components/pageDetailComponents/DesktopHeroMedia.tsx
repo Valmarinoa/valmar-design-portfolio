@@ -93,7 +93,7 @@ export default function DesktopHeroMedia({
           opacity: contentOpacity,
           willChange: "transform, opacity",
         }}
-        className="md:flex-row flex flex-col absolute bottom-0 left-0 right-0 py-8 md:pb-14 md:relative z-9999 mix-blend-exclusion md:mix-blend-normal text-white md:text-neutral-900"
+        className="md:flex-row flex flex-col absolute bottom-0 left-0 right-0 py-8 md:pb-4 md:relative z-9999 mix-blend-exclusion md:mix-blend-normal text-white md:text-neutral-900"
       >
         <div className="flex flex-col justify-end w-full md:w-1/2 pb-4 px-3 gap-1 md:gap-0">
           <BlurText
@@ -149,7 +149,7 @@ export default function DesktopHeroMedia({
       </motion.div>
 
       {/* MEDIA (parallax) */}
-      <div className="relative w-full mt-0 h-screen md:pb-[50%] overflow-hidden">
+      <div className="relative w-full mt-0 h-screen md:h-[60vh] overflow-hidden">
         <motion.div
           className="absolute inset-0"
           style={{

@@ -11,8 +11,8 @@ export default function MobileNavbar() {
 
   return (
     <div>
-      <div className="fixed bottom-0 left-1/2 -translate-x-[50%] z-9997">
-        <p className={`text-xs ${theme.nav} px-3 pt-2 pb-1`}>{messages.footer.withLove}</p>
+      <div className="fixed bottom-0 left-1/2 -translate-x-[50%] z-9996">
+        <p className={`text-xs ${theme.love} px-3 pt-2 pb-1`}>{messages.footer.withLove}</p>
       </div>
     </div>
   );

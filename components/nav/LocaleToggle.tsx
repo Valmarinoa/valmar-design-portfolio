@@ -31,33 +31,33 @@ export default function LocaleToggle() {
         type="button"
         onClick={() => handleLocaleChange("en")}
         aria-current={locale === "en" ? "true" : undefined}
-        className={`${theme.nav} ${locale === "en" ? "font-semibold" : "opacity-60"}`}
+        className={` ${locale === "en" ? "font-semibold" : "opacity-60"}`}
       >
-        <div className="items-center gap-1.5 overflow-visible h-[15px]">
+        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px]">
           EN
          <div>{renderDot(locale === "en")}</div> 
         </div>
       </button>
-      <span className={`${theme.nav} opacity-60`}>|</span>
+      <span className={` opacity-60`}>|</span>
       <button
         type="button"
         onClick={() => handleLocaleChange("pt-br")}
         aria-current={locale === "pt-br" ? "true" : undefined}
-        className={`${theme.nav} ${locale === "pt-br" ? "font-semibold" : "opacity-60"}`}
+        className={` ${locale === "pt-br" ? "font-semibold" : "opacity-60"}`}
       >
-        <div className="items-center gap-1.5 overflow-visible h-[15px]">
+        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px]">
          PT
          <div>{renderDot(locale === "pt-br")}</div> 
         </div>
       </button>
-      <span className={`${theme.nav} opacity-60`}>|</span>
+      <span className={` opacity-60`}>|</span>
       <button
         type="button"
         onClick={() => handleLocaleChange("es")}
         aria-current={locale === "es" ? "true" : undefined}
-        className={`${theme.nav} ${locale === "es" ? "font-semibold" : "opacity-60"}`}
+        className={` ${locale === "es" ? "font-semibold" : "opacity-60"}`}
       >
-        <div className="items-center gap-1.5 overflow-visible h-[15px]">
+        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px]">
           ES
           <div>{renderDot(locale === "es")}</div> 
         </div>
