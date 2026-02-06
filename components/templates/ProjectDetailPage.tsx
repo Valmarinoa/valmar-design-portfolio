@@ -45,7 +45,7 @@ const tagItem = {
 
 export default function ProjectDetailPage({ project }: Props) {
     return (
-        <div className="w-dvw min-h-screen flex flex-col items-center max-w-[1240px] mx-auto px-0 md:px-6 text-neutral-800">
+        <div className="w-dvw min-h-dvh flex flex-col items-center max-w-[1240px] mx-auto px-0 md:px-6 text-neutral-800">
 
 
             {/* HERO MEDIA (lazy + delicate fade when loaded) */}

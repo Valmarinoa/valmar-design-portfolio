@@ -23,7 +23,7 @@ export default function MediaTextBlock({ block }: Props) {
         >
             {/* MEDIA */}
             <div className="w-full  md:w-2/3">
-                <div className="relative w-full aspect-video overflow-hidden rounded-xs" >
+                <div className={`relative w-full ${media.aspect} overflow-hidden rounded-xs`}>
                     {media.kind === "video" ? (
                         isYouTube ? (
                             <iframe
@@ -42,14 +42,15 @@ export default function MediaTextBlock({ block }: Props) {
                                 loop
                                 playsInline
                                 preload="metadata"
-                                className="absolute inset-0 h-full w-full object-cover"
+                                className={`absolute inset-0 h-full w-full ${media.imgFit}`}
                             />
                         )
                     ) : (
                         <Image
                             src={media.src}
                             alt={media.alt ?? ""}
-                            className="absolute inset-0 h-full w-full object-cover"
+                            fill
+                            className={`absolute inset-0 h-full w-full ${media.imgFit}`}
                         />
                     )}
                 </div>

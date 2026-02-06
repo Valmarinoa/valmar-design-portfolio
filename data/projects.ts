@@ -455,9 +455,11 @@ const projectsData: LocalizedProject[] = [
         type: 'mediaText',
         media: {
           kind: 'video',
-          // Prefer embed URL for iframes
           src: 'https://www.youtube.com/embed/pVhO3a8txho',
           alt: 'Silence of Blue documentation',
+          aspect: 'aspect-video',
+          imgFit: 'object-contain',
+          className:'',
         },
         title: t("Mechanism & Effect", "Mecanismo e Efeito", "Mecanismo y Efecto"),
         subtitle: t(
@@ -472,6 +474,17 @@ const projectsData: LocalizedProject[] = [
           "A medida que el silencio crece en el espacio, sombras azul profundo se expanden lentamente, inundando la superficie y remodelando el espacio. El movimiento es intencionalmente mínimo. Lo importante aquí no es la interacción en el sentido tradicional, sino permanecer el tiempo suficiente para que el silencio se revele."
         ),
       },
+    //   {
+    //     type: 'magazine',
+    //     backgroundSrc: '/media/sob/sob-ddw.png', 
+    //     backgroundType: "image",
+    //     backgroundAlt: "Frozen woods research",
+    //     text: "",
+    //     maxHeightClassName: "h-fit",
+    //     className: "",
+    //     textClassName: "",
+    //     imgFit: "object-cover md:object-contain"
+    // },
       {
         type: 'tripticGallery',
         title: '',
@@ -500,41 +513,32 @@ const projectsData: LocalizedProject[] = [
             kind: 'image',
             aspect: 'aspect-square',
             fit: 'object-cover',
-            src: '/media/sob/sob-3.png',
+            src: '/media/sob/sob-8.png',
             alt: 'Silence of Blue, view 3',
           },
         ],
       },
       {
-        type: 'imageStory',
-        leftImage: {
-          src: '/media/sob/sob-4.png',
-          alt: 'Silence of Blue sculptural side view',
-        },
-        title: '',
-        subtitle: '',
-        body: t(
-          'Seen in daylight and without illumination, the object becomes sculptural and almost dormant. \n' +
-            'Its curved surface and internal mechanism hint at movement and potential, but remain still. \n' +
-            'This dual state (inactive by day, alive through light), reinforces the project’s core idea: \n' +
-            'silence as a condition, not a lack. Even when inactive, the object holds presence.',
-          'Visto à luz do dia e sem iluminação, o objeto se torna escultórico e quase adormecido. \n' +
-            'Sua superfície curva e o mecanismo interno sugerem movimento e potencial, mas permanecem imóveis. \n' +
-            'Esse estado dual (inativo de dia, vivo pela luz) reforça a ideia central do projeto: \n' +
-            'o silêncio como condição, não como falta. Mesmo quando inativo, o objeto mantém presença.'
-          ,
-          'Visto a la luz del día y sin iluminación, el objeto se vuelve escultórico y casi dormido. \n' +
-            'Su superficie curva y el mecanismo interno sugieren movimiento y potencial, pero permanecen inmóviles. \n' +
-            'Este estado dual (inactivo de día, vivo mediante la luz) refuerza la idea central del proyecto: \n' +
-            'el silencio como condición, no como carencia. Incluso cuando está inactivo, el objeto mantiene presencia.'
-        ),
-        rightImage: {
-          src: '/media/sob/sob-5.png',
-          alt: 'Small model of Silence of Blue',
-        },
+        type: 'magazine',
+        backgroundSrc: "/media/sob/sob-ddw.png",
+        backgroundType: "image",
+        backgroundAlt: "Frozen woods research",
+        imgFit: "object-cover object-bottom",
+
+        backgroundSrc2: "/media/sob/sob-7.png",
+        backgroundType2: "image",
+        backgroundAlt2: "Frozen woods research",
+        imgFit2: "object-cover",
+
+        text: "", 
+        maxHeightClassName: "max-h-[700px]",
+        className: "",
+        textClassName: "text-md",
       },
       {
         type: 'inspiration',
+        mobileMedia: '/media/sob/sob-research.mp4',
+        mobileMediaKind: 'video',
         heading: t("Inspiration & References", "Inspiração e Referências", "Inspiración y Referencias"),
         intro:
           t(
@@ -611,224 +615,17 @@ const projectsData: LocalizedProject[] = [
         ],
       },
       {
-        type: "timeline",
-        title: t("Research & Process", "Pesquisa e Processo", "Investigación y Proceso"),
-        description: t(
-          "The project was developed through iterative experimentation with form, materials, and light behavior. Early research focused on how curved surfaces interact with light, and how color saturation affects spatial perception. Prototyping included: material tests to achieve the desired diffusion, experiments with light intensity and rhythm, mechanical exploration to support slow, continuous movement, and repeated testing of how the blue projection behaved across different surfaces and environments.",
-          "O projeto foi desenvolvido por meio de experimentação iterativa com forma, materiais e comportamento da luz. As primeiras pesquisas focaram em como superfícies curvas interagem com a luz e como a saturação de cor afeta a percepção espacial. Os protótipos incluíram: testes de materiais para alcançar a difusão desejada, experimentos com intensidade e ritmo da luz, exploração mecânica para apoiar movimento lento e contínuo, e testes repetidos de como a projeção azul se comportava em diferentes superfícies e ambientes."
-          ,
-          "El proyecto se desarrolló mediante experimentación iterativa con forma, materiales y comportamiento de la luz. Las primeras investigaciones se centraron en cómo las superficies curvas interactúan con la luz y cómo la saturación del color afecta la percepción espacial. El prototipado incluyó: pruebas de materiales para lograr la difusión deseada, experimentos con intensidad y ritmo de la luz, exploración mecánica para sostener un movimiento lento y continuo, y pruebas repetidas de cómo la proyección azul se comportaba en distintas superficies y entornos."
-        ),
-        baselineAt: 0.6,
-        snap: true,
-        edgeFade: true,
-        wheelToHorizontal: true,
-        items: [
-          {
-            id: "water inspiration",
-            type: "video",
-            src: "/media/tidal/tidal-beach.mp4",
-            x: 21,
-            width: 168,
-            height: 210,
-            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
-          },
-          {
-            id: "water inspiration 2",
-            type: "video",
-            src: "/media/tidal/research/expo-2.mp4",
-            x: 186,
-            y: 0,
-            width: 168,
-            height: 210,
-            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
-          },
-          {
-            id: "water inspiration 3",
-            type: "video",
-            src: "/media/tidal/research/exp-1.mp4",
-            x: 292,
-            y: 68,
-            width: 84,
-            height: 126,
-            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
-          },
-        
-      //     //////////////////////
-        
-          {
-            id: "light experiments",
-            type: "video",
-            src: "/media/tidal/research/expo-1.mp4",
-            x: 506,
-            width: 147,
-            height: 210,
-            caption: t("Biocommunication", "Biocomunicação", "Biocomunicación"),
-          },
-          {
-            id: "light experiments 2",
-            type: "image",
-            src: "/media/tidal/research/exp-2.png",
-            x: 651,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-      //     //////////////////////
-        
-          {
-            id: "vacuuming shape",
-            type: "video",
-            src: "/media/tidal/research/exec-1.mp4",
-            x: 932,
-            y: 0,
-            width: 210,
-            height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-          {
-            id: "vacuumed shape",
-            type: "image",
-            src: "/media/tidal/research/exec-2.png",
-            x: 1139,
-            y: 0,
-            width: 147,
-            height: 210,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-      //     //////////////////////
-        
-          {
-            id: "baked glass",
-            type: "image",
-            src: "/media/tidal/research/exec-3.png",
-            x: 1405,
-            y: 30,
-            width: 210,
-            height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-          {
-            id: "baked glass 2",
-            type: "video",
-            src: "/media/tidal/research/exec-4.mp4",
-            x: 1612,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-      //     //////////////////////
-        
-          {
-            id: "gloss layer",
-            type: "image",
-            src: "/media/tidal/research/test-1.png",
-            x: 1922,
-            y: 0,
-            width: 210,
-            height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-          {
-            id: "gloss layer 2",
-            type: "image",
-            src: "/media/tidal/research/test-2.png",
-            x: 2128,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-          {
-            id: "gloss layer 3",
-            type: "image",
-            src: "/media/tidal/research/test-3.png",
-            x: 2263,
-            y: 0,
-            width: 158,
-            height: 210,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-      //     //////////////////////
-        
-          {
-            id: "exploration against day light",
-            type: "image",
-            src: "/media/tidal/research/expo-0.png",
-            x: 2572,
-            y: 0,
-            width: 158,
-            height: 210,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-          {
-            id: "exploration against day light 2",
-            type: "image",
-            src: "/media/tidal/research/res-1.png",
-            x: 2727,
-            y: -50,
-            width: 200,
-            height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-      //     //////////////////////
-        
-          {
-            id: "exploration night",
-            type: "image",
-            src: "/media/tidal/research/exp-3.png",
-            x: 3042,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-          {
-            id: "exploration night 2",
-            type: "image",
-            src: "/media/tidal/research/exp-6.png",
-            x: 3171,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-          {
-            id: "light exploration",
-            type: "image",
-            src: "/media/tidal/research/exp-4.png",
-            x: 3303,
-            y: 0,
-            width: 210,
-            height: 147,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        
-          {
-            id: "light exploration 2",
-            type: "image",
-            src: "/media/tidal/research/exp-5.png",
-            x: 3509,
-            y: 0,
-            width: 136,
-            height: 189,
-            caption: t("Metabolic Health", "Saúde Metabólica", "Salud Metabólica"),
-          },
-        ]
-      }
+        type: 'magazine',
+        backgroundSrc: '/media/sob/1.mp4',
+        backgroundType: "video",
+        backgroundAlt: "Experiment",
+        text: "",
+        maxHeightClassName: "max-h-[500px]",
+        className: "md:mb-44",
+        textClassName: "",
+        imgFit: "object-cover rounded-xs"
+        },
+     
     ],
   },
 
@@ -907,6 +704,9 @@ const projectsData: LocalizedProject[] = [
           // Prefer embed URL for iframes
           src: '/media/tidal/tidal-beach.mp4',
           alt: 'Silence of Blue documentation',
+          aspect:'aspect-video',
+          imgFit:'object-cover',
+          className:''
         },
         title: t("Concept", "Conceito", "Concepto"),
         subtitle: '',
@@ -1255,6 +1055,9 @@ const projectsData: LocalizedProject[] = [
           kind: 'video',
           src: '/media/moonbar/moonbar-full.mp4',
           alt: 'Silence of Blue documentation',
+          aspect:'aspect-video',
+          className:'',
+          imgFit:'object-cover',
         },
         title: t("Concept", "Conceito", "Concepto"),
         subtitle: t("Moonbar Prototype", "Protótipo Moonbar", "Prototipo Moonbar"),

@@ -109,7 +109,7 @@ export default function SecondaryDesktopLayout({
             text={title}
             delay={1.4}
             mode="words"
-            className="w-full font-semibold text-5xl md:text-6xl text-left md:pb-3"
+            className="w-full font-semibold text-5xl md:text-6xl text-left"
           />
 
           {tagLine && (
@@ -118,7 +118,7 @@ export default function SecondaryDesktopLayout({
               text={tagLine}
               delay={1.4}
               mode="words"
-              className={`w-full text-xl md:text-2xl text-left leading-4 ${theme.text}`}
+              className={`w-full text-xl md:text-lg text-left leading-4 ${theme.text}`}
             />
           )}
         </div>
