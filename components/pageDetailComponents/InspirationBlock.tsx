@@ -23,7 +23,7 @@ export default function InspirationBlock({ block }: Props) {
                 </div>
             </div>
 
-            <div className="w-full aspect-auto h-[60vh] relative md:hidden">
+            <div className="w-full aspect-auto h-[60vh] relative md:hidden bg-red-600">
             {mobileMediaKind === "video" ? (
                             <video
                                 src={mobileMedia}
@@ -58,19 +58,13 @@ export default function InspirationBlock({ block }: Props) {
                                 <p className="text-xl font-snug">{item.title}</p>
                                 {item.subtitle && (
                                     <MaskText lineAs='p' className="text-base  text-neutral-900" text={item.subtitle} />
-
-
                                 )}
-                                
                                 <p className="mt-1 text-xs  text-neutral-900 "> {item.body}  </p>
                             </div>
-
                             {/* RIGHT: media block */}
                             <div className="md:pl-16">
                                 <div
-                                    className="relative w-full aspect-video overflow-hidden rounded-xs"
-                                >
-
+                                    className="relative w-full aspect-video overflow-hidden rounded-xs">
                                     {isVideo ? (
                                         <video
                                             src={item.media.src}

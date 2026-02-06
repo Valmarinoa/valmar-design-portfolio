@@ -64,6 +64,9 @@ export default function Hero() {
       imageScale: 1.6,
       bgColor: [241, 241, 241] as [number, number, number],
       fixed: false,
+      oversize: 1.15, // 15% larger than viewport
+      fadeInMs: 400,
+      maxDpr: 2,
     }),
     []
   );

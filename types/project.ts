@@ -87,6 +87,9 @@ export type MediaTextBlock = {
     kind: 'video' | 'image';
     src: string; // local "/media/..." or external URL
     alt?: string;
+    aspect: string;
+    imgFit: string;
+    className?: string;
   };
   title: string;
   subtitle: string;

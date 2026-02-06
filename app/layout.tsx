@@ -19,18 +19,19 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang={locale}>
+      <head>
+        <script src="/shaders/glslcanvas.min.js" async />
+      </head>
       <body
         className={`
           ${helveticaNeue.className}
           ${mixtaPro.variable}
-          min-h-screen
+          min-h-screen bg-cover bg-center bg-no-repeat
         `}
+        style={{ backgroundImage: "url('/media/sky2.png')" }}
       >
         {/* Background layer */}
-        <div
-          className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/media/sky2.png')" }}
-        />
+        
         <div className="fixed inset-0 -z-10" />
         <AutoThemeProvider>
           <DesktopNavbar />

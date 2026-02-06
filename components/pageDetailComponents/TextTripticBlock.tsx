@@ -15,12 +15,12 @@ export default function TextTripticBlock({ block }: Props) {
 
     return (
         <section className="w-full max-w-[1440px] text-neutral-900">
-            <div className="mx-auto flex flex-col gap-10 md:gap-16">
+            <div className="mx-auto flex flex-col gap-10 md:gap-8">
 
                 {/* TITLE + BODY (optional) */}
                 {hasCopy && (
                     <div className="w-full flex justify-end px-4 md:px-0">
-                        <div className="w-full md:w-2/3 md:text-left">
+                        <div className="w-full md:w-1/2 md:text-left">
                             {title && (
                                 <>
                                 { title && <MaskText lineAs='h3' className="text-3xl md:text-4xl pb-4" text={title} /> }
@@ -36,14 +36,7 @@ export default function TextTripticBlock({ block }: Props) {
 
                 {/* MEDIA GRID – ALWAYS RENDERS */}
                 <div
-                    className="
-                        grid 
-                        grid-cols-1 
-                        md:grid-cols-3
-                        gap-0.5
-                        auto-rows-fr
-                    "
-                >
+                    className=" grid grid-cols-1 md:grid-cols-3 auto-rows-fr">
                     {media?.map((item) => {
                         const isVideo =
                             item.kind === "video" ||

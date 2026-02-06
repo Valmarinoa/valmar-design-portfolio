@@ -66,8 +66,9 @@ export default function MagazineBlock({ block }: Props) {
   return (
     <section
       className={`
-        w-screen max-w-[1244px]
-        h-screen
+        w-screen max-w-[1240px]
+        h-screen max-h-[780px]
+        px-0 md:px-6
          md:max-h-[600px]
         relative
         

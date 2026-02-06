@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import { nocturnaFrag as frag } from "@/components/shaders/nocturnaFrag";
 
 declare global {
@@ -15,25 +14,20 @@ type Props = {
   className?: string;
   fixed?: boolean;
   clickToCycle?: boolean;
-
-  /** If omitted, we generate a stable seed once */
   seed?: number;
-
   bgColor?: [number, number, number];
   useBlocks?: boolean;
-
   speed?: number;
   imageScale?: number;
   imageFit?: "cover" | "contain";
-
   showImageBackground?: boolean;
   backgroundOpacity?: number;
-
   chromatic?: number;
-
-  /** NEW */
   onReady?: () => void;
   fadeInMs?: number;
+  maxDpr?: number;
+  /** Scale factor to render content larger than viewport (default 1.15) */
+  oversize?: number;
 };
 
 export default function NocturnaShader({
@@ -52,18 +46,19 @@ export default function NocturnaShader({
   chromatic = 0,
   onReady,
   fadeInMs = 600,
+  maxDpr = 2,
+  oversize = 1.15,
 }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const sandboxRef = useRef<any>(null);
   const currentRef = useRef(0);
-
-  // ✅ stable seed (prevents “different seed” flashes, especially in dev StrictMode)
   const stableSeed = useRef<number>(seed ?? Math.random());
-
+  const rafRef = useRef<number | undefined>(undefined);
+  const resizeTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const isInitializedRef = useRef(false);
+  
   const [ready, setReady] = useState(false);
   const [bgIndex, setBgIndex] = useState(0);
-
-  // cache image ratios so we can set uniform properly
   const ratioCache = useRef(new Map<string, number>());
 
   const wrapperClass = fixed
@@ -72,171 +67,286 @@ export default function NocturnaShader({
 
   const bgSrc = images?.[bgIndex];
 
-  useEffect(() => {
+  const getViewportSize = useCallback(() => {
+    if (window.visualViewport) {
+      return {
+        width: window.visualViewport.width,
+        height: window.visualViewport.height,
+      };
+    }
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  }, []);
+
+  useLayoutEffect(() => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || isInitializedRef.current) return;
 
     let cancelled = false;
+    let loadAttempts = 0;
+    const maxLoadAttempts = 50;
 
-    // ✅ No resizing: just lock canvas to viewport at mount + on real resize only.
-    // (No scroll listeners, no parent measurement.)
-    const setCanvasToViewport = () => {
-      const dpi = window.devicePixelRatio || 1;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+    const setCanvasSize = (force = false) => {
+      const { width: vw, height: vh } = getViewportSize();
+      const rawDpr = window.devicePixelRatio || 1;
+      const dpr = Math.min(rawDpr, maxDpr);
+      
+      // Internal resolution: viewport * oversize * dpr for crisp rendering
+      const internalWidth = Math.floor(vw * oversize * dpr);
+      const internalHeight = Math.floor(vh * oversize * dpr);
 
-      // set backing store size
-      canvas.width = Math.floor(w * dpi);
-      canvas.height = Math.floor(h * dpi);
-
-      // set CSS size
-      canvas.style.width = `${w}px`;
-      canvas.style.height = `${h}px`;
+      if (force || canvas.width !== internalWidth || canvas.height !== internalHeight) {
+        canvas.width = internalWidth;
+        canvas.height = internalHeight;
+        
+        // Notify GlslCanvas of resize if method exists
+        if (sandboxRef.current?.resize) {
+          sandboxRef.current.resize();
+        }
+      }
     };
 
     const safeSetUniform = (name: string, ...vals: any[]) => {
       const sb = sandboxRef.current;
-      if (!sb || !sb.gl || !sb.program) return;
-      sb.setUniform(name, ...vals);
+      if (!sb || !sb.gl || !sb.program) return false;
+      try {
+        sb.setUniform(name, ...vals);
+        return true;
+      } catch (e) {
+        return false;
+      }
     };
 
-    const computeRatio = (src: string) => {
-      const cached = ratioCache.current.get(src);
-      if (cached != null) return Promise.resolve(cached);
-
-      return new Promise<number>((resolve) => {
+    const computeRatio = (src: string): Promise<number> => {
+      if (ratioCache.current.has(src)) {
+        return Promise.resolve(ratioCache.current.get(src)!);
+      }
+      return new Promise((resolve) => {
         const img = new Image();
+        img.crossOrigin = "anonymous";
         img.onload = () => {
           const ratio = img.naturalWidth / Math.max(1, img.naturalHeight);
           ratioCache.current.set(src, ratio);
           resolve(ratio);
         };
-        img.onerror = () => resolve(1);
+        img.onerror = () => {
+          ratioCache.current.set(src, 1);
+          resolve(1);
+        };
         img.src = src;
       });
     };
 
-    const setImageUniform = async () => {
-      const sb = sandboxRef.current;
-      const src = images?.[currentRef.current];
-      if (!sb || !src) return;
-
+    const setImageUniform = async (index: number = currentRef.current) => {
+      const src = images?.[index];
+      if (!src) return;
+      
       safeSetUniform("image", src);
-
       const ratio = await computeRatio(src);
-      if (cancelled) return;
-
-      safeSetUniform("u_textureRatio", ratio);
+      if (!cancelled) {
+        safeSetUniform("u_textureRatio", ratio);
+      }
     };
 
-    const init = () => {
-      if (!window.GlslCanvas) return;
+    const checkWebGLReady = () => {
+      const sb = sandboxRef.current;
+      if (!sb?.gl || !sb?.program) return false;
+      const gl = sb.gl;
+      return gl.getProgramParameter(sb.program, gl.LINK_STATUS) === true;
+    };
 
-      // always start hidden until we explicitly mark ready
-      setReady(false);
+    const init = async () => {
+      if (!window.GlslCanvas || cancelled) return;
+      
+      isInitializedRef.current = true;
+      setCanvasSize(true);
 
-      // size canvas once
-      setCanvasToViewport();
-      window.addEventListener("resize", setCanvasToViewport);
+      try {
+        const sb = new window.GlslCanvas(canvas);
+        sandboxRef.current = sb;
 
-      const sb = new window.GlslCanvas(canvas);
-      sandboxRef.current = sb;
+        sb.load(frag);
 
-      // load shader
-      sb.load(frag);
+        safeSetUniform("seed", stableSeed.current);
+        safeSetUniform("u_useBlocks", useBlocks ? 1 : 0);
+        safeSetUniform("u_speed", speed);
+        safeSetUniform("u_imageScale", imageScale);
+        safeSetUniform("u_fitMode", imageFit === "cover" ? 1 : 0);
+        safeSetUniform("u_chromatic", chromatic);
+        safeSetUniform("u_bg", bgColor[0] / 255, bgColor[1] / 255, bgColor[2] / 255);
 
-      // set uniforms ASAP
-      safeSetUniform("seed", stableSeed.current);
-      safeSetUniform("u_useBlocks", useBlocks ? 1 : 0);
-      safeSetUniform("u_speed", speed);
-      safeSetUniform("u_imageScale", imageScale);
-      safeSetUniform("u_fitMode", imageFit === "cover" ? 1 : 0);
-      safeSetUniform("u_chromatic", chromatic);
-      safeSetUniform("u_bg", bgColor[0] / 255, bgColor[1] / 255, bgColor[2] / 255);
+        const handleClick = () => {
+          if (!clickToCycle || !images?.length) return;
+          currentRef.current = (currentRef.current + 1) % images.length;
+          void setImageUniform(currentRef.current);
+          setBgIndex(currentRef.current);
+        };
 
-      setBgIndex(0);
+        if (clickToCycle) {
+          canvas.addEventListener("click", handleClick);
+        }
 
-      const handleClick = () => {
-        if (!clickToCycle || !images?.length) return;
-        currentRef.current = (currentRef.current + 1) % images.length;
-        void setImageUniform();
-        setBgIndex(currentRef.current);
-      };
+        await setImageUniform(0);
 
-      if (clickToCycle) canvas.addEventListener("click", handleClick);
-
-      // ✅ critical: don’t reveal canvas until texture+ratio uniform is set AND we’ve had 1 RAF
-      (async () => {
-        await setImageUniform();
-        if (cancelled) return;
-
-        requestAnimationFrame(() => {
+        const waitForReady = () => {
           if (cancelled) return;
+          
+          if (checkWebGLReady()) {
+            rafRef.current = requestAnimationFrame(() => {
+              if (!cancelled) {
+                setReady(true);
+                onReady?.();
+              }
+            });
+          } else if (loadAttempts < maxLoadAttempts) {
+            loadAttempts++;
+            rafRef.current = requestAnimationFrame(waitForReady);
+          } else {
+            setReady(true);
+            onReady?.();
+          }
+        };
+
+        waitForReady();
+
+        return () => {
+          if (clickToCycle) {
+            canvas.removeEventListener("click", handleClick);
+          }
+        };
+      } catch (err) {
+        console.error("Shader initialization failed:", err);
+        isInitializedRef.current = false;
+      }
+    };
+
+    if (window.GlslCanvas) {
+      const cleanup = init();
+      return () => {
+        cancelled = true;
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+        cleanup?.then?.(fn => fn?.());
+      };
+    } else {
+      const checkInterval = setInterval(() => {
+        if (window.GlslCanvas && !isInitializedRef.current) {
+          clearInterval(checkInterval);
+          init();
+        }
+      }, 50);
+
+      const timeout = setTimeout(() => {
+        clearInterval(checkInterval);
+        if (!isInitializedRef.current) {
           setReady(true);
           onReady?.();
-        });
-      })();
+        }
+      }, 5000);
 
       return () => {
-        if (clickToCycle) canvas.removeEventListener("click", handleClick);
-        window.removeEventListener("resize", setCanvasToViewport);
+        cancelled = true;
+        clearInterval(checkInterval);
+        clearTimeout(timeout);
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
       };
-    };
-
-    const boot = () => {
-      const cleanup = init();
-      (canvas as any).__shaderCleanup = cleanup;
-    };
-
-    if (!window.GlslCanvas) {
-      const script = document.createElement("script");
-      script.src = "/shaders/glslcanvas.min.js";
-      script.async = true;
-      script.onload = boot;
-      document.body.appendChild(script);
-    } else {
-      boot();
     }
-
-    return () => {
-      cancelled = true;
-      const cleanup = (canvas as any).__shaderCleanup;
-      if (cleanup) cleanup();
-
-      sandboxRef.current?.destroy?.();
-      sandboxRef.current = null;
-    };
   }, [
-    images,
-    fixed,
-    clickToCycle,
-    // do NOT include `seed` here; we use stableSeed.current
-    bgColor,
-    useBlocks,
-    speed,
-    imageScale,
-    imageFit,
-    chromatic,
-    onReady,
+    images, clickToCycle, bgColor, useBlocks, speed, 
+    imageScale, imageFit, chromatic, onReady, maxDpr, oversize, getViewportSize
   ]);
+
+  // Debounced resize handler
+  useEffect(() => {
+    const handleResize = () => {
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+      
+      resizeTimeoutRef.current = setTimeout(() => {
+        const canvas = canvasRef.current;
+        if (!canvas || !sandboxRef.current) return;
+        
+        const { width: vw, height: vh } = getViewportSize();
+        const rawDpr = window.devicePixelRatio || 1;
+        const dpr = Math.min(rawDpr, maxDpr);
+        
+        const newWidth = Math.floor(vw * oversize * dpr);
+        const newHeight = Math.floor(vh * oversize * dpr);
+        
+        if (canvas.width !== newWidth || canvas.height !== newHeight) {
+          canvas.width = newWidth;
+          canvas.height = newHeight;
+          
+          if (sandboxRef.current.resize) {
+            sandboxRef.current.resize();
+          }
+        }
+      }, 250);
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", handleResize);
+    } else {
+      window.addEventListener("resize", handleResize);
+    }
+    
+    return () => {
+      if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", handleResize);
+      } else {
+        window.removeEventListener("resize", handleResize);
+      }
+    };
+  }, [maxDpr, oversize, getViewportSize]);
+
+  useEffect(() => {
+    return () => {
+      if (sandboxRef.current?.destroy) {
+        sandboxRef.current.destroy();
+      }
+      sandboxRef.current = null;
+      isInitializedRef.current = false;
+    };
+  }, []);
 
   return (
     <div className={`${wrapperClass} ${className}`}>
-      {/* Optional “static background image” layer */}
+      {/* Background fallback matching shader color */}
+      <div 
+        className="absolute inset-0 transition-opacity duration-500"
+        style={{ 
+          backgroundColor: `rgb(${bgColor.join(',')})`,
+          opacity: ready ? 0 : 1 
+        }}
+      />
+      
       {showImageBackground && bgSrc ? (
         <div
-          className="absolute inset-0 bg-center bg-cover scale-150"
-          style={{ backgroundImage: `url(${bgSrc})`, opacity: backgroundOpacity }}
+          className="absolute inset-0 bg-center bg-cover transition-opacity duration-500"
+          style={{ 
+            backgroundImage: `url(${bgSrc})`, 
+            opacity: ready ? backgroundOpacity : 1,
+          }}
         />
       ) : null}
 
-      {/* Fade the canvas IN only when ready (prevents wrong first frame flash) */}
-      <motion.canvas
+      {/* 
+        Canvas fills container but is scaled up via CSS transform.
+        This prevents white edges during mobile viewport resizing.
+      */}
+      <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: ready ? 1 : 0 }}
-        transition={{ duration: fadeInMs / 1000, ease: "easeOut" }}
+        style={{
+          opacity: ready ? 1 : 0,
+          transition: `opacity ${fadeInMs}ms ease-out`,
+          transform: `scale(${oversize})`,
+          transformOrigin: "center center",
+          willChange: "transform",
+        }}
       />
     </div>
   );
