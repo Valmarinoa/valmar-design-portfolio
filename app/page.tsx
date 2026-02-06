@@ -1,3 +1,4 @@
+import AnimatedBlurb from "@/components/animations/AnimatedBlurb";
 import BlurText from "@/components/animations/BlurText";
 import Hero from "@/components/Hero";
 import ProjectGrid from "@/components/ProjectGrid";
@@ -16,9 +17,9 @@ export default async function HomePage() {
         <ProjectGrid />
       </div>
       <div className="hidden md:block">
-         <p className="p-9 z-999 max-w-[550px] left-1/2 -translate-x-[50%] text-center absolute bottom-0 w-full text-neutral-800 text-sm leading-4.5">
-           {messages.home.desktopBlurb}
-        </p>
+        <AnimatedBlurb>
+          {messages.home.desktopBlurb}
+        </AnimatedBlurb>
         <ProjectRing3DWrapper />
       </div>
     </main>

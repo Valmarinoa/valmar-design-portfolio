@@ -149,7 +149,7 @@ export default function DesktopHeroMedia({
       </motion.div>
 
       {/* MEDIA (parallax) */}
-      <div className="relative w-full mt-0 h-screen md:h-[60vh] overflow-hidden">
+      <div className="relative w-full mt-0 h-screen md:h-[65vh] overflow-hidden">
         <motion.div
           className="absolute inset-0"
           style={{

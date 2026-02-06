@@ -1,4 +1,49 @@
-import { cubicBezier, delay, motion, AnimatePresence, type Variants, } from "framer-motion";
+import { cubicBezier, type Variants, } from "framer-motion";
+
+export const easeOutElegant = [0.22, 1, 0.36, 1] as const;
+
+export const fadeInUp: Variants = {
+  hidden: { 
+    opacity: 0, 
+    y: 20 
+  },
+  visible: (delay: number = 0) => ({ 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 1.2,
+      ease: easeOutElegant,
+      delay
+    }
+  })
+};
+
+export const fadeInDown: Variants = {
+  hidden: { 
+    opacity: 0, 
+    y: -12 
+  },
+  visible: (delay: number = 0) => ({ 
+    opacity: 1, 
+    y: 0,
+    transition: {
+      duration: 0.9,
+      ease: easeOutElegant,
+      delay
+    }
+  })
+};
+
+export const staggerContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
    
 
 export const easeInOutExpo: [number, number, number, number] = [0.87, 0, 0.13, 1];
