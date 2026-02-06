@@ -838,15 +838,15 @@ const projectsData: LocalizedProject[] = [
     year: '2024',
     tagline: t(
       "Hand-painted driftwood branches",
-      "Galhos de madeira flutuante pintados à mão",
-      "Ramas de madera a la deriva pintadas a mano"
+      "Madeiras flutuantes pintados à mão",
+      "Maderas a la deriva pintadas a mano"
     ),
     description:
       t(
         "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
         "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
         ,
-        "Cada rama fue recogida en paisajes costeros y rurales, y animada por ritmo y color. Un juego silencioso entre lo sagrado y lo cotidiano."
+        "Cada pedazo de madera fue recogido en paisajes costeros y rurales, animados por ritmo y color, transformandose esculpturas. Un juego silencioso entre lo sagrado y lo cotidiano."
       ),
     videoThumbnail: '',
     heroMedia: '/media/2.png',

@@ -308,12 +308,12 @@ export default function StaggeredMenu({
               return (
                 <li className="sm-panel-itemWrap relative overflow-hidden leading-none" key={it.label + idx}>
                   <a
-                    className={`sm-panel-item relative ${theme.text} text-3xl cursor-pointer leading-none tracking-[0.12em] uppercase inline-block no-underline`}
+                    className={`sm-panel-item relative ${theme.nav} text-3xl cursor-pointer leading-none tracking-[0.12em] uppercase inline-block no-underline`}
                     href={it.link}
                     aria-label={it.ariaLabel}
                     onClick={onClose} // ✅ closes menu after navigating
                   >
-                    <span className="sm-panel-itemLabel inline-flex items-center gap-3 origin-[50%_100%] will-change-transform">
+                    <span className="sm-panel-itemLabel inline-flex items-center gap-3 origin-[50%_100%] will-change-transform  mix-blend-exclusion">
                       {it.label}
                     </span>
                   </a>
