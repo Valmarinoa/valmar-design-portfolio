@@ -292,7 +292,7 @@ export default function ProjectRing3D() {
                     )}
 
                     {/* Tags */}
-                    {project.tags && project.tags.length > 0 && (
+                    {/* {project.tags && project.tags.length > 0 && (
                       <motion.div 
                         variants={detailItemVariants}
                         className="flex flex-wrap justify-center gap-1"
@@ -306,7 +306,7 @@ export default function ProjectRing3D() {
                           </span>
                         ))}
                       </motion.div>
-                    )}
+                    )} */}
                   </motion.div>
                 </motion.div>
               </div>
