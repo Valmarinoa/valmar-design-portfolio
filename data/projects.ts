@@ -1493,7 +1493,7 @@ const projectsData: LocalizedProject[] = [
    // DEV-WORK
    {
     title: t("DEV Work", "DEV Work", "DEV Work"),
-    link: 'https://valmar.studio',
+    link: 'https://valenmarino.vercel.app/',
     heroVideo: '/media/dev-work.mp4',
     videoThumbnail: '/media/dev-work.mp4',
     description:
