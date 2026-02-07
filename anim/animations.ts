@@ -50,7 +50,6 @@ export const easeInOutExpo: [number, number, number, number] = [0.87, 0, 0.13, 1
 const backdropDuration = 0.85;
 const imageDuration = 0.5;
 const imageEnterDelay = 0.45;
-const imageDelay = 0.45; 
 const buttonDelay = 0.25;
 
 export const tagsContainer = {
