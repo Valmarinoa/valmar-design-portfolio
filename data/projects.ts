@@ -1489,6 +1489,16 @@ const projectsData: LocalizedProject[] = [
     description:
       t("I DJ sometimes ◡̈", "Às vezes sou DJ ◡̈", "A veces soy DJ ◡̈"),
   },
+
+   // DEV-WORK
+   {
+    title: t("DEV Work", "DEV Work", "DEV Work"),
+    link: 'https://valmar.studio',
+    heroVideo: '/media/dev-work.mp4',
+    videoThumbnail: '/media/dev-work.mp4',
+    description:
+      t("Work in web frontend development.", "Trabalhos de desenvolvimento web frontend.", "Trabajos de programación web."),
+  },
   
   // MERGED LANDSCAPES
   {
@@ -1504,17 +1514,17 @@ const projectsData: LocalizedProject[] = [
   },
 
   // VALUE TUNING
-  {
-    title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
-    slug: 'value-tuning',
-    thumbnail: '/media/value-tuning.png',
-    description:
-      t(
-        "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas.",
-        "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
-      ),
-  },
+  // {
+  //   title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
+  //   slug: 'value-tuning',
+  //   thumbnail: '/media/value-tuning.png',
+  //   description:
+  //     t(
+  //       "Synthetic representations of natural growth through algorithmic textures.",
+  //       "Representações sintéticas do crescimento natural por meio de texturas algorítmicas.",
+  //       "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
+  //     ),
+  // },
 
   
 ];

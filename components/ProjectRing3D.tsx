@@ -151,6 +151,9 @@ export default function ProjectRing3D() {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
+  // Determine if ANY item is currently hovered
+  const isSpotlightActive = hoveredSlug !== null;
+
   return (
     <section className="w-full h-screen flex items-center justify-center">
       <div ref={ringRef} className="relative h-[420px] w-full max-w-4xl" style={{ perspective: "1400px" }}>
@@ -180,8 +183,21 @@ export default function ProjectRing3D() {
 
             const isHovered = hoveredSlug === key;
 
+            // Spotlight logic: if spotlight is active and this isn't the hovered item, dim/blur it
+            const shouldDim = isSpotlightActive && !isHovered;
+
             const Media = (
-              <div className="relative h-24 w-32 overflow-hidden rounded-[4px] transition-transform duration-500 ease-out group-hover:scale-105 md:h-32 md:w-44 lg:h-40 lg:w-56 ">
+              <motion.div 
+                className="relative h-24 w-32 overflow-hidden md:h-32 md:w-44 lg:h-40 lg:w-56"
+                animate={{
+                  scale: isHovered ? 1.1 : 1,
+                  filter: shouldDim ? "blur(4px) brightness(0.9)" : "blur(0px) brightness(1)",
+                }}
+                transition={{
+                  duration: 0.5,
+                  ease: easeOutElegant,
+                }}
+              >
                 {project.videoThumbnail ? (
                   <video
                     src={project.videoThumbnail}
@@ -205,7 +221,7 @@ export default function ProjectRing3D() {
                     className="object-contain rounded-[4px]"
                   />
                 ) : null}
-              </div>
+              </motion.div>
             );
 
             const Clickable = !href ? (
@@ -234,6 +250,14 @@ export default function ProjectRing3D() {
                   }}
                   onMouseLeave={() => setHoveredSlug(null)}
                   variants={itemVariants}
+                  animate={{
+                    opacity: shouldDim ? 0.4 : 1,
+                    scale: shouldDim ? 0.95 : 1,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: easeOutElegant,
+                  }}
                 >
                   {Clickable}
 
@@ -243,7 +267,7 @@ export default function ProjectRing3D() {
                     style={{ 
                       x: "-50%",
                       width: "max-content",
-                      maxWidth: "240px"
+                      maxWidth: "210px"
                     }}
                     initial="hidden"
                     animate={isHovered ? "visible" : "hidden"}
@@ -261,7 +285,7 @@ export default function ProjectRing3D() {
                     {project.tagline && (
                       <motion.p 
                         variants={detailItemVariants}
-                        className="text-[10px] text-neutral-900/70 mb-3 "
+                        className="text-[10px] text-neutral-900/70 mb-3 leading-4"
                       >
                         {project.tagline}
                       </motion.p>
