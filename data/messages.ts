@@ -51,8 +51,9 @@ const messages: Record<Locale, Messages> = {
       logoAria: "Go to homepage",
       items: [
         { label: "About", ariaLabel: "About", href: "/about" },
+        { label: "Design", ariaLabel: "Design Work", href: "/" },
         {
-          label: "Dev Work",
+          label: "Dev",
           ariaLabel: "Work as front-end developer",
           href: "https://valenmarino.vercel.app/",
         },
@@ -86,6 +87,7 @@ const messages: Record<Locale, Messages> = {
       logoAria: "Ir para a página inicial",
       items: [
         { label: "Sobre", ariaLabel: "Sobre", href: "/about" },
+        { label: "Desenho", ariaLabel: "Trabalho de desenho", href: "/" },
         {
           label: "Trabalhos Dev",
           ariaLabel: "Trabalho como desenvolvedora front-end",
@@ -121,6 +123,7 @@ const messages: Record<Locale, Messages> = {
       logoAria: "Ir a la página de inicio",
       items: [
         { label: "Bio", ariaLabel: "Bio", href: "/about" },
+        { label: "Diseño", ariaLabel: "Trabajo de diseño", href: "/" },
         {
           label: "Trabajos Dev",
           ariaLabel: "Trabajo como desarrolladora front-end",

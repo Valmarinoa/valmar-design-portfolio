@@ -51,7 +51,7 @@ export default function AboutPage() {
       />
 
       {/* Bottom Section */}
-      <div className="mx-auto w-full flex gap-6 h-[50vh]">
+      <div className="mx-auto w-full flex gap-6 h-fit">
         <motion.div 
           className="md:w-1/2 w-1/4 flex tracking-widest text-[12px]"
           initial={{ opacity: 0, y: 15 }}
@@ -62,7 +62,7 @@ export default function AboutPage() {
         </motion.div>
         
         <motion.div 
-          className="md:w-1/2 flex-1 relative"
+          className="md:w-1/2 flex-1 relative "
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: easeOutElegant, delay: 1 }}

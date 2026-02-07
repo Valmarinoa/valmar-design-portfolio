@@ -21,6 +21,10 @@ const WHEEL_SPEED_BOOST = 10;
 
 const INACTIVITY_DELAY_MS = 4_000;
 
+/* ================= EASING ================= */
+
+const easeOutElegant = [0.22, 1, 0.36, 1] as const;
+
 /* ================= LINK HANDLING ================= */
 
 const ROOT_SLUGS = new Set(["totemica", "rurales"]);
@@ -61,6 +65,29 @@ const itemVariants = {
     opacity: 1,
     scale: 1,
     transition: { duration: 0.6, ease: easeOut },
+  },
+};
+
+const detailsContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const detailItemVariants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: easeOutElegant,
+    },
   },
 };
 
@@ -151,8 +178,10 @@ export default function ProjectRing3D() {
               translateY(${verticalOffset}px)
             `;
 
+            const isHovered = hoveredSlug === key;
+
             const Media = (
-              <div className="relative h-24 w-32 overflow-hidden rounded-[4px] transition-transform duration-300 group-hover:scale-125 md:h-32 md:w-44 lg:h-40 lg:w-56">
+              <div className="relative h-24 w-32 overflow-hidden rounded-[4px] transition-transform duration-500 ease-out group-hover:scale-105 md:h-32 md:w-44 lg:h-40 lg:w-56 ">
                 {project.videoThumbnail ? (
                   <video
                     src={project.videoThumbnail}
@@ -180,7 +209,7 @@ export default function ProjectRing3D() {
             );
 
             const Clickable = !href ? (
-              <div className="block">{Media}</div>
+              <div className="block cursor-default">{Media}</div>
             ) : external ? (
               <a href={href} target="_blank" rel="noopener noreferrer" className="block">
                 {Media}
@@ -198,7 +227,7 @@ export default function ProjectRing3D() {
                 style={{ transform: cardTransform, transformStyle: "preserve-3d" }}
               >
                 <motion.div
-                  className="group relative"
+                  className="group relative flex flex-col items-center"
                   onMouseEnter={() => {
                     setHoveredSlug(key);
                     lastInteractionRef.current = performance.now();
@@ -207,6 +236,54 @@ export default function ProjectRing3D() {
                   variants={itemVariants}
                 >
                   {Clickable}
+
+                  {/* Elegant Hover Details */}
+                  <motion.div
+                    className="absolute top-full left-1/2  flex flex-col items-center text-center pointer-events-none"
+                    style={{ 
+                      x: "-50%",
+                      width: "max-content",
+                      maxWidth: "240px"
+                    }}
+                    initial="hidden"
+                    animate={isHovered ? "visible" : "hidden"}
+                    variants={detailsContainerVariants}
+                  >
+                    {/* Title */}
+                    <motion.h3 
+                      variants={detailItemVariants}
+                      className="text-xl text-neutral-900 mb-px mt-2 whitespace-nowrap"
+                    >
+                      {project.title}
+                    </motion.h3>
+
+                    {/* Tagline */}
+                    {project.tagline && (
+                      <motion.p 
+                        variants={detailItemVariants}
+                        className="text-[10px] text-neutral-900/70 mb-3 "
+                      >
+                        {project.tagline}
+                      </motion.p>
+                    )}
+
+                    {/* Tags */}
+                    {project.tags && project.tags.length > 0 && (
+                      <motion.div 
+                        variants={detailItemVariants}
+                        className="flex flex-wrap justify-center gap-1"
+                      >
+                        {project.tags.map((tag: string) => (
+                          <span 
+                            key={tag} 
+                            className="text-[5px] uppercase tracking-widest  border border-neutral-900/60 rounded-full px-1.5 py-0.5 backdrop-blur-sm"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </motion.div>
+                    )}
+                  </motion.div>
                 </motion.div>
               </div>
             );

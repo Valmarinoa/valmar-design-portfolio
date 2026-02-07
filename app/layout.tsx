@@ -26,9 +26,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         className={`
           ${helveticaNeue.className}
           ${mixtaPro.variable}
-          min-h-screen bg-cover bg-center bg-no-repeat
+          min-h-screen 
+          bg-[#f5f4ed]
         `}
-        style={{ backgroundImage: "url('/media/sky2.png')" }}
+        // style={{ backgroundImage: "url('/media/sky2.png')" bg-cover bg-center bg-no-repeat}}
       >
         {/* Background layer */}
         
