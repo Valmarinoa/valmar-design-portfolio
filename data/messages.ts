@@ -43,7 +43,7 @@ const messages: Record<Locale, Messages> = {
         "My work explores how the sensibility of Latin American magical realism can live in contemporary design.\n" +
         "I’m interested in how poetry and a bit of magic can exist in everyday technology, using both handcrafted and digital tools.",
       desktopBlurb:
-        "Valentina Marino is a Product & Experience designer and developer, translating the sensibility of Latin American magical realism into\n" +
+        "Product & Experience designer and developer, translating the sensibility of Latin American magical realism into\n" +
         "contemporary design and technology.",
       fallbackDescription: "Project description coming soon.",
     },
