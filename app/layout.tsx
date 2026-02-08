@@ -2,6 +2,7 @@ import "./globals.css";
 import "lenis/dist/lenis.css";
 import type { ReactNode } from "react";
 import { helveticaNeue, mixtaPro } from "./fonts";
+import { Baskervville, Be_Vietnam_Pro } from "next/font/google";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
 import DesktopNavbar from "@/components/nav/DesktopNavbar";
@@ -10,13 +11,26 @@ import WithLove from "@/components/nav/WithLove.tsx";
 import { getServerLocale } from "@/lib/i18n-server";
 import { Metadata } from "next";
 
+// Configure Google Fonts
+const baskervville = Baskervville({
+  subsets: ["latin"],
+  weight: ["400"], // Regular and Italic
+  variable: "--font-baskervville",
+  display: "swap",
+});
+
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-be-vietnam",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Valmar",
   description: "Product & Experience Design",
   icons: {
-    icon: "/media/globo.png",           // Standard favicon
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png", // iOS
+    icon: "/media/globo.png",
     other: [
       {
         rel: "icon",
@@ -38,20 +52,16 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       <body
         className={`
-          ${helveticaNeue.className}
-          ${mixtaPro.variable}
+          ${baskervville.variable}
+          ${beVietnamPro.variable}
           min-h-screen 
           bg-[#f5f4ed]
         `}
-        // style={{ backgroundImage: "url('/media/sky2.png')" bg-cover bg-center bg-no-repeat}}
       >
-        {/* Background layer */}
-        
         <div className="fixed inset-0 -z-10" />
         <AutoThemeProvider>
           <DesktopNavbar />
           <MobileNavbar />
-          {/* App content */}
           <SmoothScroll>{children}</SmoothScroll>
           <WithLove />
         </AutoThemeProvider>

@@ -110,7 +110,7 @@ export default function DesktopHeroMedia({
               text={project.tagline}
               delay={1}
               mode="words"
-              className="w-full text-lg text-left leading-5"
+              className="w-full text-lg text-left leading-5 font-light"
             />
           )}
         </div>

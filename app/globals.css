@@ -4,10 +4,43 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-be-vietnam), var(--font-sans), system-ui, sans-serif;
   --font-mixta: var(--font-mixta);
+  --font-baskervville: var(--font-baskervville), "Baskerville", "Georgia", serif;
+  --font-be-vietnam: var(--font-be-vietnam), "Be Vietnam Pro", system-ui, sans-serif;
 }
 
+/* Base body font - Be Vietnam Pro */
+body {
+  font-family: var(--font-be-vietnam), sans-serif;
+  cursor: none !important;
+}
+
+/* Utility classes for specific fonts */
+.font-baskervville {
+  font-family: var(--font-baskervville), serif;
+  font-weight: 400;
+}
+
+.font-baskervville-italic {
+  font-family: var(--font-baskervville), serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.font-vietnam {
+  font-family: var(--font-be-vietnam), sans-serif;
+}
+
+.font-vietnam-light {
+  font-family: var(--font-be-vietnam), sans-serif;
+  font-weight: 300;
+}
+
+.font-vietnam-medium {
+  font-family: var(--font-be-vietnam), sans-serif;
+  font-weight: 500;
+}
 /* Your easing curve */
 :root {
   --totemica-linear: linear(
@@ -63,9 +96,6 @@
   transition-timing-function: var(--totemica-linear);
 }
 
-body {
-  font-family: serif;
-}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
