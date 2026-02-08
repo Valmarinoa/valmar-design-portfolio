@@ -14,6 +14,7 @@ import NocturnaShader from "./pageDetailComponents/NocturnaShader";
 import LogoSvg from "./svg/LogoSvg";
 import useLocale from "@/lib/use-locale";
 import { getMessages } from "@/data/messages";
+import FadeIn from "./animations/FadeIn";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -107,9 +108,9 @@ export default function Hero() {
             className="mix-blend-difference font-helvetica-neue text-white text-lg tracking-widest"
           />
 
-          <div className="h-13">
+          <FadeIn delay={0.1} className="h-14">
             <LogoSvg className="h-full w-auto text-white" />
-          </div>
+          </FadeIn>
 
           <BlurText
             as="h1"
