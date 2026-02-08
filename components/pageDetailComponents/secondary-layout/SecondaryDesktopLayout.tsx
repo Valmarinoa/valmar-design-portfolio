@@ -165,22 +165,49 @@ export default function SecondaryDesktopLayout({
           [&::-webkit-scrollbar]:hidden
         "
       >
-        <motion.div
-          className="flex h-full w-max flex-nowrap items-stretch gap-0 overflow-visible"
-          onMouseMove={(e) => mouseX.set(e.clientX)}
-          onMouseLeave={() => mouseX.set(Infinity)}
-        >
-          {items.map((i, idx) => (
-            <DockCarouselItem
-              key={i.id}
-              item={i}
-              idx={idx}
-              mouseX={mouseX}
-              onClick={() => setActive(i)}
-              scaleFactor={scaleFactor}
-            />
-          ))}
-        </motion.div>
+      <motion.div
+  className="flex h-full w-max flex-nowrap items-stretch gap-0 overflow-visible"
+  onMouseMove={(e) => mouseX.set(e.clientX)}
+  onMouseLeave={() => mouseX.set(Infinity)}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.2 }} // Trigger when 20% of container is visible
+  variants={{
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  }}
+>
+  {items.map((i, idx) => (
+    <motion.div
+      key={i.id}
+      variants={{
+        hidden: { opacity: 0, y: 30 },
+        visible: { 
+          opacity: 1, 
+          y: 0,
+          transition: {
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1]
+          }
+        }
+      }}
+    >
+      <DockCarouselItem
+        item={i}
+        idx={idx}
+        mouseX={mouseX}
+        onClick={() => setActive(i)}
+        scaleFactor={scaleFactor}
+      />
+    </motion.div>
+  ))}
+</motion.div>
       </div>
 {themeKey === "totemica" ?
 (
@@ -191,49 +218,75 @@ export default function SecondaryDesktopLayout({
   <RuralesSvgs />
 )
 }
-      {mounted && (
-        <AnimatePresence initial={false} mode="sync">
-          {active ? (
-            <motion.div
-              className="fixed inset-0 z-999 flex items-center justify-center backdrop-blur-2xl"
-              onClick={closeModal}
-              variants={backdropVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              <div className={`absolute inset-0 ${theme.bg}`} />
+{mounted && (
+  <AnimatePresence initial={false} mode="sync">
+    {active ? (
+      <motion.div
+        className="fixed inset-0 z-999 flex items-center justify-center backdrop-blur-2xl"
+        onClick={closeModal}
+        variants={backdropVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <div className={`absolute inset-0 ${theme.bg}`} />
 
-              <motion.div
-                className={`relative z-1 rounded-lg ${theme.bg}`}
-                onClick={(e) => e.stopPropagation()}
-                variants={imageVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                style={{
-                  width: "min(76vw, 980px)",
-                  height: "min(78vh, 760px)",
-                }}
-              >
-                <div className="relative w-full h-full flex items-center justify-center px-10">
-                  <div className="relative w-full h-full max-w-[600px]">
-                    <Image
-                      src={active.src}
-                      alt={active.alt ?? active.id}
-                      fill
-                      sizes="(max-width: 1024px) 90vw, 600px"
-                      className={`object-contain ${active.imgClassName ?? ""}`}
-                      priority
-                      draggable={false}
-                    />
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-      )}
+        {/* Close Button */}
+        <motion.button
+          onClick={closeModal}
+          className="absolute top-6 right-6 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ delay: 0.2 }}
+          aria-label="Close"
+        >
+          <svg 
+            width="24" 
+            height="24" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className={theme.text}
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </motion.button>
+
+        <motion.div
+          className={`relative z-1 rounded-lg ${theme.bg}`}
+          onClick={(e) => e.stopPropagation()}
+          variants={imageVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          style={{
+            width: "min(76vw, 980px)",
+            height: "min(78vh, 760px)",
+          }}
+        >
+          <div className="relative w-full h-full flex items-center justify-center px-10">
+            <div className="relative w-full h-full max-w-[600px]">
+              <Image
+                src={active.src}
+                alt={active.alt ?? active.id}
+                fill
+                sizes="(max-width: 1024px) 90vw, 600px"
+                className={`object-contain ${active.imgClassName ?? ""}`}
+                priority
+                draggable={false}
+              />
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    ) : null}
+  </AnimatePresence>
+)}
     </section>
   );
 }
@@ -282,30 +335,25 @@ function DockCarouselItem({
       className="relative h-full shrink-0 overflow-visible"
       style={{ width: laneWidth }}
     >
-      <FadeIn
-        delay={2.5 + idx * 0.1}
-        className="relative h-full w-full overflow-visible"
+      <motion.button
+        ref={ref}
+        type="button"
+        onClick={onClick}
+        className="relative h-full w-full text-left group overflow-visible"
+        style={{
+          scale,
+          WebkitTapHighlightColor: "transparent",
+        }}
       >
-        <motion.button
-          ref={ref}
-          type="button"
-          onClick={onClick}
-          className="relative h-full w-full text-left group overflow-visible"
-          style={{
-            scale,
-            WebkitTapHighlightColor: "transparent",
-          }}
-        >
-          <Image
-            src={item.src}
-            alt={item.alt ?? item.id}
-            fill
-            className={`object-contain ${item.imgClassName ?? ""}`}
-            priority={idx < 2}
-            draggable={false}
-          />
-        </motion.button>
-      </FadeIn>
+        <Image
+          src={item.src}
+          alt={item.alt ?? item.id}
+          fill
+          className={`object-contain ${item.imgClassName ?? ""}`}
+          priority={idx < 2}
+          draggable={false}
+        />
+      </motion.button>
     </div>
   );
 }

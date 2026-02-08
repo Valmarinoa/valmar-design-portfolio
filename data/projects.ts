@@ -205,7 +205,7 @@ export const THEMES: Record<ThemeKey, ThemeClasses> = {
   rurales: {
     text: "text-[#131b72]",
     bg: "transparent",
-    border: "border-transparent",
+    border: "border-[#131b72]",
     mobileModalBg: "transparent",
     logo: "text-[#131b72]",
     nav: "text-yellow-200",
@@ -287,21 +287,6 @@ export const totemicaItems: GridItem[] = [
     mobileImgClassName: "object-contain object-center py-12",
   },
 ];
-
-function normalizeSlug(slug?: string | null) {
-  if (!slug) return "";
-  return slug.replace(/^\/+/, "");
-}
-
-export function getProjects(locale: Locale): Project[] {
-  return projectsData.map((project) => localizeProject(project, locale));
-}
-
-export function getProjectBySlug(locale: Locale, slug: string) {
-  const normalized = normalizeSlug(slug);
-  return getProjects(locale).find((project) => normalizeSlug(project.slug) === normalized);
-}
-
 export const ruralesItems: GridItem[] = [
   {
     id: '1',
@@ -374,13 +359,28 @@ export const ruralesItems: GridItem[] = [
   
   },
   {
+    id: '7',
+    src: '/media/rurales/rural-8.png',
+    alt: 'rurales image 8',
+    imgClassName: 'object-contain p-4 ',
+    cellClassName: 'relative h-96 flex flex-col',
+    ref: 'ref. ###',
+    baseWidthPx: 320,
+    // minWidthPx: "",
+    // maxWidthPx: "",
+  
+    mobileCellClassName: "h-[350px]",
+    mobileImgClassName: "object-contain py-10 pl-7 ",
+  },
+
+  {
     id: '6',
     src: '/media/rurales/rural-4.png',
     alt: 'rurales image 6',
     imgClassName: 'object-contain p-4 ',
     cellClassName: 'relative h-96 flex flex-col',
     ref: 'ref. ###',
-    baseWidthPx: 220,
+    baseWidthPx: 250,
     // minWidthPx: "",
     // maxWidthPx: "",
   
@@ -388,6 +388,21 @@ export const ruralesItems: GridItem[] = [
     mobileImgClassName: "object-contain py-10 pl-7 ",
   },
 ];
+function normalizeSlug(slug?: string | null) {
+  if (!slug) return "";
+  return slug.replace(/^\/+/, "");
+}
+
+export function getProjects(locale: Locale): Project[] {
+  return projectsData.map((project) => localizeProject(project, locale));
+}
+
+export function getProjectBySlug(locale: Locale, slug: string) {
+  const normalized = normalizeSlug(slug);
+  return getProjects(locale).find((project) => normalizeSlug(project.slug) === normalized);
+}
+
+
 
 const projectsData: LocalizedProject[] = [
   // SILENCE OF BLUE

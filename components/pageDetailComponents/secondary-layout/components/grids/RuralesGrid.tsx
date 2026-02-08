@@ -17,13 +17,13 @@ export default function RuralesGrid({
   if (!items?.length) return null;
 
   return (
-    <div className={`mt-12 w-full border ${theme.border} relative z-40`}>
+    <div className={`mt-12 w-full border border-transparent relative z-40`}>
       {items.map((item, idx) => (
        <div
        key={item.id}
        className={[
          "relative w-full",
-         idx !== 0 ? `border-t ${theme.border}` : "",
+         idx !== 0 ? `border-t border-transparent` : "",
          item.mobileCellClassName ?? item.cellClassName ?? "h-[420px]",
        ].join(" ")}
      >
