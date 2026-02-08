@@ -4,7 +4,7 @@ import { useTheme } from "@/components/providers/theme-context";
 import { getMessages } from "@/data/messages";
 import useLocale from "@/lib/use-locale";
 
-export default function MobileNavbar() {
+export default function WithLove() {
   const { theme } = useTheme();
   const locale = useLocale();
   const messages = getMessages(locale);

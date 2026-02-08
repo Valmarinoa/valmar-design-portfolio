@@ -54,7 +54,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         className={`
           ${baskervville.variable}
           ${beVietnamPro.variable}
-          min-h-screen 
+          min-h-dvh 
           bg-[#f5f4ed]
         `}
       >
