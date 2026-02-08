@@ -106,26 +106,26 @@ export default function StaggeredMenuToggle({ open, onToggle, className }: Props
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
       className={[
-        "inline-flex items-center justify-center w-10 h-10",
+        "inline-flex items-center justify-center w-12 h-12",
         className ?? "",
       ].join(" ")}
     >
       <span
-        className="relative w-[14px] h-[14px] inline-block"
+        className="relative w-[16px] h-[16px] inline-block"
         aria-hidden="true"
       >
         {/* Three dots - each 4px to match proportions of your SVG circles */}
         <span
           ref={dotBLRef}
-          className="absolute w-1 h-1 bg-current rounded-full [will-change:transform]"
+          className="absolute w-1.5 h-1.5 bg-current rounded-full [will-change:transform]"
         />
         <span
           ref={dotBRRef}
-          className="absolute w-1 h-1 bg-current rounded-full [will-change:transform]"
+          className="absolute w-1.5 h-1.5 bg-current rounded-full [will-change:transform]"
         />
         <span
           ref={dotTRef}
-          className="absolute w-1 h-1 bg-current rounded-full [will-change:transform]"
+          className="absolute w-1.5 h-1.5 bg-current rounded-full [will-change:transform]"
         />
       </span>
     </button>

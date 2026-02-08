@@ -369,8 +369,8 @@ export const ruralesItems: GridItem[] = [
     // minWidthPx: "",
     // maxWidthPx: "",
   
-    mobileCellClassName: "h-[350px]",
-    mobileImgClassName: "object-contain py-10 pl-7 ",
+    mobileCellClassName: "h-[400px]",
+    mobileImgClassName: "object-cover py-10 pl-7 ",
   },
 
   {
