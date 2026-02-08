@@ -106,12 +106,12 @@ export default function StaggeredMenuToggle({ open, onToggle, className }: Props
       aria-label={open ? "Close menu" : "Open menu"}
       aria-expanded={open}
       className={[
-        "inline-flex items-center justify-center w-12 h-12",
+        "inline-flex items-center justify-center w-8 h-8 pt-1",
         className ?? "",
       ].join(" ")}
     >
       <span
-        className="relative w-[16px] h-[16px] inline-block"
+        className="relative w-3 h-3 inline-block"
         aria-hidden="true"
       >
         {/* Three dots - each 4px to match proportions of your SVG circles */}
