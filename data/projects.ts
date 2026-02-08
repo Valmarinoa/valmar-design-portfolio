@@ -466,6 +466,7 @@ const projectsData: LocalizedProject[] = [
            'algo presente, y no ausente.'
        )
     },
+    
       {
         type: 'mediaText',
         media: {
@@ -488,6 +489,23 @@ const projectsData: LocalizedProject[] = [
           ,
           "A medida que el silencio crece en el espacio, sombras azul profundo se expanden lentamente, inundando la superficie y remodelando el espacio. El movimiento es intencionalmente mínimo. Lo importante aquí no es la interacción en el sentido tradicional, sino permanecer el tiempo suficiente para que el silencio se revele."
         ),
+      },
+      {
+        type: 'magazine',
+        backgroundSrc: "/media/sob/sob-ddw.png",
+        backgroundType: "image",
+        backgroundAlt: "Frozen woods research",
+        imgFit: "object-cover  object-bottom",
+  
+        backgroundSrc2: "/media/sob/sob-7.png",
+        backgroundType2: "image",
+        backgroundAlt2: "Frozen woods research",
+        imgFit2: "object-cover",
+  
+        text: "", 
+        maxHeightClassName: "max-h-[700px]",
+        className: "",
+        textClassName: "text-md",
       },
       {
         type: 'tripticGallery',
@@ -522,34 +540,34 @@ const projectsData: LocalizedProject[] = [
           },
         ],
       },
-      {
-        type: 'imageStory',
-        leftImage: {
-          src: '/media/sob/sob-7.png',
-          alt: 'Silence of Blue sculptural side view',
-        },
-        title: '',
-        subtitle: '',
-        body: t(
-          'Seen in daylight and without illumination, the object becomes sculptural and almost dormant. \n' +
-            'Its curved surface and internal mechanism hint at movement and potential, but remain still. \n' +
-            'This dual state (inactive by day, alive through light), reinforces the project’s core idea: \n' +
-            'silence as a condition, not a lack. Even when inactive, the object holds presence.',
-          'Visto à luz do dia e sem iluminação, o objeto se torna escultórico e quase adormecido. \n' +
-            'Sua superfície curva e o mecanismo interno sugerem movimento e potencial, mas permanecem imóveis. \n' +
-            'Esse estado dual (inativo de dia, vivo pela luz) reforça a ideia central do projeto: \n' +
-            'o silêncio como condição, não como falta. Mesmo quando inativo, o objeto mantém presença.'
-          ,
-          'Visto a la luz del día y sin iluminación, el objeto se vuelve escultórico y casi dormido. \n' +
-            'Su superficie curva y el mecanismo interno sugieren movimiento y potencial, pero permanecen inmóviles. \n' +
-            'Este estado dual (inactivo de día, vivo mediante la luz) refuerza la idea central del proyecto: \n' +
-            'el silencio como condición, no como carencia. Incluso cuando está inactivo, el objeto mantiene presencia.'
-        ),
-        rightImage: {
-          src: '/media/sob/sob-5.png',
-          alt: 'Small model of Silence of Blue',
-        },
-      },
+      // {
+      //   type: 'imageStory',
+      //   leftImage: {
+      //     src: '/media/sob/sob-7.png',
+      //     alt: 'Silence of Blue sculptural side view',
+      //   },
+      //   title: '',
+      //   subtitle: '',
+      //   body: t(
+      //     'Seen in daylight and without illumination, the object becomes sculptural and almost dormant. \n' +
+      //       'Its curved surface and internal mechanism hint at movement and potential, but remain still. \n' +
+      //       'This dual state (inactive by day, alive through light), reinforces the project’s core idea: \n' +
+      //       'silence as a condition, not a lack. Even when inactive, the object holds presence.',
+      //     'Visto à luz do dia e sem iluminação, o objeto se torna escultórico e quase adormecido. \n' +
+      //       'Sua superfície curva e o mecanismo interno sugerem movimento e potencial, mas permanecem imóveis. \n' +
+      //       'Esse estado dual (inativo de dia, vivo pela luz) reforça a ideia central do projeto: \n' +
+      //       'o silêncio como condição, não como falta. Mesmo quando inativo, o objeto mantém presença.'
+      //     ,
+      //     'Visto a la luz del día y sin iluminación, el objeto se vuelve escultórico y casi dormido. \n' +
+      //       'Su superficie curva y el mecanismo interno sugieren movimiento y potencial, pero permanecen inmóviles. \n' +
+      //       'Este estado dual (inactivo de día, vivo mediante la luz) refuerza la idea central del proyecto: \n' +
+      //       'el silencio como condición, no como carencia. Incluso cuando está inactivo, el objeto mantiene presencia.'
+      //   ),
+      //   rightImage: {
+      //     src: '/media/sob/sob-5.png',
+      //     alt: 'Small model of Silence of Blue',
+      //   },
+      // },
       {
         type: 'inspiration',
         heading: t("Inspiration & References", "Inspiração e Referências", "Inspiración y Referencias"),
@@ -560,6 +578,8 @@ const projectsData: LocalizedProject[] = [
             ,
             'Este proyecto se inspira en momentos naturales y artísticos en los que la luz transforma la percepción. Juntas, estas referencias exploran cómo la quietud, el color y la iluminación pueden crear espacios contemplativos.'
           ),
+          mobileMedia:"/media/sob/sob-research.mp4",
+          mobileMediaKind: "video",
         items: [
           {
             title: t(

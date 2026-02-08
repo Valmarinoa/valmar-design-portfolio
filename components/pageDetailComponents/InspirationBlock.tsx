@@ -23,7 +23,7 @@ export default function InspirationBlock({ block }: Props) {
                 </div>
             </div>
 
-            <div className="w-full aspect-auto h-[60vh] relative md:hidden bg-red-600">
+            <div className="w-full aspect-auto h-[60vh] relative md:hidden">
             {mobileMediaKind === "video" ? (
                             <video
                                 src={mobileMedia}
@@ -33,7 +33,7 @@ export default function InspirationBlock({ block }: Props) {
                                 loop
                                 playsInline
                                 preload="metadata"
-                                className="absolute inset-0 h-full w-full object-cover"
+                                className="absolute inset-0 h-full w-full object-contain"
                             />
                         
                     ) : (
@@ -41,7 +41,7 @@ export default function InspirationBlock({ block }: Props) {
                             <Image
                                 src={mobileMedia}
                                 alt={mobileMedia}
-                                className="absolute inset-0 h-full w-full object-cover"
+                                className="absolute inset-0 h-full w-full object-contain"
                             />
                         ) : null
                     )}
