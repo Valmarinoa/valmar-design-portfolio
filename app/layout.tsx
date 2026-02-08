@@ -8,10 +8,24 @@ import DesktopNavbar from "@/components/nav/DesktopNavbar";
 import MobileNavbar from "@/components/nav/MobileNavbar";
 import WithLove from "@/components/nav/WithLove.tsx";
 import { getServerLocale } from "@/lib/i18n-server";
+import { Metadata } from "next";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Valmar",
   description: "Product & Experience Design",
+  icons: {
+    icon: "/media/globo.png",           // Standard favicon
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png", // iOS
+    other: [
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        url: "/media/globo.png",
+      },
+    ],
+  },
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
