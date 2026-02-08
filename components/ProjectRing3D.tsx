@@ -267,7 +267,7 @@ export default function ProjectRing3D() {
                     style={{ 
                       x: "-50%",
                       width: "max-content",
-                      maxWidth: "210px"
+                      maxWidth: "230px"
                     }}
                     initial="hidden"
                     animate={isHovered ? "visible" : "hidden"}
