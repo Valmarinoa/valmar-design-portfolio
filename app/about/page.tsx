@@ -15,13 +15,16 @@ export default function AboutPage() {
       {/* Top Section */}
       <div className="mx-auto w-full flex gap-6 h-[50vh]">
         <motion.div 
-          className="md:w-1/2 w-1/4 flex text-5xl md:text-6xl overflow-visible"
+          className="md:w-1/2 w-1/4 flex flex-col gap-2 md:text-6xl overflow-visible relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
         >
-          <h2 className="leading-10">Valentina Marino</h2>
+          <h2 className="leading-10 text-5xl whitespace-nowrap mb-2">Valentina Marino</h2>
+          <h4 className="text-xl md:text-2xl whitespace-nowrap leading-6">Product & Experience <br/> Designer and Developer</h4>
+          <h5 className="text-sm whitespace-nowrap pt-4 md:absolute relative bottom-0">⚲ Amsterdam based</h5>
         </motion.div>
+       
         
         <div className="md:w-1/2 flex-1 flex relative">
           <motion.div 
@@ -31,7 +34,7 @@ export default function AboutPage() {
             transition={{ duration: 1.4, ease: easeOutElegant, delay: 0.4 }}
           >
             <Image
-              src="/media/me2.png"
+              src="/media/yo.png"
               alt="About the creator"
               fill
               className="object-cover"
@@ -67,7 +70,7 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: easeOutElegant, delay: 1 }}
         >
-          <p className="text-sm">{messages.about.content}</p>
+          <p className="text-base">{messages.about.content}</p>
         </motion.div>
       </div>
     </main>

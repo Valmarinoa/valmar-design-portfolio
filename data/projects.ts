@@ -640,7 +640,7 @@ const projectsData: LocalizedProject[] = [
     year: '2024',
     tagline: t(
       "Hand-painted driftwood branches",
-      "Madeiras flutuantes pintados à mão",
+      "Madeiras flutuantes pintadas à mão",
       "Maderas a la deriva pintadas a mano"
     ),
     description:
