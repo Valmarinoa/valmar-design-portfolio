@@ -20,9 +20,9 @@ export default function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
         >
-          <h2 className="leading-10 text-5xl whitespace-nowrap mb-2">Valentina Marino</h2>
-          <h4 className="text-xl opacity-80 md:text-lg whitespace-nowrap leading-6 font-light">Product & Experience Designer and Developer</h4>
-          <h5 className="text-sm whitespace-nowrap pt-4 md:absolute relative bottom-0">⚲ Amsterdam based</h5>
+          <h2 className="leading-10 text-5xl mb-2 md:whitespace-nowrap ">Valentina Marino</h2>
+          <h4 className="text-lg opacity-80 md:text-lg whitespace-nowrap md:whitespace-normal leading-6 font-light">Product & Experience <br/> Designer and Developer</h4>
+          <h5 className="text-xs whitespace-nowrap  md:absolute relative bottom-0">⚲ Amsterdam based</h5>
         </motion.div>
        
         
