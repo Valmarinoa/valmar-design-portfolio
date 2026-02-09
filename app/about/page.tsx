@@ -47,12 +47,12 @@ export default function AboutPage() {
       </div>
 
       {/* Divider Line with width animation */}
-      <motion.div 
+      {/* <motion.div 
         className="h-[0.5px] w-full bg-neutral-900 mt-10 origin-left"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.5, ease: easeOutElegant, delay: 0.6 }}
-      />
+      /> */}
 
 <motion.div
         initial={{ opacity: 0, y: 40 }}

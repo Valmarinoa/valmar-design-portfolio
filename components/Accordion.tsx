@@ -27,7 +27,13 @@ function AccordionItem({ title, children, isOpen, onToggle, index, isLast }: Acc
   }, [children]);
 
   return (
-    <div className={`border-b border-neutral-950 ${isLast ? 'border-b-0' : ''}`}>
+    <div className="">
+        <motion.div 
+        className={`h-[0.5px] w-full bg-neutral-900 mt-10 origin-left ${isLast}`}
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 1.5, ease: easeOutElegant, delay: 0.6 }}
+      />
       <button
         onClick={onToggle}
         className="w-full pt-6 flex items-center justify-between group cursor-pointer"
@@ -63,7 +69,7 @@ function AccordionItem({ title, children, isOpen, onToggle, index, isLast }: Acc
               animate={{ y: 0 }}
               exit={{ y: -20 }}
               transition={{ duration: 0.5, ease: easeOutElegant, delay: 0.1 }}
-              className="pb-5 pt-2"
+              className="pt-2"
             >
               {children}
             </motion.div>
