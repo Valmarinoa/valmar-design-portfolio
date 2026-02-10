@@ -45,12 +45,15 @@ export default function ProjectGridClient({ projects, desktopBlurb }: Props) {
       >
         {desktopBlurb}
       </motion.p>
-<div className="w-full flex px-4 text-xs text-center divide-x divide-neutral-700 pb-6">
-      <p>Physical Objects</p>
-      <p>Subtile Technology</p>
-      <p>LatinaAmerican Narrative</p>
-      <p>Savoir-faire Artesanal</p>
+      <div className="w-full flex px-4 text-[10px] text-center divide-x divide-neutral-700 pb-6 font-light">
+        
+          <p>Physical Objects</p>
+        
+          <p>Subtile Technology</p>
+          <p>LatinaAmerican Narrative</p>
+          <p>Savoir-faire Artesanal</p>
       </div>
+      
       <div className="px-4 py-10">
         <motion.div 
           className="grid grid-cols-2 gap-x-2 gap-y-10"
