@@ -105,7 +105,7 @@ export default function Hero() {
             text={messages.hero.name}
             delay={0.6}
             mode="words"
-            className="mix-blend-difference font-helvetica-neue text-white text-lg"
+            className="mix-blend-difference  text-white text-lg font-light"
           />
 
           <FadeIn delay={0.1} className="h-14">
@@ -117,7 +117,7 @@ export default function Hero() {
             text={messages.hero.role}
             delay={0.7}
             mode="words"
-            className="mix-blend-difference font-helvetica-neue text-white text-sm "
+            className="mix-blend-difference text-white text-lg font-light "
           />
         </motion.div>
       </div>
