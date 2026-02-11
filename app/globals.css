@@ -13,7 +13,6 @@
 /* Base body font - Be Vietnam Pro */
 body {
   font-family: var(--font-be-vietnam), sans-serif;
-  cursor: none !important;
 }
 
 /* Utility classes for specific fonts */
