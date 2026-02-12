@@ -18,7 +18,6 @@ import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import BlurText from "@/components/animations/BlurText";
 import type { GridItem } from "@/types/project";
 import TotemicaSvgs from "./components/TotemicaSvgs";
-import FadeIn from "@/components/animations/FadeIn";
 import { useTheme } from "@/components/providers/theme-context";
 import RuralesSvgs from "./components/RuralesSvgs";
 

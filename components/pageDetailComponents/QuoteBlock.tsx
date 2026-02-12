@@ -1,8 +1,5 @@
 "use client";
 
-import MaskText from "@/components/animations/MaskText";
-import FadeIn from "../animations/FadeIn";
-
 type QuoteBlockProps = {
     quote: string;
 };

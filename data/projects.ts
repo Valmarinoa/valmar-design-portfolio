@@ -12,6 +12,7 @@ import type {
   TextTripticBlock,
   TimelineBlock,
   VideoBlock,
+  MasonryBlock,
 } from "@/types/project";
 import type { Locale } from "@/lib/i18n";
 
@@ -53,6 +54,8 @@ type LocalizedTimelineBlock = Omit<TimelineBlock, "title" | "description" | "sta
   startLabel?: Localized<string>;
   items: Array<Omit<TimelineBlock["items"][number], "caption"> & { caption?: Localized<string> }>;
 };
+type LocalizedMasonryBlock = MasonryBlock;
+
 
 type LocalizedProjectDetailBlock =
   | LocalizedQuoteBlock
@@ -64,6 +67,7 @@ type LocalizedProjectDetailBlock =
   | LocalizedDoubleBlock
   | LocalizedMagazineBlock
   | LocalizedTimelineBlock
+  | LocalizedMasonryBlock
   | LocalizedGalleryBlock;
 
 type LocalizedProject = Omit<Project, "title" | "tagline" | "description" | "tags" | "blocks"> & {
@@ -148,6 +152,8 @@ function localizeBlocks(
           ...block,
           text: block.text ? resolveLocalized(block.text, locale) : block.text,
         };
+      case "masonry":
+          return block;
       case "timeline":
         return {
           ...block,
@@ -159,6 +165,7 @@ function localizeBlocks(
             caption: item.caption ? resolveLocalized(item.caption, locale) : item.caption,
           })),
         };
+        
       default:
         return block;
     }
@@ -439,6 +446,7 @@ const projectsData: LocalizedProject[] = [
     heroVideo: '/media/sob-blue.mp4',
 
     blocks: [
+      
       {
         type: 'quote',
         quote:
@@ -465,8 +473,7 @@ const projectsData: LocalizedProject[] = [
            'la instalación crea un espacio donde la percepción se desacelera y el silencio se vuelve \n' +
            'algo presente, y no ausente.'
        )
-    },
-    
+      },
       {
         type: 'mediaText',
         media: {
@@ -508,6 +515,241 @@ const projectsData: LocalizedProject[] = [
         textClassName: "text-md",
       },
       {
+        type: "timeline",
+        title: t("Research and Development", "Proceso e Desenvolvimento", "Proceso y Desarrollo"),
+        description: t(
+          "Material experiments focused on water as a surface rather than a liquid. I created casts that capture the textures, ripples, and distortions of water in solid form, allowing light to behave unpredictably as it passes through them.",
+          "Os experimentos de material focaram na água como superfície, e não como líquido. Criei moldes que capturam as texturas, ondulações e distorções da água em forma sólida, permitindo que a luz se comporte de maneira imprevisível ao atravessá-los."
+          ,
+          "Los experimentos de material se centraron en el agua como superficie y no como líquido. Creé moldes que capturan las texturas, ondulaciones y distorsiones del agua en forma sólida, permitiendo que la luz se comporte de manera impredecible al atravesarlos."
+        ),
+        baselineAt: 0.6,
+        snap: true,
+        edgeFade: true,
+        wheelToHorizontal: true,
+        items: [
+          {
+            id: "1",
+            type: "video",
+            src: "/media/sob/samsara-2.mp4",
+            x: -5,
+            width: 160,
+            height: 200,
+            caption: t("Namibian Dessert shadows", "Sombras no deserto da Namibia", "Sobras en el desierto de Namibia")
+          },
+          {
+            id: "2",
+            type: "video",
+            src: "/media/tidal/research/expo-1.mp4",
+            x: 152,
+            y: 0,
+            width: 160,
+            height: 200,
+            caption: t("Reproducing shadow effect at home", "Reproducindo efeito de sombra", "Reproduciendo efecto sombra")
+          },
+          {
+            id: "0",
+            type: "image",
+            src: "/media/sob/masonry/bottle.png",
+            x: 268,
+            y: 80,
+            width: 80,
+            height: 240,
+            caption: t("", "", "")
+          },
+          {
+            id: "bottle vid",
+            type: "video",
+            src: "/media/sob-pd.mp4",
+            x: 348,
+            y: 70,
+            width: 100,
+            height: 220,
+            caption: t("Shadow motion experiment", "Experimento com sombras", "Experimento con sombras")
+          },
+
+           //////////////////////
+
+          {
+            id: "3",
+            type: "image",
+            src: "/media/sob/masonry/6.png",
+            x: 542,
+            width: 260,
+            height: 200,
+            caption: t("Figuring out light rotation mimicking sunlight", "Entendendo movimento da fonte de luz", "Entendiendo angulos de rotación de la luz")
+          },
+          {
+            id: "4",
+            type: "image",
+            src: "/media/sob/masonry/4.png",
+            x: 797,
+            y: 0,
+            width: 210,
+            height: 200,
+            caption: t("", "", "")
+          },
+
+           //////////////////////
+
+          {
+            id: "angle prototyping closed",
+            type: "image",
+            src: "/media/sob/masonry/77.png",
+            x: 1085,
+            y: 0,
+            width: 140,
+            height: 200,
+            caption: t("Hands-on prototyping", "Prototipando rotaçao", "Prototipando rotación")
+          },
+          {
+            id: "angle prototyping open",
+            type: "image",
+            src: "/media/sob/masonry/88.png",
+            x: 1223,
+            y: 0,
+            width: 140,
+            height: 200,
+            caption: t("", "", "")
+          },
+
+          //////////////////////
+            {
+            id: "connections",
+            type: "image",
+            src: "/media/sob/masonry/connections.png",
+            x: 1418,
+            y: 0,
+            width: 240,
+            height: 180,
+            caption: t("Electronic architecture: connecting motor rotation to sound wave values.", "Saúde Metabólica", "Salud Metabólica")
+          },
+          {
+            id: "microphone",
+            type: "image",
+            src: "/media/sob/masonry/11.png",
+            x: 1655,
+            y: 0,
+            width: 130,
+            height: 180,
+            caption: t("Calibrating microphone", "Calibrando o microfone", "Calibrando el micrófono")
+          },
+
+          {
+            id: "shape sketches",
+            type: "image",
+            src: "/media/sob/masonry/9.png",
+            x: 1892,
+            y: 40,
+            width: 100,
+            height: 150,
+            caption: t("Sketching reflective object", "Desenhos da forma", "Diseños de forma")
+          },
+ //////////////////////
+          {
+            id: "blue glass",
+            type: "image",
+            src: "/media/sob/masonry/10.png",
+            x: 1990,
+            y: 0,
+            width: 140,
+            height: 200,
+            caption: t("Glass Casting", "Peça de vidro moldada", "Pieza de vidrio moldada")
+          },
+
+          
+
+           {
+            id: "blue glass set up",
+            type: "image",
+            src: "/media/sob/masonry/12.png",
+            x: 2160,
+            y: 0,
+            width: 240,
+            height: 190,
+            caption: t("Support for casted shadows", "", "")
+          },
+
+          ///////////
+
+           {
+            id: "set up",
+            type: "image",
+            src: "/media/sob/masonry/13.png",
+            x: 2460,
+            y: 0,
+            width: 236,
+            height: 190,
+            caption: t("First system set-up", "", "")
+          },
+          {
+            id: "set up 2",
+            type: "image",
+            src: "/media/sob/masonry/15.png",
+            x: 2690,
+            y: 0,
+            width: 170,
+            height: 200,
+            caption: t("Components connected for testing mechanism", "", "")
+          },
+
+            ///////////
+
+            {
+              id: "set up finished",
+              type: "image",
+              src: "/media/sob/masonry/20.png",
+              x: 2990,
+              y: 0,
+              width: 250,
+              height: 200,
+              caption: t("First system set-up", "", "")
+            },
+            {
+              id: "set up 2 finished 2",
+              type: "image",
+              src: "/media/sob/masonry/21.png",
+              x: 3232,
+              y: 0,
+              width: 250,
+              height: 200,
+              caption: t("", "", "")
+            },
+
+            {
+              id: "rotating mechanism",
+              type: "image",
+              src: "/media/sob/masonry/22.png",
+              x: 3532,
+              y: 50,
+              width: 90,
+              height: 130,
+              caption: t("", "", "")
+            },
+
+            {
+              id: "rotating mechanism 2",
+              type: "video",
+              src: "/media/sob/masonry/rotatiom.mp4",
+              x: 3620,
+              y: 0,
+              width: 160,
+              height: 220,
+              caption: t("", "", "")
+            },
+            {
+              id: "final experiment",
+              type: "video",
+              src: "/media/sob/masonry/final.mp4",
+              x: 3800,
+              y: 0,
+              width: 360,
+              height: 200,
+              caption: t("Final test and value calibration", "", "")
+            },
+        ]
+      },
+      {
         type: 'tripticGallery',
         title: '',
         body: t(
@@ -540,34 +782,6 @@ const projectsData: LocalizedProject[] = [
           },
         ],
       },
-      // {
-      //   type: 'imageStory',
-      //   leftImage: {
-      //     src: '/media/sob/sob-7.png',
-      //     alt: 'Silence of Blue sculptural side view',
-      //   },
-      //   title: '',
-      //   subtitle: '',
-      //   body: t(
-      //     'Seen in daylight and without illumination, the object becomes sculptural and almost dormant. \n' +
-      //       'Its curved surface and internal mechanism hint at movement and potential, but remain still. \n' +
-      //       'This dual state (inactive by day, alive through light), reinforces the project’s core idea: \n' +
-      //       'silence as a condition, not a lack. Even when inactive, the object holds presence.',
-      //     'Visto à luz do dia e sem iluminação, o objeto se torna escultórico e quase adormecido. \n' +
-      //       'Sua superfície curva e o mecanismo interno sugerem movimento e potencial, mas permanecem imóveis. \n' +
-      //       'Esse estado dual (inativo de dia, vivo pela luz) reforça a ideia central do projeto: \n' +
-      //       'o silêncio como condição, não como falta. Mesmo quando inativo, o objeto mantém presença.'
-      //     ,
-      //     'Visto a la luz del día y sin iluminación, el objeto se vuelve escultórico y casi dormido. \n' +
-      //       'Su superficie curva y el mecanismo interno sugieren movimiento y potencial, pero permanecen inmóviles. \n' +
-      //       'Este estado dual (inactivo de día, vivo mediante la luz) refuerza la idea central del proyecto: \n' +
-      //       'el silencio como condición, no como carencia. Incluso cuando está inactivo, el objeto mantiene presencia.'
-      //   ),
-      //   rightImage: {
-      //     src: '/media/sob/sob-5.png',
-      //     alt: 'Small model of Silence of Blue',
-      //   },
-      // },
       {
         type: 'inspiration',
         heading: t("Inspiration & References", "Inspiração e Referências", "Inspiración y Referencias"),
@@ -647,7 +861,24 @@ const projectsData: LocalizedProject[] = [
           },
         ],
       },
-   
+      
+      {
+        type: "masonry",
+        animateFrom: "bottom",
+        duration: 0.6,
+        stagger: 0.05,
+        blurToFocus: true,
+        scaleOnHover: true,
+        hoverScale: 0.97,
+        colorShiftOnHover: false,
+        items: [
+          { id: "sob-sketch", img: "/media/sob/masonry/main.png", url: "/media/sob/masonry/main.png", height: 400 },
+          { id: "sob-m1", img: "/media/sob/masonry/1.png", url: "/media/sob/masonry/1.png", height: 520 },
+          { id: "sob-m2", img: "/media/sob/masonry/2.png", url: "/media/sob/masonry/2.png", height: 360 },
+          { id: "sob-m3", img: "/media/sob/masonry/3.png", url: "/media/sob/masonry/3.png", height: 460 },
+          { id: "sob-m4", img: "/media/sob/masonry/4.png", url: "/media/sob/masonry/4.png", height: 600 },
+        ],
+      } 
     ],
   },
 

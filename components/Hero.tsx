@@ -25,7 +25,7 @@ export default function Hero() {
   // Make parallax depend on the hero section
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end start"], // progress while scrolling THROUGH the hero
+    offset: ["start start", "end start"], 
   });
 
   const smooth = useSpring(scrollYProgress, {
@@ -117,7 +117,7 @@ export default function Hero() {
             text={messages.hero.role}
             delay={0.7}
             mode="words"
-            className="mix-blend-difference text-white text-lg font-light "
+            className="mix-blend-difference text-white text-sm font-light "
           />
         </motion.div>
       </div>

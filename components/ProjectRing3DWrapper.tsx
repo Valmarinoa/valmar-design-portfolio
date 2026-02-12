@@ -10,22 +10,8 @@ export default function ProjectRing3DWrapper() {
     return (
       <section
         className="
-          relative
-          min-h-screen
-          w-full
-          bg-cover
-          bg-center
-          bg-no-repeat
-        "
-        style={{
-          backgroundImage: "url('/media/sky2.png')",
-          
-        }}
+          relative min-h-screen w-full bg-cover bg-center bg-no-repeat"
       >
-        {/* Optional overlay for contrast */}
-        {/* <div className="absolute inset-0 bg-black/20" /> */}
-  
-        {/* Content */}
         <div className="relative z-10">
           <ProjectRing3D />
         </div>

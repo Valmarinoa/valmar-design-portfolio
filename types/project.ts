@@ -36,7 +36,12 @@ export type GridItem = {
   mobileImgClassName?: string;    // image tweaks just for mobile
 };
 
-
+type MasonryItem = {
+  id: string;
+  img: string;
+  url: string;
+  height: number;
+}
 
 // BLOCKS 
 export type QuoteBlock = {
@@ -178,6 +183,19 @@ export type TimelineBlock = {
   wheelToHorizontal?: boolean;
 };
 
+export type MasonryBlock = {
+  type: "masonry";
+  items: MasonryItem[];
+  ease?: string;
+  duration?: number;
+  stagger?: number;
+  animateFrom?: 'bottom' | 'top' | 'left' | 'right' | 'center' | 'random';
+  scaleOnHover?: boolean;
+  hoverScale?: number;
+  blurToFocus?: boolean;
+  colorShiftOnHover?: boolean;
+}
+
 // Union of all supported block types
 export type ProjectDetailBlock =
   | QuoteBlock
@@ -189,6 +207,7 @@ export type ProjectDetailBlock =
   | DoubleBlock
   | MagazineBlock
   | TimelineBlock
+  | MasonryBlock
   | GalleryBlock;
 
 // ---------- PROJECT TYPE ----------

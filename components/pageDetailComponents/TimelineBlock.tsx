@@ -138,13 +138,7 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
 
       {description ? (
         <p
-          className="
-            mt-4 text-base  text-neutral-900
-            max-w-none
-            md:columns-2 md:gap-10
-            [column-fill:balance]
-            md:[orphans:3] md:[widows:3]
-          "
+          className="mt-4 text-base md:w-1/2 text-neutral-900 "
         >
           {description}
         </p>
@@ -283,9 +277,9 @@ function TimelineMediaItem({
         )}
 
         {item.caption ? (
-          <div className="absolute -top-5 right-0 z-60 flex items-center gap-2">
+          <div className="absolute -top-8 right-0 z-60 flex items-center gap-2">
             <span className="inline-block h-3 w-3 rounded-[2px] bg-neutral-900" />
-            <span className="text-[11px] leading-none text-neutral-900">
+            <span className="text-[11px] leading-3 text-neutral-900">
               {item.caption}
             </span>
           </div>
