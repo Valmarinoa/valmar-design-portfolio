@@ -15,7 +15,6 @@ import LazyMount from "../animations/LazyMount";
 import DesktopHeroMedia from "../pageDetailComponents/DesktopHeroMedia";
 import MagazineBlock from "../pageDetailComponents/MagazineBlock";
 import TimelineBlock from "../pageDetailComponents/TimelineBlock";
-import MasonryBlock from "../pageDetailComponents/MasonryBlock";
 
 
 type Props = {
@@ -152,14 +151,6 @@ export default function ProjectDetailPage({ project }: Props) {
                                     </LazyMount>
                                 </BlockWrapper>
                             );
-                        case "masonry":
-                            return (
-                                <BlockWrapper key={key}>
-                                    <LazyMount>
-                                        <MasonryBlock block={block} />
-                                    </LazyMount>
-                                </BlockWrapper>
-                                );
     
                     default:
                         return null;

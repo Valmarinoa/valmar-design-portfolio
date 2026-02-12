@@ -12,7 +12,6 @@ import type {
   TextTripticBlock,
   TimelineBlock,
   VideoBlock,
-  MasonryBlock,
 } from "@/types/project";
 import type { Locale } from "@/lib/i18n";
 
@@ -54,8 +53,6 @@ type LocalizedTimelineBlock = Omit<TimelineBlock, "title" | "description" | "sta
   startLabel?: Localized<string>;
   items: Array<Omit<TimelineBlock["items"][number], "caption"> & { caption?: Localized<string> }>;
 };
-type LocalizedMasonryBlock = MasonryBlock;
-
 
 type LocalizedProjectDetailBlock =
   | LocalizedQuoteBlock
@@ -67,7 +64,6 @@ type LocalizedProjectDetailBlock =
   | LocalizedDoubleBlock
   | LocalizedMagazineBlock
   | LocalizedTimelineBlock
-  | LocalizedMasonryBlock
   | LocalizedGalleryBlock;
 
 type LocalizedProject = Omit<Project, "title" | "tagline" | "description" | "tags" | "blocks"> & {
@@ -152,8 +148,6 @@ function localizeBlocks(
           ...block,
           text: block.text ? resolveLocalized(block.text, locale) : block.text,
         };
-      case "masonry":
-          return block;
       case "timeline":
         return {
           ...block,
@@ -862,23 +856,6 @@ const projectsData: LocalizedProject[] = [
         ],
       },
       
-      {
-        type: "masonry",
-        animateFrom: "bottom",
-        duration: 0.6,
-        stagger: 0.05,
-        blurToFocus: true,
-        scaleOnHover: true,
-        hoverScale: 0.97,
-        colorShiftOnHover: false,
-        items: [
-          { id: "sob-sketch", img: "/media/sob/masonry/main.png", url: "/media/sob/masonry/main.png", height: 400 },
-          { id: "sob-m1", img: "/media/sob/masonry/1.png", url: "/media/sob/masonry/1.png", height: 520 },
-          { id: "sob-m2", img: "/media/sob/masonry/2.png", url: "/media/sob/masonry/2.png", height: 360 },
-          { id: "sob-m3", img: "/media/sob/masonry/3.png", url: "/media/sob/masonry/3.png", height: 460 },
-          { id: "sob-m4", img: "/media/sob/masonry/4.png", url: "/media/sob/masonry/4.png", height: 600 },
-        ],
-      } 
     ],
   },
 
