@@ -130,6 +130,7 @@ export default function SecondaryDesktopLayout({
               delay={2}
               mode="block"
               className="w-full text-sm md:text-2xl text-left leading-snug"
+              
             />
           )}
 

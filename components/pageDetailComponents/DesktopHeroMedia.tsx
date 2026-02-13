@@ -122,7 +122,8 @@ export default function DesktopHeroMedia({
               text={project.description}
               delay={1.6}
               mode="block"
-              className="w-full text-base md:text-2xl text-left md:leading-7"
+              // className="w-full text-base md:text-2xl text-left md:leading-7"
+              className="w-full text-sm md:text-2xl text-left leading-snug"
             />
           )}
 
