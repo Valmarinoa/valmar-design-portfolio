@@ -748,7 +748,7 @@ const projectsData: LocalizedProject[] = [
         type: 'magazine',
         backgroundSrc: "/media/sob/masonry/sketches.png",
         backgroundType: "image",
-        backgroundAlt: "Frozen woods research",
+        backgroundAlt: "silence of blue sketches",
         imgFit: "object-contain",
   
         text: "", 
@@ -760,7 +760,7 @@ const projectsData: LocalizedProject[] = [
         type: 'magazine',
         backgroundSrc: "/media/sob/masonry/main.png",
         backgroundType: "image",
-        backgroundAlt: "Frozen woods research",
+        backgroundAlt: "",
         imgFit: "object-contain object-top",
   
         text: "", 

@@ -159,7 +159,7 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
         {/* viewportRef measures this container height */}
         <div
           ref={viewportRef}
-          className={`relative w-full h-[50vh] max-h-[700px] mb-20 ${timelineHeightClassName}`}
+          className={`relative w-full h-[50vh] max-h-[930px] mb-20 ${timelineHeightClassName}`}
         >
           <motion.div
             ref={scrollerRef}
