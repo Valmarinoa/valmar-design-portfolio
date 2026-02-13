@@ -1470,7 +1470,7 @@ const projectsData: LocalizedProject[] = [
         imgFit2: "object-cover",
 
         text: "", 
-        maxHeightClassName: "max-h-[700px]",
+        maxHeightClassName: "max-h-[930px]",
         className: "",
         textClassName: "text-md",
       },
