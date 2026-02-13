@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { TimelineBlock as TimelineBlockType, TimelineItem } from "@/types/project";
+import { div } from "framer-motion/client";
 
 type Props = {
   block: TimelineBlockType;
@@ -129,6 +130,7 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
      
         <div className="mx-auto w-full max-w-[1240px]">
   {(title || description) && (
+    <div className="w-full flex">
     <div>
       {title ? (
         <h2 className="text-balance text-3xl md:text-4xl leading-snug text-neutral-900">
@@ -143,6 +145,14 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
           {description}
         </p>
       ) : null}
+    </div>
+    <div className="w-56 h-fit relative">
+    <Image  src="/media/sob/masonry/main.png"
+            alt=""
+            fill
+            className="object-cover rounded-xs shadow-sm"
+            draggable={false}
+            priority={false} /></div>
     </div>
   )}
 

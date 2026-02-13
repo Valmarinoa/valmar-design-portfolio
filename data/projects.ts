@@ -505,14 +505,14 @@ const projectsData: LocalizedProject[] = [
   
         text: "", 
         maxHeightClassName: "max-h-[700px]",
-        className: "",
+        className: "md:pb-20",
         textClassName: "text-md",
       },
       {
         type: "timeline",
         title: t("Research and Development", "Proceso e Desenvolvimento", "Proceso y Desarrollo"),
         description: t(
-          "Material experiments focused on water as a surface rather than a liquid. I created casts that capture the textures, ripples, and distortions of water in solid form, allowing light to behave unpredictably as it passes through them.",
+          "Here’s a glimpse into what has been the process of making Silence of Blue: going from abstract ideas drawn from poetic inspirations, to building a minimum viable a low-tech system that translates sound waves into lighting behavior.",
           "Os experimentos de material focaram na água como superfície, e não como líquido. Criei moldes que capturam as texturas, ondulações e distorções da água em forma sólida, permitindo que a luz se comporte de maneira imprevisível ao atravessá-los."
           ,
           "Los experimentos de material se centraron en el agua como superficie y no como líquido. Creé moldes que capturan las texturas, ondulaciones y distorsiones del agua en forma sólida, permitiendo que la luz se comporte de manera impredecible al atravesarlos."
@@ -520,6 +520,7 @@ const projectsData: LocalizedProject[] = [
         baselineAt: 0.6,
         snap: true,
         edgeFade: true,
+        heightClassName:"md:pt-0",
         wheelToHorizontal: true,
         items: [
           {
@@ -742,6 +743,30 @@ const projectsData: LocalizedProject[] = [
               caption: t("Final test and value calibration", "", "")
             },
         ]
+      },
+      {
+        type: 'magazine',
+        backgroundSrc: "/media/sob/masonry/sketches.png",
+        backgroundType: "image",
+        backgroundAlt: "Frozen woods research",
+        imgFit: "object-contain",
+  
+        text: "", 
+        maxHeightClassName: "",
+        className: "md:pt-0 md:max-h-[450px]",
+        textClassName: "text-md",
+      },
+      {
+        type: 'magazine',
+        backgroundSrc: "/media/sob/masonry/main.png",
+        backgroundType: "image",
+        backgroundAlt: "Frozen woods research",
+        imgFit: "object-contain object-top",
+  
+        text: "", 
+        maxHeightClassName: "",
+        className: "md:pt-0 md:h-[720px] md:pb-20",
+        textClassName: "text-md",
       },
       {
         type: 'tripticGallery',
