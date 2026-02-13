@@ -14,8 +14,8 @@ export default function TextTripticBlock({ block }: Props) {
     const hasCopy = Boolean(title || body);
 
     return (
-        <section className="w-full max-w-[1440px] text-neutral-900">
-            <div className="mx-auto flex flex-col gap-10 md:gap-8">
+        <section className="w-screen max-w-[1240px] text-neutral-900 md:pb-20 md:px-6">
+            <div className="mx-auto flex flex-col gap-10 md:gap-8 ">
 
                 {/* TITLE + BODY (optional) */}
                 {hasCopy && (

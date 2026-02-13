@@ -504,7 +504,7 @@ const projectsData: LocalizedProject[] = [
         imgFit2: "object-cover",
   
         text: "", 
-        maxHeightClassName: "max-h-[900px]",
+        maxHeightClassName: "max-h-[1100px]",
         className: "md:pb-20",
         textClassName: "text-md",
       },
@@ -520,7 +520,7 @@ const projectsData: LocalizedProject[] = [
         baselineAt: 0.6,
         snap: true,
         edgeFade: true,
-        heightClassName:"md:pt-0",
+        heightClassName:"pt-10 md:pt-0 h-[720px]",
         wheelToHorizontal: true,
         items: [
           {
@@ -746,26 +746,14 @@ const projectsData: LocalizedProject[] = [
       },
       {
         type: 'magazine',
-        backgroundSrc: "/media/sob/masonry/sketches.png",
-        backgroundType: "image",
-        backgroundAlt: "silence of blue sketches",
-        imgFit: "object-contain",
-  
-        text: "", 
-        maxHeightClassName: "",
-        className: "md:pt-0 md:max-h-[450px]",
-        textClassName: "text-md",
-      },
-      {
-        type: 'magazine',
-        backgroundSrc: "/media/sob/masonry/main.png",
+        backgroundSrc: "/media/sob/masonry/sketches-all.png",
         backgroundType: "image",
         backgroundAlt: "",
         imgFit: "object-contain object-top",
   
         text: "", 
         maxHeightClassName: "",
-        className: "md:pt-0 md:h-[720px] md:pb-20",
+        className: "",
         textClassName: "text-md",
       },
       {
@@ -880,6 +868,17 @@ const projectsData: LocalizedProject[] = [
           },
         ],
       },
+      {
+        type: 'magazine',
+        backgroundSrc: '/media/sob/1.mp4',
+        backgroundType: "video",
+        backgroundAlt: "Experiment",
+        text: "",
+        maxHeightClassName: "max-h-[800px] md:pt-20",
+        className: "md:mb-44",
+        textClassName: "",
+        imgFit: "object-cover rounded-xs"
+        },
       
     ],
   },

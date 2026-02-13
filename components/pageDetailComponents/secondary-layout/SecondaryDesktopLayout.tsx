@@ -117,7 +117,7 @@ export default function SecondaryDesktopLayout({
               text={tagLine}
               delay={1.4}
               mode="words"
-              className={`w-full text-lg text-left leading-5 font-light ${theme.text}`}
+              className={`w-full text-lg text-left leading-6 md:leading-5 font-light ${theme.text}`}
             />
           )}
         </div>

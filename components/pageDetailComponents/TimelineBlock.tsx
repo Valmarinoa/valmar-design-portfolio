@@ -126,33 +126,25 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
   }, [wheelToHorizontal]);
 
   return (
-    <section className={`w-screen max-w-[1244px] relative px-3 md:px-6 ${heightClassName} ${className}`}>
-     
+    <section className={`w-screen max-w-[1244px] relative md:px-6 ${heightClassName} ${className}`}>
         <div className="mx-auto w-full max-w-[1240px]">
-  {(title || description) && (
-    <div className="w-full flex">
-    <div>
-      {title ? (
-        <h2 className="text-balance text-3xl md:text-4xl leading-snug text-neutral-900">
-          {title}
-        </h2>
-      ) : null}
+          {(title || description) && (
+            <div className="w-full flex px-4">
+            <div>
+              {title ? (
+                <h2 className="text-balance text-3xl md:text-4xl leading-snug text-neutral-900">
+                  {title}
+                </h2>
+              ) : null}
 
-      {description ? (
-        <p
-          className="mt-4 text-base md:w-1/2 text-neutral-900 "
-        >
-          {description}
-        </p>
-      ) : null}
-    </div>
-    <div className="w-56 h-fit relative">
-    <Image  src="/media/sob/masonry/main.png"
-            alt=""
-            fill
-            className="object-cover rounded-xs shadow-sm"
-            draggable={false}
-            priority={false} /></div>
+              {description ? (
+                <p
+                  className="mt-4 text-base md:w-1/2 text-neutral-900 "
+                >
+                  {description}
+                </p>
+              ) : null }
+        </div>
     </div>
   )}
 
