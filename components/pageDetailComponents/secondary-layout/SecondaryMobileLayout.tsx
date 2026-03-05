@@ -3,6 +3,7 @@
 import type { GridItem } from "@/types/project";
 import MobileHeroComponent from "./components/MobileHeroComponent";
 import MobileGallery from "./components/MobileGallery";
+import MobileFooter from "@/components/MobileFooter";
 
 type Props = {
   gridItems: GridItem[];

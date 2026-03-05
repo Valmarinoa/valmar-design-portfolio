@@ -226,9 +226,11 @@ export function getTheme(theme: ThemeKey): ThemeClasses {
   ];
   
   export const socialItems = [
-    { label: 'Twitter', link: 'https://twitter.com' },
+    { label: 'email', link: 'mailto:valenmarinocol@gmail.com' },
     { label: 'GitHub', link: 'https://github.com' },
-    { label: 'LinkedIn', link: 'https://linkedin.com' }
+    { label: 'LinkedIn', link: 'https://linkedin.com' },
+    { label: 'Instagram', link: 'https://instagram.com/valmarino.a' }
+    
   ];
 
 export const totemicaItems: GridItem[] = [

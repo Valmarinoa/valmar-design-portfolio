@@ -1,6 +1,7 @@
 import AnimatedBlurb from "@/components/animations/AnimatedBlurb";
 import BlurText from "@/components/animations/BlurText";
 import Hero from "@/components/Hero";
+import MobileFooter from "@/components/MobileFooter";
 import ProjectGrid from "@/components/ProjectGrid";
 import ProjectRing3DWrapper from "@/components/ProjectRing3DWrapper";
 import { getMessages } from "@/data/messages";

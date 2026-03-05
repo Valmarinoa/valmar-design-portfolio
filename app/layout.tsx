@@ -10,6 +10,7 @@ import MobileNavbar from "@/components/nav/MobileNavbar";
 import WithLove from "@/components/nav/WithLove.tsx";
 import { getServerLocale } from "@/lib/i18n-server";
 import { Metadata } from "next";
+import MobileFooter from "@/components/MobileFooter";
 
 // Configure Google Fonts
 const baskervville = Baskervville({
@@ -64,6 +65,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <MobileNavbar />
           <SmoothScroll>{children}</SmoothScroll>
           <WithLove />
+          <MobileFooter />
         </AutoThemeProvider>
       </body>
     </html>
