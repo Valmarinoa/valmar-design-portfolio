@@ -1,6 +1,5 @@
 "use client";
 
-import NocturnaShader from "@/components/pageDetailComponents/NocturnaShader";
 import SecondaryDesktopLayout from "@/components/pageDetailComponents/secondary-layout/SecondaryDesktopLayout";
 import SecondaryMobileLayout from "@/components/pageDetailComponents/secondary-layout/SecondaryMobileLayout";
 import { getProjects, ruralesItems } from "@/data/projects";

@@ -238,7 +238,8 @@ export const totemicaItems: GridItem[] = [
     alt: 'Totemica image 1',
     imgClassName: 'object-contain -rotate-30',
     cellClassName: 'relative h-[300px] flex flex-col',
-    ref: 'ref. ###',
+    ref: "Vau",
+    ref2: "43°12'N",
   },
   {
     id: '2',
@@ -246,7 +247,8 @@ export const totemicaItems: GridItem[] = [
     alt: 'Totemica image 2',
     imgClassName: 'object-contain md:py-6 py-0',
     cellClassName: 'relative h-[200px] flex flex-col',
-    ref: 'ref. ###',
+    ref: "Mourtia",
+    ref2: "37°42'N",
     // mobileCellClassName: "h-[420px]",
     // mobileImgClassName: "object-contain object-center",
   },
@@ -257,7 +259,8 @@ export const totemicaItems: GridItem[] = [
     alt: 'Totemica image 3',
     imgClassName: 'object-contain rotate-25',
     cellClassName: 'relative aspect-3/4 flex flex-col',
-    ref: 'ref. ###',
+    ref: "Oule",
+    ref2: "43°12'N",
   },
  
   {
@@ -266,7 +269,8 @@ export const totemicaItems: GridItem[] = [
     alt: 'Totemica image 4',
     imgClassName: 'object-contain pr-3',
     cellClassName: 'relative h-[600px] flex flex-col',
-    ref: 'ref. ###',
+    ref: "Pomena",
+    ref2: "42°78'N",
   },
   {
     id: '5',
@@ -274,7 +278,8 @@ export const totemicaItems: GridItem[] = [
     alt: 'Totemica image 5',
     imgClassName: 'object-contain p-1',
     cellClassName: 'relative h-[600px] flex flex-col',
-    ref: 'ref. ###',
+    ref: "Blato",
+    ref2: "42°76'N",
   },
   
   {
@@ -283,9 +288,10 @@ export const totemicaItems: GridItem[] = [
     alt: 'Totemica image 6',
     imgClassName: 'object-contain p-4 ',
     cellClassName: 'relative h-96 flex flex-col',
-    ref: 'ref. ###',
     mobileCellClassName: "h-[420px]",
     mobileImgClassName: "object-contain object-center py-12",
+    ref: "Kasonisi",
+    ref2: "37°54'N",
   },
 ];
 export const ruralesItems: GridItem[] = [

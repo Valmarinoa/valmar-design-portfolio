@@ -23,10 +23,10 @@ export default function FlexCell({
     <button
       type="button"
       onClick={onOpen}
-      className="w-full h-full text-left"
+      className="w-full h-full text-left relative"
       style={{ WebkitTapHighlightColor: "transparent" }}
     >
-      <div className={`${wrapperClass} overflow-hidden`}>
+      <div className={`${wrapperClass} overflow-hidden `}>
         <Image
           src={item.src}
           alt={item.alt ?? item.id}
@@ -35,7 +35,14 @@ export default function FlexCell({
           className={imgClass}
           draggable={false}
         />
+        
       </div>
+      <div className='self-end absolute -bottom-px right-0'>
+      <div className='text-amber-500 p-2  text-right'> 
+        <p className='' > {item.ref ?? "ref. ###"}</p>
+        <p className='text-xs font-light' > {item.ref2 ?? "ref. ###"}</p>
+        </div>
+        </div>
     </button>
   );
 }

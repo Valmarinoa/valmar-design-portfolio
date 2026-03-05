@@ -1,3 +1,4 @@
+// nocturnaFrag.ts
 export const nocturnaFrag = `
 #ifdef GL_ES
 precision highp float;
@@ -41,7 +42,7 @@ void main() {
   vec2 coords = aspect(uv, 1.0, canvas_ratio);
   coords = mix(vec2(0.1), vec2(0.9), coords);
 
-  // scale image around center
+  // scale image around center - CONTROLLED BY PROP
   coords = (coords - 0.5) / max(u_imageScale, 0.0001) + 0.5;
 
   float t = u_time * u_speed;

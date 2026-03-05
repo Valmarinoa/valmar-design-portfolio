@@ -25,6 +25,7 @@ export type GridItem = {
   imgClassName?: string;
   cellClassName?: string;
   ref?: string;
+  ref2?: string;
 
   // Desktop carousel sizing
   baseWidthPx?: number;

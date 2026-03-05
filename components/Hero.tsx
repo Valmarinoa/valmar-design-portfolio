@@ -103,19 +103,19 @@ export default function Hero() {
           <BlurText
             as="h1"
             text={messages.hero.name}
-            delay={0.6}
+            delay={2.4}
             mode="words"
             className="mix-blend-difference  text-white text-lg font-light"
           />
 
-          <FadeIn delay={0.1} className="h-14">
+          <FadeIn delay={1.4} className="h-14">
             <LogoSvg className="h-full w-auto text-white" />
           </FadeIn>
 
           <BlurText
             as="h1"
             text={messages.hero.role}
-            delay={0.7}
+            delay={2.4}
             mode="words"
             className="mix-blend-difference text-white text-sm font-light "
           />

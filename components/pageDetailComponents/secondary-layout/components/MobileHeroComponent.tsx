@@ -42,7 +42,7 @@ export default function MobileHeroComponent({
           {title}
         </h1>
         {tagLine ? (
-          <h3 className={`-mt-2 font-medium text-xl ${theme.text}`}>
+          <h3 className={`font-medium text-xl ${theme.text}`}>
             {tagLine}
           </h3>
         ) : null}

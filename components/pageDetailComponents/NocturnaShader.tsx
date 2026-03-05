@@ -1,6 +1,7 @@
+// NocturnaShader.tsx
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { nocturnaFrag as frag } from "@/components/shaders/nocturnaFrag";
 
 declare global {
@@ -12,7 +13,7 @@ declare global {
 type Props = {
   images: string[];
   className?: string;
-  fixed?: boolean;
+  fixed?: boolean; // <-- ADD THIS BACK
   clickToCycle?: boolean;
   seed?: number;
   bgColor?: [number, number, number];
@@ -26,14 +27,13 @@ type Props = {
   onReady?: () => void;
   fadeInMs?: number;
   maxDpr?: number;
-  /** Scale factor to render content larger than viewport (default 1.15) */
   oversize?: number;
 };
 
 export default function NocturnaShader({
   images,
   className = "",
-  fixed = false,
+  fixed = false, // <-- ADD THIS BACK
   clickToCycle = true,
   seed,
   bgColor = [255, 255, 255],
@@ -61,6 +61,7 @@ export default function NocturnaShader({
   const [bgIndex, setBgIndex] = useState(0);
   const ratioCache = useRef(new Map<string, number>());
 
+  // <-- ADD THIS BACK: fixed vs absolute positioning
   const wrapperClass = fixed
     ? "fixed inset-0 w-screen h-screen z-0 overflow-hidden"
     : "absolute inset-0 w-full h-full z-0 overflow-hidden";
@@ -80,7 +81,7 @@ export default function NocturnaShader({
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || isInitializedRef.current) return;
 
@@ -93,7 +94,6 @@ export default function NocturnaShader({
       const rawDpr = window.devicePixelRatio || 1;
       const dpr = Math.min(rawDpr, maxDpr);
       
-      // Internal resolution: viewport * oversize * dpr for crisp rendering
       const internalWidth = Math.floor(vw * oversize * dpr);
       const internalHeight = Math.floor(vh * oversize * dpr);
 
@@ -101,7 +101,6 @@ export default function NocturnaShader({
         canvas.width = internalWidth;
         canvas.height = internalHeight;
         
-        // Notify GlslCanvas of resize if method exists
         if (sandboxRef.current?.resize) {
           sandboxRef.current.resize();
         }
@@ -333,10 +332,6 @@ export default function NocturnaShader({
         />
       ) : null}
 
-      {/* 
-        Canvas fills container but is scaled up via CSS transform.
-        This prevents white edges during mobile viewport resizing.
-      */}
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
