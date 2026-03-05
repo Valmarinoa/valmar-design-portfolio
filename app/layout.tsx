@@ -59,6 +59,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <DesktopNavbar />
             <MobileNavbar />
             <SmoothScroll>{children}</SmoothScroll>
+            <MobileFooter/>
             <WithLove />
           </LandingScrollProvider>
         </AutoThemeProvider>
