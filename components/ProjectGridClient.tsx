@@ -48,8 +48,7 @@ export default function ProjectGridClient({ projects, desktopBlurb }: Props) {
       <div className="w-full flex px-4 text-[10px] text-center divide-x divide-neutral-700 pb-6 font-light">
         
           <p>Physical Objects</p>
-        
-          <p>Subtile Technology</p>
+          <p>Low-Tech</p>
           <p>LatinaAmerican Narrative</p>
           <p>Savoir-faire Artesanal</p>
       </div>
