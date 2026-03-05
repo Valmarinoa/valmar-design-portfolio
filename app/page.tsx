@@ -1,5 +1,4 @@
 import AnimatedBlurb from "@/components/animations/AnimatedBlurb";
-import BlurText from "@/components/animations/BlurText";
 import Hero from "@/components/Hero";
 import MobileFooter from "@/components/MobileFooter";
 import ProjectGrid from "@/components/ProjectGrid";

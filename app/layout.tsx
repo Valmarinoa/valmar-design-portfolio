@@ -11,6 +11,7 @@ import WithLove from "@/components/nav/WithLove.tsx";
 import { getServerLocale } from "@/lib/i18n-server";
 import { Metadata } from "next";
 import MobileFooter from "@/components/MobileFooter";
+import { LandingScrollProvider } from "@/components/providers/LandingScrollContext";
 
 // Configure Google Fonts
 const baskervville = Baskervville({
@@ -51,21 +52,15 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <head>
         <script src="/shaders/glslcanvas.min.js" async />
       </head>
-      <body
-        className={`
-          ${baskervville.variable}
-          ${beVietnamPro.variable}
-          min-h-dvh 
-          bg-[#f5f4ed]
-        `}
-      >
+      <body className={`...`}>
         <div className="fixed inset-0 -z-10" />
         <AutoThemeProvider>
-          <DesktopNavbar />
-          <MobileNavbar />
-          <SmoothScroll>{children}</SmoothScroll>
-          <WithLove />
-          <MobileFooter />
+          <LandingScrollProvider> {/* Add this */}
+            <DesktopNavbar />
+            <MobileNavbar />
+            <SmoothScroll>{children}</SmoothScroll>
+            <WithLove />
+          </LandingScrollProvider>
         </AutoThemeProvider>
       </body>
     </html>
