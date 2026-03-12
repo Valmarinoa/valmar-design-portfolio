@@ -1276,6 +1276,19 @@ const projectsData: LocalizedProject[] = [
     ],
   },
 
+  // VALUE TUNING
+  {
+    title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
+    link: '/value-tuning',
+    thumbnail: '/media/value-tuning.png',
+    description:
+      t(
+        "Revealing hidden relationships between humans and objects.",
+        "Revelando relações ocultas entre humanos e objetos.",
+        "Revelando las relaciones ocultas entre humanos y objetos."
+      ),
+  },
+
   // MOONBAR
   {
     title: t("Moonbar", "Moonbar", "Moonbar"),
@@ -1536,6 +1549,16 @@ const projectsData: LocalizedProject[] = [
       t("Ritual", "Ritual", "Ritual"),
     ],
   },
+   
+  // DEV-WORK
+   {
+    title: t("DEV Work", "DEV Work", "DEV Work"),
+    link: 'https://valenmarino.vercel.app/',
+    heroVideo: '/media/dev-work.mp4',
+    videoThumbnail: '/media/dev-work.mp4',
+    description:
+      t("Work in web frontend development.", "Trabalhos de desenvolvimento web frontend.", "Trabajos de programación web."),
+  },
 
    // MARIANROSAS
    {
@@ -1547,34 +1570,13 @@ const projectsData: LocalizedProject[] = [
       t("I DJ sometimes ◡̈", "Às vezes sou DJ ◡̈", "A veces soy DJ ◡̈"),
   },
 
-   // DEV-WORK
-   {
-    title: t("DEV Work", "DEV Work", "DEV Work"),
-    link: 'https://valenmarino.vercel.app/',
-    heroVideo: '/media/dev-work.mp4',
-    videoThumbnail: '/media/dev-work.mp4',
-    description:
-      t("Work in web frontend development.", "Trabalhos de desenvolvimento web frontend.", "Trabajos de programación web."),
-  },
   
-  // MERGED LANDSCAPES
-  {
-    title: t("Merged Landscapes", "Paisagens Fundidas", "Paisajes Fusionados"),
-    slug: 'merged-landscapes',
-    thumbnail: '/media/merged-landscapes.png',
-    description:
-      t(
-        "Synthetic representations of natural growth through algorithmic textures.",
-        "Representações sintéticas do crescimento natural por meio de texturas algorítmicas.",
-        "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
-      ),
-  },
-
-  // VALUE TUNING
+  
+  // // MERGED LANDSCAPES
   // {
-  //   title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
-  //   slug: 'value-tuning',
-  //   thumbnail: '/media/value-tuning.png',
+  //   title: t("Merged Landscapes", "Paisagens Fundidas", "Paisajes Fusionados"),
+  //   slug: 'merged-landscapes',
+  //   thumbnail: '/media/merged-landscapes.png',
   //   description:
   //     t(
   //       "Synthetic representations of natural growth through algorithmic textures.",
@@ -1582,6 +1584,7 @@ const projectsData: LocalizedProject[] = [
   //       "Representaciones sintéticas del crecimiento natural mediante texturas algorítmicas."
   //     ),
   // },
+
 
   
 ];
