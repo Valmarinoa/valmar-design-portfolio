@@ -1,4 +1,4 @@
-// components/nav/MobileNavbar.tsx
+// components/nav/MobileNavbar.tsx - Update visibility logic
 "use client";
 
 import { useState } from "react";
@@ -16,9 +16,9 @@ import { useLandingScroll } from "@/components/providers/LandingScrollContext";
 import { fadeInDown, staggerContainer } from "@/anim/animations";
 
 const socialItems = [
-  { label: "Instagram", link: "https://instagram.com/vamarino.a" },
-  { label: "GitHub", link: "https://github.com/valmarino" },
-  { label: "LinkedIn", link: "https://linkedin.com/in/valentina-marino-arboleda/" },
+  { label: "Instagram", link: "https://instagram.com/vamarino.a " },
+  { label: "GitHub", link: "https://github.com/valmarino " },
+  { label: "LinkedIn", link: "https://linkedin.com/in/valentina-marino-arboleda/ " },
   { label: "email", link: "mailto:valenmarinocol@gmail.com" },
 ];
 
@@ -32,18 +32,25 @@ export default function MobileNavbar() {
   const locale = useLocale();
   const messages = getMessages(locale);
   
-  const { hasScrolledPastHero, isLandingPage } = useLandingScroll();
+  // Get scrollProgress for fade out threshold
+  const { hasScrolledPastHero, isLandingPage, scrollProgress } = useLandingScroll();
 
   const menuItems = messages.nav.items.map((item) => ({
     ...item,
     link: isExternalUrl(item.href) ? item.href : localizePath(item.href, locale),
   }));
 
+  // Show navbar if:
+  // - Not on landing page, OR
+  // - On landing page AND scrolled past hero (>= 100vh)
   const shouldShowNavbar = !isLandingPage || (isLandingPage && hasScrolledPastHero);
+  
+  // Fade out when scrolling back up and approaching hero (between 80% and 100%)
+  const isFadingOut = isLandingPage && scrollProgress < 0.95;
 
   return (
     <div>
-      <AnimatePresence mode="wait">
+      <AnimatePresence initial={false}>
         {shouldShowNavbar && (
           <motion.div
             className="md:hidden fixed top-0 left-0 right-0 z-[9997] p-3 w-screen h-fit mix-blend-exclusion pointer-events-none"
@@ -51,6 +58,11 @@ export default function MobileNavbar() {
             initial="hidden"
             animate="visible"
             exit="hidden"
+            // Fade out when approaching hero
+            style={{
+              opacity: isFadingOut ? 0 : 1,
+              transition: "opacity 0.3s ease",
+            }}
           >
             <motion.div 
               className="flex items-center justify-between pointer-events-auto"

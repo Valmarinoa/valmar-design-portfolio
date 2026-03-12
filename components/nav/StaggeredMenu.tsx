@@ -216,53 +216,18 @@ export default function StaggeredMenu({
 
   // ✅ Lock background scroll while open (mobile + iOS, no white flash)
   React.useEffect(() => {
-    if (!open || !mounted) return;
-
-    const body = document.body;
+    if (!mounted) return;
+  
     const html = document.documentElement;
-
-    const scrollY = window.scrollY;
-
-    const prevBodyPosition = body.style.position;
-    const prevBodyTop = body.style.top;
-    const prevBodyLeft = body.style.left;
-    const prevBodyRight = body.style.right;
-    const prevBodyWidth = body.style.width;
-    const prevBodyOverflow = body.style.overflow;
-
-    const prevHtmlOverflow = html.style.overflow;
-
-    const prevBodyBg = body.style.backgroundColor;
-    const prevHtmlBg = html.style.backgroundColor;
-
-    const computedBodyBg = window.getComputedStyle(body).backgroundColor;
-
-    html.style.overflow = "hidden";
-    body.style.overflow = "hidden";
-
-    body.style.position = "fixed";
-    body.style.top = `-${scrollY}px`;
-    body.style.left = "0";
-    body.style.right = "0";
-    body.style.width = "100%";
-
-    body.style.backgroundColor = computedBodyBg;
-    html.style.backgroundColor = computedBodyBg;
-
+  
+    if (open) {
+      html.style.overflow = "hidden";
+    } else {
+      html.style.overflow = "";
+    }
+  
     return () => {
-      html.style.overflow = prevHtmlOverflow;
-      body.style.overflow = prevBodyOverflow;
-
-      body.style.position = prevBodyPosition;
-      body.style.top = prevBodyTop;
-      body.style.left = prevBodyLeft;
-      body.style.right = prevBodyRight;
-      body.style.width = prevBodyWidth;
-
-      body.style.backgroundColor = prevBodyBg;
-      html.style.backgroundColor = prevHtmlBg;
-
-      window.scrollTo(0, scrollY);
+      html.style.overflow = "";
     };
   }, [open, mounted]);
 

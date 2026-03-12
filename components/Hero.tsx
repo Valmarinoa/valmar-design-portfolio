@@ -1,7 +1,6 @@
-// components/Hero.tsx
 "use client";
 
-import React, { useMemo, useRef, useEffect } from "react";
+import React, { useMemo, useRef, useEffect, useRef as useReactRef } from "react";
 import {
   motion,
   useReducedMotion,
@@ -23,28 +22,40 @@ export default function Hero() {
   const reduceMotion = useReducedMotion();
   const locale = useLocale();
   const messages = getMessages(locale);
-  
-  const { setHasScrolledPastHero, setIsLandingPage } = useLandingScroll();
 
-  // Mark as landing page on mount
+  const { setHasScrolledPastHero, setIsLandingPage, setScrollProgress } = useLandingScroll();
+  const pastHeroRef = useReactRef(false);
+
   useEffect(() => {
     setIsLandingPage(true);
     return () => setIsLandingPage(false);
   }, [setIsLandingPage]);
 
-  // Track scroll progress
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
 
-  // Update context when scroll passes 80%
   useEffect(() => {
     const unsubscribe = scrollYProgress.on("change", (latest) => {
-      setHasScrolledPastHero(latest > 0.8);
+      setScrollProgress(latest);
+
+      let next = pastHeroRef.current;
+
+      if (pastHeroRef.current) {
+        next = latest > 0.92;
+      } else {
+        next = latest > 0.98;
+      }
+
+      if (next !== pastHeroRef.current) {
+        pastHeroRef.current = next;
+        setHasScrolledPastHero(next);
+      }
     });
+
     return () => unsubscribe();
-  }, [scrollYProgress, setHasScrolledPastHero]);
+  }, [scrollYProgress, setHasScrolledPastHero, setScrollProgress]);
 
   const smooth = useSpring(scrollYProgress, {
     stiffness: 90,
@@ -65,19 +76,21 @@ export default function Hero() {
       speed: 2.5,
       chromatic: 0.6,
       imageFit: "contain" as const,
-      imageScale: 1.6,
+      // imageScale: 1.6,
       bgColor: [241, 241, 241] as [number, number, number],
       fixed: false,
-      oversize: 1.15,
       fadeInMs: 400,
-      maxDpr: 2,
+      // maxDpr: 2,
+      oversize: 1.05,
+imageScale: 1.25,
+maxDpr: 1.5,
     }),
     []
   );
 
   return (
     <section ref={sectionRef} className="relative h-svh w-full overflow-hidden">
-      <div className="sticky top-0 h-svh w-full overflow-hidden z-9999">
+      <div className="sticky top-0 h-svh w-full overflow-hidden z-0 pointer-events-none">
         <motion.div
           className="absolute inset-0"
           style={{ y: bgY, scale: bgScale, willChange: "transform" }}
@@ -87,14 +100,26 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          className="absolute top-[50%] left-1/2 w-full px-6 flex-col gap-3 -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center mix-blend-exclusion"
+          className="absolute top-[50%] left-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-3 px-6 mix-blend-exclusion"
           style={{ y: fgY, scale: fgScale, opacity: fgOpacity, willChange: "transform, opacity" }}
         >
-          <BlurText as="h1" text={messages.hero.name} delay={2.4} mode="words" className="mix-blend-difference text-white text-lg font-light" />
+          <BlurText
+            as="h1"
+            text={messages.hero.name}
+            delay={2.4}
+            mode="words"
+            className="text-lg font-light text-white mix-blend-difference"
+          />
           <FadeIn delay={1.4} className="h-14">
             <LogoSvg className="h-full w-auto text-white" />
           </FadeIn>
-          <BlurText as="h1" text={messages.hero.role} delay={2.4} mode="words" className="mix-blend-difference text-white text-sm font-light" />
+          <BlurText
+            as="h1"
+            text={messages.hero.role}
+            delay={2.4}
+            mode="words"
+            className="text-sm font-light text-white mix-blend-difference"
+          />
         </motion.div>
       </div>
     </section>

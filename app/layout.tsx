@@ -1,9 +1,7 @@
 import "./globals.css";
 import "lenis/dist/lenis.css";
 import type { ReactNode } from "react";
-import { helveticaNeue, mixtaPro } from "./fonts";
 import { Baskervville, Be_Vietnam_Pro } from "next/font/google";
-import SmoothScroll from "@/components/providers/SmoothScroll";
 import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
 import DesktopNavbar from "@/components/nav/DesktopNavbar";
 import MobileNavbar from "@/components/nav/MobileNavbar";
@@ -58,7 +56,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <LandingScrollProvider> {/* Add this */}
             <DesktopNavbar />
             <MobileNavbar />
-            <SmoothScroll>{children}</SmoothScroll>
+            {children}
             <MobileFooter/>
             <WithLove />
           </LandingScrollProvider>
