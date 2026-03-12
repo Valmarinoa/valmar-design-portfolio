@@ -1516,13 +1516,13 @@ const projectsData: LocalizedProject[] = [
     mobileHeroImage:'/media/rurales/rural-6.png',
     year: '2024',
     tagline: t(
-      "Hand-painted driftwood branches",
+      "Sublime waste material",
       "Madeiras flutuantes pintadas à mão",
-      "Maderas a la deriva pintadas a mano"
+      "Sublimando lo ordinario"
     ),
     description:
       t(
-        "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
+        "Hand-painted and regenerated ordinary cardboard. The attitude of seeing potential in transforming ordinary materials into deeper landscapes.",
         "Cada pedaço de madeira foi coletado em paisagens costeiras e rurais, animado por ritmo e cor, e se transformando em escultura. Um jogo silencioso entre o sagrado e o cotidiano.",
         "Cada pedazo de madera fue recogido en paisajes costeros y rurales, animado por ritmo y color, y transformandose en esulcturas. Un juego silencioso entre lo sagrado y lo cotidiano."
       ),
