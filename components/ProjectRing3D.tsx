@@ -151,9 +151,6 @@ export default function ProjectRing3D() {
     return () => el.removeEventListener("wheel", onWheel);
   }, []);
 
-  // Determine if ANY item is currently hovered
-  const isSpotlightActive = hoveredSlug !== null;
-
   return (
     <section className="w-full h-screen flex items-center justify-center">
       <div ref={ringRef} className="relative h-[420px] w-full max-w-4xl" style={{ perspective: "1400px" }}>
@@ -183,15 +180,11 @@ export default function ProjectRing3D() {
 
             const isHovered = hoveredSlug === key;
 
-            // Spotlight logic: if spotlight is active and this isn't the hovered item, dim/blur it
-            const shouldDim = isSpotlightActive && !isHovered;
-
             const Media = (
               <motion.div 
                 className="relative h-24 w-32 overflow-hidden md:h-32 md:w-44 lg:h-40 lg:w-56"
                 animate={{
                   scale: isHovered ? 1.1 : 1,
-                  filter: shouldDim ? "blur(4px) brightness(0.9)" : "blur(0px) brightness(1)",
                 }}
                 transition={{
                   duration: 0.5,
@@ -250,20 +243,12 @@ export default function ProjectRing3D() {
                   }}
                   onMouseLeave={() => setHoveredSlug(null)}
                   variants={itemVariants}
-                  animate={{
-                    opacity: shouldDim ? 0.4 : 1,
-                    scale: shouldDim ? 0.95 : 1,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    ease: easeOutElegant,
-                  }}
                 >
                   {Clickable}
 
                   {/* Elegant Hover Details */}
                   <motion.div
-                    className="absolute top-full left-1/2  flex flex-col items-center text-center pointer-events-none"
+                    className="absolute top-full left-1/2 flex flex-col items-center text-center pointer-events-none"
                     style={{ 
                       x: "-50%",
                       width: "max-content",
@@ -285,14 +270,14 @@ export default function ProjectRing3D() {
                     {project.tagline && (
                       <motion.p 
                         variants={detailItemVariants}
-                        className="text-[10px] text-neutral-900/70 mb-3 leading-4"
+                        className="text-[10px] text-neutral-900/70 mb-2 leading-4"
                       >
                         {project.tagline}
                       </motion.p>
                     )}
 
                     {/* Tags */}
-                    {/* {project.tags && project.tags.length > 0 && (
+                    {project.tags && project.tags.length > 0 && (
                       <motion.div 
                         variants={detailItemVariants}
                         className="flex flex-wrap justify-center gap-1"
@@ -300,13 +285,13 @@ export default function ProjectRing3D() {
                         {project.tags.map((tag: string) => (
                           <span 
                             key={tag} 
-                            className="text-[5px] uppercase tracking-widest  border border-neutral-900/60 rounded-full px-1.5 py-0.5 backdrop-blur-sm"
+                            className="text-[6px] tracking-wider text-neutral-900 border-[0.5px] border-neutral-900 rounded-full px-1 py-0.5"
                           >
                             {tag}
                           </span>
                         ))}
                       </motion.div>
-                    )} */}
+                    )}
                   </motion.div>
                 </motion.div>
               </div>

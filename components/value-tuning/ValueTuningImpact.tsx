@@ -41,7 +41,7 @@ export default function ValueTuningImpact() {
           ))}
         </div>
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -55,7 +55,7 @@ export default function ValueTuningImpact() {
             or researching how packaging shapes desire, I&apos;m drawn to moments
             where the invisible becomes tangible.&quot;
           </blockquote>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );

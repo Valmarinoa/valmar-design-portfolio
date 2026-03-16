@@ -1287,6 +1287,11 @@ const projectsData: LocalizedProject[] = [
         "Revelando relações ocultas entre humanos e objetos.",
         "Revelando las relaciones ocultas entre humanos y objetos."
       ),
+      tags: [
+        t("Brand Startegy", "Estrategie de Marca", "Estratégia de Marca"),
+        t("UX Research", "UX Research", "UX Research"),
+        t("Sensory Audit", "Auditoria Sensorial", "Auditoria Sensorial"),
+      ],
   },
 
   // MOONBAR
