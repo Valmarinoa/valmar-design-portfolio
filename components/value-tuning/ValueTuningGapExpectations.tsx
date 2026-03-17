@@ -211,20 +211,18 @@ export default function ValueTuningExpectationGap() {
 
           {/* CHART */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.15 }}
-            className="lg:col-span-8 "
-          >
-            <div className="overflow-x-auto p-4 md:px-0 md:pt-8 md:pb-0 relative">
-              <div className="w-full flex items-stretch">
-
-                {renderChart()}
-
-              </div>
-            </div>
-          </motion.div>
+  initial={{ opacity: 0, y: 40 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 1, delay: 0.15 }}
+  className="lg:col-span-8 min-w-0" // Added min-w-0
+>
+  <div className="p-4 md:px-6 md:pt-8 md:pb-0 relative w-full">
+    <div className="w-full min-w-0"> {/* Removed overflow-x-auto, added min-w-0 */}
+      {renderChart()}
+    </div>
+  </div>
+</motion.div>
         </div>
 
         <motion.div

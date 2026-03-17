@@ -5,11 +5,11 @@ type ValueSpectrumChartAppleProps = {
   export default function ValueSpectrumChartApple({ className }: ValueSpectrumChartAppleProps) {
     return (
       <svg
-        viewBox="0 0 2749 1760"
-        className={`w-full h-auto ${className ?? ""}`}
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >    
+      viewBox="0 0 2850 1760"
+      className={`w-full h-auto ${className ?? ""}`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    > 
 <path opacity="0.35" d="M342 540.688H2868" stroke="black" strokeOpacity="0.44"/>
 <path opacity="0.35" d="M342 378.5H2868" stroke="black" strokeOpacity="0.44"/>
 <path opacity="0.35" d="M342 216.312H2868" stroke="black" strokeOpacity="0.44"/>
