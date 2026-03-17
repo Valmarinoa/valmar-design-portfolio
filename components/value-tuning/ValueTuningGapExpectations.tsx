@@ -49,6 +49,11 @@ export default function ValueTuningExpectationGap() {
 
   const brandToggles = [
     {
+      id: "default",
+      label: "All Items",
+      color: "#C1C1C1",
+    },
+    {
       id: "HUE",
       label: "HUE",
       color: "#76E897",
@@ -66,7 +71,7 @@ export default function ValueTuningExpectationGap() {
       label: "IKEA sensor",
       color: "#F4C400",
       icon: (
-        <svg viewBox="0 0 80 24" className="h-6 w-auto">
+        <svg viewBox="0 0 30 24" className="h-6 w-auto">
           <rect x="10" y="4" width="16" height="16" rx="8" fill="#F5F5F5" stroke="#999" strokeWidth="0.5"/>
           <circle cx="18" cy="12" r="4" fill="#E0E0E0"/>
           <circle cx="18" cy="12" r="2" fill="#666"/>
@@ -79,7 +84,7 @@ export default function ValueTuningExpectationGap() {
       label: "Google Home",
       color: "#111111",
       icon: (
-        <svg viewBox="0 0 80 24" className="h-6 w-auto">
+        <svg viewBox="0 0 64 24" className="h-6 w-auto">
           <ellipse cx="40" cy="14" rx="20" ry="8" fill="#333"/>
           <ellipse cx="40" cy="12" rx="18" ry="6" fill="#555"/>
           <circle cx="40" cy="10" r="3" fill="#777"/>
@@ -94,6 +99,8 @@ export default function ValueTuningExpectationGap() {
     switch (activeBrand) {
       case "Google":
         return <ValueSpectrumChartApple />;
+        case "default":
+        return <ValueSpectrumChart />;
       case "IKEA":
         return <ValueSpectrumChartIkea />;
       case "HUE":
@@ -156,7 +163,7 @@ export default function ValueTuningExpectationGap() {
               <button
                 key={brand.id}
                 onClick={() => setActiveBrand(brand.id)}
-                className={`group flex items-center gap-4 pr-4 rounded-full cursor-pointer border-2 transition-all duration-300 w-fit ${
+                className={`group flex items-center gap-4 pr-4 rounded-full cursor-pointer border transition-all duration-300 w-fit ${
                   activeBrand === brand.id
                     ? "border-current"
                     : "border-neutral-200"
@@ -181,13 +188,16 @@ export default function ValueTuningExpectationGap() {
                 }}
               >
                 {/* Color Circle */}
+                {brand.id === "default" ? "" : 
                 <div
-                  className="w-10 h-10 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
-                  style={{ backgroundColor: brand.color }}
-                />
+                className="w-10 h-10 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
+                style={{ backgroundColor: brand.color }}
+              />
+                }
+                
                 
                 {/* Label */}
-                <span className="text-sm font-medium text-neutral-800 min-w-[100px] text-left">
+                <span className="text-sm font-medium text-neutral-800 text-left">
                   {brand.label}
                 </span>
                 
@@ -207,7 +217,7 @@ export default function ValueTuningExpectationGap() {
             transition={{ duration: 1, delay: 0.15 }}
             className="lg:col-span-8 "
           >
-            <div className="border border-neutral-200 overflow-x-auto p-4 md:px-6 md:pt-8 md:pb-14 relative">
+            <div className="overflow-x-auto p-4 md:px-0 md:pt-8 md:pb-0 relative">
               <div className="w-full flex items-stretch">
 
                 {renderChart()}
