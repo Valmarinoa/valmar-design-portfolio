@@ -17,6 +17,7 @@ import ValueTuningDesignCriteria from "@/components/value-tuning/ValueTuningDesi
 import ValueTuningImpact from "@/components/value-tuning/ValueTuningImpact";
 import ValueTuningReflection from "@/components/value-tuning/ValueTuningReflection";
 import ValueTuningSidebarNav from "@/components/value-tuning/ValueTuningSidebarNav";
+import ValueTuningExpectationGap from "@/components/value-tuning/ValueTuningGapExpectations";
 
 
 export default function ValueTuningCaseStudy() {
@@ -70,6 +71,7 @@ export default function ValueTuningCaseStudy() {
       <ValueTuningHypothesis />
       <ValueTuningSensoryProtocol />
       <ValueTuningBlindfoldProtocol />
+      <ValueTuningExpectationGap />
       <SectionDivider />
       <ValueTuningResearchFindings />
       <ValueTuningFramework />

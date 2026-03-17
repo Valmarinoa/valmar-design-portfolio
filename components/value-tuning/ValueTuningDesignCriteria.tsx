@@ -15,7 +15,7 @@ export default function ValueTuningDesignCriteria() {
           className="mb-16"
         >
           <span className="text-xs tracking-widest uppercase opacity-50 block mb-4">
-            The Framework
+            Design Criteria
           </span>
           <h2 className="text-3xl md:text-4xl mb-6">
             From Insight to Design Criteria

@@ -1281,6 +1281,7 @@ const projectsData: LocalizedProject[] = [
     title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
     link: '/value-tuning',
     thumbnail: '/media/value-tuning.png',
+    tagline: 'Brand Promise vs Real Product Experience',
     description:
       t(
         "Revealing hidden relationships between humans and objects.",
@@ -1290,7 +1291,8 @@ const projectsData: LocalizedProject[] = [
       tags: [
         t("Brand Startegy", "Estrategie de Marca", "Estratégia de Marca"),
         t("UX Research", "UX Research", "UX Research"),
-        t("Sensory Audit", "Auditoria Sensorial", "Auditoria Sensorial"),
+        t("Sensory Experience", "Experiencia Sensorial", "Experiencia Sensorial"),
+        t("Brand Perception", "Percepção de Marca", "Percepción de Marca"),
       ],
   },
 
