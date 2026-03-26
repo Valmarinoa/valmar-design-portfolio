@@ -1280,7 +1280,8 @@ const projectsData: LocalizedProject[] = [
   {
     title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
     link: '/value-tuning',
-    thumbnail: '/media/value-tuning.png',
+    // thumbnail: '/media/value-tuning.png',
+    videoThumbnail: '/media/valuetuning/research-findings/finding-2.mp4',
     tagline: 'Brand Promise vs Real Product Experience',
     description:
       t(

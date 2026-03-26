@@ -153,7 +153,7 @@ export default function ProjectRing3D() {
 
   return (
     <section className="w-full h-screen flex items-center justify-center">
-      <div ref={ringRef} className="relative h-[450px] w-full max-w-4xl" style={{ perspective: "1400px" }}>
+      <div ref={ringRef} className="relative h-[450px] w-full max-w-4xl pb-6" style={{ perspective: "1400px" }}>
         <motion.div
           className="absolute inset-0"
           style={{ rotateY: angle, transformStyle: "preserve-3d" }}
