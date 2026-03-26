@@ -14,17 +14,25 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen m-auto max-w-6xl w-full px-4 pb-16 pt-28 text-neutral-900">
       {/* Top Section */}
-      <div className="mx-auto w-full flex gap-6 h-[50vh]">
+      <div className="mx-auto w-full flex  h-[50vh]">
         <motion.div 
           className="md:w-1/2 w-1/4 flex flex-col gap-2 md:text-6xl overflow-visible relative"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
         >
-          <h2 className="leading-10 text-4xl mb-2 whitespace-nowrap ">Valentina Marino</h2>
-          <h4 className="hidden md:inline-block text-lg opacity-80 md:text-lg whitespace-nowrap leading-6 font-light">Product & Experience Designer and Developer</h4>
+          <h2 className="leading-10 text-4xl mb-2 md:mb-0 whitespace-nowrap ">Valentina Marino</h2>
+          <h4 className="hidden md:inline-block text-base opacity-80 md:text-lg whitespace-nowrap leading-6">Product & Experience Designer and Developer</h4>
           <h4 className="md:hidden inline-block text-lg opacity-80 md:text-lg whitespace-nowrap md:whitespace-normal leading-6 font-light">Product & Experience <br/>Designer and Developer</h4>
-          <h5 className="text-xs whitespace-nowrap  md:absolute relative bottom-0">⚲ Amsterdam based</h5>
+          <div className="text-lg whitespace-nowrap gap-2 md:absolute relative bottom-0 flex flex-col">
+            <a className="underline">Email</a>
+            <a className="underline" href="www.linkedin.com/in/valentina-marino-arboleda">LinkedIn</a>
+            <a className="underline" href="https://www.instagram.com/valmarino.a/">Instagram</a>
+            <a className="underline" href="https://github.com/Valmarinoa">GitHub</a>
+
+
+            </div>
+          
         </motion.div>
 
         <div className="md:w-1/2 flex-1 flex relative">
@@ -38,7 +46,7 @@ export default function AboutPage() {
               src="/media/yo.png"
               alt="About the creator"
               fill
-              className="object-cover"
+              className="object-cover rounded-md"
               loading="lazy"
               sizes="(min-width: 768px) 100vw, 100vw"
             />
@@ -46,13 +54,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Divider Line with width animation */}
-      {/* <motion.div 
-        className="h-[0.5px] w-full bg-neutral-900 mt-10 origin-left"
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: 1 }}
-        transition={{ duration: 1.5, ease: easeOutElegant, delay: 0.6 }}
-      /> */}
+   
 
 <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -71,26 +73,7 @@ export default function AboutPage() {
       </motion.div>
 
 
-      {/* Bottom Section */}
-      {/* <div className="mx-auto w-full flex gap-6 h-fit">
-        <motion.div 
-          className="md:w-1/2 w-1/4 flex tracking-widest text-[12px]"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: easeOutElegant, delay: 0.8 }}
-        >
-          {messages.about.about.toUpperCase()}
-        </motion.div>
-        
-        <motion.div 
-          className="md:w-1/2 flex-1 relative "
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: easeOutElegant, delay: 1 }}
-        >
-          <p className="text-base">{messages.about.content}</p>
-        </motion.div>
-      </div> */}
+   
     </main>
   );
 }

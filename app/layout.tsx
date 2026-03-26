@@ -59,7 +59,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
             <MobileNavbar />
             {children}
             <MobileFooter/>
-            <WithLove />
+            {/* <WithLove /> */}
           </LandingScrollProvider>
         </AutoThemeProvider>
       </body>

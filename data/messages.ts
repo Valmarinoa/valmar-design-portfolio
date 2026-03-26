@@ -123,7 +123,7 @@ const messages: Record<Locale, Messages> = {
     contact: {
       title: "Contact",
       content: "Open to collaborations, commissions, and conversations about design, technology, and everything in between.",
-      email: "hello@valentinamarino.com",
+      email: "valenmarinocol@gmail.com",
       availability: "Currently available for new projects"
     },
     footer: {
@@ -205,7 +205,7 @@ const messages: Record<Locale, Messages> = {
     contact: {
       title: "Contato",
       content: "Aberta a colaborações, encomendas e conversas sobre design, tecnologia e tudo que há entre eles.",
-      email: "hello@valentinamarino.com",
+      email: "valenmarinocol@gmail.com",
       availability: "Disponível para novos projetos"
     },
     footer: {
@@ -287,7 +287,7 @@ const messages: Record<Locale, Messages> = {
     contact: {
       title: "Contacto",
       content: "Abierta a colaboraciones, encargos y conversaciones sobre diseño, tecnología y todo lo que hay entre ellos.",
-      email: "hello@valentinamarino.com",
+      email: "valenmarinocol@gmail.com",
       availability: "Disponible para nuevos proyectos"
     },
     footer: {

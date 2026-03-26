@@ -6,6 +6,7 @@ const easeOutElegant = [0.22, 1, 0.36, 1] as const;
 
 export default function AnimatedBlurb({ children }: { children: React.ReactNode }) {
   return (
+
     <motion.p 
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
@@ -14,7 +15,7 @@ export default function AnimatedBlurb({ children }: { children: React.ReactNode 
         ease: easeOutElegant,
         delay: 1.2 
       }}
-      className="p-9 mb-6 z-999 max-w-[760px] left-1/2 -translate-x-[50%] text-center absolute bottom-0 w-full text-neutral-800 text-xl leading-6"
+      className="z-999 max-w-[630px] text-neutral-800 text-base leading-5"
     >
       {children}
     </motion.p>

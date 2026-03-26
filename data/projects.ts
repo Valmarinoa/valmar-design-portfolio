@@ -1280,7 +1280,7 @@ const projectsData: LocalizedProject[] = [
   {
     title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
     link: '/value-tuning',
-    // thumbnail: '/media/value-tuning.png',
+    heroVideo: '/media/valuetuning/research-findings/finding-2.mp4',
     videoThumbnail: '/media/valuetuning/research-findings/finding-2.mp4',
     tagline: 'Brand Promise vs Real Product Experience',
     description:
@@ -1295,6 +1295,16 @@ const projectsData: LocalizedProject[] = [
         t("Sensory Experience", "Experiencia Sensorial", "Experiencia Sensorial"),
         t("Brand Perception", "Percepção de Marca", "Percepción de Marca"),
       ],
+  },
+  
+  // DEV-WORK
+   {
+    title: t("Frontend Work", "Frontend Work", "Frontend Work"),
+    link: 'https://valenmarino.vercel.app/',
+    heroVideo: '/media/dev-work.mp4',
+    videoThumbnail: '/media/dev-work.mp4',
+    description:
+      t("Work in web frontend development.", "Trabalhos de desenvolvimento web frontend.", "Trabajos de programación web."),
   },
 
   // MOONBAR
@@ -1557,25 +1567,17 @@ const projectsData: LocalizedProject[] = [
     ],
   },
    
-  // DEV-WORK
-   {
-    title: t("DEV Work", "DEV Work", "DEV Work"),
-    link: 'https://valenmarino.vercel.app/',
-    heroVideo: '/media/dev-work.mp4',
-    videoThumbnail: '/media/dev-work.mp4',
-    description:
-      t("Work in web frontend development.", "Trabalhos de desenvolvimento web frontend.", "Trabajos de programación web."),
-  },
+ 
 
-   // MARIANROSAS
-   {
-    title: t("MARIANROSAS", "MARIANROSAS", "MARIANROSAS"),
-    link: 'https://soundcloud.com/marianrosas',
-    heroVideo: '/media/marianrosas.mp4',
-    videoThumbnail: '/media/marianrosas.mp4',
-    description:
-      t("I DJ sometimes ◡̈", "Às vezes sou DJ ◡̈", "A veces soy DJ ◡̈"),
-  },
+  //  // MARIANROSAS
+  //  {
+  //   title: t("MARIANROSAS", "MARIANROSAS", "MARIANROSAS"),
+  //   link: 'https://soundcloud.com/marianrosas',
+  //   heroVideo: '/media/marianrosas.mp4',
+  //   videoThumbnail: '/media/marianrosas.mp4',
+  //   description:
+  //     t("I DJ sometimes ◡̈", "Às vezes sou DJ ◡̈", "A veces soy DJ ◡̈"),
+  // },
 
   
   

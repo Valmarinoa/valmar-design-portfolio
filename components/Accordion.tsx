@@ -95,7 +95,7 @@ function ServiceSubItem({ title, items, isOpen, onToggle }: ServiceSubItemProps)
         onClick={onToggle}
         className="w-full py-4 flex items-center justify-between group cursor-pointer"
       >
-        <span className="text-sm md:text-base font-medium text-left">
+        <span className="text-sm md:text-base text-left">
           {title}
         </span>
         
@@ -212,7 +212,7 @@ export default function Accordion({
             </p>
             
             {!isAboutExpanded && shouldTruncate && (
-              <div className="absolute  bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[#f5f4ed] text-neutral-950 to-transparent pointer-events-none" />
+              <div className="absolute  bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background text-neutral-950 to-transparent pointer-events-none" />
             )}
           </motion.div>
           

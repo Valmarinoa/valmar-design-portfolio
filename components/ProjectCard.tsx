@@ -9,23 +9,16 @@ import { getMessages } from "@/data/messages";
 
 type Props = {
   title: string;
-
-  // external link (optional)
   link?: string;
-
-  // internal slug (optional)
   slug?: string;
-
   image?: string;
   description?: string;
   video?: string;
-
-  // optional poster if you have one
   poster?: string;
 };
 
 const containSlugs = new Set(["merged-landscapes", "frozen-woods"]);
-const rootSlugs = new Set(["rurales", "totemica"]);
+const rootSlugs = new Set(["rurales", "totemica", "value-tuning"]);
 
 function normalizeSlug(slug: string) {
   return slug.replace(/^\/+/, "");
