@@ -8,9 +8,10 @@ import { Project } from "@/types/project";
 interface Props {
   projects: Project[];
   desktopBlurb: string;
+  question?: string;
 }
 
-export default function ProjectGridClient({ projects, desktopBlurb }: Props) {
+export default function ProjectGridClient({ projects, desktopBlurb, question }: Props) {
     
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,16 +38,24 @@ export default function ProjectGridClient({ projects, desktopBlurb }: Props) {
 
   return (
     <section className="pt-14">
+       <motion.h2 
+        className="px-4 pb-10 w-full text-[26px] text-neutral-800"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
+      >
+       {question}
+      </motion.h2>
       <motion.p 
         className="px-4 pb-10 w-full text-xl text-neutral-800 leading-snug"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
       >
-        {desktopBlurb}
+      {desktopBlurb}
       </motion.p>
-      <div className="w-full flex px-4 text-[10px] text-center pb-6 font-light justify-evenly items-center">
-        
+   
+      <div className="w-full flex px-4 text-[10px] text-center pb-6 font-light justify-evenly items-center"> 
           <p className="">Physical Objects</p>
           <div className="h-8 w-px bg-neutral-700"/>
           <p>Low-Tech</p>

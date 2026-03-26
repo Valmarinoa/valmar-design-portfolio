@@ -12,6 +12,7 @@ export default async function ProjectGrid() {
     <ProjectGridClient 
       projects={projects} 
       desktopBlurb={messages.home.desktopBlurb} 
+      question={messages.home.question ?? ""} 
     />
   );
 }

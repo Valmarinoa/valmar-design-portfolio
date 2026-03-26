@@ -18,6 +18,7 @@ export type Messages = {
   };
   home: {
     intro: string;
+    question?: string;
     desktopBlurb: string;
     fallbackDescription: string;
   };
@@ -53,15 +54,15 @@ const messages: Record<Locale, Messages> = {
       role: "Product & Experience Designer",
     },
     home: {
+      question: "What does something feel like before language defines it?",
       intro:
-        "Hi! I'm Valentina Marino,\n" +
-        "born and raised in Colombia, currently based in the Netherlands.\n" +
+        "Born and raised in Colombia, currently based in the Netherlands,\n" +
         "I love finding ways to bring poetry into everyday objects and technologies.\n" +
         "My work explores how the sensibility of Latin American magical realism can live in contemporary design.\n" +
         "I'm interested in how poetry and a bit of magic can exist in everyday technology, using both handcrafted and digital tools.",
       desktopBlurb:
-        "Product & Experience designer and developer, translating the sensibility of Latin American magical realism into\n" +
-        "contemporary design and technology.",
+      "Product & experience designer, researcher, and developer — translating cultural identity and sensory intelligence into contemporary design and technology.  \n" +
+      "My work moves between sensory brand research, physical installations, and digital ecosystems. I design and build experiences that make the invisible felt.",
       fallbackDescription: "Project description coming soon.",
     },
     nav: {

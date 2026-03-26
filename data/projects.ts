@@ -443,7 +443,7 @@ const projectsData: LocalizedProject[] = [
       t("Research", "Pesquisa", "Investigación"),
       t("Atmosphere", "Atmosfera", "Atmósfera"),
       t("Wellbeing", "Bem-estar", "Bienestar"),
-      t("Emotion", "Emoção", "Emoción"),
+      // t("Emotion", "Emoção", "Emoción"),
     ],
     heroVideo: '/media/sob-blue.mp4',
 
@@ -1465,7 +1465,6 @@ const projectsData: LocalizedProject[] = [
       ),
       tags: [
         t("Wood", "Madeira", "Madera"),
-        t("Quiet", "Silêncio", "Silencio"),
         t("Material Research", "Pesquisa de Materiais", "Investigación de Materiales"),
         t("Transformation", "Transformação", "Transformación"),
         t("Repurposing", "Reaproveitamento", "Reutilización"),

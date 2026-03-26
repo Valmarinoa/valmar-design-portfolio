@@ -6,8 +6,9 @@
 @theme {
   --font-sans: var(--font-be-vietnam), var(--font-sans), system-ui, sans-serif;
   --font-mixta: var(--font-mixta);
-  --font-baskervville: var(--font-baskervville), "Baskerville", "Georgia", serif;
-  --font-be-vietnam: var(--font-be-vietnam), "Be Vietnam Pro", system-ui, sans-serif;
+  /* Fallback stacks only. Real values are injected by `next/font` variables. */
+  --font-baskervville: "Baskerville", "Georgia", serif;
+  --font-be-vietnam: "Be Vietnam Pro", system-ui, sans-serif;
 }
 
 /* Base body font - Be Vietnam Pro */

@@ -153,7 +153,7 @@ export default function ProjectRing3D() {
 
   return (
     <section className="w-full h-screen flex items-center justify-center">
-      <div ref={ringRef} className="relative h-[420px] w-full max-w-4xl" style={{ perspective: "1400px" }}>
+      <div ref={ringRef} className="relative h-[450px] w-full max-w-4xl" style={{ perspective: "1400px" }}>
         <motion.div
           className="absolute inset-0"
           style={{ rotateY: angle, transformStyle: "preserve-3d" }}
@@ -270,7 +270,7 @@ export default function ProjectRing3D() {
                     {project.tagline && (
                       <motion.p 
                         variants={detailItemVariants}
-                        className="text-[10px] text-neutral-900/70 mb-2 leading-4"
+                        className="text-[9px] text-neutral-900/80 mb-2 leading-3 font-light"
                       >
                         {project.tagline}
                       </motion.p>

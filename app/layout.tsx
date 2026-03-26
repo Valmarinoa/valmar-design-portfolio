@@ -15,6 +15,7 @@ import { LandingScrollProvider } from "@/components/providers/LandingScrollConte
 const baskervville = Baskervville({
   subsets: ["latin"],
   weight: ["400"], // Regular and Italic
+  style: ["normal", "italic"],
   variable: "--font-baskervville",
   display: "swap",
 });
@@ -46,7 +47,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const locale = await getServerLocale();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${baskervville.variable} ${beVietnamPro.variable}`}>
       <head>
         <script src="/shaders/glslcanvas.min.js" async />
       </head>
