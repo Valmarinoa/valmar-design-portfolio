@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 import { easeOutElegant } from "@/anim/animations";
 import { Project } from "@/types/project";
@@ -52,23 +52,28 @@ export default function ProjectGridClient({ projects, desktopBlurb, question }: 
     return p.title;
   }
 
-  const filteredProjects = useMemo(() => {
-    if (activeFilter === "all") return projects;
+  const highlightedIds = useMemo(() => {
+    if (activeFilter === "all") return null;
 
-    const interfaceIds = new Set(["silence-of-blue", "tidal-light"]);
-    const materialObjectIds = new Set(["totemica", "rurales", "quiet-matter", "moonbar"]);
-    const strategyIds = new Set(["value-tuning", "valenmarino.vercel.app"]);
+    if (activeFilter === "interface") return new Set(["silence-of-blue", "tidal-light"]);
+    if (activeFilter === "material_object") return new Set(["totemica", "rurales", "quiet-matter", "moonbar"]);
+    return new Set(["value-tuning", "valenmarino.vercel.app"]);
+  }, [activeFilter]);
 
-    const allowed =
-      activeFilter === "interface"
-        ? interfaceIds
-        : activeFilter === "material_object"
-          ? materialObjectIds
-          : strategyIds;
+  const orderedProjects = useMemo(() => {
+    if (!highlightedIds) return projects;
 
-    // Keep original ordering; just remove non-matching projects.
-    return projects.filter((p) => allowed.has(getStableProjectId(p)));
-  }, [activeFilter, projects]);
+    const highlighted: Project[] = [];
+    const dimmed: Project[] = [];
+
+    for (const p of projects) {
+      const id = getStableProjectId(p);
+      (highlightedIds.has(id) ? highlighted : dimmed).push(p);
+    }
+
+    // Stable within each group; highlighted occupy the top rows.
+    return [...highlighted, ...dimmed];
+  }, [highlightedIds, projects]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -90,11 +95,6 @@ export default function ProjectGridClient({ projects, desktopBlurb, question }: 
         duration: 1,
         ease: easeOutElegant
       }
-    },
-    exit: {
-      opacity: 0,
-      y: 10,
-      transition: { duration: 0.35, ease: easeOutElegant },
     },
   };
 
@@ -158,30 +158,37 @@ export default function ProjectGridClient({ projects, desktopBlurb, question }: 
       
       <div ref={gridTopRef} className="px-4 py-10 min-h-lvh">
         <motion.div
-          key={activeFilter}
           className="grid grid-cols-2 gap-x-2 gap-y-10"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
           layout
         >
-          <AnimatePresence initial={false}>
-            {filteredProjects.map((p) => {
-              const key = getStableProjectId(p);
-              return (
-                <motion.div key={key} variants={itemVariants} exit="exit" layout>
-                  <ProjectCard
-                    slug={p.slug}
-                    link={p.link}
-                    title={p.title}
-                    image={p.thumbnail}
-                    video={p.videoThumbnail ?? p.heroVideo}
-                    description={p.tagline ?? p.description}
-                  />
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+          {orderedProjects.map((p) => {
+            const key = getStableProjectId(p);
+            const isHighlighted = !highlightedIds || highlightedIds.has(key);
+
+            return (
+              <motion.div
+                key={key}
+                variants={itemVariants}
+                layout
+                animate={{
+                  opacity: isHighlighted ? 1 : 0.18,
+                  transition: { duration: 0.45, ease: easeOutElegant },
+                }}
+              >
+                <ProjectCard
+                  slug={p.slug}
+                  link={p.link}
+                  title={p.title}
+                  image={p.thumbnail}
+                  video={p.videoThumbnail ?? p.heroVideo}
+                  description={p.tagline ?? p.description}
+                />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
