@@ -90,32 +90,15 @@ interface ServiceSubItemProps {
 function ServiceSubItem({ title, items, isOpen, onToggle }: ServiceSubItemProps) {
   
   return (
-    <div className="border-b border-neutral-950 border-opacity-30 w-full md:w-1/2">
+    <div className=" w-full md:w-1/2 border-b-[0.5px] border-neutral-900 ">
       <button
         onClick={onToggle}
-        className="w-full py-4 flex items-center justify-between group cursor-pointer"
+        className="w-full py-4 flex items-center justify-between group cursor-pointer "
       >
         <span className="text-sm md:text-base text-left">
           {title}
         </span>
-        
-        <motion.svg
-          width="12"
-          height="12"
-          viewBox="0 0 12 12"
-          fill="none"
-          className="opacity-60"
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: easeOutElegant }}
-        >
-          <path
-            d="M2 4L6 8L10 4"
-            stroke="#666666"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </motion.svg>
+      
       </button>
 
       <AnimatePresence>
@@ -138,7 +121,7 @@ function ServiceSubItem({ title, items, isOpen, onToggle }: ServiceSubItemProps)
                     ease: easeOutElegant,
                     delay: idx * 0.05 
                   }}
-                  className="text-sm opacity-70 pl-4 border-l border-neutral-950 border-opacity-40"
+                  className="text-sm opacity-70"
                 >
                   {item}
                 </motion.li>
@@ -207,12 +190,12 @@ export default function Accordion({
             }}
             className="relative md:w-1/2"
           >
-            <p className="text-sm leading-relaxed text-neutral-950 items-end pt-5 md:pt-0 justify-end">
+            <p className="text-sm leading-relaxed text-neutral-950 items-end pt-5 md:pt-0 justify-end whitespace-pre-line">
               {isAboutExpanded ? aboutContent : previewText}
             </p>
             
             {!isAboutExpanded && shouldTruncate && (
-              <div className="absolute  bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background text-neutral-950 to-transparent pointer-events-none" />
+              <div className="absolute  bottom-0 left-0 right-0 h-20 bg-linear-to-t from-background text-neutral-950 to-transparent pointer-events-none" />
             )}
           </motion.div>
           

@@ -79,7 +79,18 @@ const messages: Record<Locale, Messages> = {
     },
     about: {
       about: "About",
-      content: "Latin American, I was born and raised in Colombia, a place that shaped my way of thinking and creating. After living in France, a Rare Talents scholarship brought me to the Netherlands, where I studied art and industrial design. My practice is hybrid, moving between the artisanal and the digital, the organic and the technological. This approach took shape during my time at Signify (Philips Lighting), where I worked as a qualitative researcher exploring how people perceive and experience objects beyond their function. In parallel, I work with simple and essential materials — light, water, silence — transforming them into tangible installations and interfaces. Learning to code became another form of craftsmanship, allowing me to materialize ideas across physical and digital spaces. Today I work at the intersection of design and technology, creating experiences where the manual and the technical coexist. Latin American magical realism subtly runs through my practice, connecting worlds and translating the invisible into something that can be touched, seen, or inhabited.",
+      content:
+        "I was born and raised in Colombia — a place that shaped how I see the relationship between the sensory, the cultural, and the made. After living in France, a Rare Talents scholarship brought me to the Netherlands, where I studied art and industrial design at a level that fused material research with critical thinking.\n" +
+        "\n" +
+        "My practice is hybrid by nature. I move between sensory brand research, physical installations, experience design, and frontend development — not because I can't choose, but because the most interesting problems live at those borders. I believe the best digital experiences are felt before they're understood. That belief drives everything I make.\n" +
+        "\n" +
+        "At Signify (Philips), I developed Value Tuning — a proprietary qualitative methodology that decodes how products communicate brand value through touch, sound, weight, and material. It gave design teams the evidence to fight for quality budgets and revealed the gap between brand promise and embodied experience.\n" +
+        "\n" +
+        "Since then I've designed and built Carmela Collective's entire web ecosystem — from visual identity to deployed frontend — for a Latin American cultural platform in Amsterdam. I'm currently working as a web strategy consultant for Qommunity (Belgium), helping them translate their mission into a coherent digital presence.\n" +
+        "\n" +
+        "I'm based between Amsterdam and Latin America, and I work remotely across both. I'm open to senior roles, consulting engagements, and research partnerships — particularly with studios, cultural institutions, and brands working at the intersection of identity, technology, and experience. \n" +
+         "\n" +
+         "Fluent in Spanish, English, French, and Portuguese.", 
       readMore: "Read more",
       readLess: "Read less"
     },
@@ -87,35 +98,27 @@ const messages: Record<Locale, Messages> = {
       title: "Services",
       items: [
         {
-          title: "Experience Design & Strategy",
+          title: "Sensory Brand Audit",
           items: [
-            "Sensorial Brand Audits",
-            "Hospitality Experience Design",
-            "Interactive Object Design"
+            "A research-led process that decodes how your brand is felt through material, touch, and interaction — not just seen. Based on the Value Tuning methodology developed at Signify (Philips). Deliverable: audit report + actionable design criteria.",
           ]
         },
         {
-          title: "Research & Insight",
+          title: "Brand-to-Web Ecosystem",
           items: [
-            "Qualitative Research Design",
-            "Competitive Perception Mapping",
-            "Cultural Translation"
+            "From identity to deployed frontend. I design and build web presences for cultural organisations and creative brands — starting from who you are, ending with how you show up online. Full ownership: strategy, design, code."
           ]
         },
         {
-          title: "Creative Direction & Production",
+          title: "Web Strategy Consulting & Advisory",
           items: [
-            "Art Direction for Physical Products",
-            "Prototype Development",
-            "Storytelling & Narrative Strategy"
+            "Workshops and advisory for organisations that need to strengthen their digital presence. I help you understand what your current site communicates, what's missing, and how to close the gap — practically and strategically."
           ]
         },
         {
           title: "Consulting & Advisory",
           items: [
-            "Design Team Facilitation",
-            "Material & Process Selection",
-            "Remote Creative Direction"
+            "Concept development, spatial and digital experience design, and creative direction for projects that need to be both intellectually rigorous and sensorially compelling."
           ]
         }
       ]
@@ -161,7 +164,16 @@ const messages: Record<Locale, Messages> = {
     },
     about: {
       about: "Biografía",
-      content: "Latinamericana, nasci e cresci na Colômbia, um lugar que moldou uma sensibilidade que atravessa tudo o que faço: uma maneira de pensar e criar a partir do humano. Vivi alguns anos na França e, mais tarde, uma bolsa de Rare Talents me levou à Holanda, onde estudei arte e design industrial. Minha prática sempre foi híbrida, transitando entre o artesanal e o digital, entre o orgânico e o tecnológico. Esse olhar ganhou forma durante meu tempo na Signify (Philips Lighting), onde trabalhei como pesquisadora qualitativa. Meu papel era ir além da funcionalidade dos objetos e explorar como as pessoas os percebem e os vivenciam no cotidiano, orientando decisões de design mais focadas em como as coisas são vividas, para além da função. Em paralelo, comecei a trabalhar com materiais nobres e aparentemente simples — luz, água, silêncio — transformando-os em instalações e interfaces tangíveis. Me interessa esse ponto em que o ordinário se torna paisagem, onde algo cotidiano pode abrir uma experiência mais profunda. Esse desejo de materializar ideias abstratas me levou a aprender a programar. O código se tornou outra forma de artesania: não apenas para construir, mas para dar presença física, digital — ou ambas ao mesmo tempo. Hoje trabalho entre design e tecnologia, unindo o manual ao digital, o sensível ao técnico. O realismo mágico latino-americano atravessa minha prática de forma sutil, como uma maneira de conectar mundos e criar experiências com profundidade, sentido e calor humano. Projeto e construo experiências, traduzindo o invisível em algo que possa ser tocado, visto ou habitado.",
+      content:
+        "Nasci e cresci na Colômbia — um lugar que moldou como vejo a relação entre o sensorial, o cultural e o feito à mão. Depois de viver na França, uma bolsa Rare Talents me trouxe para a Holanda, onde estudei arte e design industrial em um nível que unia pesquisa de materiais e pensamento crítico.\n" +
+        "\n" +
+        "Minha prática é híbrida por natureza. Transito entre pesquisa sensorial de marca, instalações físicas, design de experiência e desenvolvimento frontend — não porque eu não consiga escolher, mas porque os problemas mais interessantes vivem nessas bordas. Acredito que as melhores experiências digitais são sentidas antes de serem compreendidas. Essa crença guia tudo o que eu faço.\n" +
+        "\n" +
+        "Na Signify (Philips), desenvolvi o Value Tuning — uma metodologia qualitativa proprietária que decodifica como produtos comunicam valor de marca por meio do toque, do som, do peso e do material. Ela deu às equipes de design evidências para defender orçamentos de qualidade e revelou a lacuna entre promessa de marca e experiência incorporada.\n" +
+        "\n" +
+        "Desde então, desenhei e construí todo o ecossistema web da Carmela Collective — da identidade visual ao frontend em produção — para uma plataforma cultural latino-americana em Amsterdã. Atualmente trabalho como consultora de estratégia web para a Qommunity (Bélgica), ajudando a traduzir sua missão em uma presença digital coerente.\n" +
+        "\n" +
+        "Estou baseada entre Amsterdã e a América Latina e trabalho remotamente entre os dois. Estou aberta a posições sênior, consultorias e parcerias de pesquisa — especialmente com estúdios, instituições culturais e marcas que atuam na interseção entre identidade, tecnologia e experiência.",
       readMore: "Ler mais",
       readLess: "Ler menos"
     },
@@ -169,35 +181,27 @@ const messages: Record<Locale, Messages> = {
       title: "Serviços",
       items: [
         {
-          title: "Design & Estratégia de Experiência",
+          title: "Auditoria Sensorial de Marca",
           items: [
-            "Auditorias Sensoriais de Marca",
-            "Design de Experiência Hospitality",
-            "Design de Objetos Interativos"
+            "Um processo guiado por pesquisa que decodifica como sua marca é sentida pelo material, pelo toque e pela interação — não apenas vista. Baseado na metodologia Value Tuning desenvolvida na Signify (Philips). Entregável: relatório de auditoria + critérios de design acionáveis."
           ]
         },
         {
-          title: "Pesquisa & Insight",
+          title: "Ecossistema Marca-para-Web",
           items: [
-            "Design de Pesquisa Qualitativa",
-            "Mapeamento de Percepção Competitiva",
-            "Tradução Cultural"
+            "Da identidade ao frontend em produção. Eu desenho e construo presenças web para organizações culturais e marcas criativas — começando por quem você é, terminando com como você aparece online. Propriedade total: estratégia, design, código."
           ]
         },
         {
-          title: "Direção Criativa & Produção",
+          title: "Consultoria e Assessoria de Estratégia Web",
           items: [
-            "Direção de Arte para Produtos Físicos",
-            "Desenvolvimento de Protótipos",
-            "Estratégia de Narrativa & Storytelling"
+            "Workshops e assessoria para organizações que precisam fortalecer sua presença digital. Eu te ajudo a entender o que seu site atual comunica, o que está faltando e como fechar a lacuna — de forma prática e estratégica."
           ]
         },
         {
-          title: "Consultoria & Assessoria",
+          title: "Consultoria e Assessoria",
           items: [
-            "Facilitação de Equipes de Design",
-            "Seleção de Materiais & Processos",
-            "Direção Criativa Remota"
+            "Desenvolvimento de conceitos, design de experiências espaciais e digitais e direção criativa para projetos que precisam ser rigorosos intelectualmente e, ao mesmo tempo, convincentes sensorialmente."
           ]
         }
       ]
@@ -243,7 +247,16 @@ const messages: Record<Locale, Messages> = {
     },
     about: {
       about: "Biografía",
-      content: "Latinoamericana, nací y crecí en Colombia, un lugar que dio forma a una sensibilidad que atraviesa todo lo que hago: una manera de pensar y crear desde lo humano. Viví algunos años en Francia y, más tarde, una beca de Rare Talents me trajo a Holanda, donde estudié arte y diseño industrial. Mi práctica ha sido siempre híbrida, moviéndose entre lo artesanal y lo digital, entre lo orgánico y lo tecnológico. Ese enfoque tomó forma durante mi tiempo en Signify (Philips Lighting), donde trabajé como investigadora cualitativa. Mi rol era ir más allá de la funcionalidad de los objetos y explorar cómo las personas los perciben y experimentan en su vida cotidiana, guiando decisiones de diseño más enfocadas en cómo se viven las cosas, más allá de su función. En paralelo, empecé a trabajar con materiales nobles y aparentemente simples —la luz, el agua, el silencio— transformándolos en instalaciones e interfaces tangibles. Me atrae ese punto donde lo ordinario se vuelve paisaje, donde algo cotidiano puede abrir una experiencia más profunda. Ese deseo de materializar ideas abstractas me llevó a aprender a programar. El código se convirtió en otra forma de artesanía: no solo para construir, sino para darles presencia física, digital o ambas al mismo tiempo. Hoy trabajo entre diseño y tecnología, uniendo lo manual con lo digital, lo sensible con lo técnico. El realismo mágico latinoamericano atraviesa mi práctica como una forma sutil de conectar mundos y crear experiencias con profundidad, sentido y calidez. Diseño y construyo experiencias, traduciendo lo invisible en algo que se pueda tocar, mirar o habitar.",
+      content:
+        "Nací y crecí en Colombia — un lugar que moldeó cómo veo la relación entre lo sensorial, lo cultural y lo hecho. Después de vivir en Francia, una beca de Rare Talents me trajo a los Países Bajos, donde estudié arte y diseño industrial en un nivel que fusionó investigación de materiales con pensamiento crítico.\n" +
+        "\n" +
+        "Mi práctica es híbrida por naturaleza. Me muevo entre investigación sensorial de marca, instalaciones físicas, diseño de experiencia y desarrollo frontend — no porque no pueda elegir, sino porque los problemas más interesantes viven en esos bordes. Creo que las mejores experiencias digitales se sienten antes de entenderse. Esa creencia impulsa todo lo que hago.\n" +
+        "\n" +
+        "En Signify (Philips), desarrollé Value Tuning — una metodología cualitativa propietaria que decodifica cómo los productos comunican valor de marca a través del tacto, el sonido, el peso y el material. Le dio a los equipos de diseño evidencia para defender presupuestos de calidad y reveló la brecha entre la promesa de marca y la experiencia encarnada.\n" +
+        "\n" +
+        "Desde entonces, diseñé y construí todo el ecosistema web de Carmela Collective — desde la identidad visual hasta el frontend en producción — para una plataforma cultural latinoamericana en Ámsterdam. Actualmente trabajo como consultora de estrategia web para Qommunity (Bélgica), ayudándoles a traducir su misión en una presencia digital coherente.\n" +
+        "\n" +
+        "Estoy basada entre Ámsterdam y América Latina, y trabajo de forma remota entre ambos. Estoy abierta a roles senior, consultorías y alianzas de investigación — particularmente con estudios, instituciones culturales y marcas que trabajan en la intersección de identidad, tecnología y experiencia.",
       readMore: "Leer más",
       readLess: "Leer menos"
     },
@@ -251,35 +264,27 @@ const messages: Record<Locale, Messages> = {
       title: "Servicios",
       items: [
         {
-          title: "Diseño & Estrategia de Experiencia",
+          title: "Auditoría Sensorial de Marca",
           items: [
-            "Auditorías Sensoriales de Marca",
-            "Diseño de Experiencia Hospitality",
-            "Diseño de Objetos Interactivos"
+            "Un proceso liderado por la investigación que decodifica cómo se percibe tu marca a través del material, el tacto y la interacción — no solo a través de lo que se ve. Basado en la metodología Value Tuning desarrollada en Signify (Philips). Entregable: informe de auditoría + criterios de diseño accionables."
           ]
         },
         {
-          title: "Investigación & Insight",
+          title: "Ecosistema Marca-a-Web",
           items: [
-            "Diseño de Investigación Cualitativa",
-            "Mapeo de Percepción Competitiva",
-            "Traducción Cultural"
+            "De la identidad al frontend en producción. Diseñó y desarrolla presencias web para organizaciones culturales y marcas creativas — empezando por quién eres, terminando con cómo apareces en línea. Propiedad total: estrategia, diseño, código."
           ]
         },
         {
-          title: "Dirección Creativa & Producción",
+          title: "Consultoría y Asesoría de Estrategia Web",
           items: [
-            "Dirección de Arte para Productos Físicos",
-            "Desarrollo de Prototipos",
-            "Estrategia de Narrativa & Storytelling"
+            "Talleres y asesoría para organizaciones que necesitan fortalecer su presencia digital. Te ayudo a entender qué comunica tu sitio actual, qué falta y cómo cerrar la brecha — de forma práctica y estratégica."
           ]
         },
         {
-          title: "Consultoría & Asesoría",
+          title: "Consultoría y Asesoría",
           items: [
-            "Facilitación de Equipos de Diseño",
-            "Selección de Materiales & Procesos",
-            "Dirección Creativa Remota"
+            "Desarrollo de conceptos, diseño de experiencias espaciales y digitales, y dirección creativa para proyectos que necesitan ser rigurosos intelectualmente y, al mismo tiempo, convincentes a nivel sensorial."
           ]
         }
       ]
