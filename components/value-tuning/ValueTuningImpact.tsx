@@ -33,7 +33,7 @@ export default function ValueTuningImpact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-6 border border-neutral-200 bg-white rounded-3xl"
+              className="p-6 border border-neutral-200 bg-white rounded-4xl"
             >
               <h3 className="text-lg mb-3">{item.title}</h3>
               <p className="text-sm opacity-70 leading-relaxed">{item.desc}</p>

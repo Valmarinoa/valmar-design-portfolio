@@ -42,7 +42,7 @@ export default function ValueTuningResearchFindings() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: idx * 0.1 }}
-                className="relative overflow-hidden rounded-3xl min-h-[420px] border border-neutral-200"
+                className="relative overflow-hidden rounded-4xl min-h-[420px] border border-neutral-200"
               >
                 {/* Background media */}
                 {hasMedia && card.background?.type === "image" && (

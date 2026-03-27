@@ -66,7 +66,7 @@ export default function ValueTuningHypothesis({ youtubeId, videoSrc }: Props) {
             transition={{ duration: 1, delay: 0.15 }}
             className="lg:col-span-7 "
           >
-            <div className="rounded-3xl border border-neutral-300 bg-white overflow-hidden">
+            <div className="rounded-4xl border border-neutral-300 bg-white overflow-hidden">
               
               <div className="aspect-video w-full bg-neutral-100">
               

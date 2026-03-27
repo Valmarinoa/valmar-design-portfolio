@@ -89,7 +89,7 @@ export default function ValueTuningBlindfoldProtocol() {
               </div>
             </div>
 
-            <div className="p-8 rounded-3xl bg-[#76E897] mt-8">
+            <div className="p-8 rounded-4xl bg-[#76E897] mt-8">
               <p className="text-lg leading-relaxed italic opacity-90 text-center">
                 &quot;What feels like home? What invites the hand to linger? These
                 questions cannot be answered through visual analysis alone. The

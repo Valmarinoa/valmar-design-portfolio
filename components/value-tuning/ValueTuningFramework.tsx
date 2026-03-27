@@ -43,7 +43,7 @@ export default function ValueTuningFramework() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="relative overflow-hidden rounded-3xl"
+                className="relative overflow-hidden rounded-4xl"
               >
                 {/* Gradient background */}
                 <div className="absolute inset-0">

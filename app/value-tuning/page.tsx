@@ -18,6 +18,9 @@ import ValueTuningImpact from "@/components/value-tuning/ValueTuningImpact";
 import ValueTuningReflection from "@/components/value-tuning/ValueTuningReflection";
 import ValueTuningSidebarNav from "@/components/value-tuning/ValueTuningSidebarNav";
 import ValueTuningExpectationGap from "@/components/value-tuning/ValueTuningGapExpectations";
+import ValueTuningService from "@/components/value-tuning/ValueTuningService";
+import { Link } from "lucide-react";
+import LogoSvg from "@/components/svg/LogoSvg";
 
 
 export default function ValueTuningCaseStudy() {
@@ -32,7 +35,7 @@ export default function ValueTuningCaseStudy() {
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
   return (
-    <main ref={containerRef} className="min-h-screen text-neutral-900">
+    <main ref={containerRef} className="min-h-screen text-neutral-900 relative">
       {/* <ValueTuningSidebarNav /> */}
       <div className="fixed inset-0 h-[100vh] w-full -z-10 will-change-transform">
         <Granient
@@ -80,7 +83,14 @@ export default function ValueTuningCaseStudy() {
       <ValueTuningDesignCriteria />
       <ValueTuningImpact />
       <ValueTuningReflection />
-      {/* <ValueTuningFooter /> */}
+      <ValueTuningService />
+      <div className="w-full items-center justify-center pb-16 flex flex-col gap-8">
+      <p className="text-xs text-center">Value Tuning is an original research methodology developed by Valentina Marino at Signify (Philips), 2018–2019. <br/>Concept, protocol design, and framework © Valentina Marino. <br/>All rights reserved.
+      </p>
+      
+          <LogoSvg className={`h-6 w-auto`} />
+      
+      </div>
     </main>
   );
 }
