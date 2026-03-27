@@ -5,7 +5,7 @@ import { Quote } from "lucide-react";
 
 export default function ValueTuningMaterialContext() {
   return (
-    <section id="material-context" className="py-32 px-6 md:px-12 lg:px-24">
+    <section id="material-context" className="py-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

@@ -28,21 +28,16 @@ export default function ValueTuningHero({
         style={{ opacity: heroOpacity, scale: heroScale }}
         className="max-w-7xl mx-auto w-full"
       >
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="flex gap-12 items-center">
           {/* Left Column - Content */}
-          <div>
+          <div className="flex-1">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
               className="flex flex-wrap gap-3 mb-8 text-[9px] tracking-widest uppercase opacity-60"
             >
-              <motion.span
-                variants={fadeInUp}
-                className="border border-neutral-700 py-1 px-3 rounded-full"
-              >
-                Value Tuning
-              </motion.span>
+            
               <motion.span
                 variants={fadeInUp}
                 className="border border-neutral-700 py-1 px-3 rounded-full"
@@ -69,7 +64,7 @@ export default function ValueTuningHero({
               transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.3 }}
               className="text-4xl md:text-5xl lg:text-[4.5rem] leading-[0.95] mb-8"
             >
-              Beyond the Visual:
+              Value Tuning:
               <br />
               <span className="italic">The Hidden Language</span>
               <br />
@@ -120,7 +115,7 @@ export default function ValueTuningHero({
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.5 }}
-            className="flex flex-col justify-center items-end"
+            className="w-[30%] flex flex-col justify-center items-end"
           >
             {videoSources.map((src, index) => (
               <motion.div
@@ -132,7 +127,7 @@ export default function ValueTuningHero({
                   ease: easeOutElegant, 
                   delay: 0.6 + (index * 0.15) 
                 }}
-                className="relative w-1/2 aspect-video bg-neutral-100 overflow-hidden"
+                className="relative w-full aspect-video bg-neutral-100 overflow-hidden"
               >
                 <video
                   src={src}

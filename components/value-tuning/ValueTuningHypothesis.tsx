@@ -9,7 +9,7 @@ type Props = {
 
 export default function ValueTuningHypothesis({ youtubeId, videoSrc }: Props) {
   return (
-    <section id="hypothesis" className="py-32 px-6 md:px-12 lg:px-24">
+    <section id="hypothesis" className="py-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         {/* Top block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">

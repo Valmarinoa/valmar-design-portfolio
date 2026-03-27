@@ -8,41 +8,6 @@ import ValueSpectrumChartHue from "./svgs/ValueSpectrumChartHue";
 import ValueSpectrumChartApple from "./svgs/ValueSpectrumChartApple";
 import ValueSpectrumChartIkea from "./svgs/ValueSpectrumChartIkea";
 
-const brands = [
-  {
-    name: "Apple",
-    color: "#11162F",
-    expectation: [8, 8, 7, 9, 9],
-    perception: [7, 8, 6, 8, 7],
-    xOffset: 0.18,
-  },
-  {
-    name: "IKEA",
-    color: "#F4C400",
-    expectation: [3, 4, 3, 6, 5],
-    perception: [2, 3, 2, 3, 4],
-    xOffset: -0.18,
-  },
-  {
-    name: "HUE",
-    color: "#76E897",
-    expectation: [7, 7, 6, 6, 7],
-    perception: [4, 4, 5, 6, 6],
-    xOffset: 0,
-  },
-];
-
-const scaleLabels = [
-  "Extremely\nOrdinary",
-  "Very\nOrdinary",
-  "Moderately\nOrdinary",
-  "Slightly\nOrdinary",
-  "Average",
-  "Slightly\nValuable",
-  "Moderately\nValuable",
-  "Very\nValuable",
-  "Extremely\nValuable",
-];
 
 export default function ValueTuningExpectationGap() {
   const [activeBrand, setActiveBrand] = useState("HUE");
@@ -112,7 +77,7 @@ export default function ValueTuningExpectationGap() {
   return (
     <section
       id="expectation-gap"
-      className="py-32 px-6 md:px-12 lg:px-24 bg-white"
+      className="py-16 px-6 md:px-12 lg:px-24 bg-white"
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col">

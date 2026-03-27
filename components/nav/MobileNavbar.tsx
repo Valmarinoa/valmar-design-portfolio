@@ -32,21 +32,14 @@ export default function MobileNavbar() {
   const locale = useLocale();
   const messages = getMessages(locale);
   
-  // Get scrollProgress for fade out threshold
-  const { hasScrolledPastHero, isLandingPage, scrollProgress } = useLandingScroll();
+  const { hasScrolledPastHero, isLandingPage } = useLandingScroll();
 
   const menuItems = messages.nav.items.map((item) => ({
     ...item,
     link: isExternalUrl(item.href) ? item.href : localizePath(item.href, locale),
   }));
 
-  // Show navbar if:
-  // - Not on landing page, OR
-  // - On landing page AND scrolled past hero (>= 100vh)
-  const shouldShowNavbar = !isLandingPage || (isLandingPage && hasScrolledPastHero);
-  
-  // Fade out when scrolling back up and approaching hero (between 80% and 100%)
-  const isFadingOut = isLandingPage && scrollProgress < 0.95;
+  const shouldShowNavbar = !isLandingPage || hasScrolledPastHero;
 
   return (
     <div>
@@ -58,11 +51,6 @@ export default function MobileNavbar() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            // Fade out when approaching hero
-            style={{
-              opacity: isFadingOut ? 0 : 1,
-              transition: "opacity 0.3s ease",
-            }}
           >
             <motion.div 
               className="flex items-center justify-between pointer-events-auto"

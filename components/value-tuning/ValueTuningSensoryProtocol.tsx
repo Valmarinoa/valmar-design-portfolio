@@ -5,7 +5,7 @@ import { sensoryProtocolSteps } from "@/data/valueTuning";
 
 export default function ValueTuningSensoryProtocol() {
   return (
-    <section id="sensory-protocol" className="py-32 px-6 md:px-12 lg:px-24 bg-neutral-50">
+    <section id="sensory-protocol" className="py-16 px-6 md:px-12 lg:px-24 bg-neutral-50">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ValueTuningProblem() {
   return (
-    <section id="problem" className="py-32 px-6 md:px-12 lg:px-24 bg-neutral-900 text-[#f5f4ed]">
+    <section id="problem" className="py-16 px-6 md:px-12 lg:px-24 bg-neutral-900 text-[#f5f4ed]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <motion.div

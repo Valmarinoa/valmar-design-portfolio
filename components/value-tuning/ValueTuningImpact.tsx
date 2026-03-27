@@ -6,7 +6,7 @@ import { impactCards } from "@/data/valueTuning";
 
 export default function ValueTuningImpact() {
   return (
-    <section id="impact" className=" py-32 px-6 md:px-12 lg:px-24">
+    <section id="impact" className="pt-[100px] pb-12 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -33,7 +33,7 @@ export default function ValueTuningImpact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="p-6 border border-neutral-200 bg-white"
+              className="p-6 border border-neutral-200 bg-white rounded-3xl"
             >
               <h3 className="text-lg mb-3">{item.title}</h3>
               <p className="text-sm opacity-70 leading-relaxed">{item.desc}</p>

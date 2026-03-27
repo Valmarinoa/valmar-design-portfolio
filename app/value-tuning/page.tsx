@@ -34,7 +34,7 @@ export default function ValueTuningCaseStudy() {
   return (
     <main ref={containerRef} className="min-h-screen text-neutral-900">
       {/* <ValueTuningSidebarNav /> */}
-      <div className="fixed inset-0 h-[100vh] w-full -z-10">
+      <div className="fixed inset-0 h-[100vh] w-full -z-10 will-change-transform">
         <Granient
           color1="#EBECE4"
           color2="#EBE5E3"

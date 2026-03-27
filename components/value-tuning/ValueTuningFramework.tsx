@@ -8,7 +8,7 @@ export default function ValueTuningFramework() {
   return (
     <section
       id="framework"
-      className="scroll-mt-24 py-32 px-6 md:px-12 lg:px-24 bg-neutral-900 text-[#f5f4ed]"
+      className="scroll-mt-24 py-16 px-6 md:px-12 lg:px-24 bg-neutral-900 text-[#f5f4ed]"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div
