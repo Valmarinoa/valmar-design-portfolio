@@ -3,7 +3,6 @@
 import { socialItems } from '@/data/projects';
 import { useTheme } from './providers/theme-context';
 import LogoSvg from './svg/LogoSvg'
-import WithLove from './nav/WithLove.tsx';
 
 export default function MobileFooter() {
   const { theme } = useTheme();

@@ -466,7 +466,6 @@ const projectsData: LocalizedProject[] = [
     heroVideo: '/media/sob-blue.mp4',
 
     blocks: [
-      
       {
         type: 'quote',
         quote:
