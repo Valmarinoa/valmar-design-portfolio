@@ -115,7 +115,7 @@ export default function ValueTuningHero({
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.5 }}
-            className="w-[30%] flex flex-col justify-center items-end"
+            className="w-[30%] flex flex-col justify-center items-end rounded-4xl h-fit overflow-hidden"
           >
             {videoSources.map((src, index) => (
               <motion.div
