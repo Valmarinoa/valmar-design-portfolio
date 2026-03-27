@@ -5,7 +5,6 @@ import { Baskervville, Be_Vietnam_Pro } from "next/font/google";
 import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
 import DesktopNavbar from "@/components/nav/DesktopNavbar";
 import MobileNavbar from "@/components/nav/MobileNavbar";
-import WithLove from "@/components/nav/WithLove.tsx";
 import { getServerLocale } from "@/lib/i18n-server";
 import { Metadata } from "next";
 import MobileFooter from "@/components/MobileFooter";
@@ -54,12 +53,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body className={`...`}>
         <div className="fixed inset-0 -z-10" />
         <AutoThemeProvider>
-          <LandingScrollProvider> {/* Add this */}
+          <LandingScrollProvider> 
             <DesktopNavbar />
             <MobileNavbar />
             {children}
             <MobileFooter/>
-            {/* <WithLove /> */}
           </LandingScrollProvider>
         </AutoThemeProvider>
       </body>
