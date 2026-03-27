@@ -1,11 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Granient from "../animations/Granient";
 
 export default function ValueTuningProblem() {
   return (
-    <section id="problem" className="py-16 px-6 md:px-12 lg:px-24 bg-neutral-900 text-[#f5f4ed]">
-      <div className="max-w-7xl mx-auto">
+    <section id="problem" className="py-16 px-6 md:px-12 relative md:m-24 text-neutral-950 rounded-4xl overflow-hidden">
+       <div className="absolute inset-0 w-full h-full">
+                  <Granient
+                    color1="#11e395"
+                    color2="#aaefd3"
+                    color3="#1ecfc5"
+                    timeSpeed={0.2}
+                    colorBalance={0}
+                    warpStrength={1}
+                    warpFrequency={3}
+                    warpSpeed={1}
+                    warpAmplitude={20}
+                    blendAngle={0}
+                    blendSoftness={0.1}
+                    rotationAmount={200}
+                    noiseScale={1.5}
+                    grainAmount={0.1}
+                    grainScale={2}
+                    grainAnimated={false}
+                    contrast={1.2}
+                    gamma={1}
+                    saturation={1}
+                    centerX={0}
+                    centerY={0}
+                    zoom={0.9}
+                  />
+                </div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, y: 40 }}

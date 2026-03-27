@@ -6,7 +6,7 @@ import AnimatedBlurb from "../animations/AnimatedBlurb";
 
 export default function ValueTuningService() {
   return (
-    <section id="service" className="relative py-16 px-6 md:px-12 m-12 mb-32 lg:px-24 text-neutral-950 rounded-4xl overflow-hidden">
+    <section id="service" className="py-16 px-6 md:px-12 relative md:my-12 md:mx-24 text-neutral-950 rounded-4xl overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
                   <Granient
                     color1="#FF9914"

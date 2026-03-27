@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function ValueTuningReflection() {
   return (
-    <section id="reflection" className="relative py-16 px-6 md:px-12 m-12 mb-32 lg:px-24 text-white bg-neutral-950 rounded-4xl overflow-hidden">
+    <section id="reflection" className="py-16 px-6 md:px-12 relative md:mb-24 md:mx-24 text-white bg-neutral-950 rounded-4xl overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto flex justify-center">
         <div className="flex flex-col md:flex-row gap-16 items-center">
           <motion.div

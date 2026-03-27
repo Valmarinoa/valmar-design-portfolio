@@ -5,7 +5,7 @@ import { methodologyAudits } from "@/data/valueTuning";
 
 export default function ValueTuningMethodology() {
   return (
-    <section id="methodology" className="py-16 px-6 md:px-12 lg:px-24">
+    <section id="methodology" className="py-16 px-6 md:px-12 lg:px-24 relative m-12 mb-32 text-neutral-950 rounded-4xl overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

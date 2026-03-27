@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import { EyeOff } from "lucide-react";
+import Granient from "../animations/Granient";
 
 export default function ValueTuningBlindfoldProtocol() {
   return (
-    <section id="blindfold-protocol" className="py-16 px-6 md:px-12 lg:px-24">
+    <section id="blindfold-protocol" className="py-16 px-6 md:px-12 lg:px-24 ">
+    
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           <motion.div
