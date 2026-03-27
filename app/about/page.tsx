@@ -26,7 +26,7 @@ export default function AboutPage() {
           <h4 className="md:hidden inline-block text-lg opacity-80 md:text-lg whitespace-nowrap md:whitespace-normal leading-6 font-light">Product & Experience <br/>Designer and Developer</h4>
           <div className="text-lg whitespace-nowrap gap-2 md:absolute relative bottom-0 flex flex-col">
             <a className="underline">Email</a>
-            <a className="underline" href="www.linkedin.com/in/valentina-marino-arboleda">LinkedIn</a>
+            <a className="underline" href="https://www.linkedin.com/in/valentina-marino-arboleda">LinkedIn</a>
             <a className="underline" href="https://www.instagram.com/valmarino.a/">Instagram</a>
             <a className="underline" href="https://github.com/Valmarinoa">GitHub</a>
 

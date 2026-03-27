@@ -26,6 +26,11 @@ export type Messages = {
     logoAria: string;
     items: NavItem[];
   };
+
+  foot: {
+    items: NavItem[];
+  };
+
   about: {
     about: string;
     content: string;
@@ -42,9 +47,7 @@ export type Messages = {
     email: string;
     availability: string;
   };
-  footer: {
-    withLove: string;
-  };
+
 };
 
 const messages: Record<Locale, Messages> = {
@@ -55,14 +58,12 @@ const messages: Record<Locale, Messages> = {
     },
     home: {
       question: "What does something feel like before language defines it?",
-      intro:
-        "Born and raised in Colombia, currently based in the Netherlands,\n" +
+      intro: "Born and raised in Colombia, currently based in the Netherlands,\n" +
         "I love finding ways to bring poetry into everyday objects and technologies.\n" +
         "My work explores how the sensibility of Latin American magical realism can live in contemporary design.\n" +
         "I'm interested in how poetry and a bit of magic can exist in everyday technology, using both handcrafted and digital tools.",
-      desktopBlurb:
-      "Product & experience designer, researcher, and developer — translating cultural identity and sensory intelligence into contemporary design and technology.  \n" +
-      "My work moves between sensory brand research, physical installations, and digital ecosystems. I design and build experiences that make the invisible felt.",
+      desktopBlurb: "Product & experience designer, researcher, and developer. I translate cultural identity and sensory intelligence into contemporary design and technology, \n" +
+        "to make experiences that make the invisible be felt.",
       fallbackDescription: "Project description coming soon.",
     },
     nav: {
@@ -77,10 +78,10 @@ const messages: Record<Locale, Messages> = {
         },
       ],
     },
+
     about: {
       about: "About",
-      content:
-        "I was born and raised in Colombia, a place where I learnt to see the relationship between the sensory, the cultural, and the made. After living in France, a 'Rare Talents scholarship' brought me to the Netherlands, where I studied art and industrial design.\n" +
+      content: "I was born and raised in Colombia, a place where I learnt to see the relationship between the sensory, the cultural, and the made. After living in France, a 'Rare Talents scholarship' brought me to the Netherlands, where I studied art and industrial design.\n" +
         "\n" +
         "My practice is hybrid by nature. I move between sensory brand research, physical installations, experience design, and frontend development, since the most interesting things live at those borders. I believe the best digital (and physicial) experiences are felt before they're understood. That belief drives everything I make.\n" +
         "\n" +
@@ -89,8 +90,8 @@ const messages: Record<Locale, Messages> = {
         "Since then I've designed and built Carmela Collective's entire web ecosystem: from visual identity to deployed frontend (a Latin American cultural platform in Amsterdam). Currently I work as a web strategy consultant for Qommunity (Belgium), helping them translate their mission into a coherent digital presence.\n" +
         "\n" +
         "I'm based between Amsterdam and Latin America, and I work remotely across both. I'm open to senior roles, consulting engagements, and research partnerships, particularly with studios, cultural institutions, and brands working at the intersection of identity, technology, and experience. \n" +
-         "\n" +
-         "Fluent in Spanish, English, French, and Portuguese.", 
+        "\n" +
+        "Fluent in Spanish, English, French, and Portuguese.",
       readMore: "Read more",
       readLess: "Read less"
     },
@@ -129,10 +130,24 @@ const messages: Record<Locale, Messages> = {
       email: "valenmarinocol@gmail.com",
       availability: "Currently available for new projects"
     },
-    footer: {
-      withLove: "Coded with love ♡ ̆̈",
+    foot: {
+      items: [
+        { label: "Email", ariaLabel: "Email", href: "" },
+        { label: "Instagram", ariaLabel: "Instagram", href: "" },
+        {
+          label: "LinkedIn",
+          ariaLabel: "LinkedIn profile",
+          href: "https://valenmarino.vercel.app/ ",
+        },
+        {
+          label: "GitHub",
+          ariaLabel: "Repositorios web",
+          href: "https://valenmarino.vercel.app/ ",
+        },
+      ],
     },
   },
+
   "pt-br": {
     hero: {
       name: "Valentina Marino",
@@ -212,24 +227,36 @@ const messages: Record<Locale, Messages> = {
       email: "valenmarinocol@gmail.com",
       availability: "Disponível para novos projetos"
     },
-    footer: {
-      withLove: "Feito com amor ♡ ̆̈",
+    foot: {
+      items: [
+        { label: "Email", ariaLabel: "Email", href: "" },
+        { label: "Instagram", ariaLabel: "Instagram", href: "" },
+        {
+          label: "LinkedIn",
+          ariaLabel: "LinkedIn",
+          href: "https://valenmarino.vercel.app/ ",
+        },
+        {
+          label: "GitHub",
+          ariaLabel: "Repositorios projetos web",
+          href: "https://valenmarino.vercel.app/ ",
+        },
+      ],
     },
   },
+
   es: {
     hero: {
       name: "Valentina Marino",
       role: "Diseñadora de Producto y Experiencia",
     },
     home: {
-      intro:
-        "Hola! Soy Valentina Marino,\n" +
+      intro: "Hola! Soy Valentina Marino,\n" +
         "nacida y criada en Colombia, actualmente basada en los Países Bajos.\n" +
         "Me encanta encontrar formas de llevar la poesía a objetos y tecnologías cotidianas.\n" +
         "Mi trabajo explora cómo la sensibilidad del realismo mágico latinoamericano puede vivir en el diseño contemporáneo.\n" +
         "Me interesa cómo la poesía y un poco de magia pueden existir en la tecnología diaria, usando tanto herramientas artesanales como digitales.",
-      desktopBlurb:
-        "Diseñadora y desarrolladora de Producto y Experiencia, traduciendo la sensibilidad del realismo mágico latinoamericano en\n" +
+      desktopBlurb: "Diseñadora y desarrolladora de Producto y Experiencia, traduciendo la sensibilidad del realismo mágico latinoamericano en\n" +
         "diseño y tecnología contemporáneos.",
       fallbackDescription: "Descripción del proyecto próximamente.",
     },
@@ -247,8 +274,7 @@ const messages: Record<Locale, Messages> = {
     },
     about: {
       about: "Biografía",
-      content:
-        "Nací y crecí en Colombia — un lugar que moldeó cómo veo la relación entre lo sensorial, lo cultural y lo hecho. Después de vivir en Francia, una beca de Rare Talents me trajo a los Países Bajos, donde estudié arte y diseño industrial en un nivel que fusionó investigación de materiales con pensamiento crítico.\n" +
+      content: "Nací y crecí en Colombia — un lugar que moldeó cómo veo la relación entre lo sensorial, lo cultural y lo hecho. Después de vivir en Francia, una beca de Rare Talents me trajo a los Países Bajos, donde estudié arte y diseño industrial en un nivel que fusionó investigación de materiales con pensamiento crítico.\n" +
         "\n" +
         "Mi práctica es híbrida por naturaleza. Me muevo entre investigación sensorial de marca, instalaciones físicas, diseño de experiencia y desarrollo frontend — no porque no pueda elegir, sino porque los problemas más interesantes viven en esos bordes. Creo que las mejores experiencias digitales se sienten antes de entenderse. Esa creencia impulsa todo lo que hago.\n" +
         "\n" +
@@ -295,9 +321,23 @@ const messages: Record<Locale, Messages> = {
       email: "valenmarinocol@gmail.com",
       availability: "Disponible para nuevos proyectos"
     },
-    footer: {
-      withLove: "Hecho con amor ♡ ̆̈",
+    foot: {
+      items: [
+        { label: "Email", ariaLabel: "Email", href: "" },
+        { label: "Instagram", ariaLabel: "Instagram", href: "https://www.instagram.com/valmarino.a/" },
+        {
+          label: "LinkedIn",
+          ariaLabel: "LinkedIn Profile",
+          href: "https://www.linkedin.com/in/valentina-marino-arboleda",
+        },
+        {
+          label: "GitHub",
+          ariaLabel: "Repositories",
+          href: "https://github.com/Valmarinoa",
+        },
+      ],
     },
+   
   },
 };
 
