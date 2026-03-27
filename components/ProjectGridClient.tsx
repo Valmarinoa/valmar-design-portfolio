@@ -118,7 +118,7 @@ export default function ProjectGridClient({ projects, desktopBlurb, question }: 
       </motion.p>
 
       <div className="sticky top-[60px] z-30 px-4 pb-2 mt-10">
-        <div className="flex flex-wrap justify-between gap-2  py-2">
+        <div className="flex flex-wrap justify-between gap-1  py-2">
           {([
             { id: "all", label: "All" },
             { id: "interface", label: "Interface" },

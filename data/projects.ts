@@ -935,7 +935,6 @@ const projectsData: LocalizedProject[] = [
       t("Composition", "Composição", "Composición"),
       t("Color", "Cor", "Color"),
       t("Material", "Material", "Material"),
-      t("Ritual", "Ritual", "Ritual"),
     ],
   },
 

@@ -76,6 +76,11 @@ const messages: Record<Locale, Messages> = {
           ariaLabel: "Work as front-end developer",
           href: "https://valenmarino.vercel.app/ ",
         },
+        {
+          label: "Contact",
+          ariaLabel: "Contact",
+          href: "",
+        },
       ],
     },
 
@@ -175,6 +180,11 @@ const messages: Record<Locale, Messages> = {
           ariaLabel: "Trabalho como desenvolvedora front-end",
           href: "https://valenmarino.vercel.app/ ",
         },
+        {
+          label: "Contato",
+          ariaLabel: "Contato",
+          href: "",
+        },
       ],
     },
     about: {
@@ -269,6 +279,11 @@ const messages: Record<Locale, Messages> = {
           label: "Trabajos Dev",
           ariaLabel: "Trabajo como desarrolladora front-end",
           href: "https://valenmarino.vercel.app/ ",
+        },
+        {
+          label: "Contacto",
+          ariaLabel: "Contacto",
+          href: "",
         },
       ],
     },

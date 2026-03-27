@@ -234,7 +234,7 @@ export default function SecondaryDesktopLayout({
         {/* Close Button */}
         <motion.button
           onClick={closeModal}
-          className="absolute top-6 right-6 z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors"
+          className="absolute top-[10%] right-[18%] z-50 p-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md transition-colors cursor-pointer"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
@@ -301,7 +301,7 @@ export default function SecondaryDesktopLayout({
                 </div>
               )}
               {active.status && (
-                <p className="text-[10px] tracking-widest uppercase mt-3 opacity-90">
+                <p className="text-[10px] tracking-widest uppercase mt-3 opacity-90 text-[#1a1912] font-semibold bg-amber-500 p-1">
                   {active.status === "available" ? "Available — contact for pricing" : "Sold"}
                 </p>
               )}
