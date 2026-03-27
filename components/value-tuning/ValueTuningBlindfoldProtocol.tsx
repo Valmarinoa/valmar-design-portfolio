@@ -26,7 +26,7 @@ export default function ValueTuningBlindfoldProtocol() {
             <h2 className="text-3xl md:text-4xl mb-6">
               The Blindfold Protocol
             </h2>
-            <p className="text-xs opacity-60 italic leading-relaxed">
+            <p className="text-xs opacity-60 font-baskervville-italic leading-relaxed">
               &quot;The senses are not merely passive receptors of information but
               active participants in the construction of reality.&quot;
             </p>
@@ -92,7 +92,7 @@ export default function ValueTuningBlindfoldProtocol() {
             </div>
 
             <div className="p-8 rounded-4xl bg-[#76E897] mt-8">
-              <p className="text-lg leading-relaxed italic opacity-90 text-center">
+              <p className="text-lg leading-relaxed font-baskervville-italic opacity-90 text-center">
                 &quot;What feels like home? What invites the hand to linger? These
                 questions cannot be answered through visual analysis alone. The
                 blindfold reveals the gap between what a brand promises and what a

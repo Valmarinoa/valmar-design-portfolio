@@ -83,7 +83,7 @@ export default function ValueTuningResearchFindings() {
                 <div className="relative z-10 flex h-full flex-col justify-between p-8 text-white">
                   <div>
                     <Quote className="w-6 h-6 opacity-40 mb-4" />
-                    <blockquote className="leading-relaxed mb-6 italic text-base md:text-lg max-w-[34ch]">
+                    <blockquote className="leading-relaxed mb-6 font-baskervville-italic text-base md:text-lg max-w-[34ch]">
                       &quot;{card.quote}&quot;
                     </blockquote>
                   </div>

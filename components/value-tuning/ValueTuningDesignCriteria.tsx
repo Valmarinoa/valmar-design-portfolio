@@ -19,7 +19,7 @@ const SEAL_PATH = (() => {
 
 export default function ValueTuningDesignCriteria() {
   return (
-    <section id="design-criteria" className="py-16 px-6 md:px-12 relative md:m-24 text-neutral-950 rounded-4xl border">
+    <section id="design-criteria" className="py-16 px-6 md:px-12 relative md:m-24 text-neutral-950 rounded-4xl  border-neutral-600 border-[0.5px] bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -49,7 +49,7 @@ export default function ValueTuningDesignCriteria() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: idx * 0.1 }}
-              className="border-t border-neutral-300 pt-8"
+              className=" border-neutral-600 border-t-[0.5px] pt-8"
             >
               <h3 className="text-2xl md:text-3xl mb-8">{section.category}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -101,7 +101,7 @@ export default function ValueTuningDesignCriteria() {
             <span className="text-[9px] tracking-widest uppercase opacity-75 block mb-3">
               Key Insight
             </span>
-            <p className="text-xs md:text-sm leading-relaxed italic">
+            <p className="text-xs md:text-sm leading-relaxed font-baskervville-italic">
               &quot;Perceived quality is not the sum of individual sensory
               inputs, but their coherence. A product that sounds premium but
               feels cheap creates cognitive dissonance. The goal is alignment

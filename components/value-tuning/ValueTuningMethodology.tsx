@@ -39,7 +39,7 @@ export default function ValueTuningMethodology() {
               <span className="text-xs tracking-widest opacity-40 mb-2 block">
                 {item.num}
               </span>
-              <h3 className="text-2xl mb-3 group-hover:italic transition-all duration-500">
+              <h3 className="text-2xl mb-3 group-hover:font-baskervville-italic transition-all duration-500">
                 {item.title}
               </h3>
               <p className="text-sm leading-relaxed opacity-80">{item.desc}</p>

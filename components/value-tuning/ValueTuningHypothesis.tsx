@@ -94,45 +94,6 @@ export default function ValueTuningHypothesis({ youtubeId, videoSrc }: Props) {
             </div>
           </motion.div>
         </div>
-
-        {/* COMPARISON CARD */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="p-8 md:p-12 border border-neutral-300 bg-white"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h4 className="text-lg mb-3">Expectation &gt; Reality</h4>
-
-              <p className="text-sm opacity-70 leading-relaxed mb-3">
-                A brand signals premium value, but the sensory experience
-                reveals weak materials, awkward packaging, or imprecise
-                construction.
-              </p>
-
-              <p className="text-xs italic opacity-50">
-                Result: cognitive dissonance and reduced trust.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-lg mb-3">Reality &gt; Expectation</h4>
-
-              <p className="text-sm opacity-70 leading-relaxed mb-3">
-                A product appears ordinary but delivers satisfying tactile,
-                acoustic, and material quality when handled.
-              </p>
-
-              <p className="text-xs italic opacity-50">
-                Result: delight, memorability, and stronger brand attachment.
-              </p>
-            </div>
-          </div>
-        </motion.div> */}
-
       </div>
     </section>
   );

@@ -40,22 +40,6 @@ export default function ValueTuningImpact() {
             </motion.div>
           ))}
         </div>
-
-        {/* <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="p-8 md:p-12 border border-neutral-300 bg-white text-center"
-        >
-          <Quote className="w-8 h-8 opacity-20 mx-auto mb-6" />
-          <blockquote className="text-2xl md:text-3xl leading-relaxed mb-6 italic max-w-3xl mx-auto">
-            &quot;The blindfold became a metaphor for my practice: removing the
-            obvious to reveal the essential. Whether designing a lamp that breathes
-            or researching how packaging shapes desire, I&apos;m drawn to moments
-            where the invisible becomes tangible.&quot;
-          </blockquote>
-        </motion.div> */}
       </div>
     </section>
   );

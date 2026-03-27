@@ -66,7 +66,7 @@ export default function ValueTuningHero({
             >
               Value Tuning:
               <br />
-              <span className="italic">The Hidden Language</span>
+              <span className="font-baskervville-italic">The Hidden Language</span>
               <br />
               of Brand Perception
             </motion.h1>

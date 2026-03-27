@@ -2,38 +2,15 @@
 
 import { motion } from "framer-motion";
 import { sensoryProtocolSteps } from "@/data/valueTuning";
-import Granient from "../animations/Granient";
+import StaticGradient from "../animations/StaticGradient";
 
 export default function ValueTuningSensoryProtocol() {
   return (
     <section id="sensory-protocol" className="py-16 px-6 md:px-12 relative md:my-12 md:mx-24 text-white rounded-4xl overflow-hidden">
       
       <div className="absolute inset-0 w-full h-full">
-                  <Granient
-                    color1="#1D1D1D"
-                    color2="#301a4b"
-                    color3="#301a4b"
-                    timeSpeed={0.2}
-                    colorBalance={0}
-                    warpStrength={1}
-                    warpFrequency={3}
-                    warpSpeed={1}
-                    warpAmplitude={20}
-                    blendAngle={0}
-                    blendSoftness={0.1}
-                    rotationAmount={200}
-                    noiseScale={1.5}
-                    grainAmount={0.1}
-                    grainScale={2}
-                    grainAnimated={false}
-                    contrast={1.2}
-                    gamma={1}
-                    saturation={1}
-                    centerX={0}
-                    centerY={0}
-                    zoom={0.9}
-                  />
-                </div>
+        <StaticGradient color1="#1D1D1D" color2="#301a4b" color3="#301a4b" />
+      </div>
       
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
@@ -92,7 +69,7 @@ export default function ValueTuningSensoryProtocol() {
               <p className="text-sm opacity-70 leading-relaxed mb-6">{item.desc}</p>
 
               <div className="pt-4 border-t border-neutral-300">
-                <p className="text-xs italic opacity-60">{item.insight}</p>
+                <p className="text-xs font-baskervville-italic opacity-60">{item.insight}</p>
               </div>
             </motion.div>
           ))}

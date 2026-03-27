@@ -1,38 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Granient from "../animations/Granient";
+import StaticGradient from "../animations/StaticGradient";
 import AnimatedBlurb from "../animations/AnimatedBlurb";
 
 export default function ValueTuningService() {
   return (
     <section id="service" className="py-16 px-6 md:px-12 relative md:my-12 md:mx-24 text-neutral-950 rounded-4xl overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
-                  <Granient
-                    color1="#FF9914"
-                    color2="#FF6B00"
-                    color3="#b27c66"
-                    timeSpeed={0.2}
-                    colorBalance={0}
-                    warpStrength={1}
-                    warpFrequency={3}
-                    warpSpeed={1}
-                    warpAmplitude={20}
-                    blendAngle={0}
-                    blendSoftness={0.1}
-                    rotationAmount={200}
-                    noiseScale={1.5}
-                    grainAmount={0.1}
-                    grainScale={2}
-                    grainAnimated={false}
-                    contrast={1.2}
-                    gamma={1}
-                    saturation={1}
-                    centerX={0}
-                    centerY={0}
-                    zoom={0.9}
-                  />
-                </div>
+        <StaticGradient color1="#FF9914" color2="#FF6B00" color3="#b27c66" />
+      </div>
       <div className="relative z-10 max-w-7xl mx-auto flex flex-col justify-center items-center">
         <div className="flex flex-col items-center justify-center text-center gap-12 max-w-3xl">
           <motion.div
