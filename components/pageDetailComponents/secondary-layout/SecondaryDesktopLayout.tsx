@@ -158,12 +158,7 @@ export default function SecondaryDesktopLayout({
 
       <div
         ref={viewportRef}
-        className="
-          relative mt-18 mb-20 h-[44vh] min-h-[400px] w-full
-          overflow-x-auto z-50 
-          [scrollbar-width:none] [-ms-overflow-style:none]
-          [&::-webkit-scrollbar]:hidden
-        "
+        className="relative mt-18 mb-20 h-[calc(44vh+80px)] min-h-[480px] w-full overflow-x-auto py-10 z-50 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
       >
       <motion.div
   className="flex h-full w-max flex-nowrap items-stretch gap-0"
