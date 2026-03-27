@@ -120,6 +120,17 @@ export default function MobileGallery({ gridItems }: Props) {
                   <div className={`${theme.bg} self-end absolute -bottom-px right-0 text-right`}>
                     <p className={`${theme.text} px-px text-xl`}>{active.ref ?? "ref. ###"}</p>
                     <p className={`${theme.text} px-px text-xs`}>{active.ref2 ?? "ref. ###"}</p>
+                    {active.woodType && (
+                      <p className={`${theme.text} px-px text-xs opacity-70`}>{active.woodType}</p>
+                    )}
+                    {active.dimensions && (
+                      <p className={`${theme.text} px-px text-xs opacity-70`}>{active.dimensions}</p>
+                    )}
+                    {active.status && (
+                      <p className={`${theme.text} px-px text-[10px] tracking-widest uppercase mt-1`}>
+                        {active.status === "available" ? "Available — contact for pricing" : "Sold"}
+                      </p>
+                    )}
                   </div>
                 </div>
               </motion.div>

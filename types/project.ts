@@ -27,6 +27,11 @@ export type GridItem = {
   ref?: string;
   ref2?: string;
 
+  // Piece metadata
+  woodType?: string;
+  dimensions?: string;
+  status?: "available" | "sold";
+
   // Desktop carousel sizing
   baseWidthPx?: number;
   minWidthPx?: number;

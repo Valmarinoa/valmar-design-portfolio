@@ -37,12 +37,23 @@ export default function FlexCell({
         />
         
       </div>
-      <div className='self-end absolute -bottom-px right-0'>
-      <div className='text-amber-500 p-2  text-right'> 
-        <p className='' > {item.ref ?? "ref. ###"}</p>
-        <p className='text-xs font-light' > {item.ref2 ?? "ref. ###"}</p>
+      <div className="self-end absolute -bottom-px right-0">
+        <div className="text-amber-500 p-2 text-right">
+          <p>{item.ref ?? "ref. ###"}</p>
+          <p className="text-xs font-light">{item.ref2 ?? "ref. ###"}</p>
+          {item.woodType && (
+            <p className="text-[10px] font-light opacity-70">{item.woodType}</p>
+          )}
+          {item.dimensions && (
+            <p className="text-[10px] font-light opacity-70">{item.dimensions}</p>
+          )}
+          {item.status && (
+            <p className="text-[10px] tracking-widest uppercase mt-0.5">
+              {item.status === "available" ? "Available" : "Sold"}
+            </p>
+          )}
         </div>
-        </div>
+      </div>
     </button>
   );
 }

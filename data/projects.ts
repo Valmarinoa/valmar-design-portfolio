@@ -242,6 +242,9 @@ export const totemicaItems: GridItem[] = [
     cellClassName: 'relative h-[300px] flex flex-col',
     ref: "Vau",
     ref2: "43°12'N",
+    woodType: "Oak",
+    dimensions: "45 × 12 × 8 cm",
+    status: "available",
   },
   {
     id: '2',
@@ -251,10 +254,13 @@ export const totemicaItems: GridItem[] = [
     cellClassName: 'relative h-[200px] flex flex-col',
     ref: "Mourtia",
     ref2: "37°42'N",
+    woodType: "Olive",
+    dimensions: "32 × 8 × 6 cm",
+    status: "sold",
     // mobileCellClassName: "h-[420px]",
     // mobileImgClassName: "object-contain object-center",
   },
-   
+
   {
     id: '3',
     src: '/media/totemica/rama-t.png',
@@ -263,8 +269,11 @@ export const totemicaItems: GridItem[] = [
     cellClassName: 'relative aspect-3/4 flex flex-col',
     ref: "Oule",
     ref2: "43°12'N",
+    woodType: "Pine",
+    dimensions: "58 × 15 × 10 cm",
+    status: "available",
   },
- 
+
   {
     id: '4',
     src: '/media/totemica/rama-iz.png',
@@ -273,6 +282,9 @@ export const totemicaItems: GridItem[] = [
     cellClassName: 'relative h-[600px] flex flex-col',
     ref: "Pomena",
     ref2: "42°78'N",
+    woodType: "Cedar",
+    dimensions: "72 × 18 × 12 cm",
+    status: "available",
   },
   {
     id: '5',
@@ -282,8 +294,11 @@ export const totemicaItems: GridItem[] = [
     cellClassName: 'relative h-[600px] flex flex-col',
     ref: "Blato",
     ref2: "42°76'N",
+    woodType: "Walnut",
+    dimensions: "65 × 20 × 14 cm",
+    status: "sold",
   },
-  
+
   {
     id: '6',
     src: '/media/totemica/rama-y.png',
@@ -294,6 +309,9 @@ export const totemicaItems: GridItem[] = [
     mobileImgClassName: "object-contain object-center py-12",
     ref: "Kasonisi",
     ref2: "37°54'N",
+    woodType: "Beech",
+    dimensions: "38 × 10 × 8 cm",
+    status: "available",
   },
 ];
 export const ruralesItems: GridItem[] = [
@@ -905,7 +923,7 @@ const projectsData: LocalizedProject[] = [
     ),
     description:
       t(
-        "I collect discarded, broken, or fallen branches from rural landscapes and restore their dignity through color, composition, and care.",
+        "I collect discarded, broken, or fallen branches from rural landscapes and restore their presence through color, composition, and care.",
         "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
         ,
         "Cada pedazo de madera fue recogido en paisajes costeros y rurales, animados por ritmo y color, transformandose esculpturas. Un juego silencioso entre lo sagrado y lo cotidiano."

@@ -160,13 +160,13 @@ export default function SecondaryDesktopLayout({
         ref={viewportRef}
         className="
           relative mt-18 mb-20 h-[44vh] min-h-[400px] w-full
-          overflow-x-auto overflow-y-visible
+          overflow-x-auto z-50 
           [scrollbar-width:none] [-ms-overflow-style:none]
           [&::-webkit-scrollbar]:hidden
         "
       >
       <motion.div
-  className="flex h-full w-max flex-nowrap items-stretch gap-0 overflow-visible"
+  className="flex h-full w-max flex-nowrap items-stretch gap-0"
   onMouseMove={(e) => mouseX.set(e.clientX)}
   onMouseLeave={() => mouseX.set(Infinity)}
   initial="hidden"
@@ -281,6 +281,31 @@ export default function SecondaryDesktopLayout({
                 draggable={false}
               />
             </div>
+
+            {/* Metadata panel — bottom-right corner */}
+            <div className={`absolute bottom-6 right-10 text-right ${theme.text}`}>
+              {active.ref && (
+                <p className="text-2xl">{active.ref}</p>
+              )}
+              {active.ref2 && (
+                <p className="text-xs font-light opacity-60 mt-0.5">{active.ref2}</p>
+              )}
+              {(active.woodType || active.dimensions) && (
+                <div className="mt-3 space-y-0.5">
+                  {active.woodType && (
+                    <p className="text-xs opacity-70 tracking-wide">{active.woodType}</p>
+                  )}
+                  {active.dimensions && (
+                    <p className="text-xs opacity-70 tracking-wide">{active.dimensions}</p>
+                  )}
+                </div>
+              )}
+              {active.status && (
+                <p className="text-[10px] tracking-widest uppercase mt-3 opacity-90">
+                  {active.status === "available" ? "Available — contact for pricing" : "Sold"}
+                </p>
+              )}
+            </div>
           </div>
         </motion.div>
       </motion.div>
@@ -332,14 +357,14 @@ function DockCarouselItem({
 
   return (
     <div
-      className="relative h-full shrink-0 overflow-visible"
+      className="group relative h-full shrink-0 overflow-visible"
       style={{ width: laneWidth }}
     >
       <motion.button
         ref={ref}
         type="button"
         onClick={onClick}
-        className="relative h-full w-full text-left group overflow-visible"
+        className="relative h-full w-full text-left overflow-visible"
         style={{
           scale,
           WebkitTapHighlightColor: "transparent",
@@ -354,6 +379,21 @@ function DockCarouselItem({
           draggable={false}
         />
       </motion.button>
+
+      {/* Info label — outside the scaled button so it doesn't grow/shrink */}
+      <div className="absolute bottom-0 right-0 text-right pointer-events-none">
+        <div className="text-amber-500 p-2 flex flex-col items-end ">
+          {item.ref && <p className="text-sm">{item.ref}</p>}
+          {item.ref2 && <p className="text-[10px] font-light opacity-70">{item.ref2}</p>}
+          {item.woodType && <p className="text-[10px] font-light opacity-70">{item.woodType}</p>}
+          {item.dimensions && <p className="text-[10px] font-light opacity-70">{item.dimensions}</p>}
+          {item.status && (
+            <p className="text-[10px] tracking-widest uppercase mt-0.5 px-1 text-[#1a1912] font-semibold bg-amber-500 w-fit self-end">
+              {item.status === "available" ? "Available" : "Sold"}
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

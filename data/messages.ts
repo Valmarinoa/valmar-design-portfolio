@@ -80,15 +80,15 @@ const messages: Record<Locale, Messages> = {
     about: {
       about: "About",
       content:
-        "I was born and raised in Colombia — a place that shaped how I see the relationship between the sensory, the cultural, and the made. After living in France, a Rare Talents scholarship brought me to the Netherlands, where I studied art and industrial design at a level that fused material research with critical thinking.\n" +
+        "I was born and raised in Colombia, a place where I learnt to see the relationship between the sensory, the cultural, and the made. After living in France, a 'Rare Talents scholarship' brought me to the Netherlands, where I studied art and industrial design.\n" +
         "\n" +
-        "My practice is hybrid by nature. I move between sensory brand research, physical installations, experience design, and frontend development — not because I can't choose, but because the most interesting problems live at those borders. I believe the best digital experiences are felt before they're understood. That belief drives everything I make.\n" +
+        "My practice is hybrid by nature. I move between sensory brand research, physical installations, experience design, and frontend development, since the most interesting things live at those borders. I believe the best digital (and physicial) experiences are felt before they're understood. That belief drives everything I make.\n" +
         "\n" +
-        "At Signify (Philips), I developed Value Tuning — a proprietary qualitative methodology that decodes how products communicate brand value through touch, sound, weight, and material. It gave design teams the evidence to fight for quality budgets and revealed the gap between brand promise and embodied experience.\n" +
+        "At Signify (Philips), I developed Value Tuning: a proprietary qualitative methodology that decodes how products communicate brand value through touch, sound, weight, and material. It gave design teams the evidence to advocate for quality budgets and revealed the gap between brand promise and embodied experience.\n" +
         "\n" +
-        "Since then I've designed and built Carmela Collective's entire web ecosystem — from visual identity to deployed frontend — for a Latin American cultural platform in Amsterdam. I'm currently working as a web strategy consultant for Qommunity (Belgium), helping them translate their mission into a coherent digital presence.\n" +
+        "Since then I've designed and built Carmela Collective's entire web ecosystem: from visual identity to deployed frontend (a Latin American cultural platform in Amsterdam). Currently I work as a web strategy consultant for Qommunity (Belgium), helping them translate their mission into a coherent digital presence.\n" +
         "\n" +
-        "I'm based between Amsterdam and Latin America, and I work remotely across both. I'm open to senior roles, consulting engagements, and research partnerships — particularly with studios, cultural institutions, and brands working at the intersection of identity, technology, and experience. \n" +
+        "I'm based between Amsterdam and Latin America, and I work remotely across both. I'm open to senior roles, consulting engagements, and research partnerships, particularly with studios, cultural institutions, and brands working at the intersection of identity, technology, and experience. \n" +
          "\n" +
          "Fluent in Spanish, English, French, and Portuguese.", 
       readMore: "Read more",
