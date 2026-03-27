@@ -19,8 +19,8 @@ const SEAL_PATH = (() => {
 
 export default function ValueTuningDesignCriteria() {
   return (
-    <section id="design-criteria" className=" relative pt-32 px-6 md:px-12 lg:px-24 bg-neutral-50">
-      <div className="max-w-7xl mx-auto pb-[200px]">
+    <section id="design-criteria" className="py-16 px-6 md:px-12 relative md:m-24 text-neutral-950 rounded-4xl border">
+      <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -83,7 +83,7 @@ export default function ValueTuningDesignCriteria() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="absolute bottom-0 left-2/3 -translate-x-1/2 translate-y-1/2 z-10 w-[min(400px,80vw)]"
+        className="absolute bottom-0 left-2/3  translate-y-1/2 z-10 w-[min(400px,80vw)]"
       >
         <motion.div
           animate={{ y: [0, -10, 0] }}

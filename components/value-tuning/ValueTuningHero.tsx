@@ -62,7 +62,7 @@ export default function ValueTuningHero({
               initial={{ opacity: 0, y: 80 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.3 }}
-              className="text-4xl md:text-5xl lg:text-[4.5rem] leading-[0.95] mb-8"
+              className="text-4xl lg:text-[4.5rem] leading-[0.95] mb-8"
             >
               Value Tuning:
               <br />
@@ -75,7 +75,7 @@ export default function ValueTuningHero({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
-              className="hidden md:block text-base lg:text-lg max-w-xl leading-relaxed opacity-80"
+              className="hidden md:block text-base lg:text-lg max-w-3xl leading-relaxed opacity-80"
             >
               A self-developed research methodology designed to decode how products
               communicate value through the senses. By separating brand expectation
