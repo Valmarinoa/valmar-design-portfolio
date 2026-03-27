@@ -493,7 +493,7 @@ const projectsData: LocalizedProject[] = [
           "Melkweg Awards - nominado en 2019"
         ),
         text: t(
-          "As silence grows in the room, deep blue shadows gradually expand, flooding the surface and reshaping the space. The movement is intentionally minimal.  What matters here is not interaction in the traditional sense, but to stay long enough for silence to reveal itself.",
+          "As silence grows in the room, it is made visible through shadow: a microphone reads ambient sound and drives a small motor that rotates a LED antenna, casting a shadow that grows or shrinks with the intensity of noise around it.",
           "À medida que o silêncio cresce no ambiente, sombras azul‑profundo se expandem lentamente, inundando a superfície e remodelando o espaço. O movimento é intencionalmente mínimo. O que importa aqui não é a interação no sentido tradicional, mas permanecer tempo suficiente para que o silêncio se revele."
           ,
           "A medida que el silencio crece en el espacio, sombras azul profundo se expanden lentamente, inundando la superficie y remodelando el espacio. El movimiento es intencionalmente mínimo. Lo importante aquí no es la interacción en el sentido tradicional, sino permanecer el tiempo suficiente para que el silencio se revele."
@@ -905,7 +905,7 @@ const projectsData: LocalizedProject[] = [
     ),
     description:
       t(
-        "Each collected from coastal and rural landscapes, and animated by rhythm and color. A quiet game between the sacred and the everyday.",
+        "I collect discarded, broken, or fallen branches from rural landscapes and restore their dignity through color, composition, and care.",
         "Cada galho foi coletado em paisagens costeiras e rurais, e animado por ritmo e cor. Um jogo silencioso entre o sagrado e o cotidiano."
         ,
         "Cada pedazo de madera fue recogido en paisajes costeros y rurales, animados por ritmo y color, transformandose esculpturas. Un juego silencioso entre lo sagrado y lo cotidiano."
@@ -983,7 +983,7 @@ const projectsData: LocalizedProject[] = [
         type: 'tripticGallery',
         title: t("Interaction & Perception", "Interação e Percepção", "Interacción y Percepción"),
         body: t(
-          'The installation responds to breathing in real time. As the participant breathes, light pulses, shifts, and flows across the water tiles. Slower breaths produce calmer, wider movements; quicker breaths generate sharper, more restless patterns.',
+          'The installation responds to breathing in real time. A microphone reads the pace and intensity of breath in real time. As you exhale, the light brightens. As breathing quiets, it fades — a direct, almost biological translation.',
           'A instalação responde à respiração em tempo real. À medida que a pessoa respira, a luz pulsa, se desloca e flui pelas placas de água. Respirações mais lentas geram movimentos mais calmos e amplos; respirações mais rápidas produzem padrões mais nítidos e inquietos.'
           ,
           'La instalación responde a la respiración en tiempo real. A medida que la persona respira, la luz pulsa, se desplaza y fluye por las placas de agua. Las respiraciones más lentas producen movimientos más calmados y amplios; las respiraciones más rápidas generan patrones más nítidos e inquietos.'
@@ -1036,7 +1036,7 @@ const projectsData: LocalizedProject[] = [
         title: t("Breathing gets Materialised", "A respiração se materializa", "La respiración se materializa"),
         subtitle: t("Embassy of Water - Eindhoven 2019", "Embassy of Water - Eindhoven 2019", "Embassy of Water - Eindhoven 2019"),
         body: t(
-          "This project grew from an interest in how humans intuitively relate to water. Long before we understand it intellectually, we respond to its rhythm: the sound of waves, the rise and fall of tides, the sense of continuity they create. I wanted to explore how this natural rhythm could be mirrored back through the body. Breathing felt like the most direct and universal interface, deeply connected to emotional states. By linking breath to light and water, Tidal Light creates a bridge between internal pace and environmental movement.",
+          "Exhibited as research prototype, this project grew from an interest in how humans intuitively relate to water. Long before we understand it intellectually, we respond to its rhythm: the sound of waves, the rise and fall of tides, the sense of continuity they create. I wanted to explore how this natural rhythm could be mirrored back through the body. Breathing felt like the most direct and universal interface, deeply connected to emotional states. By linking breath to light and water, Tidal Light creates a bridge between internal pace and environmental movement.",
           "Este projeto nasceu do interesse em como os humanos se relacionam intuitivamente com a água. Muito antes de compreendê‑la intelectualmente, respondemos ao seu ritmo: o som das ondas, o sobe e desce das marés, a sensação de continuidade que criam. Eu queria explorar como esse ritmo natural poderia ser refletido de volta pelo corpo. A respiração parecia a interface mais direta e universal, profundamente conectada a estados emocionais. Ao ligar respiração, luz e água, Tidal Light cria uma ponte entre o ritmo interno e o movimento do ambiente."
           ,
           "Este proyecto nació del interés por cómo los humanos se relacionan intuitivamente con el agua. Mucho antes de comprenderla intelectualmente, respondemos a su ritmo: el sonido de las olas, el subir y bajar de las mareas, la sensación de continuidad que crean. Quería explorar cómo este ritmo natural podría reflejarse de vuelta a través del cuerpo. La respiración parecía la interfaz más directa y universal, profundamente conectada a los estados emocionales. Al vincular respiración, luz y agua, Tidal Light crea un puente entre el ritmo interno y el movimiento del entorno."
