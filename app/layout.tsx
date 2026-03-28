@@ -10,10 +10,9 @@ import { Metadata } from "next";
 import MobileFooter from "@/components/MobileFooter";
 import { LandingScrollProvider } from "@/components/providers/LandingScrollContext";
 
-// Configure Google Fonts
 const baskervville = Baskervville({
   subsets: ["latin"],
-  weight: ["400"], // Regular and Italic
+  weight: ["400"], 
   style: ["normal", "italic"],
   variable: "--font-baskervville",
   display: "swap",
