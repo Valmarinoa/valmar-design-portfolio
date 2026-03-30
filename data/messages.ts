@@ -62,8 +62,8 @@ const messages: Record<Locale, Messages> = {
         "I love finding ways to bring poetry into everyday objects and technologies.\n" +
         "My work explores how the sensibility of Latin American magical realism can live in contemporary design.\n" +
         "I'm interested in how poetry and a bit of magic can exist in everyday technology, using both handcrafted and digital tools.",
-      desktopBlurb: "Product & experience designer, researcher, and developer. I translate cultural identity and sensory intelligence into contemporary design and technology, \n" +
-        "to make experiences that make the invisible be felt.",
+      desktopBlurb: "Product & experience designer, researcher, and developer. \n" +
+      "I translate cultural identity and sensory intelligence into contemporary design and technology.",
       fallbackDescription: "Project description coming soon.",
     },
     nav: {
