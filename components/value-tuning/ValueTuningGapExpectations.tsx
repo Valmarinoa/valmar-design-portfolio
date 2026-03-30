@@ -19,8 +19,8 @@ export default function ValueTuningExpectationGap() {
       color: "#C1C1C1",
     },
     {
-      id: "HUE",
-      label: "HUE",
+      id: "Brand A",
+      label: "premium smart lighting.",
       color: "#76E897",
       icon: (
         <svg viewBox="0 0 80 24" className="h-5 w-auto">
@@ -32,8 +32,8 @@ export default function ValueTuningExpectationGap() {
       ),
     },
     {
-      id: "IKEA",
-      label: "IKEA sensor",
+      id: "Brand B",
+      label: "accessible home goods",
       color: "#F4C400",
       icon: (
         <svg viewBox="0 0 30 24" className="h-6 w-auto">
@@ -45,8 +45,8 @@ export default function ValueTuningExpectationGap() {
       ),
     },
     {
-      id: "Google",
-      label: "Google Home",
+      id: "Brand C",
+      label: "consumer tech ecosystem",
       color: "#111111",
       icon: (
         <svg viewBox="0 0 64 24" className="h-6 w-auto">
@@ -62,13 +62,13 @@ export default function ValueTuningExpectationGap() {
   // Render the appropriate chart based on active brand
   const renderChart = () => {
     switch (activeBrand) {
-      case "Google":
+      case "Brand C":
         return <ValueSpectrumChartApple />;
         case "default":
         return <ValueSpectrumChart />;
-      case "IKEA":
+      case "Brand B":
         return <ValueSpectrumChartIkea />;
-      case "HUE":
+      case "Brand A":
       default:
         return <ValueSpectrumChartHue />;
     }
@@ -197,9 +197,20 @@ export default function ValueTuningExpectationGap() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0"
         >
+           <div className="border-t border-neutral-300 pt-6">
+            <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
+              Brand A
+            </h4>
+            <p className="text-sm leading-relaxed opacity-75">
+            Brand A performs best in sensorial uplift. Blindfolded interaction
+              raises perceived value, showing strong coherence between material
+              experience and brand positioning.
+            </p>
+          </div>
+          
           <div className="border-t border-neutral-300 pt-6">
             <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
-              IKEA
+              Brand B
             </h4>
             <p className="text-sm leading-relaxed opacity-75">
               Expectations begin around the ordinary-to-average range, but
@@ -210,21 +221,10 @@ export default function ValueTuningExpectationGap() {
 
           <div className="border-t border-neutral-300 pt-6">
             <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
-              HUE
+              Brand C
             </h4>
             <p className="text-sm leading-relaxed opacity-75">
-              HUE performs best in sensorial uplift. Blindfolded interaction
-              raises perceived value, showing strong coherence between material
-              experience and brand positioning.
-            </p>
-          </div>
-
-          <div className="border-t border-neutral-300 pt-6">
-            <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
-              Google Home
-            </h4>
-            <p className="text-sm leading-relaxed opacity-75">
-              Google Home starts with the highest expectations. Perception remains
+            Brand C starts with the highest expectations. Perception remains
               high, but the brand also carries the greatest risk of slight
               disappointment because the promise is already so elevated.
             </p>
