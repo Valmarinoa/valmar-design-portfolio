@@ -159,15 +159,15 @@ const messages: Record<Locale, Messages> = {
       role: "Designer de Produto & Experiência",
     },
     home: {
+      question: "Como algo se sente antes de a linguagem o definir?",
       intro:
-        "Oi! Eu sou Valentina Marino,\n" +
-        "nascida e criada na Colômbia, atualmente baseada na Holanda.\n" +
-        "Adoro encontrar maneiras de levar poesia para objetos e tecnologias do dia a dia.\n" +
+        "Nascida e criada na Colômbia, atualmente baseada na Holanda,\n" +
+        "adoro encontrar maneiras de levar poesia para objetos e tecnologias do dia a dia.\n" +
         "Meu trabalho explora como a sensibilidade do realismo mágico latino-americano pode viver no design contemporâneo.\n" +
-        "Tenho interesse em como a poesia e um pouco de magia podem existir na tecnologia cotidiana, usando tanto ferramentas artesanais quanto digitais.",
+        "Me interessa como a poesia e um pouco de magia podem existir na tecnologia cotidiana, usando ferramentas artesanais e digitais.",
       desktopBlurb:
-        "Desenhadora e desenvolvedora de Produto & Experiência, traduzindo a sensibilidade do realismo mágico latino-americano em\n" +
-        "design e tecnologia contemporâneos.",
+        "Designer de produto e experiência, pesquisadora e desenvolvedora.\n" +
+        "Traduzo identidade cultural e inteligência sensorial em design e tecnologia contemporâneos.",
       fallbackDescription: "Descrição do projeto em breve.",
     },
     nav: {
@@ -188,17 +188,19 @@ const messages: Record<Locale, Messages> = {
       ],
     },
     about: {
-      about: "Biografía",
+      about: "Biografia",
       content:
-        "Nasci e cresci na Colômbia — um lugar que moldou como vejo a relação entre o sensorial, o cultural e o feito à mão. Depois de viver na França, uma bolsa Rare Talents me trouxe para a Holanda, onde estudei arte e design industrial em um nível que unia pesquisa de materiais e pensamento crítico.\n" +
+        "Nasci e cresci na Colômbia, um lugar que moldou como vejo a relação entre o sensorial, o cultural e o feito à mão. Depois de viver na França, uma bolsa Rare Talents me trouxe para a Holanda, onde estudei arte e design industrial em um nível que unia pesquisa de materiais e pensamento crítico.\n" +
         "\n" +
         "Minha prática é híbrida por natureza. Transito entre pesquisa sensorial de marca, instalações físicas, design de experiência e desenvolvimento frontend — não porque eu não consiga escolher, mas porque os problemas mais interessantes vivem nessas bordas. Acredito que as melhores experiências digitais são sentidas antes de serem compreendidas. Essa crença guia tudo o que eu faço.\n" +
         "\n" +
-        "Na Signify (Philips), desenvolvi o Value Tuning — uma metodologia qualitativa proprietária que decodifica como produtos comunicam valor de marca por meio do toque, do som, do peso e do material. Ela deu às equipes de design evidências para defender orçamentos de qualidade e revelou a lacuna entre promessa de marca e experiência incorporada.\n" +
+        "Na Signify (Philips), desenvolvi o Value Tuning: uma metodologia qualitativa proprietária que decodifica como produtos comunicam valor de marca por meio do toque, do som, do peso e do material. Ela deu às equipes de design evidências para defender orçamentos de qualidade e revelou a lacuna entre promessa de marca e experiência incorporada.\n" +
         "\n" +
         "Desde então, desenhei e construí todo o ecossistema web da Carmela Collective — da identidade visual ao frontend em produção — para uma plataforma cultural latino-americana em Amsterdã. Atualmente trabalho como consultora de estratégia web para a Qommunity (Bélgica), ajudando a traduzir sua missão em uma presença digital coerente.\n" +
         "\n" +
-        "Estou baseada entre Amsterdã e a América Latina e trabalho remotamente entre os dois. Estou aberta a posições sênior, consultorias e parcerias de pesquisa — especialmente com estúdios, instituições culturais e marcas que atuam na interseção entre identidade, tecnologia e experiência.",
+        "Estou baseada entre Amsterdã e a América Latina e trabalho remotamente entre os dois. Estou aberta a posições sênior, consultorias e parcerias de pesquisa — especialmente com estúdios, instituições culturais e marcas que atuam na interseção entre identidade, tecnologia e experiência.\n" +
+        "\n" +
+        "Fluente em espanhol, inglês, francês e português.",
       readMore: "Ler mais",
       readLess: "Ler menos"
     },
@@ -261,13 +263,13 @@ const messages: Record<Locale, Messages> = {
       role: "Diseñadora de Producto y Experiencia",
     },
     home: {
-      intro: "Hola! Soy Valentina Marino,\n" +
-        "nacida y criada en Colombia, actualmente basada en los Países Bajos.\n" +
-        "Me encanta encontrar formas de llevar la poesía a objetos y tecnologías cotidianas.\n" +
+      question: "¿Cómo se siente algo antes de que el lenguaje lo defina?",
+      intro: "Nacida y criada en Colombia, actualmente basada en los Países Bajos,\n" +
+        "me encanta encontrar formas de llevar la poesía a objetos y tecnologías cotidianas.\n" +
         "Mi trabajo explora cómo la sensibilidad del realismo mágico latinoamericano puede vivir en el diseño contemporáneo.\n" +
-        "Me interesa cómo la poesía y un poco de magia pueden existir en la tecnología diaria, usando tanto herramientas artesanales como digitales.",
-      desktopBlurb: "Diseñadora y desarrolladora de Producto y Experiencia, traduciendo la sensibilidad del realismo mágico latinoamericano en\n" +
-        "diseño y tecnología contemporáneos.",
+        "Me interesa cómo la poesía y un poco de magia pueden existir en la tecnología diaria, usando herramientas artesanales y digitales.",
+      desktopBlurb: "Diseñadora de producto y experiencia, investigadora y desarrolladora.\n" +
+        "Traduzo identidad cultural e inteligencia sensorial en diseño y tecnología contemporáneos.",
       fallbackDescription: "Descripción del proyecto próximamente.",
     },
     nav: {
@@ -297,7 +299,9 @@ const messages: Record<Locale, Messages> = {
         "\n" +
         "Desde entonces, diseñé y construí todo el ecosistema web de Carmela Collective — desde la identidad visual hasta el frontend en producción — para una plataforma cultural latinoamericana en Ámsterdam. Actualmente trabajo como consultora de estrategia web para Qommunity (Bélgica), ayudándoles a traducir su misión en una presencia digital coherente.\n" +
         "\n" +
-        "Estoy basada entre Ámsterdam y América Latina, y trabajo de forma remota entre ambos. Estoy abierta a roles senior, consultorías y alianzas de investigación — particularmente con estudios, instituciones culturales y marcas que trabajan en la intersección de identidad, tecnología y experiencia.",
+        "Estoy basada entre Ámsterdam y América Latina, y trabajo de forma remota entre ambos. Estoy abierta a roles senior, consultorías y alianzas de investigación — particularmente con estudios, instituciones culturales y marcas que trabajan en la intersección de identidad, tecnología y experiencia.\n" +
+        "\n" +
+        "Hablo con fluidez español, inglés, francés y portugués.",
       readMore: "Leer más",
       readLess: "Leer menos"
     },
@@ -313,7 +317,7 @@ const messages: Record<Locale, Messages> = {
         {
           title: "Ecosistema Marca-a-Web",
           items: [
-            "De la identidad al frontend en producción. Diseñó y desarrolla presencias web para organizaciones culturales y marcas creativas — empezando por quién eres, terminando con cómo apareces en línea. Propiedad total: estrategia, diseño, código."
+            "De la identidad al frontend en producción. Diseño y construyo presencias web para organizaciones culturales y marcas creativas — empezando por quién eres, terminando con cómo apareces en línea. Propiedad total: estrategia, diseño, código."
           ]
         },
         {

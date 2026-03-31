@@ -1294,11 +1294,11 @@ const projectsData: LocalizedProject[] = [
 
   // VALUE TUNING
   {
-    title: t("Value Tuning", "Ajuste de Valores", "Ajuste de Valores"),
+    title: t("Value Tuning", "Value Tuning", "Value Tuning"),
     link: '/value-tuning',
     heroVideo: '/media/valuetuning/research-findings/finding-2.mp4',
     videoThumbnail: '/media/valuetuning/research-findings/finding-2.mp4',
-    tagline: 'Brand Promise vs Real Product Experience',
+    tagline: t('Brand Promise vs Real Product Experience', "Promesa de Marca vs Experiencia Real", "Promesa de Marca vs Experiencia Real"),
     description:
       t(
         "Revealing hidden relationships between humans and objects.",

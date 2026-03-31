@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import Granient from "@/components/animations/Granient";
 import { frameworkParameters } from "@/data/valueTuning";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
-export default function ValueTuningFramework() {
+type Props = {
+  content: ValueTuningContent["framework"];
+};
+
+export default function ValueTuningFramework({ content }: Props) {
   return (
     <section
       id="framework"
@@ -19,22 +24,22 @@ export default function ValueTuningFramework() {
           className="mb-16 text-center"
         >
           <span className="text-xs tracking-widest uppercase block mb-4">
-            The Framework
+            {content.label}
           </span>
 
           <h2 className="text-3xl md:text-4xl mb-6">
-            Six Parameters of Perceived Value
+            {content.heading}
           </h2>
 
           <p className="text-base opacity-80 max-w-2xl mx-auto">
-            From the research, I distilled six measurable attributes that determine
-            whether a product feels "premium" or "cheap," regardless of its price.
+            {content.description}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {frameworkParameters.map((item, idx) => {
             const Icon = item.icon;
+            const localizedParam = content.parameters[idx];
 
             return (
               <motion.div
@@ -85,10 +90,10 @@ export default function ValueTuningFramework() {
                     </div>
                   )}
 
-                  <h3 className="text-lg mb-3">{item.param}</h3>
+                  <h3 className="text-lg mb-3">{localizedParam.param}</h3>
 
                   <p className="text-sm opacity-70 leading-relaxed">
-                    {item.insight}
+                    {localizedParam.insight}
                   </p>
                 </div>
               </motion.div>
@@ -104,8 +109,7 @@ export default function ValueTuningFramework() {
           className="mt-16 text-center"
         >
           <p className="text-lg italic opacity-80 max-w-3xl mx-auto">
-            "Perceived quality is not the sum of individual sensory inputs, but
-            their coherence."
+            &quot;{content.quote}&quot;
           </p>
         </motion.div>
       </div>

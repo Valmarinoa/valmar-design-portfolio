@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { researchFindings } from "@/data/valueTuning";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
-export default function ValueTuningResearchFindings() {
+type Props = {
+  content: ValueTuningContent["researchFindings"];
+};
+
+export default function ValueTuningResearchFindings({ content }: Props) {
   return (
     <section
       id="research-findings"
@@ -19,20 +24,19 @@ export default function ValueTuningResearchFindings() {
           className="mb-16"
         >
           <span className="text-xs tracking-widest uppercase opacity-50 block mb-4">
-            Research Findings
+            {content.label}
           </span>
           <h2 className="text-3xl md:text-4xl mb-6">
-            What Users Actually Feel
+            {content.heading}
           </h2>
           <p className="text-base opacity-80 max-w-2xl">
-            Blind sensory evaluation revealed the unspoken vocabulary of quality.
-            Users immediately sense when design intention aligns with execution—and
-            when it doesn&apos;t.
+            {content.description}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {researchFindings.map((card, idx) => {
+            const localizedFinding = content.findings[idx];
             const hasMedia = Boolean(card.background?.src);
 
             return (
@@ -68,9 +72,7 @@ export default function ValueTuningResearchFindings() {
                 {/* Overlay */}
                 <div
                   className={`absolute inset-0 ${
-                    hasMedia
-                      ? "bg-black/45"
-                      : "bg-[#ff9914]"
+                    hasMedia ? "bg-black/45" : "bg-[#ff9914]"
                   }`}
                 />
 
@@ -90,10 +92,10 @@ export default function ValueTuningResearchFindings() {
 
                   <div className="border-t border-white/20 pt-4">
                     <span className="text-xs tracking-widest uppercase opacity-70 block mb-2">
-                      {card.theme}
+                      {localizedFinding.theme}
                     </span>
                     <p className="text-sm opacity-90 leading-relaxed mb-4 max-w-[42ch]">
-                      {card.insight}
+                      {localizedFinding.insight}
                     </p>
                     <span className="text-xs opacity-70">— {card.brand}</span>
                   </div>

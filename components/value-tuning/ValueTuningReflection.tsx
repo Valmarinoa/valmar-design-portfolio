@@ -1,8 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
-export default function ValueTuningReflection() {
+type Props = {
+  content: ValueTuningContent["reflection"];
+};
+
+export default function ValueTuningReflection({ content }: Props) {
   return (
     <section id="reflection" className="py-16 px-6 md:px-12 relative md:mb-24 md:mx-24 text-white bg-neutral-950 rounded-4xl overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto flex justify-center">
@@ -15,18 +20,15 @@ export default function ValueTuningReflection() {
             className="w-full"
           >
             <span className="text-xs tracking-widest uppercase opacity-50 block mb-4">
-              Reflection
+              {content.label}
             </span>
             <h2 className="text-3xl md:text-4xl mb-8">
-              In an Increasingly Digital World
+              {content.heading}
             </h2>
-            <div className="space-y-6 text-base leading-relaxed opacity-80">
-            <p> We encounter brands screen-first: through images, campaigns, and carefully constructed narratives, long before we ever touch the product itself. By the time it reaches our hands, expectation is already formed.
-The first physical interaction is unforgiving. A lid's weight. The temperature of a material. The resistance of a hinge. These are not details — they are verdicts. In an instant, they confirm or quietly contradict everything a brand has claimed.
-Working with Signify made this visceral: even the most sophisticated technology loses its value if the first touch feels wrong. In premium contexts, that gap between promise and sensation isn't perceived as nuance. It's felt as disappointment — and disappointment is expensive.
-Value Tuning operates precisely at this point of tension. It translates brand narrative into tangible design decisions, identifying where perception breaks, where value is lost, and where it can be amplified. Across luxury, beauty, automotive, and consumer technology, the challenge is always the same: not only to design products that function, but to ensure they feel exactly as imagined — or better.
-Because value is not communicated. It is verified — through the body.
-When your product is finally held, will it justify everything that came before?</p>
+            <div className="space-y-4 text-base leading-relaxed opacity-80">
+              {content.body.split("\n").map((line, i) => (
+                <p key={i}>{line}</p>
+              ))}
             </div>
           </motion.div>
 
@@ -37,7 +39,7 @@ When your product is finally held, will it justify everything that came before?<
             transition={{ duration: 1, delay: 0.2 }}
             className="relative w-full aspect-square bg-neutral-200 overflow-hidden rounded-4xl flex items-center justify-center"
           >
-            <div className=" text-neutral-400 text-sm tracking-widest uppercase">
+            <div className="text-neutral-400 text-sm tracking-widest uppercase">
               [Insert: Process Photo / Testing Setup]
             </div>
           </motion.div>

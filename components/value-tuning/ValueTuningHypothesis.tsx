@@ -1,19 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
 type Props = {
-  youtubeId?: string;
-  videoSrc?: string;
+  content: ValueTuningContent["hypothesis"];
 };
 
-export default function ValueTuningHypothesis({ youtubeId, videoSrc }: Props) {
+export default function ValueTuningHypothesis({ content }: Props) {
   return (
     <section id="hypothesis" className="py-16 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
-        {/* Top block */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start mb-16">
-          
+
           {/* TEXT */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -23,38 +22,18 @@ export default function ValueTuningHypothesis({ youtubeId, videoSrc }: Props) {
             className="lg:col-span-5"
           >
             <span className="text-xs tracking-widest uppercase opacity-50 block mb-4">
-              Research Premise
+              {content.label}
             </span>
 
             <h2 className="text-3xl md:text-4xl mb-6">
-              The Value Spectrum
+              {content.heading}
             </h2>
 
             <div className="space-y-6 text-base opacity-80 leading-relaxed max-w-2xl">
-              <p>
-                I proposed that there is a measurable distance between what people{" "}
-                <em>expect</em> from a brand and what they actually <em>feel</em>{" "}
-                when encountering its products through the senses.
-              </p>
-
-              <p>
-                This gap becomes visible in the moment where brand narrative meets
-                embodied experience: in the weight of an object, the resistance of
-                a hinge, the texture of a surface, the sound of opening, the order
-                of packaging.
-              </p>
-
-              <p>
-                When expectation and sensory experience align, trust is reinforced.
-                When they diverge, disappointment emerges. Brand value, then, does
-                not live in image alone, but in the relationship between promise
-                and perception.
-              </p>
-
-              <p className="text-sm font-medium opacity-90">
-                In other words, value exists on a spectrum between projection and
-                embodied reality.
-              </p>
+              <p>{content.p1}</p>
+              <p>{content.p2}</p>
+              <p>{content.p3}</p>
+              <p className="text-sm font-medium opacity-90">{content.p4}</p>
             </div>
           </motion.div>
 
@@ -64,31 +43,25 @@ export default function ValueTuningHypothesis({ youtubeId, videoSrc }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.15 }}
-            className="lg:col-span-7 "
+            className="lg:col-span-7"
           >
             <div className="rounded-4xl border border-neutral-300 bg-white overflow-hidden">
-              
               <div className="aspect-video w-full bg-neutral-100">
-              
-              <iframe
-  className="w-full h-full"
-  src="https://www.youtube.com/embed/GA70QZ978q8"
-  title="Research methodology trailer"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-/>
-                
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/GA70QZ978q8"
+                  title={content.videoLabel}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
               </div>
 
               <div className="p-4 border-t border-neutral-200">
                 <p className="text-[10px] tracking-widest uppercase opacity-50 mb-2">
-                  Methodology Trailer
+                  {content.videoLabel}
                 </p>
-
                 <p className="text-sm opacity-70 leading-relaxed max-w-xl">
-                  A short introduction to the research method: mapping brand
-                  expectations, removing visual bias, and evaluating products
-                  through touch, sound, weight, and material interaction.
+                  {content.videoCaption}
                 </p>
               </div>
             </div>

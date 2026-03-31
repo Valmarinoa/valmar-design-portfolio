@@ -33,7 +33,7 @@ export default function LocaleToggle() {
         aria-current={locale === "en" ? "true" : undefined}
         className={` ${locale === "en" ? "font-semibold" : "opacity-60"}`}
       >
-        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px]">
+        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px] cursor-pointer">
           EN
          <div>{renderDot(locale === "en")}</div> 
         </div>
@@ -45,7 +45,7 @@ export default function LocaleToggle() {
         aria-current={locale === "pt-br" ? "true" : undefined}
         className={` ${locale === "pt-br" ? "font-semibold" : "opacity-60"}`}
       >
-        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px]">
+        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px] cursor-pointer">
          PT
          <div>{renderDot(locale === "pt-br")}</div> 
         </div>
@@ -57,7 +57,7 @@ export default function LocaleToggle() {
         aria-current={locale === "es" ? "true" : undefined}
         className={` ${locale === "es" ? "font-semibold" : "opacity-60"}`}
       >
-        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px]">
+        <div className="items-center gap-3 md:gap-1.5 overflow-visible h-[15px] cursor-pointer">
           ES
           <div>{renderDot(locale === "es")}</div> 
         </div>

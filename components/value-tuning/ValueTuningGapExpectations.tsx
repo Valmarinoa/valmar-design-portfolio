@@ -7,20 +7,24 @@ import ValueSpectrumChart from "./svgs/ValueSpectrumChart";
 import ValueSpectrumChartHue from "./svgs/ValueSpectrumChartHue";
 import ValueSpectrumChartApple from "./svgs/ValueSpectrumChartApple";
 import ValueSpectrumChartIkea from "./svgs/ValueSpectrumChartIkea";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
+type Props = {
+  content: ValueTuningContent["expectationGap"];
+};
 
-export default function ValueTuningExpectationGap() {
+export default function ValueTuningExpectationGap({ content }: Props) {
   const [activeBrand, setActiveBrand] = useState("HUE");
 
   const brandToggles = [
     {
       id: "default",
-      label: "All Items",
+      label: content.brandToggles[0].label,
       color: "#C1C1C1",
     },
     {
       id: "Brand A",
-      label: "premium smart lighting.",
+      label: content.brandToggles[1].label,
       color: "#76E897",
       icon: (
         <svg viewBox="0 0 80 24" className="h-5 w-auto">
@@ -33,7 +37,7 @@ export default function ValueTuningExpectationGap() {
     },
     {
       id: "Brand B",
-      label: "accessible home goods",
+      label: content.brandToggles[2].label,
       color: "#F4C400",
       icon: (
         <svg viewBox="0 0 30 24" className="h-6 w-auto">
@@ -46,7 +50,7 @@ export default function ValueTuningExpectationGap() {
     },
     {
       id: "Brand C",
-      label: "consumer tech ecosystem",
+      label: content.brandToggles[3].label,
       color: "#111111",
       icon: (
         <svg viewBox="0 0 64 24" className="h-6 w-auto">
@@ -59,12 +63,11 @@ export default function ValueTuningExpectationGap() {
     },
   ];
 
-  // Render the appropriate chart based on active brand
   const renderChart = () => {
     switch (activeBrand) {
       case "Brand C":
         return <ValueSpectrumChartApple />;
-        case "default":
+      case "default":
         return <ValueSpectrumChart />;
       case "Brand B":
         return <ValueSpectrumChartIkea />;
@@ -91,28 +94,17 @@ export default function ValueTuningExpectationGap() {
             <div className="flex items-center gap-4 mb-6">
               <LineChart className="w-8 h-8 opacity-40" strokeWidth={1.5} />
               <span className="text-xs tracking-widest uppercase opacity-50">
-                Value Alignment
+                {content.label}
               </span>
             </div>
 
             <h2 className="text-3xl md:text-4xl mb-6">
-              Expectations vs. Perception
+              {content.heading}
             </h2>
 
             <div className="space-y-5 text-base leading-relaxed opacity-80">
-              <p>
-                This map compares how participants positioned each brand{" "}
-                <em>before</em> interacting with the object and how they
-                positioned it again <em>after</em> the blindfolded sensorial
-                test.
-              </p>
-              <p>
-                The distance between both judgments reveals the gap between{" "}
-                <em>brand promise</em> and <em>lived material experience</em>.
-                When perception falls below expectation, disappointment emerges.
-                When perception exceeds expectation, the product creates surplus
-                value.
-              </p>
+              <p>{content.p1}</p>
+              <p>{content.p2}</p>
             </div>
           </motion.div>
 
@@ -135,8 +127,8 @@ export default function ValueTuningExpectationGap() {
                 }`}
                 style={{
                   borderColor: activeBrand === brand.id ? brand.color : undefined,
-                  boxShadow: activeBrand === brand.id 
-                    ? `0 4px 20px ${brand.color}40` 
+                  boxShadow: activeBrand === brand.id
+                    ? `0 4px 20px ${brand.color}40`
                     : undefined,
                 }}
                 onMouseEnter={(e) => {
@@ -145,28 +137,22 @@ export default function ValueTuningExpectationGap() {
                 }}
                 onMouseLeave={(e) => {
                   if (activeBrand !== brand.id) {
-                    e.currentTarget.style.boxShadow = 'none';
-                    e.currentTarget.style.borderColor = '#e5e5e5';
+                    e.currentTarget.style.boxShadow = "none";
+                    e.currentTarget.style.borderColor = "#e5e5e5";
                   } else {
                     e.currentTarget.style.boxShadow = `0 4px 20px ${brand.color}40`;
                   }
                 }}
               >
-                {/* Color Circle */}
-                {brand.id === "default" ? "" : 
-                <div
-                className="w-10 h-10 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
-                style={{ backgroundColor: brand.color }}
-              />
+                {brand.id === "default" ? "" :
+                  <div
+                    className="w-10 h-10 rounded-full flex-shrink-0 transition-transform duration-300 group-hover:scale-105"
+                    style={{ backgroundColor: brand.color }}
+                  />
                 }
-                
-                
-                {/* Label */}
                 <span className="text-sm font-medium text-neutral-800 text-left">
                   {brand.label}
                 </span>
-                
-                {/* Product Icon */}
                 <div className="flex-shrink-0 opacity-80 w-fit">
                   {brand.icon}
                 </div>
@@ -176,18 +162,18 @@ export default function ValueTuningExpectationGap() {
 
           {/* CHART */}
           <motion.div
-  initial={{ opacity: 0, y: 40 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 1, delay: 0.15 }}
-  className="lg:col-span-8 min-w-0" // Added min-w-0
->
-  <div className="p-4 md:px-6 md:pt-8 md:pb-0 relative w-full">
-    <div className="w-full min-w-0"> {/* Removed overflow-x-auto, added min-w-0 */}
-      {renderChart()}
-    </div>
-  </div>
-</motion.div>
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.15 }}
+            className="lg:col-span-8 min-w-0"
+          >
+            <div className="p-4 md:px-6 md:pt-8 md:pb-0 relative w-full">
+              <div className="w-full min-w-0">
+                {renderChart()}
+              </div>
+            </div>
+          </motion.div>
         </div>
 
         <motion.div
@@ -197,41 +183,17 @@ export default function ValueTuningExpectationGap() {
           transition={{ duration: 0.9, delay: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-0"
         >
-           <div className="border-t border-neutral-300 pt-6">
-            <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
-              Brand A
-            </h4>
-            <p className="text-sm leading-relaxed opacity-75">
-            Brand A performs best in sensorial uplift. Blindfolded interaction
-              raises perceived value, showing strong coherence between material
-              experience and brand positioning.
-            </p>
-          </div>
-          
-          <div className="border-t border-neutral-300 pt-6">
-            <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
-              Brand B
-            </h4>
-            <p className="text-sm leading-relaxed opacity-75">
-              Expectations begin around the ordinary-to-average range, but
-              tactile perception tends to fall slightly lower. The product feels
-              more generic than the brand suggests.
-            </p>
-          </div>
-
-          <div className="border-t border-neutral-300 pt-6">
-            <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
-              Brand C
-            </h4>
-            <p className="text-sm leading-relaxed opacity-75">
-            Brand C starts with the highest expectations. Perception remains
-              high, but the brand also carries the greatest risk of slight
-              disappointment because the promise is already so elevated.
-            </p>
-          </div>
+          {content.brandSummaries.map((summary) => (
+            <div key={summary.heading} className="border-t border-neutral-300 pt-6">
+              <h4 className="text-xs tracking-widest uppercase mb-3 opacity-60">
+                {summary.heading}
+              </h4>
+              <p className="text-sm leading-relaxed opacity-75">
+                {summary.text}
+              </p>
+            </div>
+          ))}
         </motion.div>
-
-        
       </div>
     </section>
   );

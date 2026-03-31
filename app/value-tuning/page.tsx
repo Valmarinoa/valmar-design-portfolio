@@ -1,4 +1,3 @@
-// app/value-tuning/page.tsx
 "use client";
 
 import { useRef } from "react";
@@ -16,15 +15,17 @@ import ValueTuningFramework from "@/components/value-tuning/ValueTuningFramework
 import ValueTuningDesignCriteria from "@/components/value-tuning/ValueTuningDesignCriteria";
 import ValueTuningImpact from "@/components/value-tuning/ValueTuningImpact";
 import ValueTuningReflection from "@/components/value-tuning/ValueTuningReflection";
-import ValueTuningSidebarNav from "@/components/value-tuning/ValueTuningSidebarNav";
 import ValueTuningExpectationGap from "@/components/value-tuning/ValueTuningGapExpectations";
 import ValueTuningService from "@/components/value-tuning/ValueTuningService";
-import { Link } from "lucide-react";
 import LogoSvg from "@/components/svg/LogoSvg";
+import useLocale from "@/lib/use-locale";
+import { getValueTuningContent } from "@/data/valueTuningMessages";
 
 
 export default function ValueTuningCaseStudy() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const locale = useLocale();
+  const content = getValueTuningContent(locale);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -69,27 +70,28 @@ export default function ValueTuningCaseStudy() {
         style={{ scaleX: scrollYProgress }}
       />
 
-      <ValueTuningHero heroOpacity={heroOpacity} heroScale={heroScale} />
-      <ValueTuningProblem />
-      <ValueTuningHypothesis />
-      <ValueTuningSensoryProtocol />
-      <ValueTuningBlindfoldProtocol />
-      <ValueTuningExpectationGap />
+      <ValueTuningHero heroOpacity={heroOpacity} heroScale={heroScale} content={content.hero} />
+      <ValueTuningProblem content={content.problem} />
+      <ValueTuningHypothesis content={content.hypothesis} />
+      <ValueTuningSensoryProtocol content={content.sensoryProtocol} />
+      <ValueTuningBlindfoldProtocol content={content.blindfoldProtocol} />
+      <ValueTuningExpectationGap content={content.expectationGap} />
       <SectionDivider />
-      <ValueTuningResearchFindings />
-      <ValueTuningFramework />
+      <ValueTuningResearchFindings content={content.researchFindings} />
+      <ValueTuningFramework content={content.framework} />
       <SectionDivider />
       {/* <ValueTuningMethodology /> */}
-      <ValueTuningDesignCriteria />
-      <ValueTuningImpact />
-      <ValueTuningReflection />
-      <ValueTuningService />
+      <ValueTuningDesignCriteria content={content.designCriteria} />
+      <ValueTuningImpact content={content.impact} />
+      <ValueTuningReflection content={content.reflection} />
+      <ValueTuningService content={content.service} />
       <div className="w-full items-center justify-center pb-16 flex flex-col gap-8">
-      <p className="text-xs text-center">Value Tuning is an original research methodology developed by Valentina Marino at Signify (Philips), 2018–2019. <br/>Concept, protocol design, and framework © Valentina Marino. <br/>All rights reserved.
-      </p>
-      
-          <LogoSvg className={`h-6 w-auto`} />
-      
+        <p className="text-xs text-center">
+          {content.footer.split("\n").map((line, i, arr) => (
+            <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+          ))}
+        </p>
+        <LogoSvg className={`h-6 w-auto`} />
       </div>
     </main>
   );

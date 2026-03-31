@@ -1,10 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
-import { impactCards } from "@/data/valueTuning";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
-export default function ValueTuningImpact() {
+type Props = {
+  content: ValueTuningContent["impact"];
+};
+
+export default function ValueTuningImpact({ content }: Props) {
   return (
     <section id="impact" className="pt-[100px] pb-12 px-6 md:px-12 lg:px-24">
       <div className="max-w-7xl mx-auto">
@@ -16,17 +19,16 @@ export default function ValueTuningImpact() {
           className="mb-16"
         >
           <span className="text-xs tracking-widest uppercase opacity-50 block mb-4">
-            The Impact
+            {content.label}
           </span>
-          <h2 className="text-3xl md:text-4xl mb-6">Beyond the Report</h2>
+          <h2 className="text-3xl md:text-4xl mb-6">{content.heading}</h2>
           <p className="text-base opacity-80 max-w-2xl">
-            Research only matters if it changes decisions. Value Tuning was
-            designed to give designers leverage in budget conversations.
+            {content.description}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {impactCards.map((item, idx) => (
+          {content.cards.map((item, idx) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 20 }}

@@ -3,22 +3,24 @@
 import Image from "next/image";
 import { motion, MotionValue } from "framer-motion";
 import { easeOutElegant, fadeInUp, staggerContainer } from "@/anim/value-motion";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
 type Props = {
   heroOpacity: MotionValue<number>;
   heroScale: MotionValue<number>;
-  videos?: string[]; // Array of video URLs
+  content: ValueTuningContent["hero"];
+  videos?: string[];
 };
 
 export default function ValueTuningHero({
   heroOpacity,
   heroScale,
+  content,
   videos = [],
 }: Props) {
-  // Default videos if none provided - using placeholders
   const videoSources = videos.length > 0 ? videos : [
     "/media/valuetuning/research-findings/finding-3.mp4",
-    "/media/valuetuning/research-findings/finding-5.mp4",  
+    "/media/valuetuning/research-findings/finding-5.mp4",
     "/media/valuetuning/research-findings/finding-4.mp4",
   ];
 
@@ -37,25 +39,15 @@ export default function ValueTuningHero({
               animate="visible"
               className="flex flex-wrap gap-3 mb-8 text-[9px] tracking-widest uppercase opacity-60"
             >
-            
-              <motion.span
-                variants={fadeInUp}
-                className="border border-neutral-700 py-1 px-3 rounded-full"
-              >
-                Sensory Audit
-              </motion.span>
-              <motion.span
-                variants={fadeInUp}
-                className="border border-neutral-700 py-1 px-3 rounded-full"
-              >
-                Brand Transformation
-              </motion.span>
-              <motion.span
-                variants={fadeInUp}
-                className="border border-neutral-700 py-1 px-3 rounded-full"
-              >
-                Brand Strategy
-              </motion.span>
+              {content.tags.map((tag) => (
+                <motion.span
+                  key={tag}
+                  variants={fadeInUp}
+                  className="border border-neutral-700 py-1 px-3 rounded-full"
+                >
+                  {tag}
+                </motion.span>
+              ))}
             </motion.div>
 
             <motion.h1
@@ -66,9 +58,9 @@ export default function ValueTuningHero({
             >
               Value Tuning:
               <br />
-              <span className="font-baskervville-italic">The Hidden Language</span>
+              <span className="font-baskervville-italic">{content.titleLine2}</span>
               <br />
-              of Brand Perception
+              {content.titleLine3}
             </motion.h1>
 
             <motion.p
@@ -77,12 +69,7 @@ export default function ValueTuningHero({
               transition={{ duration: 1, delay: 0.8 }}
               className="hidden md:block text-base lg:text-lg max-w-3xl leading-relaxed opacity-80"
             >
-              A self-developed research methodology designed to decode how products
-              communicate value through the senses. By separating brand expectation
-              from embodied experience, the study reveals how materiality, weight,
-              sound, texture, and even smell silently translate brand narratives, and
-              how our perception of luxury is rooted as much in primal sensory
-              instincts as in cultural symbolism.
+              {content.descDesktop}
             </motion.p>
             <motion.p
               initial={{ opacity: 0 }}
@@ -90,7 +77,7 @@ export default function ValueTuningHero({
               transition={{ duration: 1, delay: 0.8 }}
               className="md:hidden block text-base max-w-xl leading-6 opacity-80"
             >
-              Value Tuning unlocks products' secret language of luxury through touch, sound, weight, even smell. It reveals if they truly feel premium... or fall flat. Perfect for Signify's shift from Philips' tech-trust vibe to cozy smart-home magic.
+              {content.descMobile}
             </motion.p>
 
             <motion.div
@@ -99,7 +86,7 @@ export default function ValueTuningHero({
               transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.4 }}
               className="flex flex-col mt-10 gap-2"
             >
-              <p className="text-xs text-gray-400">In collaboration with</p>
+              <p className="text-xs text-gray-400">{content.collaboration}</p>
               <Image
                 src="/media/signify-logo-footer.png"
                 alt="Signify"
@@ -122,10 +109,10 @@ export default function ValueTuningHero({
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ 
-                  duration: 0.8, 
-                  ease: easeOutElegant, 
-                  delay: 0.6 + (index * 0.15) 
+                transition={{
+                  duration: 0.8,
+                  ease: easeOutElegant,
+                  delay: 0.6 + (index * 0.15),
                 }}
                 className="relative w-full aspect-video bg-neutral-100 overflow-hidden"
               >
@@ -150,7 +137,7 @@ export default function ValueTuningHero({
         transition={{ delay: 1.2 }}
         className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-xs tracking-widest uppercase">Scroll</span>
+        <span className="text-xs tracking-widest uppercase">{content.scroll}</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}

@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import StaticGradient from "../animations/StaticGradient";
 import AnimatedBlurb from "../animations/AnimatedBlurb";
+import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
-export default function ValueTuningService() {
+type Props = {
+  content: ValueTuningContent["service"];
+};
+
+export default function ValueTuningService({ content }: Props) {
   return (
     <section id="service" className="py-16 px-6 md:px-12 relative md:my-12 md:mx-24 text-neutral-950 rounded-4xl overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
@@ -20,10 +25,10 @@ export default function ValueTuningService() {
             className="lg:col-span-4"
           >
             <span className="text-xs tracking-widest uppercase opacity-50 block mb-4">
-              Service
+              {content.label}
             </span>
             <h2 className="text-3xl md:text-4xl">
-            Run a Value Tuning audit for your brand
+              {content.heading}
             </h2>
           </motion.div>
 
@@ -34,19 +39,17 @@ export default function ValueTuningService() {
             transition={{ duration: 1, delay: 0.2 }}
             className="lg:col-span-8 space-y-6 text-base leading-relaxed opacity-80"
           >
-            <p>
-            Engagements run over 2–4 days and deliver a full sensory audit report with design criteria and strategic recommendations. Suited to product companies, packaging teams, and brand strategists preparing for repositioning or launch.
-            </p>
+            <p>{content.description}</p>
           </motion.div>
 
           <AnimatedBlurb>
-          <a
-            href="mailto:valenmarinocol@gmail.com"
-            className="shrink-0 text-xs uppercase bg-neutral-900 p-5 whitespace-nowrap rounded-full tracking-widest text-background border border-transparent hover:bg-background hover:border hover:border-neutral-900 hover:text-neutral-900 transition-all"
-            aria-label="Work with me (email)"
-          >
-            Let's Work together
-          </a>
+            <a
+              href="mailto:valenmarinocol@gmail.com"
+              className="shrink-0 text-xs uppercase bg-neutral-900 p-5 whitespace-nowrap rounded-full tracking-widest text-background border border-transparent hover:bg-background hover:border hover:border-neutral-900 hover:text-neutral-900 transition-all"
+              aria-label="Work with me (email)"
+            >
+              {content.cta}
+            </a>
           </AnimatedBlurb>
         </div>
       </div>
