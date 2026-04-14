@@ -15,7 +15,7 @@ export default function AnimatedBlurb({ children }: { children: React.ReactNode 
         ease: easeOutElegant,
         delay: 1.2 
       }}
-      className="z-999 max-w-[650px] text-neutral-800 text-2xl leading-7"
+      className="z-999 max-w-[650px] text-neutral-800 text-2xl md:text-xl md:leading-6 leading-7"
     >
       {children}
     </motion.p>

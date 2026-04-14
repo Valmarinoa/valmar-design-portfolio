@@ -8,7 +8,7 @@ export default function MobileFooter() {
   const { theme } = useTheme();
   
   return (
-    <div className={`md:hidden w-full flex flex-col items-center justify-center h-56 p-3 mt-20 ${theme.nav} z-9999`}> 
+    <div className={`md:hidden w-full flex flex-col items-center justify-center h-56 p-3 mt-20 ${theme.nav} z-9999 mix-blend-difference`}> 
       <ul
         className="sm-socials-list list-none m-0 p-0 flex items-center gap-2 justify-evenly w-full"
         aria-label="Social media links"
