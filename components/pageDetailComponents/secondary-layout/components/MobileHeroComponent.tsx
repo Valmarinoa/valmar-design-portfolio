@@ -4,6 +4,7 @@ import Image from "next/image";
 import TotemicaSvgs from "./TotemicaSvgs";
 import RuralesSvgs from "./RuralesSvgs";
 import { useTheme } from "@/components/providers/theme-context";
+import ScrollIndicator from "@/components/ui/ScrollIndicator";
 
 type Props = {
   title: string;
@@ -23,7 +24,7 @@ export default function MobileHeroComponent({
   const { themeKey, theme } = useTheme();
 
   return (
-    <div className={className}>
+    <div className={`relative min-h-screen ${className}`}>
       {mobileHeroImage ? (
         <div className="relative aspect-3/4 max-h-[510px] w-full">
           <Image
@@ -63,6 +64,8 @@ export default function MobileHeroComponent({
           </p>
         ) : null}
       </div>
+
+      <ScrollIndicator delay={1.0} />
     </div>
   );
 }

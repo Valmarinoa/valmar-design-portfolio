@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useRef, useEffect, useRef as useReactRef } from "react";
+import { useMemo, useRef, useEffect, useRef as useReactRef } from "react";
 import {
   motion,
   useReducedMotion,
@@ -16,6 +16,7 @@ import LogoSvg from "./svg/LogoSvg";
 import useLocale from "@/lib/use-locale";
 import { getMessages } from "@/data/messages";
 import FadeIn from "./animations/FadeIn";
+import ScrollIndicator from "./ui/ScrollIndicator";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -73,7 +74,7 @@ export default function Hero() {
     () => ({
       images: ["/media/globo-1.png"],
       clickToCycle: false,
-      speed: 2.5,
+      speed: 0.5,
       chromatic: 0.6,
       imageFit: "contain" as const,
       // imageScale: 1.6,
@@ -82,7 +83,7 @@ export default function Hero() {
       fadeInMs: 400,
       // maxDpr: 2,
       oversize: 1.05,
-imageScale: 1.25,
+imageScale: 1.35,
 maxDpr: 1.5,
     }),
     []
@@ -121,6 +122,8 @@ maxDpr: 1.5,
             className="text-sm font-light text-white mix-blend-difference"
           />
         </motion.div>
+
+        <ScrollIndicator delay={2.8} className="md:hidden text-white mix-blend-difference" />
       </div>
     </section>
   );
