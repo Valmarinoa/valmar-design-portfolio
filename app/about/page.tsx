@@ -29,6 +29,7 @@ export default function AboutPage() {
             <a className="underline" href="https://www.linkedin.com/in/valentina-marino-arboleda">LinkedIn</a>
             <a className="underline" href="https://www.instagram.com/valmarino.a/">Instagram</a>
             <a className="underline" href="https://github.com/Valmarinoa">GitHub</a>
+            <a className="underline" href="https://souncloud/marianrosas">SoundCloud</a>
 
 
             </div>
@@ -65,6 +66,7 @@ export default function AboutPage() {
         <Accordion
           aboutTitle={messages.about.about}
           aboutContent={messages.about.content}
+          profileTitle={messages.profile.title}
           readMore={messages.about.readMore}
           readLess={messages.about.readLess}
           servicesTitle={messages.services.title}

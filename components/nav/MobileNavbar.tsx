@@ -46,7 +46,7 @@ export default function MobileNavbar() {
       <AnimatePresence initial={false}>
         {shouldShowNavbar && (
           <motion.div
-            className="md:hidden fixed top-0 left-0 right-0 z-[9997] p-3 w-screen h-fit mix-blend-exclusion pointer-events-none"
+            className="fixed top-0 left-0 right-0 z-[9997] p-3 w-screen h-fit mix-blend-exclusion pointer-events-none"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"

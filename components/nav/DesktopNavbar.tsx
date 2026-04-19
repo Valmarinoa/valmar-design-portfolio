@@ -38,7 +38,7 @@ export default function DesktopNavbar() {
         staggerChildren: 0.06,
         delayChildren: 0.15
       }}
-      className={`hidden md:flex fixed top-0 left-0 right-0 z-9997 px-8 py-6 items-center justify-between pointer-events-none mix-blend-exclusion ${theme.nav}`}
+      className={`hidden  fixed top-0 left-0 right-0 z-9997 px-8 py-6 items-center justify-between pointer-events-none mix-blend-exclusion ${theme.nav}`}
     >
       {/* Logo */}
       <motion.div 

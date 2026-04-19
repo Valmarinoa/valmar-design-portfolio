@@ -53,7 +53,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <div className="fixed inset-0 -z-10" />
         <AutoThemeProvider>
           <LandingScrollProvider> 
-            <DesktopNavbar />
+            {/* <DesktopNavbar /> */}
             <MobileNavbar />
             {children}
             <MobileFooter/>

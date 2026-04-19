@@ -79,11 +79,7 @@ const messages: Record<Locale, Messages> = {
           ariaLabel: "Work as front-end developer",
           href: "https://valenmarino.vercel.app/ ",
         },
-        {
-          label: "Contact",
-          ariaLabel: "Contact",
-          href: "",
-        },
+        
       ],
     },
 

@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/components/providers/theme-context";
+import ProfileSection from "@/components/ProfileSection";
 
 const easeOutElegant = [0.22, 1, 0.36, 1] as const;
 
@@ -137,6 +138,7 @@ function ServiceSubItem({ title, items, isOpen, onToggle }: ServiceSubItemProps)
 interface AccordionProps {
   aboutContent: string;
   aboutTitle: string;
+  profileTitle: string;
   readMore: string;
   readLess: string;
   servicesTitle: string;
@@ -146,6 +148,7 @@ interface AccordionProps {
 export default function Accordion({
   aboutContent,
   aboutTitle,
+  profileTitle,
   readMore,
   readLess,
   servicesTitle,
@@ -154,6 +157,7 @@ export default function Accordion({
   const [openSection, setOpenSection] = useState<string | null>(null);
   const [expandedServices, setExpandedServices] = useState<Record<number, boolean>>({});
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(true);
 
   const toggleSection = (section: string) => {
     setOpenSection(openSection === section ? null : section);
@@ -213,12 +217,22 @@ export default function Accordion({
         </div>
       </AccordionItem>
 
+      {/* Profile Section */}
+      <AccordionItem
+        title={profileTitle}
+        isOpen={isProfileOpen}
+        onToggle={() => setIsProfileOpen(!isProfileOpen)}
+        index={1}
+      >
+        <ProfileSection />
+      </AccordionItem>
+
       {/* Services Section */}
       <AccordionItem
         title={servicesTitle}
         isOpen
         onToggle={() => toggleSection("services")}
-        index={1}
+        index={2}
         isLast
       >
         <div className="space-y-0 flex flex-col justify-end relative items-end">
