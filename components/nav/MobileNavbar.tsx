@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import LogoSvg from "@/components/svg/LogoSvg";
 import { useTheme } from "@/components/providers/theme-context";
@@ -30,28 +30,38 @@ export default function MobileNavbar() {
   const [open, setOpen] = useState(false);
   const locale = useLocale();
   const messages = getMessages(locale);
-  
   const { hasScrolledPastHero, isLandingPage } = useLandingScroll();
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // On mobile: hide while the hero is in view; on desktop: always visible
+  const shouldShowNavbar = !isMobile || !isLandingPage || hasScrolledPastHero;
 
   const menuItems = messages.nav.items.map((item) => ({
     ...item,
     link: isExternalUrl(item.href) ? item.href : localizePath(item.href, locale),
   }));
 
-  const shouldShowNavbar = !isLandingPage || hasScrolledPastHero;
-
   return (
     <div>
       <AnimatePresence initial={false}>
         {shouldShowNavbar && (
           <motion.div
+            key="navbar"
             className="fixed top-0 left-0 right-0 z-[9997] p-3 w-screen h-fit mix-blend-exclusion pointer-events-none"
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
             exit="hidden"
           >
-            <motion.div 
+            <motion.div
               className="flex items-center justify-between pointer-events-auto"
               variants={fadeInDown}
               custom={0}
@@ -65,7 +75,7 @@ export default function MobileNavbar() {
                 <LogoSvg className={`h-6 w-auto ${theme.nav}`} />
               </Link>
 
-              <motion.div 
+              <motion.div
                 className={`h-10 rounded-full flex items-center justify-center px-3 ${theme.nav}`}
                 variants={fadeInDown}
                 custom={0.1}

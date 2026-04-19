@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useEffect } from "react";
+import { useMemo, useRef, useEffect, useState } from "react";
 import {
   motion,
   useReducedMotion,
@@ -15,11 +15,20 @@ import NocturnaShader from "./pageDetailComponents/NocturnaShader";
 import LogoSvg from "./svg/LogoSvg";
 import useLocale from "@/lib/use-locale";
 import { getMessages } from "@/data/messages";
-import FadeIn from "./animations/FadeIn";
 import ScrollIndicator from "./ui/ScrollIndicator";
+
+// Module-level flag: survives client-side navigation, resets only on full page reload
+let logoHasAnimated = false;
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
+
+  // Capture whether this is a replay (nav away + back) at mount time, then mark as played
+  const [skipLogoAnim] = useState(() => {
+    const alreadyPlayed = logoHasAnimated;
+    logoHasAnimated = true;
+    return alreadyPlayed;
+  });
   const reduceMotion = useReducedMotion();
   const locale = useLocale();
   const messages = getMessages(locale);
@@ -111,9 +120,14 @@ maxDpr: 1.5,
             mode="words"
             className="text-lg font-light text-white mix-blend-difference"
           />
-          <FadeIn delay={1.4} className="h-14">
+          <motion.div
+            className="h-14"
+            initial={{ opacity: skipLogoAnim ? 1 : 0 }}
+            animate={{ opacity: 1 }}
+            transition={skipLogoAnim ? { duration: 0 } : { duration: 0.5, delay: 1.4 }}
+          >
             <LogoSvg className="h-full w-auto text-white" />
-          </FadeIn>
+          </motion.div>
           <BlurText
             as="h1"
             text={messages.hero.role}
