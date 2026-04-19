@@ -1,4 +1,3 @@
-// components/nav/MobileNavbar.tsx - Update visibility logic
 "use client";
 
 import { useState } from "react";
@@ -90,7 +89,6 @@ export default function MobileNavbar() {
         socialItems={socialItems}
         footerContent={<LocaleToggle />}
         displaySocials
-        displayItemNumbering
         accentColor="#ff6b6b"
         isFixed
       />

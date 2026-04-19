@@ -3,7 +3,6 @@ import "lenis/dist/lenis.css";
 import type { ReactNode } from "react";
 import { Baskervville, Be_Vietnam_Pro } from "next/font/google";
 import AutoThemeProvider from "@/components/providers/theme/auto-theme-provider";
-import DesktopNavbar from "@/components/nav/DesktopNavbar";
 import MobileNavbar from "@/components/nav/MobileNavbar";
 import { getServerLocale } from "@/lib/i18n-server";
 import { Metadata } from "next";
@@ -53,7 +52,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <div className="fixed inset-0 -z-10" />
         <AutoThemeProvider>
           <LandingScrollProvider> 
-            {/* <DesktopNavbar /> */}
             <MobileNavbar />
             {children}
             <MobileFooter/>

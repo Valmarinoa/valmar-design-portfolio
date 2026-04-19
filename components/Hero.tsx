@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useEffect, useRef as useReactRef } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import {
   motion,
   useReducedMotion,
@@ -25,7 +25,7 @@ export default function Hero() {
   const messages = getMessages(locale);
 
   const { setHasScrolledPastHero, setIsLandingPage, setScrollProgress } = useLandingScroll();
-  const pastHeroRef = useReactRef(false);
+  const pastHeroRef = useRef(false);
 
   useEffect(() => {
     setIsLandingPage(true);

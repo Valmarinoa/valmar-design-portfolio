@@ -74,7 +74,7 @@ export default function ProjectCard({
           playsInline
           loop
           autoPlay
-          preload="auto"
+          preload="metadata"
           controls={false}
           disablePictureInPicture
           controlsList="nodownload noplaybackrate"

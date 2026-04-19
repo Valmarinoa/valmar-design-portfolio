@@ -175,7 +175,7 @@ export default function DesktopHeroMedia({
               webkit-playsinline="true"
               loop
               autoPlay
-              preload="auto"
+              preload="metadata"
               controls={false}
               disablePictureInPicture
               controlsList="nodownload noplaybackrate"

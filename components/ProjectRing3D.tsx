@@ -198,7 +198,7 @@ export default function ProjectRing3D() {
                     autoPlay
                     loop
                     playsInline
-                    preload="auto"
+                    preload="metadata"
                     controls={false}
                     disablePictureInPicture
                     {...({ "webkit-playsinline": "true" } as any)}

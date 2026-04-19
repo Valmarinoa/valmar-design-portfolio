@@ -6,9 +6,8 @@ import LogoSvg from "@/components/svg/LogoSvg";
 import { useTheme } from "@/components/providers/theme-context";
 import useLocale from "@/lib/use-locale";
 import { getMessages } from "@/data/messages";
-import { localizePath, stripLocaleFromPathname } from "@/lib/i18n";
+import { localizePath } from "@/lib/i18n";
 import LocaleToggle from "@/components/nav/LocaleToggle";
-import { usePathname } from "next/navigation";
 
 function isExternalUrl(url: string) {
   return /^https?:\/\//i.test(url) || /^mailto:/i.test(url);
@@ -20,9 +19,6 @@ export default function DesktopNavbar() {
   const { theme } = useTheme();
   const locale = useLocale();
   const messages = getMessages(locale);
-  const pathname = usePathname();
-  const normalizedPath = stripLocaleFromPathname(pathname ?? "/");
-
   const menuItems = messages.nav.items.map((item) => ({
     ...item,
     href: isExternalUrl(item.href) ? item.href : localizePath(item.href, locale),
