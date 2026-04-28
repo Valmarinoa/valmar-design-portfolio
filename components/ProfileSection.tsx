@@ -7,41 +7,45 @@ const easeOutElegant = [0.22, 1, 0.36, 1] as const;
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
-const experience = [
+const experience = [ {
+    role: "Co-Founder & Creative Director",
+    company: "Carmela Collective · Amsterdam",
+    period: "2025 – present",
+    desc: "Latin American music and culture collective. Event programming, cultural curation, community building.",
+  },
   {
-    role: "Medior Front-End Developer",
+    role: "Independent Consultant",
+    company: "Remote · Amsterdam",
+    period: "present",
+    desc: "Latin American music and culture collective. Event programming, cultural curation, community building.",
+  },
+  {
+    role: "Front-End Developer",
     company: "Bravoure · Amsterdam",
-    period: "2022 – 2023",
+    period: "2023 Sep – 2025 Sep",
     desc: "React, Next.js, TypeScript, Tailwind. Built complex UI systems for cultural and commercial clients. Design background gave aesthetic advantage.",
-  },
-  {
-    role: "UX Research & Design Strategy",
-    company: "Signify (Philips Lighting) · Eindhoven",
-    period: "2019 – 2021",
-    desc: "Qualitative UX research, sensory design strategy, user perception studies. Foundation for Value Tuning methodology.",
-  },
-  {
-    role: "Creative Research",
-    company: "Random Studio · Amsterdam",
-    period: "2018 – 2019",
-    desc: "Interdisciplinary creative research at a leading interactive studio. Bridged concept, culture, and technology.",
   },
   {
     role: "Front-End Developer",
     company: "Autofill Technologies / Routinely",
-    period: "2021 – 2022",
+    period: "2022 Sep – 2023 Aug",
     desc: "React, TypeScript. Product development in startup environment.",
+  }, {
+    role: "Creative Research",
+    company: "Random Studio · Amsterdam",
+    period: "2020 Jan – 2020 Oct",
+    desc: "Interdisciplinary creative research at a leading interactive studio. Bridged concept, culture, and technology.",
   },
   {
-    role: "Co-Founder & Creative Director",
-    company: "Carmela Collective · Amsterdam",
-    period: "2020 – present",
-    desc: "Latin American music and culture collective. Event programming, cultural curation, community building.",
+    role: "UX Research & Design Strategy",
+    company: "Signify (Philips Lighting) · Eindhoven",
+    period: "2018 Jan – 2019 Jan",
+    desc: "Qualitative UX research, sensory design strategy, user perception studies. Foundation for Value Tuning methodology.",
   },
   {
     role: "BA Design",
     company: "Design Academy Eindhoven",
-    period: "Graduated 2018",
+    period: "Graduated 2019",
     desc: "Research-based design exploring human perception, environmental systems, and sensory experience.",
   },
 ] as const;
@@ -191,7 +195,7 @@ export default function ProfileSection() {
         </span>
         <div>
           {experience.map((entry) => (
-            <ExperienceItem key={entry.role} entry={entry} />
+            <ExperienceItem key={entry.company} entry={entry} />
           ))}
         </div>
       </div>
@@ -202,7 +206,7 @@ export default function ProfileSection() {
         {/* Core Methodology */}
         <div>
           <span className="text-[10px] tracking-widest uppercase opacity-50 block mb-3">
-            Core Methodology
+            Technical Skills
           </span>
           <div className="flex flex-wrap gap-2">
             {coreMethodology.map((tag) => (

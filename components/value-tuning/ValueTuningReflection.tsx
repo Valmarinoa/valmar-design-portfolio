@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
@@ -37,11 +38,15 @@ export default function ValueTuningReflection({ content }: Props) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative w-full aspect-square bg-neutral-200 overflow-hidden rounded-4xl flex items-center justify-center"
+            className="relative w-full aspect-square overflow-hidden rounded-4xl"
           >
-            <div className="text-neutral-400 text-sm tracking-widest uppercase">
-              [Insert: Process Photo / Testing Setup]
-            </div>
+            <Image
+              src="/media/valuetuning/probes.png"
+              alt="Value Tuning sensory probes and testing setup"
+              fill
+              className="object-contain"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
           </motion.div>
         </div>
       </div>

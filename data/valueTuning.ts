@@ -79,7 +79,7 @@ export const researchFindings: ResearchFinding[] = [
       theme: "Tamper Evidence",
       insight:
         "Tamper-evident packaging creates emotional security and perceived newness. Users read packaging mechanics as a signal of care, integrity, and product freshness.",
-      brand: "Google Home",
+      brand: "Brand C",
       background: {
         type: "video",
         src: "/media/valuetuning/research-findings/finding-1.mp4",
@@ -92,7 +92,7 @@ export const researchFindings: ResearchFinding[] = [
       theme: "The Entanglement Problem",
       insight:
         "Cable management and internal packaging structure directly impact first impression. Complexity signals disrespect for user time.",
-      brand: "Philips HUE",
+      brand: "Brand A",
       background: {
         type: "video",
         src: "/media/valuetuning/research-findings/finding-2.mp4",
@@ -105,7 +105,7 @@ export const researchFindings: ResearchFinding[] = [
       theme: "The Quality Hierarchy",
       insight:
         "Users intuitively categorize products into tiers. Consistency matters more than absolute quality—mismatched materials create cognitive dissonance.",
-      brand: "Philips HUE",
+      brand: "Brand A",
       background: {
         type: "video",
         src: "/media/valuetuning/research-findings/finding-3.mp4",
@@ -118,7 +118,7 @@ export const researchFindings: ResearchFinding[] = [
       theme: "Contextual Mismatch",
       insight:
         "Material choices determine spatial belonging. Hard plastic reads 'industrial'; soft-touch reads 'domestic'. Context determines appropriateness.",
-      brand: "Philips Sensor vs Google Home",
+      brand: "Brand A vs Brand C",
       background: {
         type: "video",
         src: "/media/valuetuning/research-findings/finding-4.mp4",
@@ -131,7 +131,7 @@ export const researchFindings: ResearchFinding[] = [
       theme: "Emotional Bonding",
       insight:
         "Seamless transitions between soft-touch fabric and hardware create objects that invite touch. Users describe these as something I can grab and play with: domestic, personal, home-worthy.",
-        brand: "Google Home",
+        brand: "Brand C",
       background: {
         type: "video",
         src: "/media/valuetuning/research-findings/finding-5.mp4",
@@ -144,7 +144,7 @@ export const researchFindings: ResearchFinding[] = [
       theme: "Encounter with Content",
       insight:
         "Material choices determine spatial belonging. Hard plastic reads 'industrial'; soft-touch reads 'domestic'. Context determines appropriateness.",
-      brand: "Philips Sensor",
+      brand: "Brand A",
       background: {
         type: "video",
         src: "/media/valuetuning/research-findings/finding-6.mp4",
@@ -171,7 +171,7 @@ export const frameworkParameters = [
   {
     param: "Order",
     insight:
-      "The sequence of opening must be coherent. This order is echo of its content—chaos signals disrespect, clarity signals care.",
+      "The sequence of opening must be coherent. This order is echo of 'content chaos' signals carelessness, clarity signals attention and detail.",
     icon: OrderIcon,
     gradient: ["#2E5339", "#ff5666", "#495f41"],
   },
@@ -306,7 +306,7 @@ export const frameworkParameters = [
     },
     {
       title: "Tactical",
-      desc: "Identified specific friction points—cable entanglement, documentation layering, material transitions—for immediate redesign in the HUE line.",
+      desc: "Identified specific friction points like cable entanglement, documentation layering, material transitions—for immediate redesign in the HUE line.",
     },
     {
       title: "Political",

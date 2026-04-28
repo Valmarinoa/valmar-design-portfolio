@@ -85,17 +85,20 @@ const messages: Record<Locale, Messages> = {
 
     about: {
       about: "About",
-      content: "I was born and raised in Colombia, where I learned to see how the sensory, the cultural, and the made are intertwined. After living in France, a 'Rare Talents' scholarship brought me to the Netherlands, where I studied art and industrial design.\n" +
+      content: "I was born and raised in Colombia, where I cultivated a strong sense of rhythm, a deep appreciation for nature and a sensitivity to the subtle things we can’t see. After living in France, a 'Rare Talents' scholarship brought me to the Netherlands, where I studied art and industrial design.\n" +
         "\n" +
-        "My practice is hybrid by nature. I move between sensory brand research, physical installations, experience design, and frontend development, drawn to the richness that flows between these worlds. Much of what matters often happens there quietly, in the overlooked spaces where physical and digital sensibilities meet. Those crossings shape my approach: the tactility of materials and the logic of code inform each other, helping me craft experiences that are felt first, then understood.\n" +
+        "My practice is hybrid. I move organically between sensory brand research, physical objects/installations, experience design, and frontend development.. always flowing between the physical and digital worlds.  This range allows me to connect perspectives that are not often held together, and shape work that feels layered, and alive.\n" +
         "\n" +
         "At Signify (Philips), I developed Value Tuning: a proprietary qualitative methodology that decodes how products communicate brand value through touch, sound, weight, and material. It gave design teams evidence to advocate for quality, and revealed the gap between what a brand promises and what a person actually feels holding it.\n" +
         "\n" +
-        "Since then I've designed and built Carmela Collective's entire web ecosystem: from visual identity to deployed frontend (a Latin American cultural platform in Amsterdam). Currently I work as a web strategy consultant for Qommunity (Belgium), helping them translate their mission into a coherent digital presence.\n" +
+        "Over the past five years I’ve worked as a developer and UI/UX engineer across industries, building digital products, translating design systems into code. What I like the most is to  shape interfaces that respond to human intention as much as to data. Those years deepened my understanding of how digital environments carry emotional and cultural meaning.\n" +
         "\n" +
-        "I'm based between Amsterdam and Latin America, and I work remotely across both. I'm open to roles and collaborations with brands, studios, and institutions working at the intersection of identity, technology, and human experience. \n" +
+        "More recently I’ve been exploring an independent path as a consultant. I’m partnering with teams to reimagine how identity and technology can meet. I currently collaborate with Carmela Collective, a Latin American cultural platform based in Amsterdam, and Qommunity in Belgium. I help both translate their missions into coherent, living digital presences.\n" +
         "\n" +
-        "Fluent in Spanish, English, French, and Portuguese.",
+       "I’m based between Amsterdam and Latin America and work remotely across both. I’m open to senior roles, consulting partnerships, and research collaborations with studios, cultural institutions, and brands exploring the intersections of identity, technology, and experience.\n" +
+        
+         "\n" +
+         "Fluent in Spanish, English, French, and Portuguese.",
       readMore: "Read more",
       readLess: "Read less"
     },
@@ -192,15 +195,17 @@ const messages: Record<Locale, Messages> = {
     about: {
       about: "Biografia",
       content:
-        "Nasci e cresci na Colômbia, um lugar que moldou como vejo a relação entre o sensorial, o cultural e o feito à mão. Depois de viver na França, uma bolsa 'Rare Talents' (Talentos Raros) me trouxe para a Holanda, onde estudei arte e design industrial em um nível que unia pesquisa de materiais e pensamento crítico.\n" +
+        "Nasci e cresci na Colômbia, onde cultivei um forte senso de ritmo, uma profunda apreciação pela natureza e uma sensibilidade para as coisas sutis que não podemos ver. Depois de viver na França, uma bolsa 'Rare Talents' me trouxe para a Holanda, onde estudei arte e design industrial.\n" +
         "\n" +
-        "Minha prática é híbrida por natureza. Transito entre pesquisa sensorial de marca, instalações físicas, design de experiência e desenvolvimento frontend, porque oas coisass mais interessantes flutuam entre esses bordes. Acredito que as melhores experiências digitais são sentidas antes de serem compreendidas, assim do mesmo jeito que a gente percebe no mundo fisico. Essa crença guia tudo o que eu faço.\n" +
+        "Minha prática é híbrida. Transito organicamente entre pesquisa sensorial de marca, objetos físicos e instalações, design de experiência e desenvolvimento frontend.. sempre fluindo entre os mundos físico e digital. Essa amplitude me permite conectar perspectivas que raramente são mantidas juntas e moldar um trabalho que parece denso e vivo.\n" +
         "\n" +
-        "Na Signify (Philips), desenvolvi o Value Tuning: uma metodologia qualitativa proprietária que decodifica como produtos comunicam valor de marca por meio do toque, do som, do peso e do material. Ela deu às equipes de design evidências para defender orçamentos de qualidade e revelou a lacuna entre promessa de marca e experiência incorporada.\n" +
+        "Na Signify (Philips), desenvolvi o Value Tuning: uma metodologia qualitativa proprietária que decodifica como produtos comunicam valor de marca por meio do toque, do som, do peso e do material. Ela deu às equipes de design evidências para defender a qualidade e revelou a lacuna entre o que uma marca promete e o que uma pessoa realmente sente ao segurá-la.\n" +
         "\n" +
-        "Desde então, desenhei e construí todo o ecossistema web da Carmela Collective, da identidade visual ao frontend em produção, para uma plataforma cultural latino-americana em Amsterdã. Atualmente trabalho como consultora de estratégia web para a Qommunity (Bélgica), ajudando a traduzir sua missão em uma presença digital coerente.\n" +
+        "Nos últimos cinco anos trabalhei como desenvolvedora e engenheira UI/UX em diversas indústrias, construindo produtos digitais e traduzindo sistemas de design em código. O que mais gosto é moldar interfaces que respondam tanto à intenção humana quanto aos dados. Esses anos aprofundaram minha compreensão de como os ambientes digitais carregam significado emocional e cultural.\n" +
         "\n" +
-        "Estou baseada entre Amsterdã e a América Latina e trabalho remotamente entre os dois. Estou aberta a posições sênior, consultorias e parcerias de pesquisa — especialmente com estúdios, instituições culturais e marcas que atuam na interseção entre identidade, tecnologia e experiência.\n" +
+        "Mais recentemente tenho explorado um caminho independente como consultora. Trabalho com equipes para reimaginar como identidade e tecnologia podem se encontrar. Atualmente colaboro com a Carmela Collective, uma plataforma cultural latino-americana com sede em Amsterdã, e com a Qommunity na Bélgica. Ajudo ambas a traduzir suas missões em presenças digitais coerentes e vivas.\n" +
+        "\n" +
+        "Estou baseada entre Amsterdã e a América Latina e trabalho remotamente entre os dois. Estou aberta a posições sênior, parcerias de consultoria e colaborações de pesquisa com estúdios, instituições culturais e marcas que exploram as interseções de identidade, tecnologia e experiência.\n" +
         "\n" +
         "Fluente em espanhol, inglês, francês e português.",
       readMore: "Ler mais",
@@ -296,15 +301,17 @@ const messages: Record<Locale, Messages> = {
     },
     about: {
       about: "Biografía",
-      content: "Nací y crecí en Colombia — un lugar que moldeó cómo veo la relación entre lo sensorial, lo cultural y lo hecho. Después de vivir en Francia, una beca de 'Rare Talents' (Talentos Raros) me trajo a los Países Bajos, donde estudié arte y diseño industrial en un nivel que fusionó investigación de materiales con pensamiento crítico.\n" +
+      content: "Nací y crecí en Colombia, donde cultivé un fuerte sentido del ritmo, una profunda apreciación por la naturaleza y una sensibilidad hacia las cosas sutiles que no podemos ver. Después de vivir en Francia, una beca 'Rare Talents' me trajo a los Países Bajos, donde estudié arte y diseño industrial.\n" +
         "\n" +
-        "Mi práctica es híbrida por naturaleza. Me muevo entre investigación sensorial de marca, instalaciones físicas, diseño de experiencia y desarrollo frontend — no porque no pueda elegir, sino porque los problemas más interesantes viven en esos bordes. Creo que las mejores experiencias digitales se sienten antes de entenderse. Esa creencia impulsa todo lo que hago.\n" +
+        "Mi práctica es híbrida. Me muevo orgánicamente entre investigación sensorial de marca, objetos físicos e instalaciones, diseño de experiencia y desarrollo frontend.. siempre fluyendo entre los mundos físico y digital. Esta amplitud me permite conectar perspectivas que rara vez se sostienen juntas, y dar forma a un trabajo que se siente con capas y vivo.\n" +
         "\n" +
-        "En Signify (Philips), desarrollé Value Tuning — una metodología cualitativa propietaria que decodifica cómo los productos comunican valor de marca a través del tacto, el sonido, el peso y el material. Le dio a los equipos de diseño evidencia para defender presupuestos de calidad y reveló la brecha entre la promesa de marca y la experiencia encarnada.\n" +
+        "En Signify (Philips), desarrollé Value Tuning: una metodología cualitativa propietaria que decodifica cómo los productos comunican valor de marca a través del tacto, el sonido, el peso y el material. Le dio a los equipos de diseño evidencia para defender la calidad, y reveló la brecha entre lo que una marca promete y lo que una persona realmente siente al tenerla en mano.\n" +
         "\n" +
-        "Desde entonces, diseñé y construí todo el ecosistema web de Carmela Collective — desde la identidad visual hasta el frontend en producción — para una plataforma cultural latinoamericana en Ámsterdam. Actualmente trabajo como consultora de estrategia web para Qommunity (Bélgica), ayudándoles a traducir su misión en una presencia digital coherente.\n" +
+        "Durante los últimos cinco años trabajé como desarrolladora e ingeniería UI/UX en distintas industrias, construyendo productos digitales y traduciendo sistemas de diseño en código. Lo que más me gusta es dar forma a interfaces que responden tanto a la intención humana como a los datos. Esos años profundizaron mi comprensión de cómo los entornos digitales portan significado emocional y cultural.\n" +
         "\n" +
-        "Estoy basada entre Ámsterdam y América Latina, y trabajo de forma remota entre ambos. Estoy abierta a roles senior, consultorías y alianzas de investigación — particularmente con estudios, instituciones culturales y marcas que trabajan en la intersección de identidad, tecnología y experiencia.\n" +
+        "Más recientemente he explorado un camino independiente como consultora. Colaboro con equipos para reimaginar cómo la identidad y la tecnología pueden encontrarse. Actualmente trabajo con Carmela Collective, una plataforma cultural latinoamericana con sede en Ámsterdam, y con Qommunity en Bélgica. Ayudo a ambas a traducir sus misiones en presencias digitales coherentes y vivas.\n" +
+        "\n" +
+        "Estoy basada entre Ámsterdam y América Latina y trabajo de forma remota en ambos contextos. Estoy abierta a roles senior, asociaciones de consultoría y colaboraciones de investigación con estudios, instituciones culturales y marcas que exploran las intersecciones de identidad, tecnología y experiencia.\n" +
         "\n" +
         "Hablo con fluidez español, inglés, francés y portugués.",
       readMore: "Leer más",

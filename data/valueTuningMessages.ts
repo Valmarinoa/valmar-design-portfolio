@@ -168,8 +168,8 @@ const content: Record<Locale, ValueTuningContent> = {
       philosophyQuote:
         "The senses are not merely passive receptors of information but active participants in the construction of reality.",
       philosophyAuthor: "— David Howes, The Empire of the Senses",
-      p1: "Visual branding wields immense power. A logo, a color palette, a carefully staged photograph—these elements prime our expectations before we ever touch a product. But this priming is also a distortion. When we see a luxury brand's packaging, we are not experiencing the object; we are experiencing the narrative we have been conditioned to associate with it.",
-      p2: "The blindfold protocol removes this variable. By excluding sight, we access what David Howes calls the \"sensory order\"—the hierarchy of perception that operates beneath conscious brand recognition. Touch becomes primary. Sound becomes information. Temperature, weight, and texture speak without the interference of visual bias.",
+      p1: "Visual branding wields immense power. A logo, a color palette, a carefully staged photograph. these elements prime our expectations before we ever touch a product. But this priming is also a distortion. When we see a luxury brand's packaging, we are not experiencing the object; we are experiencing the narrative we have been conditioned to associate with it.",
+      p2: "The blindfold protocol removes this variable. By excluding sight, we access what David Howes calls the \"sensory order\", the hierarchy of perception that operates beneath conscious brand recognition. Touch becomes primary. Sound becomes information. Temperature, weight, and texture speak without the interference of visual bias.",
       col1Heading: "Visual Bias",
       col1Text:
         "Logo recognition triggers pre-conditioned quality associations. We judge what we expect, not what we feel.",
@@ -212,7 +212,7 @@ const content: Record<Locale, ValueTuningContent> = {
       label: "Research Findings",
       heading: "What Users Actually Feel",
       description:
-        "Blind sensory evaluation revealed the unspoken vocabulary of quality. Users immediately sense when design intention aligns with execution—and when it doesn't.",
+        "Blind sensory evaluation revealed the unspoken vocabulary of quality. Users immediately sense when design intention aligns with execution, and when it doesn't.",
       findings: [
         {
           theme: "Tamper Evidence",
@@ -267,7 +267,7 @@ const content: Record<Locale, ValueTuningContent> = {
         {
           param: "Order",
           insight:
-            "The sequence of opening must be coherent. This order is echo of its content—chaos signals disrespect, clarity signals care.",
+            "The sequence of opening must be coherent. This order is echo of its 'contentchaos' signals carelessness, clarity signals attention and detail.",
         },
         {
           param: "Stratification",
@@ -368,7 +368,7 @@ const content: Record<Locale, ValueTuningContent> = {
         },
         {
           title: "Tactical",
-          desc: "Identified specific friction points—cable entanglement, documentation layering, material transitions—for immediate redesign in the HUE line.",
+          desc: "Identified specific friction points like cable entanglement, documentation layering, material transitions—for immediate redesign in the HUE line.",
         },
         {
           title: "Political",
@@ -379,7 +379,7 @@ const content: Record<Locale, ValueTuningContent> = {
     reflection: {
       label: "Reflection",
       heading: "In an Increasingly Digital World",
-      body: "We encounter brands screen-first: through images, campaigns, and carefully constructed narratives, long before we ever touch the product itself. By the time it reaches our hands, expectation is already formed.\nThe first physical interaction is unforgiving. A lid's weight. The temperature of a material. The resistance of a hinge. These are not details — they are verdicts. In an instant, they confirm or quietly contradict everything a brand has claimed.\nWorking with Signify made this visceral: even the most sophisticated technology loses its value if the first touch feels wrong. In premium contexts, that gap between promise and sensation isn't perceived as nuance. It's felt as disappointment — and disappointment is expensive.\nValue Tuning operates precisely at this point of tension. It translates brand narrative into tangible design decisions, identifying where perception breaks, where value is lost, and where it can be amplified. Across luxury, beauty, automotive, and consumer technology, the challenge is always the same: not only to design products that function, but to ensure they feel exactly as imagined — or better.\nBecause value is not communicated. It is verified — through the body.\nWhen your product is finally held, will it justify everything that came before?",
+      body: "We encounter brands screen-first: through images, campaigns, and carefully constructed narratives, long before we ever touch the product itself. By the time it reaches our hands, expectation is already formed.\nThe first physical interaction is unforgiving. A lid's weight. The temperature of a material. The resistance of a hinge. These are verdicts which instantly confirm or quietly contradict everything a brand has claimed.\nWorking with Signify made this visceral: even the most sophisticated technology loses its value if the first touch feels wrong. In premium contexts that gap between promise and sensation isn't perceived as nuance. It's felt as disappointment, and disappointment is expensive.\nValue Tuning operates precisely at this point of tension, translating brand narrative into tangible design decisions, identifying where perception breaks, where value is lost, and where it can be amplified. Across luxury, beauty, automotive, and consumer technology, the challenge is always the same: not only to design products that function, but to ensure they feel exactly as imagined (or better).\nBecause value is not communicated, but verified through the 'body' of the object.\nWhen your product is finally held, will it justify everything that came before?",
     },
     service: {
       label: "Service",
