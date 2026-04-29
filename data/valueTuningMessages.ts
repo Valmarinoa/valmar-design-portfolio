@@ -189,9 +189,9 @@ const content: Record<Locale, ValueTuningContent> = {
       p2: "The distance between both judgments reveals the gap between brand promise and lived material experience. When perception falls below expectation, disappointment emerges. When perception exceeds expectation, the product creates surplus value.",
       brandToggles: [
         { label: "All Items" },
-        { label: "premium smart lighting." },
-        { label: "accessible home goods" },
-        { label: "consumer tech ecosystem" },
+        { label: "Brand A" },
+        { label: "Brand B" },
+        { label: "Brand C" },
       ],
       brandSummaries: [
         {

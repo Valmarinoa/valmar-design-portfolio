@@ -84,7 +84,7 @@ export default function ValueTuningDesignCriteria({ content }: Props) {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.3 }}
-        className="absolute bottom-0 left-2/3 translate-y-1/2 z-10 w-[min(400px,80vw)]"
+        className="absolute bottom-0 left-2/3 translate-y-1/2 z-10 w-[min(400px,80vw)] hidden md:block"
       >
         <motion.div
           animate={{ y: [0, -10, 0] }}

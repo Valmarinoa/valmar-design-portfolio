@@ -33,12 +33,12 @@ export default function ValueTuningHero({
       >
         <div className="flex gap-12 items-center">
           {/* Left Column - Content */}
-          <div className="flex-1">
+          <div className=" flex-1 h-full">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               animate="visible"
-              className="flex flex-wrap gap-3 mb-8 text-[9px] tracking-widest uppercase opacity-60"
+              className="flex flex-wrap md:gap-3 gap-2 mb-8 text-[8px] md:text-[9px] tracking-widest uppercase opacity-60"
             >
               {content.tags.map((tag) => (
                 <motion.span
@@ -103,7 +103,7 @@ export default function ValueTuningHero({
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.5 }}
-            className="w-[30%] flex flex-col justify-center items-end rounded-4xl h-fit overflow-hidden"
+            className="w-[30%] hidden md:flex flex-col justify-center items-end rounded-4xl h-fit overflow-hidden"
           >
             {videoSources.map((src, index) => (
               <motion.div

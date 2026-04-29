@@ -24,7 +24,7 @@ export default function ScrollIndicator({
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="w-px h-12 bg-white"
+        className="w-px h-12 bg-neutral-900"
       />
     </motion.div>
   );

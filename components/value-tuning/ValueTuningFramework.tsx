@@ -106,7 +106,7 @@ export default function ValueTuningFramework({ content }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.3 }}
-          className="mt-16 text-center"
+          className="mt-16 text-center "
         >
           <p className="text-lg italic opacity-80 max-w-3xl mx-auto">
             &quot;{content.quote}&quot;

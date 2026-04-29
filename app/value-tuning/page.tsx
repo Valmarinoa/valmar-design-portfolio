@@ -36,9 +36,9 @@ export default function ValueTuningCaseStudy() {
   const heroScale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
   return (
-    <main ref={containerRef} className="min-h-screen text-neutral-900 relative">
+    <main ref={containerRef} className="min-h-screen text-neutral-900 relative overflow-x-hidden">
       {/* <ValueTuningSidebarNav /> */}
-      <div className="fixed inset-0 h-[100vh] w-full -z-10 will-change-transform">
+      <div className="fixed inset-0 w-screen min-h-screen -z-10">
         <Granient
           color1="#EBECE4"
           color2="#EBE5E3"
@@ -85,13 +85,12 @@ export default function ValueTuningCaseStudy() {
       <ValueTuningImpact content={content.impact} />
       <ValueTuningReflection content={content.reflection} />
       <ValueTuningService content={content.service} />
-      <div className="w-full items-center justify-center pb-16 flex flex-col gap-8">
+      <div className="w-full items-center justify-center pb-16 flex flex-col gap-8 mt-20 px-6 opacity-80">
         <p className="text-xs text-center">
           {content.footer.split("\n").map((line, i, arr) => (
             <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
           ))}
         </p>
-        <LogoSvg className={`h-6 w-auto`} />
       </div>
     </main>
   );

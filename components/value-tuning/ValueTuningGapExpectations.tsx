@@ -114,7 +114,7 @@ export default function ValueTuningExpectationGap({ content }: Props) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="flex gap-3 mt-12 mb-8"
+            className="flex flex-col md:flex-row gap-3 mt-12 mb-8"
           >
             {brandToggles.map((brand) => (
               <button
