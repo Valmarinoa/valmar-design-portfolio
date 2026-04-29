@@ -99,23 +99,23 @@ export default function ProjectGridClient({ projects, desktopBlurb, question }: 
   };
 
   return (
-    <section className="pt-14">
-       <motion.h2 
+    <section className="">
+       {/* <motion.h2 
         className="px-4 pb-10 w-full text-[26px] text-neutral-800 leading-tight"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
       >
        {question}
-      </motion.h2>
-      <motion.p 
+      </motion.h2> */}
+      {/* <motion.p 
         className="px-4 pb-10 w-full text-xl text-neutral-800 leading-snug"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
       >
       {desktopBlurb}
-      </motion.p>
+      </motion.p> */}
 
       <div className="sticky top-[60px] z-30 px-4 pb-2 mt-10">
         <div className="flex flex-wrap justify-between gap-1  py-2">

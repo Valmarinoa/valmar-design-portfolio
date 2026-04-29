@@ -52,7 +52,7 @@ export default function MobileNavbar() {
   return (
     <div>
       <AnimatePresence initial={false}>
-        {shouldShowNavbar && (
+        {/* {shouldShowNavbar && ( */}
           <motion.div
             key="navbar"
             className="fixed top-0 left-0 right-0 z-[9997] p-3 w-screen h-fit mix-blend-exclusion pointer-events-none"
@@ -88,11 +88,11 @@ export default function MobileNavbar() {
               </motion.div>
             </motion.div>
           </motion.div>
-        )}
+        {/* )} */}
       </AnimatePresence>
 
       <StaggeredMenu
-        open={open && shouldShowNavbar}
+        open={open}
         onClose={() => setOpen(false)}
         position="right"
         items={menuItems}

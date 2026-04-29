@@ -16,6 +16,7 @@ import LogoSvg from "./svg/LogoSvg";
 import useLocale from "@/lib/use-locale";
 import { getMessages } from "@/data/messages";
 import ScrollIndicator from "./ui/ScrollIndicator";
+import { easeOutElegant } from "@/anim/animations";
 
 // Module-level flag: survives client-side navigation, resets only on full page reload
 let logoHasAnimated = false;
@@ -32,6 +33,7 @@ export default function Hero() {
   const reduceMotion = useReducedMotion();
   const locale = useLocale();
   const messages = getMessages(locale);
+  const desktopBlurb = messages.home.desktopBlurb;
 
   const { setHasScrolledPastHero, setIsLandingPage, setScrollProgress } = useLandingScroll();
   const pastHeroRef = useRef(false);
@@ -110,17 +112,25 @@ maxDpr: 1.5,
         </motion.div>
 
         <motion.div
-          className="absolute top-[50%] left-1/2 z-10 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-3 px-6 mix-blend-exclusion"
+          className="absolute bottom-0 flex-col items-center justify-center gap-3 px-6 mix-blend-exclusion"
           style={{ y: fgY, scale: fgScale, opacity: fgOpacity, willChange: "transform, opacity" }}
         >
-          <BlurText
+          {/* <BlurText
             as="h1"
             text={messages.hero.name}
             delay={2.4}
             mode="words"
             className="text-lg font-light text-white mix-blend-difference"
-          />
-          <motion.div
+          /> */}
+           <motion.p 
+        className="pb-10 w-full text-lg text-white mix-blend-difference leading-snug"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
+      >
+      {desktopBlurb}
+      </motion.p>
+          {/* <motion.div
             className="h-14"
             initial={{ opacity: skipLogoAnim ? 1 : 0 }}
             animate={{ opacity: 1 }}
@@ -134,10 +144,10 @@ maxDpr: 1.5,
             delay={2.4}
             mode="words"
             className="text-sm font-light text-white mix-blend-difference"
-          />
+          /> */}
         </motion.div>
 
-        <ScrollIndicator delay={2.8} className="md:hidden text-white mix-blend-difference" />
+        {/* <ScrollIndicator delay={.8} className="md:hidden text-white mix-blend-difference" /> */}
       </div>
     </section>
   );
