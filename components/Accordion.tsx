@@ -30,7 +30,7 @@ function AccordionItem({ title, children, isOpen, onToggle, index, isLast }: Acc
   return (
     <div className="">
         <motion.div 
-        className={`h-[0.5px] w-full bg-neutral-900 mt-10 origin-left ${isLast}`}
+        className={`h-[0.5px] w-full bg-neutral-900 mt-10 origin-left ${isLast} hidden md:block`}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.5, ease: easeOutElegant, delay: 0.6 }}

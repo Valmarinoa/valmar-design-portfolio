@@ -24,19 +24,23 @@ export default function AboutPage() {
           <h2 className="leading-10 text-4xl mb-2 md:mb-0 whitespace-nowrap ">Valentina Marino</h2>
           <h4 className="hidden md:inline-block text-base opacity-80 md:text-lg whitespace-nowrap leading-6">Product & Experience Designer and Developer</h4>
           <h4 className="md:hidden inline-block text-lg opacity-80 md:text-lg whitespace-nowrap md:whitespace-normal leading-6 font-light">Product & Experience <br/>Designer and Developer</h4>
-          <div className="text-lg whitespace-nowrap gap-2 md:absolute relative bottom-0 flex flex-col">
-            <a className="underline">Email</a>
+          
+          <div className="md:text-lg whitespace-nowrap gap-2 absolute bottom-14 md:bottom-0">
+            <div className="flex flex-col ">
+               <a className="underline">Email</a>
             <a className="underline" href="https://www.linkedin.com/in/valentina-marino-arboleda">LinkedIn</a>
             <a className="underline" href="https://www.instagram.com/valmarino.a/">Instagram</a>
             <a className="underline" href="https://github.com/Valmarinoa">GitHub</a>
             <a className="underline" href="https://souncloud/marianrosas">SoundCloud</a>
+            </div>
+           
 
 
             </div>
           
         </motion.div>
 
-        <div className="md:w-1/2 flex-1 flex relative">
+        <div className=" md:w-1/2 flex-1 flex relative items-end ml-16 md:ml-0">
           <motion.div 
             className="aspect-square h-[50%] md:h-[60%] absolute bottom-0 left-0"
             initial={{ opacity: 0, y: 30 }}
@@ -61,7 +65,6 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: easeOutElegant, delay: 0.6 }}
-    
         >
         <Accordion
           aboutTitle={messages.about.about}

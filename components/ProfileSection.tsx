@@ -158,11 +158,12 @@ function ProjectItem({ project }: { project: KeyProject }) {
     <div className="border-b-[0.5px] border-neutral-900">
       <button
         onClick={() => setOpen(!open)}
-        className="w-full py-4 text-left cursor-pointer"
+        className="w-full py-4 text-left cursor-pointer flex justify-between"
         aria-expanded={open}
       >
-        <span className="text-sm block">{project.title}</span>
-        <span className="text-xs opacity-50 mt-0.5 block">{project.type}</span>
+        <div><span className="text-sm block">{project.title}</span>
+        <span className="text-xs opacity-50 mt-0.5 block">{project.type}</span></div>
+        
       </button>
 
       <AnimatePresence>
@@ -189,7 +190,7 @@ export default function ProfileSection() {
     <div className="grid grid-cols-1 md:grid-cols-2 6 gap-y-10 pt-6">
 
       {/* LEFT COLUMN — Experience & Education */}
-      <div className="pr-16">
+      <div className="md:pr-16">
         <span className="text-[10px] tracking-widest uppercase opacity-50 block mb-2 ">
           Experience & Education
         </span>
@@ -201,7 +202,7 @@ export default function ProfileSection() {
       </div>
 
       {/* RIGHT COLUMN — Skills, Languages, Projects */}
-      <div className="space-y-8 border-[0.5px] border-neutral-900 rounded-3xl md:px-6 md:py-10">
+      <div className="space-y-8 md:border-[0.5px] border-neutral-900 rounded-3xl md:px-6 md:py-10 border-0">
 
         {/* Core Methodology */}
         <div>
