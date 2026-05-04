@@ -20,6 +20,7 @@ import ValueTuningService from "@/components/value-tuning/ValueTuningService";
 import LogoSvg from "@/components/svg/LogoSvg";
 import useLocale from "@/lib/use-locale";
 import { getValueTuningContent } from "@/data/valueTuningMessages";
+import ValueTuningSidebarNav from "@/components/value-tuning/ValueTuningSidebarNav";
 
 
 export default function ValueTuningCaseStudy() {
@@ -37,7 +38,7 @@ export default function ValueTuningCaseStudy() {
 
   return (
     <main ref={containerRef} className="min-h-screen text-neutral-900 relative overflow-x-hidden">
-      {/* <ValueTuningSidebarNav /> */}
+     <div className="hidden md:block"><ValueTuningSidebarNav /></div>
       <div className="fixed inset-0 w-screen min-h-screen -z-10">
         <Granient
           color1="#EBECE4"
