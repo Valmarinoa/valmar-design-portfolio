@@ -999,7 +999,7 @@ const projectsData: LocalizedProject[] = [
         type: 'tripticGallery',
         title: t("Interaction & Perception", "Interação e Percepção", "Interacción y Percepción"),
         body: t(
-          'The installation responds to breathing in real time. A microphone reads the pace and intensity of breath in real time. As you exhale, the light brightens. As breathing quiets, it fades — a direct, almost biological translation.',
+          'The installation responds to breathing in real time. A microphone reads the pace and intensity of breath in real time. As you exhale, the light brightens. As breathing quiets, it fades, a direct, almost biological translation.',
           'A instalação responde à respiração em tempo real. À medida que a pessoa respira, a luz pulsa, se desloca e flui pelas placas de água. Respirações mais lentas geram movimentos mais calmos e amplos; respirações mais rápidas produzem padrões mais nítidos e inquietos.'
           ,
           'La instalación responde a la respiración en tiempo real. A medida que la persona respira, la luz pulsa, se desplaza y fluye por las placas de agua. Las respiraciones más lentas producen movimientos más calmados y amplios; las respiraciones más rápidas generan patrones más nítidos e inquietos.'
@@ -1440,8 +1440,8 @@ const projectsData: LocalizedProject[] = [
         title: t("The Moon as reference", "A Lua como referência", "La Luna como referencia"),
         subtitle: "",
         body: t(
-          "I was interested in how the moon becomes visible through reflection rather than emission. That idea felt relevant for sustainable design — using what is already available instead of adding more. Moonbar translates this principle into a functional object: sunlight is collected quietly, stored, and later reflected back as light. It’s a small gesture, but one that rethinks how everyday mobility objects can work more gently with their environment.",
-          "Eu me interessei por como a lua se torna visível pela reflexão, e não pela emissão. Essa ideia parecia relevante para o design sustentável — usar o que já está disponível em vez de adicionar mais. Moonbar traduz esse princípio em um objeto funcional: a luz do sol é coletada de forma silenciosa, armazenada e depois refletida como luz. É um gesto pequeno, mas que repensa como objetos cotidianos de mobilidade podem operar de forma mais gentil com o ambiente."
+          "I was interested in how the moon becomes visible through reflection rather than emission. That idea felt relevant for sustainable design, using what is already available instead of adding more. Moonbar translates this principle into a functional object: sunlight is collected quietly, stored, and later reflected back as light. It’s a small gesture, but one that rethinks how everyday mobility objects can work more gently with their environment.",
+          "Eu me interessei por como a lua se torna visível pela reflexão, e não pela emissão. Essa ideia parecia relevante para o design sustentável, usar o que já está disponível em vez de adicionar mais. Moonbar traduz esse princípio em um objeto funcional: a luz do sol é coletada de forma silenciosa, armazenada e depois refletida como luz. É um gesto pequeno, mas que repensa como objetos cotidianos de mobilidade podem operar de forma mais gentil com o ambiente."
           ,
           "Me interesó cómo la luna se vuelve visible por reflexión y no por emisión. Esa idea parecía relevante para el diseño sostenible: usar lo que ya está disponible en lugar de añadir más. Moonbar traduce este principio en un objeto funcional: la luz solar se recoge silenciosamente, se almacena y luego se refleja como luz. Es un gesto pequeño, pero que replantea cómo los objetos cotidianos de movilidad pueden funcionar de forma más amable con su entorno."
         ),
@@ -1504,8 +1504,8 @@ const projectsData: LocalizedProject[] = [
         type: 'quote',
         quote:
           t(
-            'The project reflects an ongoing interest in repurposing found materials — allowing traces of their origin to remain visible within more refined, intentional forms.',
-            'O projeto reflete um interesse contínuo em reaproveitar materiais encontrados — permitindo que traços de sua origem permaneçam visíveis dentro de formas mais refinadas e intencionais.'
+            'The project reflects an ongoing interest in repurposing found materials, allowing traces of their origin to remain visible within more refined, intentional forms.',
+            'O projeto reflete um interesse contínuo em reaproveitar materiais encontrados, permitindo que traços de sua origem permaneçam visíveis dentro de formas mais refinadas e intencionais.'
             ,
             'El proyecto refleja un interés continuo en reutilizar materiales encontrados, permitiendo que los rastros de su origen permanezcan visibles dentro de formas más refinadas e intencionales.'
           )

@@ -97,7 +97,7 @@ const keyProjects = [
   {
     title: "Value Tuning",
     type: "Proprietary Research Methodology  · Signify, Eindhoven 2018",
-    desc: "Framework mapping how material attributes — touch, weight, sound, finish — shape perceived brand value and emotional quality.",
+    desc: "Framework mapping how material attributes, touch, weight, sound, finish, shape perceived brand value and emotional quality.",
   },
   {
     title: "Valmar Studio",
@@ -189,7 +189,7 @@ export default function ProfileSection() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 6 gap-y-10 pt-6">
 
-      {/* LEFT COLUMN — Experience & Education */}
+      {/* LEFT COLUMN, Experience & Education */}
       <div className="md:pr-16">
         <span className="text-[10px] tracking-widest uppercase opacity-50 block mb-2 ">
           Experience & Education
@@ -201,7 +201,7 @@ export default function ProfileSection() {
         </div>
       </div>
 
-      {/* RIGHT COLUMN — Skills, Languages, Projects */}
+      {/* RIGHT COLUMN, Skills, Languages, Projects */}
       <div className="space-y-8 md:border-[0.5px] border-neutral-900 rounded-3xl md:px-6 md:py-10 border-0">
 
         {/* Core Methodology */}

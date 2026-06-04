@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { TimelineBlock as TimelineBlockType, TimelineItem } from "@/types/project";
-import { div } from "framer-motion/client";
+
 
 type Props = {
   block: TimelineBlockType;
@@ -113,7 +113,7 @@ export default function TimelineBlock({ block, onItemClick }: Props) {
       const ax = Math.abs(e.deltaX);
       const ay = Math.abs(e.deltaY);
 
-      // Not primarily horizontal? Do nothing — allow normal page scroll (Y).
+      // Not primarily horizontal? Do nothing, allow normal page scroll (Y).
       if (ax <= ay) return;
 
       // Horizontal intent: keep it simple.

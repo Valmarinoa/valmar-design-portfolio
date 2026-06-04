@@ -277,7 +277,7 @@ export default function SecondaryDesktopLayout({
               />
             </div>
 
-            {/* Metadata panel — bottom-right corner */}
+            {/* Metadata panel, bottom-right corner */}
             <div className={`absolute bottom-6 right-10 text-right ${theme.text}`}>
               {active.ref && (
                 <p className="text-2xl">{active.ref}</p>
@@ -297,7 +297,7 @@ export default function SecondaryDesktopLayout({
               )}
               {active.status && (
                 <p className="text-[10px] tracking-widest uppercase mt-3 opacity-90 text-[#1a1912] font-semibold bg-amber-500 p-1">
-                  {active.status === "available" ? "Available — contact for pricing" : "Sold"}
+                  {active.status === "available" ? "Available, contact for pricing" : "Sold"}
                 </p>
               )}
             </div>
@@ -375,7 +375,7 @@ function DockCarouselItem({
         />
       </motion.button>
 
-      {/* Info label — outside the scaled button so it doesn't grow/shrink */}
+      {/* Info label, outside the scaled button so it doesn't grow/shrink */}
       <div className="absolute bottom-0 right-0 text-right pointer-events-none">
         <div className="text-amber-500 p-2 flex flex-col items-end ">
           {item.ref && <p className="text-sm">{item.ref}</p>}

@@ -109,19 +109,19 @@ const messages: Record<Locale, Messages> = {
         {
           title: "Sensory Brand Audit",
           items: [
-            "A research-led process that decodes how your brand is felt through material, touch, and interaction — not just seen. Based on the Value Tuning methodology developed at Signify (Philips). Deliverable: audit report + actionable design criteria.",
+            "A research-led process that decodes how your brand is felt through material, touch, and interaction, not just seen. Based on the Value Tuning methodology developed at Signify (Philips). Deliverable: audit report + actionable design criteria.",
           ]
         },
         {
           title: "Brand-to-Web Ecosystem",
           items: [
-            "From identity to deployed frontend. I design and build web presences for cultural organisations and creative brands — starting from who you are, ending with how you show up online. Full ownership: strategy, design, code."
+            "From identity to deployed frontend. I design and build web presences for cultural organisations and creative brands, starting from who you are, ending with how you show up online. Full ownership: strategy, design, code."
           ]
         },
         {
           title: "Web Strategy Consulting & Advisory",
           items: [
-            "Workshops and advisory for organisations that need to strengthen their digital presence. I help you understand what your current site communicates, what's missing, and how to close the gap — practically and strategically."
+            "Workshops and advisory for organisations that need to strengthen their digital presence. I help you understand what your current site communicates, what's missing, and how to close the gap, practically and strategically."
           ]
         },
         {
@@ -218,19 +218,19 @@ const messages: Record<Locale, Messages> = {
         {
           title: "Auditoria Sensorial de Marca",
           items: [
-            "Um processo guiado por pesquisa que decodifica como sua marca é sentida pelo material, pelo toque e pela interação — não apenas vista. Baseado na metodologia Value Tuning desenvolvida na Signify (Philips). Entregável: relatório de auditoria + critérios de design acionáveis."
+            "Um processo guiado por pesquisa que decodifica como sua marca é sentida pelo material, pelo toque e pela interação, não apenas vista. Baseado na metodologia Value Tuning desenvolvida na Signify (Philips). Entregável: relatório de auditoria + critérios de design acionáveis."
           ]
         },
         {
           title: "Ecossistema Marca-para-Web",
           items: [
-            "Da identidade ao frontend em produção. Eu desenho e construo presenças web para organizações culturais e marcas criativas — começando por quem você é, terminando com como você aparece online. Propriedade total: estratégia, design, código."
+            "Da identidade ao frontend em produção. Eu desenho e construo presenças web para organizações culturais e marcas criativas, começando por quem você é, terminando com como você aparece online. Propriedade total: estratégia, design, código."
           ]
         },
         {
           title: "Consultoria e Assessoria de Estratégia Web",
           items: [
-            "Workshops e assessoria para organizações que precisam fortalecer sua presença digital. Eu te ajudo a entender o que seu site atual comunica, o que está faltando e como fechar a lacuna — de forma prática e estratégica."
+            "Workshops e assessoria para organizações que precisam fortalecer sua presença digital. Eu te ajudo a entender o que seu site atual comunica, o que está faltando e como fechar a lacuna, de forma prática e estratégica."
           ]
         },
         {
@@ -324,19 +324,19 @@ const messages: Record<Locale, Messages> = {
         {
           title: "Auditoría Sensorial de Marca",
           items: [
-            "Un proceso liderado por la investigación que decodifica cómo se percibe tu marca a través del material, el tacto y la interacción — no solo a través de lo que se ve. Basado en la metodología Value Tuning desarrollada en Signify (Philips). Entregable: informe de auditoría + criterios de diseño accionables."
+            "Un proceso liderado por la investigación que decodifica cómo se percibe tu marca a través del material, el tacto y la interacción, no solo a través de lo que se ve. Basado en la metodología Value Tuning desarrollada en Signify (Philips). Entregable: informe de auditoría + criterios de diseño accionables."
           ]
         },
         {
           title: "Ecosistema Marca-a-Web",
           items: [
-            "De la identidad al frontend en producción. Diseño y construyo presencias web para organizaciones culturales y marcas creativas — empezando por quién eres, terminando con cómo apareces en línea. Propiedad total: estrategia, diseño, código."
+            "De la identidad al frontend en producción. Diseño y construyo presencias web para organizaciones culturales y marcas creativas, empezando por quién eres, terminando con cómo apareces en línea. Propiedad total: estrategia, diseño, código."
           ]
         },
         {
           title: "Consultoría y Asesoría de Estrategia Web",
           items: [
-            "Talleres y asesoría para organizaciones que necesitan fortalecer su presencia digital. Te ayudo a entender qué comunica tu sitio actual, qué falta y cómo cerrar la brecha — de forma práctica y estratégica."
+            "Talleres y asesoría para organizaciones que necesitan fortalecer su presencia digital. Te ayudo a entender qué comunica tu sitio actual, qué falta y cómo cerrar la brecha, de forma práctica y estratégica."
           ]
         },
         {

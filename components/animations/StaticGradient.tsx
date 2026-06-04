@@ -7,7 +7,7 @@ type Props = {
 
 /**
  * Static CSS gradient approximation of the Granient WebGL component.
- * Three radial blobs blended over a base color — no animation, no WebGL.
+ * Three radial blobs blended over a base color, no animation, no WebGL.
  */
 export default function StaticGradient({ color1, color2, color3, className = "" }: Props) {
   return (

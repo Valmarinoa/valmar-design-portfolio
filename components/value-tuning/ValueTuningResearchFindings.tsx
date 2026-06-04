@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { researchFindings } from "@/data/valueTuning";
+import InViewVideo from "@/components/value-tuning/InViewVideo";
 import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
 type Props = {
@@ -58,14 +59,9 @@ export default function ValueTuningResearchFindings({ content }: Props) {
                 )}
 
                 {hasMedia && card.background?.type === "video" && (
-                  <video
+                  <InViewVideo
                     src={card.background.src}
                     className="absolute inset-0 h-full w-full object-cover"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
                   />
                 )}
 

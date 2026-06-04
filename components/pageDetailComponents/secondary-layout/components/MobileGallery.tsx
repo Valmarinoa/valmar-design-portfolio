@@ -128,7 +128,7 @@ export default function MobileGallery({ gridItems }: Props) {
                     )}
                     {active.status && (
                       <p className={`${theme.text} px-px text-[10px] tracking-widest uppercase mt-1`}>
-                        {active.status === "available" ? "Available — contact for pricing" : "Sold"}
+                        {active.status === "available" ? "Available, contact for pricing" : "Sold"}
                       </p>
                     )}
                   </div>

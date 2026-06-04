@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Granient from "@/components/animations/Granient";
+import StaticGradient from "@/components/animations/StaticGradient";
 import { frameworkParameters } from "@/data/valueTuning";
 import type { ValueTuningContent } from "@/data/valueTuningMessages";
 
@@ -52,29 +52,10 @@ export default function ValueTuningFramework({ content }: Props) {
               >
                 {/* Gradient background */}
                 <div className="absolute inset-0">
-                  <Granient
+                  <StaticGradient
                     color1={item.gradient[0]}
                     color2={item.gradient[1]}
                     color3={item.gradient[2]}
-                    timeSpeed={0.2}
-                    colorBalance={0}
-                    warpStrength={1}
-                    warpFrequency={3}
-                    warpSpeed={1}
-                    warpAmplitude={20}
-                    blendAngle={0}
-                    blendSoftness={0.1}
-                    rotationAmount={200}
-                    noiseScale={1.5}
-                    grainAmount={0.1}
-                    grainScale={2}
-                    grainAnimated={false}
-                    contrast={1.2}
-                    gamma={1}
-                    saturation={1}
-                    centerX={0}
-                    centerY={0}
-                    zoom={0.9}
                   />
                 </div>
 
@@ -90,11 +71,7 @@ export default function ValueTuningFramework({ content }: Props) {
                     </div>
                   )}
 
-                  <h3 className="text-lg mb-3">{localizedParam.param}</h3>
-
-                  <p className="text-sm opacity-70 leading-relaxed">
-                    {localizedParam.insight}
-                  </p>
+                  <h3 className="text-lg">{localizedParam.param}</h3>
                 </div>
               </motion.div>
             );
@@ -108,8 +85,8 @@ export default function ValueTuningFramework({ content }: Props) {
           transition={{ duration: 1, delay: 0.3 }}
           className="mt-16 text-center "
         >
-          <p className="text-lg italic opacity-80 max-w-3xl mx-auto">
-            &quot;{content.quote}&quot;
+          <p className="text-sm italic opacity-60 max-w-3xl mx-auto">
+            {content.footnote}
           </p>
         </motion.div>
       </div>

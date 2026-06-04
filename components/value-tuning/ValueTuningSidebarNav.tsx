@@ -16,10 +16,9 @@ const sections: SectionItem[] = [
   { id: "blindfold-protocol", label: "The Blindfold Protocol" },
   { id: "research-findings", label: "Research Findings" },
   { id: "framework", label: "Framework" },
-  // { id: "material-context", label: "Material Context" },
-  // { id: "methodology", label: "Methodology" },
-  { id: "design-criteria", label: "Design Criteria" },
+  { id: "deliverable", label: "The Deliverable" },
   { id: "impact", label: "Impact" },
+  { id: "fit", label: "Fit" },
   { id: "reflection", label: "Reflection" },
 ];
 

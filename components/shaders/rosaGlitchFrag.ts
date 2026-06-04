@@ -68,7 +68,7 @@ void main() {
   baseUV.x += sin(imgUV.y * 10.0 + t * 0.40 + seed * 7.0) * 0.0010 * u_amount;
 
   // ------------------------------------------------------------
-  // ✅ MOVING RECTANGLES ("cars") — NO image translation inside cars
+  // ✅ MOVING RECTANGLES ("cars"), NO image translation inside cars
   // They:
   // - move left -> right
   // - grow in width then shrink (loop)

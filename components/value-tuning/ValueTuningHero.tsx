@@ -1,21 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { motion, MotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { easeOutElegant, fadeInUp, staggerContainer } from "@/anim/value-motion";
 import type { ValueTuningContent } from "@/data/valueTuningMessages";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
+import InViewVideo from "@/components/value-tuning/InViewVideo";
 
 type Props = {
-  heroOpacity: MotionValue<number>;
-  heroScale: MotionValue<number>;
   content: ValueTuningContent["hero"];
   videos?: string[];
 };
 
 export default function ValueTuningHero({
-  heroOpacity,
-  heroScale,
   content,
   videos = [],
 }: Props) {
@@ -27,10 +24,7 @@ export default function ValueTuningHero({
 
   return (
     <section className="relative h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24">
-      <motion.div
-        style={{ opacity: heroOpacity, scale: heroScale }}
-        className="max-w-7xl mx-auto w-full"
-      >
+      <div className="max-w-7xl mx-auto w-full">
         <div className="flex gap-12 items-center">
           {/* Left Column - Content */}
           <div className=" flex-1 h-full">
@@ -117,20 +111,15 @@ export default function ValueTuningHero({
                 }}
                 className="relative w-full aspect-video bg-neutral-100 overflow-hidden"
               >
-                <video
+                <InViewVideo
                   src={src}
-                  muted
-                  autoPlay
-                  loop
-                  playsInline
-                  preload="metadata"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </motion.div>
             ))}
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       <ScrollIndicator label={content.scroll} delay={1.2} />
     </section>

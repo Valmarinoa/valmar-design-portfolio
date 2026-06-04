@@ -39,12 +39,14 @@ export default function ValueTuningService({ content }: Props) {
             transition={{ duration: 1, delay: 0.2 }}
             className="lg:col-span-8 space-y-6 text-base leading-relaxed opacity-80"
           >
-            <p>{content.description}</p>
+            {content.paragraphs.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
           </motion.div>
 
           <AnimatedBlurb>
             <a
-              href="mailto:valenmarinocol@gmail.com"
+              href={`mailto:${content.email}`}
               className="shrink-0 text-xs uppercase bg-neutral-900 p-5 whitespace-nowrap rounded-full tracking-widest text-background border border-transparent hover:bg-background hover:border hover:border-neutral-900 hover:text-neutral-900 transition-all"
               aria-label="Work with me (email)"
             >

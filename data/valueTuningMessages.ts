@@ -31,8 +31,7 @@ export type ValueTuningContent = {
   sensoryProtocol: {
     label: string;
     heading: string;
-    description: string;
-    steps: Array<{ title: string; desc: string; insight: string }>;
+    paragraphs: string[];
   };
   blindfoldProtocol: {
     label: string;
@@ -67,19 +66,20 @@ export type ValueTuningContent = {
     label: string;
     heading: string;
     description: string;
-    quote: string;
-    parameters: Array<{ param: string; insight: string }>;
+    footnote: string;
+    parameters: Array<{ param: string }>;
   };
-  designCriteria: {
+  deliverable: {
     label: string;
     heading: string;
-    description: string;
-    sealLabel: string;
-    sealQuote: string;
-    sections: Array<{
-      category: string;
-      criteria: Array<{ label: string; desc: string }>;
-    }>;
+    intro: string;
+    items: string[];
+    closing: string;
+  };
+  fit: {
+    label: string;
+    heading: string;
+    items: string[];
   };
   impact: {
     label: string;
@@ -95,8 +95,9 @@ export type ValueTuningContent = {
   service: {
     label: string;
     heading: string;
-    description: string;
+    paragraphs: string[];
     cta: string;
+    email: string;
   };
   footer: string;
 };
@@ -108,9 +109,9 @@ const content: Record<Locale, ValueTuningContent> = {
       titleLine2: "The Hidden Language",
       titleLine3: "of Brand Perception",
       descDesktop:
-        "A self-developed research methodology designed to decode how products communicate value through the senses. By separating brand expectation from embodied experience, the study reveals how materiality, weight, sound, texture, and even smell silently translate brand narratives, and how our perception of luxury is rooted as much in primal sensory instincts as in cultural symbolism.",
+        "Originally developed for Signify/Philips to close the gap between technical trust and emotional meaning, Value Tuning uses the senses as its instrument to adapt to wherever that distance exists: between what a brand promises and what a product delivers, between an ethical story and a sensory truth, between democratic design and the feeling of quality in your hands.",
       descMobile:
-        "Value Tuning unlocks products' secret language of luxury through touch, sound, weight, even smell. It reveals if they truly feel premium... or fall flat. Perfect for Signify's shift from Philips' tech-trust vibe to cozy smart-home magic.",
+        "Originally developed for Signify/Philips to close the gap between technical trust and emotional meaning, Value Tuning uses the senses as its instrument to adapt to wherever that distance exists: between what a brand promises and what a product delivers, between an ethical story and a sensory truth, between democratic design and the feeling of quality in your hands.",
       collaboration: "In collaboration with",
       scroll: "Scroll",
     },
@@ -131,35 +132,18 @@ const content: Record<Locale, ValueTuningContent> = {
       p1: "I proposed that there is a measurable distance between what people expect from a brand and what they actually feel when encountering its products through the senses.",
       p2: "This gap becomes visible in the moment where brand narrative meets embodied experience: in the weight of an object, the resistance of a hinge, the texture of a surface, the sound of opening, the order of packaging.",
       p3: "When expectation and sensory experience align, trust is reinforced. When they diverge, disappointment emerges. Brand value, then, does not live in image alone, but in the relationship between promise and perception.",
-      p4: "In other words, value exists on a spectrum between projection and embodied reality.",
+      p4: "Value Tuning operates precisely in this space, making the invisible measurable, and the measurable actionable.",
       videoLabel: "Methodology Trailer",
       videoCaption:
         "A short introduction to the research method: mapping brand expectations, removing visual bias, and evaluating products through touch, sound, weight, and material interaction.",
     },
     sensoryProtocol: {
-      label: "The Protocol",
-      heading: "The Sensory Protocol",
-      description:
-        "I designed a research protocol that moves participants through three stages: expectation, sensory encounter, and reflection...",
-      steps: [
-        {
-          title: "The Expectations",
-          desc: `Before touching any product, users associate emotional words with each brand. "Authentic," "warm," "youthful"; these form the baseline of what the brand promises.`,
-          insight:
-            "WordCloud mapping reveals the halo effect: brand narrative shapes anticipated experience.",
-        },
-        {
-          title: "The Blind Test",
-          desc: "Blindfolded, users evaluate the same products through touch, sound, and scent alone. No logos. No color. Just the raw sensory encounter. Every gesture is recorded.",
-          insight:
-            "Stripping away visual identity exposes the gap between narrative and material reality.",
-        },
-        {
-          title: "The Reveal",
-          desc: "Finally, users see the product. The reveal tests whether visual branding confirms or contradicts their blind sensory assessment. The distance becomes visible.",
-          insight:
-            "Cognitive dissonance occurs when premium branding meets poor sensory execution.",
-        },
+      label: "The Method",
+      heading: "Designed to Make the Gap Visible",
+      paragraphs: [
+        "Value Tuning is a structured sensory research protocol conducted with real users, real products, and deliberately constrained conditions. It separates what people expect from a brand from what they actually feel when they encounter its products through touch, sound, weight, and materiality.",
+        "The method moves through three designed moments, each one stripping away a layer of assumption until only honest perception remains.",
+        "The output is not a qualitative impression. It is a mapped distance: between brand promise and lived material experience, rendered as a diagnostic you can act on.",
       ],
     },
     blindfoldProtocol: {
@@ -250,129 +234,59 @@ const content: Record<Locale, ValueTuningContent> = {
       label: "The Framework",
       heading: "Six Parameters of Perceived Value",
       description:
-        "From the research, I distilled six measurable attributes that determine whether a product feels \"premium\" or \"cheap,\" regardless of its price.",
-      quote:
-        "Perceived quality is not the sum of individual sensory inputs, but their coherence.",
+        "From the research, I distilled six measurable parameters that determine whether a product feels premium or falls short, regardless of its price point. These parameters form the diagnostic spine of every Value Tuning engagement.",
+      footnote:
+        "The full parameter framework, scoring rubric, and design criteria are delivered as part of the audit report.",
       parameters: [
-        {
-          param: "Physicality",
-          insight:
-            "Every choice and tolerance of materials is expected to serve a purpose. Users sense when design is rushed or corners are cut.",
-        },
-        {
-          param: "Transparency",
-          insight:
-            "People value real access to content. Windows, viewing holes, immediate product visibility build trust and reduce anxiety.",
-        },
-        {
-          param: "Order",
-          insight:
-            "The sequence of opening must be coherent. This order is echo of its 'contentchaos' signals carelessness, clarity signals attention and detail.",
-        },
-        {
-          param: "Stratification",
-          insight:
-            "Layering the opening journey determines first impressions. Each step should reveal, not obscure.",
-        },
-        {
-          param: "Alignment",
-          insight:
-            "Service must align with emotions, states of mind. The product should meet the user in their everyday life.",
-        },
-        {
-          param: "Context",
-          insight:
-            "Material choices determine distance between object and user. Fabric reads 'home'; plastic reads 'office'.",
-        },
+        { param: "Physicality" },
+        { param: "Transparency" },
+        { param: "Order" },
+        { param: "Stratification" },
+        { param: "Alignment" },
+        { param: "Context" },
       ],
     },
-    designCriteria: {
-      label: "Design Criteria",
-      heading: "From Insight to Design Criteria",
-      description:
-        "Each sensory audit evaluates specific, measurable attributes derived from user research. These parameters serve as both diagnostic tools and design targets.",
-      sealLabel: "Key Insight",
-      sealQuote:
-        "Perceived quality is not the sum of individual sensory inputs, but their coherence. A product that sounds premium but feels cheap creates cognitive dissonance. The goal is alignment across all five parameters.",
-      sections: [
-        {
-          category: "Packaging Hierarchy",
-          criteria: [
-            {
-              label: "Product Visibility",
-              desc: "User should see product within 3 seconds of opening. Viewing holes or transparent layers preferred.",
-            },
-            {
-              label: "Documentation Layering",
-              desc: "Manuals and warranties underneath product, not on top. Loose paper creates 'messy' perception.",
-            },
-            {
-              label: "Single-Motion Access",
-              desc: "Opening → Product removal should require ≤2 distinct actions. More steps = frustration.",
-            },
-            {
-              label: "Cable Management",
-              desc: "Cables must not be trapped in box folds. Entanglement signals poor planning.",
-            },
-          ],
-        },
-        {
-          category: "Material Confidence",
-          criteria: [
-            {
-              label: "Temperature Neutrality",
-              desc: `Materials should feel neutral-to-warm (18-22°C) within 3 seconds. Cold plastic = "cheap".`,
-            },
-            {
-              label: "Surface Continuity",
-              desc: "Transitions between materials should be seamless or intentionally layered, not abrupt.",
-            },
-            {
-              label: "Weight Substance",
-              desc: `Actual weight should exceed visual expectation by 15-20%. Lightness = "flimsy".`,
-            },
-            {
-              label: "Texture Intention",
-              desc: "Micro-texture should signal purpose: grip zones vs. display surfaces.",
-            },
-          ],
-        },
-        {
-          category: "Contextual Fit",
-          criteria: [
-            {
-              label: "Domestic vs. Industrial",
-              desc: `Soft-touch materials read "home"; hard plastic reads "office." Context determines appropriateness.`,
-            },
-            {
-              label: "Blending vs. Standing Out",
-              desc: "Product should be sleek enough to disappear, distinctive enough to invite touch.",
-            },
-            {
-              label: "Orientation Clarity",
-              desc: "Form should indicate usage: flat base, curved front, hard edges where wall meets.",
-            },
-          ],
-        },
+    deliverable: {
+      label: "The Deliverable",
+      heading: "What a Value Tuning Engagement Produces",
+      intro:
+        "Every engagement concludes with a structured audit report tailored to your product and brand context. It includes:",
+      items: [
+        "A mapped gap analysis between brand expectation and sensory perception across your product range",
+        "Scored evaluation across the six Value Tuning parameters",
+        "Specific material, structural, and experiential friction points identified in user sessions",
+        "Design criteria and prioritized recommendations your team can act on immediately",
+        "Strategic framing to support internal conversations about quality investment",
+      ],
+      closing:
+        "The report is designed to give designers and brand teams user-generated evidence, not just observations.",
+    },
+    fit: {
+      label: "Fit",
+      heading: "This Is For You If...",
+      items: [
+        "You're repositioning a brand and need to know if your products are keeping pace with the new narrative",
+        "You're preparing a product line for launch in a premium or luxury segment",
+        "You sense a gap between how your brand is perceived and how your products actually feel, but can't locate it",
+        "Your design team needs user evidence to advocate for quality in budget conversations",
       ],
     },
     impact: {
       label: "The Impact",
       heading: "Beyond the Report",
-      description:
-        "Research only matters if it changes decisions. Value Tuning was designed to give designers leverage in budget conversations.",
+      description: "A report is the beginning, not the end.",
       cards: [
         {
           title: "Strategic",
-          desc: "Demonstrated that sensorial investment in packaging directly affected brand positioning against Apple and Google. The 'Volkswagen vs Audi' metaphor became internal shorthand.",
+          desc: "Positions the gap between brand promise and product reality as a measurable, actionable distance, giving leadership a new lens on where quality investment creates the most return.",
         },
         {
           title: "Tactical",
-          desc: "Identified specific friction points like cable entanglement, documentation layering, material transitions—for immediate redesign in the HUE line.",
+          desc: "Surfaces the specific moments where perception breaks: the first touch, the opening sequence, the material encounter. Each finding maps directly to a design decision.",
         },
         {
           title: "Political",
-          desc: "Gave designers user-generated evidence to advocate for quality budgets, shifting the conversation from 'what can we save?' to 'what must we value?'",
+          desc: "Turns subjective experience into evidence. Designers leave with something they can defend in a room where budgets are decided.",
         },
       ],
     },
@@ -384,9 +298,12 @@ const content: Record<Locale, ValueTuningContent> = {
     service: {
       label: "Service",
       heading: "Run a Value Tuning audit for your brand",
-      description:
+      paragraphs: [
         "Engagements run over 2–4 days and deliver a full sensory audit report with design criteria and strategic recommendations. Suited to product companies, packaging teams, and brand strategists preparing for repositioning or launch.",
+        "Each engagement is scoped to your product and context, reach out to discuss fit.",
+      ],
       cta: "Let's Work together",
+      email: "studio@valmar.studio",
     },
     footer:
       "Value Tuning is an original research methodology developed by Valentina Marino at Signify (Philips), 2018–2019.\nConcept, protocol design, and framework © Valentina Marino.\nAll rights reserved.",
@@ -398,9 +315,9 @@ const content: Record<Locale, ValueTuningContent> = {
       titleLine2: "A Linguagem Oculta",
       titleLine3: "da Percepção de Marca",
       descDesktop:
-        "Uma metodologia de pesquisa desenvolvida para decodificar como os produtos comunicam valor através dos sentidos. Ao separar a expectativa de marca da experiência incorporada, o estudo revela como a materialidade, o peso, o som, a textura e até o olfato traduzem silenciosamente as narrativas de marca, e como nossa percepção de luxo está enraizada tanto em instintos sensoriais primitivos quanto em simbolismo cultural.",
+        "Desenvolvido originalmente para a Signify/Philips para fechar a lacuna entre confiança técnica e significado emocional, o Value Tuning usa os sentidos como instrumento para se adaptar aonde quer que essa distância exista: entre o que uma marca promete e o que um produto entrega, entre uma narrativa ética e uma verdade sensorial, entre design democrático e a sensação de qualidade nas suas mãos.",
       descMobile:
-        "Value Tuning desvenda a linguagem secreta do luxo através do toque, som, peso e até olfato. Revela se os produtos realmente parecem premium... ou decepcionam. Ideal para a transição da Signify da confiança técnica da Philips para a magia do lar inteligente e aconchegante.",
+        "Desenvolvido originalmente para a Signify/Philips para fechar a lacuna entre confiança técnica e significado emocional, o Value Tuning usa os sentidos como instrumento para se adaptar aonde quer que essa distância exista: entre o que uma marca promete e o que um produto entrega, entre uma narrativa ética e uma verdade sensorial, entre design democrático e a sensação de qualidade nas suas mãos.",
       collaboration: "Em colaboração com",
       scroll: "Rolar",
     },
@@ -421,35 +338,18 @@ const content: Record<Locale, ValueTuningContent> = {
       p1: "Propus que existe uma distância mensurável entre o que as pessoas esperam de uma marca e o que realmente sentem ao encontrar seus produtos através dos sentidos.",
       p2: "Essa lacuna torna-se visível no momento em que a narrativa de marca encontra a experiência incorporada: no peso de um objeto, na resistência de uma dobradiça, na textura de uma superfície, no som de uma abertura, na ordem de uma embalagem.",
       p3: "Quando expectativa e experiência sensorial se alinham, a confiança é reforçada. Quando divergem, surge a decepção. O valor de marca, portanto, não vive apenas na imagem, mas na relação entre promessa e percepção.",
-      p4: "Em outras palavras, o valor existe em um espectro entre projeção e realidade incorporada.",
+      p4: "O Value Tuning opera precisamente nesse espaço, tornando o invisível mensurável e o mensurável acionável.",
       videoLabel: "Trailer da Metodologia",
       videoCaption:
         "Uma breve introdução ao método de pesquisa: mapeamento de expectativas de marca, eliminação do viés visual e avaliação de produtos através do toque, som, peso e interação material.",
     },
     sensoryProtocol: {
-      label: "O Protocolo",
-      heading: "O Protocolo Sensorial",
-      description:
-        "Desenvolvi um protocolo de pesquisa que conduz os participantes por três etapas: expectativa, encontro sensorial e reflexão...",
-      steps: [
-        {
-          title: "As Expectativas",
-          desc: `Antes de tocar qualquer produto, os participantes associam palavras emocionais a cada marca. "Autêntico", "caloroso", "jovem" — essas palavras formam a base do que a marca promete.`,
-          insight:
-            "O mapeamento em WordCloud revela o efeito halo: a narrativa de marca molda a experiência antecipada.",
-        },
-        {
-          title: "O Teste às Cegas",
-          desc: "Vendados, os participantes avaliam os mesmos produtos apenas pelo toque, som e olfato. Sem logos. Sem cores. Apenas o encontro sensorial bruto. Cada gesto é registrado.",
-          insight:
-            "Remover a identidade visual expõe a lacuna entre a narrativa e a realidade material.",
-        },
-        {
-          title: "A Revelação",
-          desc: "Por fim, os participantes veem o produto. A revelação testa se a identidade visual confirma ou contradiz sua avaliação sensorial às cegas. A distância torna-se visível.",
-          insight:
-            "A dissonância cognitiva ocorre quando a marca premium encontra uma execução sensorial deficiente.",
-        },
+      label: "O Método",
+      heading: "Projetado para Tornar a Lacuna Visível",
+      paragraphs: [
+        "O Value Tuning é um protocolo estruturado de pesquisa sensorial conduzido com usuários reais, produtos reais e condições deliberadamente controladas. Ele separa o que as pessoas esperam de uma marca do que realmente sentem ao encontrar seus produtos através do toque, som, peso e materialidade.",
+        "O método percorre três momentos projetados, cada um removendo uma camada de suposição até restar apenas a percepção honesta.",
+        "O resultado não é uma impressão qualitativa, mas sim uma distância mapeada: entre a promessa da marca e a experiência material vivida, transformada em um diagnóstico acionável.",
       ],
     },
     blindfoldProtocol: {
@@ -458,8 +358,8 @@ const content: Record<Locale, ValueTuningContent> = {
       philosophyQuote:
         "Os sentidos não são meros receptores passivos de informação, mas participantes ativos na construção da realidade.",
       philosophyAuthor: "— David Howes, The Empire of the Senses",
-      p1: "A identidade visual exerce um poder imenso. Um logo, uma paleta de cores, uma fotografia cuidadosamente encenada — esses elementos preparam nossas expectativas antes mesmo de tocarmos um produto. Mas esse preparo é também uma distorção. Quando vemos a embalagem de uma marca de luxo, não estamos vivenciando o objeto; estamos vivenciando a narrativa que fomos condicionados a associar a ela.",
-      p2: "O protocolo da venda nos olhos elimina essa variável. Ao excluir a visão, acessamos o que David Howes chama de \"ordem sensorial\" — a hierarquia da percepção que opera abaixo do reconhecimento consciente de marca. O toque torna-se primário. O som torna-se informação. Temperatura, peso e textura falam sem a interferência do viés visual.",
+      p1: "A identidade visual exerce um poder imenso. Um logo, uma paleta de cores, uma fotografia cuidadosamente encenada, esses elementos preparam nossas expectativas antes mesmo de tocarmos um produto. Mas esse preparo é também uma distorção. Quando vemos a embalagem de uma marca de luxo, não estamos vivenciando o objeto; estamos vivenciando a narrativa que fomos condicionados a associar a ela.",
+      p2: "O protocolo da venda nos olhos elimina essa variável. Ao excluir a visão, acessamos o que David Howes chama de \"ordem sensorial\", a hierarquia da percepção que opera abaixo do reconhecimento consciente de marca. O toque torna-se primário. O som torna-se informação. Temperatura, peso e textura falam sem a interferência do viés visual.",
       col1Heading: "Viés Visual",
       col1Text:
         "O reconhecimento do logo ativa associações de qualidade pré-condicionadas. Julgamos o que esperamos, não o que sentimos.",
@@ -468,7 +368,7 @@ const content: Record<Locale, ValueTuningContent> = {
         "A narrativa de marca cria um \"efeito halo\" que mascara inconsistências sensoriais. O olho perdoa o que a mão não consegue.",
       col3Heading: "Verdade Proximal",
       col3Text:
-        "Objetos próximos ao corpo — segurados, tocados, manipulados — são julgados por critérios diferentes dos objetos vistos à distância.",
+        "Objetos próximos ao corpo, segurados, tocados, manipulados, são julgados por critérios diferentes dos objetos vistos à distância.",
       largeQuote:
         "O que parece lar? O que convida a mão a demorar? Essas perguntas não podem ser respondidas apenas pela análise visual. A venda nos olhos revela a lacuna entre o que uma marca promete e o que um produto realmente entrega aos sentidos.",
     },
@@ -502,7 +402,7 @@ const content: Record<Locale, ValueTuningContent> = {
       label: "Resultados de Pesquisa",
       heading: "O Que os Usuários Realmente Sentem",
       description:
-        "A avaliação sensorial às cegas revelou o vocabulário não expresso da qualidade. Os usuários percebem imediatamente quando a intenção de design se alinha com a execução — e quando não se alinha.",
+        "A avaliação sensorial às cegas revelou o vocabulário não expresso da qualidade. Os usuários percebem imediatamente quando a intenção de design se alinha com a execução, e quando não se alinha.",
       findings: [
         {
           theme: "Evidência de Violação",
@@ -517,7 +417,7 @@ const content: Record<Locale, ValueTuningContent> = {
         {
           theme: "A Hierarquia de Qualidade",
           insight:
-            "Os usuários categorizam intuitivamente os produtos em níveis. A consistência importa mais do que a qualidade absoluta — materiais incompatíveis criam dissonância cognitiva.",
+            "Os usuários categorizam intuitivamente os produtos em níveis. A consistência importa mais do que a qualidade absoluta, materiais incompatíveis criam dissonância cognitiva.",
         },
         {
           theme: "Incompatibilidade Contextual",
@@ -540,143 +440,76 @@ const content: Record<Locale, ValueTuningContent> = {
       label: "O Framework",
       heading: "Seis Parâmetros de Valor Percebido",
       description:
-        "Com base na pesquisa, destilei seis atributos mensuráveis que determinam se um produto parece \"premium\" ou \"barato\", independentemente do seu preço.",
-      quote:
-        "A qualidade percebida não é a soma de inputs sensoriais individuais, mas a coerência entre eles.",
+        "Com base na pesquisa, destilei seis parâmetros mensuráveis que determinam se um produto parece premium ou fica aquém, independentemente do seu preço. Esses parâmetros formam a espinha dorsal diagnóstica de cada engajamento Value Tuning.",
+      footnote:
+        "O framework completo de parâmetros, a rubrica de pontuação e os critérios de design são entregues como parte do relatório de auditoria.",
       parameters: [
-        {
-          param: "Fisicalidade",
-          insight:
-            "Cada escolha e tolerância de materiais deve cumprir um propósito. Os usuários percebem quando o design foi apressado ou os custos foram cortados.",
-        },
-        {
-          param: "Transparência",
-          insight:
-            "As pessoas valorizam o acesso real ao conteúdo. Janelas, orifícios de visualização e visibilidade imediata do produto geram confiança e reduzem a ansiedade.",
-        },
-        {
-          param: "Ordem",
-          insight:
-            "A sequência de abertura deve ser coerente. Essa ordem é um reflexo do seu conteúdo — o caos sinaliza descuido, a clareza sinaliza cuidado.",
-        },
-        {
-          param: "Estratificação",
-          insight:
-            "Estruturar em camadas a jornada de abertura determina as primeiras impressões. Cada etapa deve revelar, não ocultar.",
-        },
-        {
-          param: "Alinhamento",
-          insight:
-            "O serviço deve alinhar-se às emoções e estados de espírito. O produto deve encontrar o usuário em sua vida cotidiana.",
-        },
-        {
-          param: "Contexto",
-          insight:
-            "As escolhas de material determinam a distância entre objeto e usuário. Tecido remete a 'lar'; plástico remete a 'escritório'.",
-        },
+        { param: "Fisicalidade" },
+        { param: "Transparência" },
+        { param: "Ordem" },
+        { param: "Estratificação" },
+        { param: "Alinhamento" },
+        { param: "Contexto" },
       ],
     },
-    designCriteria: {
-      label: "Critérios de Design",
-      heading: "Do Insight aos Critérios de Design",
-      description:
-        "Cada auditoria sensorial avalia atributos específicos e mensuráveis derivados da pesquisa com usuários. Esses parâmetros servem tanto como ferramentas de diagnóstico quanto como metas de design.",
-      sealLabel: "Insight Chave",
-      sealQuote:
-        "A qualidade percebida não é a soma de inputs sensoriais individuais, mas a coerência entre eles. Um produto que soa premium mas parece barato ao toque cria dissonância cognitiva. O objetivo é o alinhamento em todos os cinco parâmetros.",
-      sections: [
-        {
-          category: "Hierarquia de Embalagem",
-          criteria: [
-            {
-              label: "Visibilidade do Produto",
-              desc: "O usuário deve ver o produto em até 3 segundos após a abertura. Orifícios de visualização ou camadas transparentes são preferíveis.",
-            },
-            {
-              label: "Disposição da Documentação",
-              desc: "Manuais e garantias abaixo do produto, não por cima. Papéis soltos criam uma percepção de 'bagunça'.",
-            },
-            {
-              label: "Acesso em Movimento Único",
-              desc: "Abertura → remoção do produto deve exigir ≤2 ações distintas. Mais etapas = frustração.",
-            },
-            {
-              label: "Gerenciamento de Cabos",
-              desc: "Os cabos não devem ficar presos nas dobras da caixa. O emaranhamento sinaliza planejamento deficiente.",
-            },
-          ],
-        },
-        {
-          category: "Confiança nos Materiais",
-          criteria: [
-            {
-              label: "Neutralidade Térmica",
-              desc: `Os materiais devem parecer neutros a mornos (18-22°C) em até 3 segundos. Plástico frio = "barato".`,
-            },
-            {
-              label: "Continuidade da Superfície",
-              desc: "As transições entre materiais devem ser suaves ou intencionalmente em camadas, não abruptas.",
-            },
-            {
-              label: "Substância do Peso",
-              desc: `O peso real deve superar a expectativa visual em 15-20%. Leveza = "frágil".`,
-            },
-            {
-              label: "Intenção da Textura",
-              desc: "A microtextura deve sinalizar propósito: zonas de preensão versus superfícies de exibição.",
-            },
-          ],
-        },
-        {
-          category: "Adequação Contextual",
-          criteria: [
-            {
-              label: "Doméstico vs. Industrial",
-              desc: `Materiais de toque suave remetem a "lar"; plástico duro remete a "escritório". O contexto determina a adequação.`,
-            },
-            {
-              label: "Integrar vs. Destacar",
-              desc: "O produto deve ser elegante o suficiente para se dissolver no ambiente, mas distinto o suficiente para convidar ao toque.",
-            },
-            {
-              label: "Clareza de Orientação",
-              desc: "A forma deve indicar o uso: base plana, frente curva, bordas rígidas onde encontra a parede.",
-            },
-          ],
-        },
+    deliverable: {
+      label: "A Entrega",
+      heading: "O Que um Engajamento Value Tuning Produz",
+      intro:
+        "Cada engajamento conclui com um relatório de auditoria estruturado, adaptado ao seu produto e contexto de marca. Ele inclui:",
+      items: [
+        "Uma análise mapeada da lacuna entre expectativa de marca e percepção sensorial em sua linha de produtos",
+        "Avaliação pontuada nos seis parâmetros do Value Tuning",
+        "Pontos de atrito material, estrutural e experiencial identificados nas sessões com usuários",
+        "Critérios de design e recomendações priorizadas que sua equipe pode implementar imediatamente",
+        "Enquadramento estratégico para apoiar conversas internas sobre investimento em qualidade",
+      ],
+      closing:
+        "O relatório foi projetado para dar a designers e equipes de marca evidências geradas por usuários, não apenas observações.",
+    },
+    fit: {
+      label: "Adequação",
+      heading: "Isso É Para Você Se...",
+      items: [
+        "Você está reposicionando uma marca e precisa saber se seus produtos acompanham a nova narrativa",
+        "Você está preparando uma linha de produtos para lançamento em um segmento premium ou de luxo",
+        "Você percebe uma lacuna entre como sua marca é vista e como seus produtos realmente parecem, mas não consegue localizá-la",
+        "Sua equipe de design precisa de evidências de usuários para defender qualidade em conversas de orçamento",
       ],
     },
     impact: {
       label: "O Impacto",
       heading: "Além do Relatório",
-      description:
-        "A pesquisa só importa se mudar decisões. O Value Tuning foi projetado para dar aos designers influência nas conversas sobre orçamento.",
+      description: "Um relatório é o começo, não o fim.",
       cards: [
         {
           title: "Estratégico",
-          desc: "Demonstrou que o investimento sensorial na embalagem afeta diretamente o posicionamento de marca em relação à Apple e Google. A metáfora 'Volkswagen vs Audi' tornou-se um atalho interno.",
+          desc: "Posiciona a lacuna entre a promessa da marca e a realidade do produto como uma distância mensurável e acionável, oferecendo à liderança uma nova lente sobre onde o investimento em qualidade gera mais retorno.",
         },
         {
           title: "Tático",
-          desc: "Identificou pontos de atrito específicos — emaranhamento de cabos, disposição da documentação, transições de materiais — para redesenho imediato na linha HUE.",
+          desc: "Revela os momentos específicos em que a percepção se rompe: o primeiro toque, a sequência de abertura, o encontro com o material. Cada achado mapeia diretamente para uma decisão de design.",
         },
         {
           title: "Político",
-          desc: "Forneceu aos designers evidências geradas por usuários para defender orçamentos de qualidade, mudando a conversa de 'o que podemos economizar?' para 'o que devemos valorizar?'",
+          desc: "Transforma experiência subjetiva em evidência. Os designers saem com algo que podem defender em uma sala onde os orçamentos são decididos.",
         },
       ],
     },
     reflection: {
       label: "Reflexão",
       heading: "Em um Mundo Cada Vez Mais Digital",
-      body: "Encontramos as marcas primeiro pela tela: através de imagens, campanhas e narrativas cuidadosamente construídas, muito antes de tocarmos o próprio produto. Quando ele finalmente chega às nossas mãos, a expectativa já está formada.\nA primeira interação física é implacável. O peso de uma tampa. A temperatura de um material. A resistência de uma dobradiça. Esses não são detalhes — são veredictos. Em um instante, confirmam ou contradizem silenciosamente tudo o que uma marca afirmou.\nTrabalhar com a Signify tornou isso visceral: mesmo a tecnologia mais sofisticada perde seu valor se o primeiro toque parecer errado. Em contextos premium, essa lacuna entre promessa e sensação não é percebida como nuance. É sentida como decepção — e a decepção é cara.\nO Value Tuning opera precisamente nesse ponto de tensão. Traduz a narrativa de marca em decisões de design tangíveis, identificando onde a percepção falha, onde o valor se perde e onde pode ser amplificado. Em luxo, beleza, automotivo e tecnologia de consumo, o desafio é sempre o mesmo: não apenas projetar produtos que funcionem, mas garantir que se sintam exatamente como imaginados — ou melhor.\nPorque o valor não é comunicado. É verificado — através do corpo.\nQuando seu produto for finalmente segurado, ele justificará tudo o que veio antes?",
+      body: "Encontramos as marcas primeiro pela tela: através de imagens, campanhas e narrativas cuidadosamente construídas, muito antes de tocarmos o próprio produto. Quando ele finalmente chega às nossas mãos, a expectativa já está formada.\nA primeira interação física é implacável. O peso de uma tampa. A temperatura de um material. A resistência de uma dobradiça. Esses não são detalhes, são veredictos. Em um instante, confirmam ou contradizem silenciosamente tudo o que uma marca afirmou.\nTrabalhar com a Signify tornou isso visceral: mesmo a tecnologia mais sofisticada perde seu valor se o primeiro toque parecer errado. Em contextos premium, essa lacuna entre promessa e sensação não é percebida como nuance. É sentida como decepção, e a decepção é cara.\nO Value Tuning opera precisamente nesse ponto de tensão. Traduz a narrativa de marca em decisões de design tangíveis, identificando onde a percepção falha, onde o valor se perde e onde pode ser amplificado. Em luxo, beleza, automotivo e tecnologia de consumo, o desafio é sempre o mesmo: não apenas projetar produtos que funcionem, mas garantir que se sintam exatamente como imaginados, ou melhor.\nPorque o valor não é comunicado. É verificado, através do corpo.\nQuando seu produto for finalmente segurado, ele justificará tudo o que veio antes?",
     },
     service: {
       label: "Serviço",
       heading: "Execute uma auditoria Value Tuning para sua marca",
-      description:
+      paragraphs: [
         "Os engajamentos ocorrem ao longo de 2 a 4 dias e entregam um relatório completo de auditoria sensorial com critérios de design e recomendações estratégicas. Indicado para empresas de produtos, equipes de embalagem e estrategistas de marca se preparando para reposicionamento ou lançamento.",
+        "Cada engajamento é dimensionado para seu produto e contexto, entre em contato para discutir a adequação.",
+      ],
       cta: "Vamos trabalhar juntos",
+      email: "studio@valmar.studio",
     },
     footer:
       "Value Tuning é uma metodologia de pesquisa original desenvolvida por Valentina Marino na Signify (Philips), 2018–2019.\nConceito, design do protocolo e framework © Valentina Marino.\nTodos os direitos reservados.",
@@ -688,9 +521,9 @@ const content: Record<Locale, ValueTuningContent> = {
       titleLine2: "El Lenguaje Oculto",
       titleLine3: "de la Percepción de Marca",
       descDesktop:
-        "Una metodología de investigación propia diseñada para descifrar cómo los productos comunican valor a través de los sentidos. Al separar la expectativa de marca de la experiencia incorporada, el estudio revela cómo la materialidad, el peso, el sonido, la textura e incluso el olfato traducen silenciosamente las narrativas de marca, y cómo nuestra percepción del lujo está enraizada tanto en instintos sensoriales primitivos como en simbolismo cultural.",
+        "Desarrollado originalmente para Signify/Philips para cerrar la brecha entre la confianza técnica y el significado emocional, Value Tuning usa los sentidos como instrumento para adaptarse dondequiera que exista esa distancia: entre lo que una marca promete y lo que un producto entrega, entre una historia ética y una verdad sensorial, entre el diseño democrático y la sensación de calidad en sus manos.",
       descMobile:
-        "Value Tuning desbloquea el lenguaje secreto del lujo a través del tacto, el sonido, el peso e incluso el olfato. Revela si los productos realmente se sienten premium... o decepcionan. Ideal para la transición de Signify de la confianza técnica de Philips a la magia del hogar inteligente y acogedor.",
+        "Desarrollado originalmente para Signify/Philips para cerrar la brecha entre la confianza técnica y el significado emocional, Value Tuning usa los sentidos como instrumento para adaptarse dondequiera que exista esa distancia: entre lo que una marca promete y lo que un producto entrega, entre una historia ética y una verdad sensorial, entre el diseño democrático y la sensación de calidad en sus manos.",
       collaboration: "En colaboración con",
       scroll: "Desplazar",
     },
@@ -711,35 +544,18 @@ const content: Record<Locale, ValueTuningContent> = {
       p1: "Propuse que existe una distancia medible entre lo que las personas esperan de una marca y lo que realmente sienten al encontrar sus productos a través de los sentidos.",
       p2: "Esta brecha se vuelve visible en el momento en que la narrativa de marca se encuentra con la experiencia incorporada: en el peso de un objeto, la resistencia de una bisagra, la textura de una superficie, el sonido de una apertura, el orden de un embalaje.",
       p3: "Cuando expectativa y experiencia sensorial se alinean, la confianza se refuerza. Cuando divergen, emerge la decepción. El valor de marca, entonces, no vive solo en la imagen, sino en la relación entre promesa y percepción.",
-      p4: "En otras palabras, el valor existe en un espectro entre proyección y realidad incorporada.",
+      p4: "Value Tuning opera precisamente en este espacio, haciendo lo invisible medible y lo medible accionable.",
       videoLabel: "Tráiler de la Metodología",
       videoCaption:
         "Una breve introducción al método de investigación: mapeo de expectativas de marca, eliminación del sesgo visual y evaluación de productos a través del tacto, el sonido, el peso y la interacción material.",
     },
     sensoryProtocol: {
-      label: "El Protocolo",
-      heading: "El Protocolo Sensorial",
-      description:
-        "Diseñé un protocolo de investigación que lleva a los participantes a través de tres etapas: expectativa, encuentro sensorial y reflexión...",
-      steps: [
-        {
-          title: "Las Expectativas",
-          desc: `Antes de tocar cualquier producto, los participantes asocian palabras emocionales con cada marca. "Auténtico", "cálido", "juvenil" — estas forman la línea base de lo que la marca promete.`,
-          insight:
-            "El mapeo en WordCloud revela el efecto halo: la narrativa de marca moldea la experiencia anticipada.",
-        },
-        {
-          title: "La Prueba a Ciegas",
-          desc: "Con los ojos vendados, los participantes evalúan los mismos productos solo a través del tacto, el sonido y el olfato. Sin logos. Sin color. Solo el encuentro sensorial en estado puro. Cada gesto es registrado.",
-          insight:
-            "Eliminar la identidad visual expone la brecha entre la narrativa y la realidad material.",
-        },
-        {
-          title: "La Revelación",
-          desc: "Finalmente, los participantes ven el producto. La revelación pone a prueba si la identidad visual confirma o contradice su evaluación sensorial a ciegas. La distancia se vuelve visible.",
-          insight:
-            "La disonancia cognitiva ocurre cuando el branding premium se encuentra con una ejecución sensorial deficiente.",
-        },
+      label: "El Método",
+      heading: "Diseñado para Hacer Visible la Brecha",
+      paragraphs: [
+        "Value Tuning es un protocolo estructurado de investigación sensorial realizado con usuarios reales, productos reales y condiciones deliberadamente controladas. Separa lo que las personas esperan de una marca de lo que realmente sienten al encontrar sus productos a través del tacto, el sonido, el peso y la materialidad.",
+        "El método avanza por tres momentos diseñados, cada uno eliminando una capa de suposición hasta que solo queda la percepción honesta.",
+        "El resultado no es una impresión cualitativa. Es una distancia mapeada: entre la promesa de marca y la experiencia material vivida, convertida en un diagnóstico sobre el que puede actuar.",
       ],
     },
     blindfoldProtocol: {
@@ -748,8 +564,8 @@ const content: Record<Locale, ValueTuningContent> = {
       philosophyQuote:
         "Los sentidos no son simples receptores pasivos de información sino participantes activos en la construcción de la realidad.",
       philosophyAuthor: "— David Howes, The Empire of the Senses",
-      p1: "La identidad visual ejerce un inmenso poder. Un logo, una paleta de colores, una fotografía cuidadosamente escenificada — estos elementos preparan nuestras expectativas antes de que toquemos jamás un producto. Pero este condicionamiento es también una distorsión. Cuando vemos el embalaje de una marca de lujo, no estamos experimentando el objeto; estamos experimentando la narrativa que hemos sido condicionados a asociar con él.",
-      p2: "El protocolo de la venda elimina esta variable. Al excluir la vista, accedemos a lo que David Howes llama el \"orden sensorial\" — la jerarquía de percepción que opera por debajo del reconocimiento consciente de marca. El tacto se vuelve primario. El sonido se convierte en información. La temperatura, el peso y la textura hablan sin la interferencia del sesgo visual.",
+      p1: "La identidad visual ejerce un inmenso poder. Un logo, una paleta de colores, una fotografía cuidadosamente escenificada, estos elementos preparan nuestras expectativas antes de que toquemos jamás un producto. Pero este condicionamiento es también una distorsión. Cuando vemos el embalaje de una marca de lujo, no estamos experimentando el objeto; estamos experimentando la narrativa que hemos sido condicionados a asociar con él.",
+      p2: "El protocolo de la venda elimina esta variable. Al excluir la vista, accedemos a lo que David Howes llama el \"orden sensorial\", la jerarquía de percepción que opera por debajo del reconocimiento consciente de marca. El tacto se vuelve primario. El sonido se convierte en información. La temperatura, el peso y la textura hablan sin la interferencia del sesgo visual.",
       col1Heading: "Sesgo Visual",
       col1Text:
         "El reconocimiento del logo activa asociaciones de calidad precondicionadas. Juzgamos lo que esperamos, no lo que sentimos.",
@@ -758,7 +574,7 @@ const content: Record<Locale, ValueTuningContent> = {
         "La narrativa de marca crea un \"efecto halo\" que enmascara inconsistencias sensoriales. El ojo perdona lo que la mano no puede.",
       col3Heading: "Verdad Proximal",
       col3Text:
-        "Los objetos cercanos al cuerpo — sostenidos, tocados, manipulados — son juzgados con criterios diferentes a los objetos vistos desde la distancia.",
+        "Los objetos cercanos al cuerpo, sostenidos, tocados, manipulados, son juzgados con criterios diferentes a los objetos vistos desde la distancia.",
       largeQuote:
         "¿Qué se siente como hogar? ¿Qué invita a la mano a demorarse? Estas preguntas no pueden responderse solo mediante el análisis visual. La venda revela la brecha entre lo que una marca promete y lo que un producto realmente entrega a los sentidos.",
     },
@@ -792,7 +608,7 @@ const content: Record<Locale, ValueTuningContent> = {
       label: "Hallazgos de Investigación",
       heading: "Lo Que los Usuarios Realmente Sienten",
       description:
-        "La evaluación sensorial a ciegas reveló el vocabulario no expresado de la calidad. Los usuarios perciben de inmediato cuando la intención de diseño se alinea con la ejecución — y cuando no.",
+        "La evaluación sensorial a ciegas reveló el vocabulario no expresado de la calidad. Los usuarios perciben de inmediato cuando la intención de diseño se alinea con la ejecución, y cuando no.",
       findings: [
         {
           theme: "Evidencia de Manipulación",
@@ -807,7 +623,7 @@ const content: Record<Locale, ValueTuningContent> = {
         {
           theme: "La Jerarquía de Calidad",
           insight:
-            "Los usuarios categorizan intuitivamente los productos en niveles. La consistencia importa más que la calidad absoluta — los materiales inconsistentes crean disonancia cognitiva.",
+            "Los usuarios categorizan intuitivamente los productos en niveles. La consistencia importa más que la calidad absoluta, los materiales inconsistentes crean disonancia cognitiva.",
         },
         {
           theme: "Incompatibilidad Contextual",
@@ -830,143 +646,76 @@ const content: Record<Locale, ValueTuningContent> = {
       label: "El Framework",
       heading: "Seis Parámetros de Valor Percibido",
       description:
-        "A partir de la investigación, destilé seis atributos medibles que determinan si un producto se siente \"premium\" o \"barato\", independientemente de su precio.",
-      quote:
-        "La calidad percibida no es la suma de inputs sensoriales individuales, sino su coherencia.",
+        "A partir de la investigación, destilé seis parámetros medibles que determinan si un producto se siente premium o queda corto, independientemente de su precio. Estos parámetros forman la columna vertebral diagnóstica de cada compromiso Value Tuning.",
+      footnote:
+        "El framework completo de parámetros, la rúbrica de puntuación y los criterios de diseño se entregan como parte del informe de auditoría.",
       parameters: [
-        {
-          param: "Fisicalidad",
-          insight:
-            "Cada elección y tolerancia de materiales se espera que sirva a un propósito. Los usuarios perciben cuando el diseño fue apresurado o se recortaron costos.",
-        },
-        {
-          param: "Transparencia",
-          insight:
-            "Las personas valoran el acceso real al contenido. Las ventanas, los orificios de visualización y la visibilidad inmediata del producto generan confianza y reducen la ansiedad.",
-        },
-        {
-          param: "Orden",
-          insight:
-            "La secuencia de apertura debe ser coherente. Este orden es un eco de su contenido — el caos señala descuido, la claridad señala cuidado.",
-        },
-        {
-          param: "Estratificación",
-          insight:
-            "Estratificar el recorrido de apertura determina las primeras impresiones. Cada paso debe revelar, no ocultar.",
-        },
-        {
-          param: "Alineación",
-          insight:
-            "El servicio debe alinearse con las emociones y estados de ánimo. El producto debe encontrarse con el usuario en su vida cotidiana.",
-        },
-        {
-          param: "Contexto",
-          insight:
-            "Las elecciones de material determinan la distancia entre objeto y usuario. La tela evoca 'hogar'; el plástico evoca 'oficina'.",
-        },
+        { param: "Fisicalidad" },
+        { param: "Transparencia" },
+        { param: "Orden" },
+        { param: "Estratificación" },
+        { param: "Alineación" },
+        { param: "Contexto" },
       ],
     },
-    designCriteria: {
-      label: "Criterios de Diseño",
-      heading: "Del Insight a los Criterios de Diseño",
-      description:
-        "Cada auditoría sensorial evalúa atributos específicos y medibles derivados de la investigación con usuarios. Estos parámetros sirven tanto como herramientas de diagnóstico como objetivos de diseño.",
-      sealLabel: "Insight Clave",
-      sealQuote:
-        "La calidad percibida no es la suma de inputs sensoriales individuales, sino su coherencia. Un producto que suena premium pero se siente barato al tacto genera disonancia cognitiva. El objetivo es la alineación en todos los cinco parámetros.",
-      sections: [
-        {
-          category: "Jerarquía de Embalaje",
-          criteria: [
-            {
-              label: "Visibilidad del Producto",
-              desc: "El usuario debería ver el producto en los primeros 3 segundos de apertura. Se prefieren orificios de visualización o capas transparentes.",
-            },
-            {
-              label: "Disposición de la Documentación",
-              desc: "Los manuales y garantías deben ir debajo del producto, no encima. El papel suelto crea percepción de 'desorden'.",
-            },
-            {
-              label: "Acceso en Un Solo Movimiento",
-              desc: "Apertura → extracción del producto debe requerir ≤2 acciones distintas. Más pasos = frustración.",
-            },
-            {
-              label: "Gestión de Cables",
-              desc: "Los cables no deben quedar atrapados en los pliegues de la caja. El enredo señala una planificación deficiente.",
-            },
-          ],
-        },
-        {
-          category: "Confianza en los Materiales",
-          criteria: [
-            {
-              label: "Neutralidad Térmica",
-              desc: `Los materiales deben sentirse neutros a cálidos (18-22°C) en 3 segundos. El plástico frío = "barato".`,
-            },
-            {
-              label: "Continuidad de la Superficie",
-              desc: "Las transiciones entre materiales deben ser fluidas o intencionalmente estratificadas, no abruptas.",
-            },
-            {
-              label: "Sustancia del Peso",
-              desc: `El peso real debe superar la expectativa visual en un 15-20%. La ligereza = "endeble".`,
-            },
-            {
-              label: "Intención de la Textura",
-              desc: "La microtextura debe señalar propósito: zonas de agarre frente a superficies decorativas.",
-            },
-          ],
-        },
-        {
-          category: "Adecuación Contextual",
-          criteria: [
-            {
-              label: "Doméstico vs. Industrial",
-              desc: `Los materiales de tacto suave evocan "hogar"; el plástico duro evoca "oficina". El contexto determina la idoneidad.`,
-            },
-            {
-              label: "Integrarse vs. Destacarse",
-              desc: "El producto debe ser lo suficientemente elegante para desaparecer, pero lo suficientemente distintivo para invitar al tacto.",
-            },
-            {
-              label: "Claridad de Orientación",
-              desc: "La forma debe indicar el uso: base plana, frente curvo, bordes firmes donde se apoya en la pared.",
-            },
-          ],
-        },
+    deliverable: {
+      label: "La Entrega",
+      heading: "Qué Produce un Compromiso Value Tuning",
+      intro:
+        "Cada compromiso concluye con un informe de auditoría estructurado, adaptado a su producto y contexto de marca. Incluye:",
+      items: [
+        "Un análisis mapeado de la brecha entre expectativa de marca y percepción sensorial en su gama de productos",
+        "Evaluación puntuada en los seis parámetros de Value Tuning",
+        "Puntos de fricción material, estructural y experiencial identificados en las sesiones con usuarios",
+        "Criterios de diseño y recomendaciones priorizadas que su equipo puede implementar de inmediato",
+        "Marco estratégico para apoyar conversaciones internas sobre inversión en calidad",
+      ],
+      closing:
+        "El informe está diseñado para dar a diseñadores y equipos de marca evidencia generada por usuarios, no solo observaciones.",
+    },
+    fit: {
+      label: "Adecuación",
+      heading: "Esto Es Para Usted Si...",
+      items: [
+        "Está reposicionando una marca y necesita saber si sus productos siguen el ritmo de la nueva narrativa",
+        "Está preparando una línea de productos para lanzamiento en un segmento premium o de lujo",
+        "Percibe una brecha entre cómo se ve su marca y cómo realmente se sienten sus productos, pero no puede ubicarla",
+        "Su equipo de diseño necesita evidencia de usuarios para defender la calidad en conversaciones de presupuesto",
       ],
     },
     impact: {
       label: "El Impacto",
       heading: "Más Allá del Informe",
-      description:
-        "La investigación solo importa si cambia decisiones. Value Tuning fue diseñado para dar a los diseñadores influencia en las conversaciones sobre presupuesto.",
+      description: "Un informe es el comienzo, no el final.",
       cards: [
         {
           title: "Estratégico",
-          desc: "Demostró que la inversión sensorial en el packaging afecta directamente el posicionamiento de marca frente a Apple y Google. La metáfora 'Volkswagen vs. Audi' se convirtió en un referente interno.",
+          desc: "Posiciona la brecha entre la promesa de marca y la realidad del producto como una distancia medible y accionable, ofreciendo al liderazgo una nueva lente sobre dónde la inversión en calidad genera el mayor retorno.",
         },
         {
           title: "Táctico",
-          desc: "Identificó puntos de fricción específicos — enredo de cables, disposición de la documentación, transiciones de materiales — para el rediseño inmediato de la línea HUE.",
+          desc: "Pone al descubierto los momentos específicos en que la percepción se quiebra: el primer tacto, la secuencia de apertura, el encuentro con el material. Cada hallazgo se traduce directamente en una decisión de diseño.",
         },
         {
           title: "Político",
-          desc: "Proporcionó a los diseñadores evidencias generadas por usuarios para abogar por presupuestos de calidad, cambiando la conversación de '¿qué podemos ahorrar?' a '¿qué debemos valorar?'",
+          desc: "Convierte la experiencia subjetiva en evidencia. Los diseñadores salen con algo que pueden defender en una sala donde se deciden los presupuestos.",
         },
       ],
     },
     reflection: {
       label: "Reflexión",
       heading: "En un Mundo Cada Vez Más Digital",
-      body: "Encontramos las marcas primero a través de la pantalla: mediante imágenes, campañas y narrativas cuidadosamente construidas, mucho antes de tocar el producto en sí. Para cuando llega a nuestras manos, la expectativa ya está formada.\nLa primera interacción física es implacable. El peso de una tapa. La temperatura de un material. La resistencia de una bisagra. Estos no son detalles — son veredictos. En un instante, confirman o contradicen silenciosamente todo lo que una marca ha afirmado.\nTrabajar con Signify hizo esto visceral: incluso la tecnología más sofisticada pierde su valor si el primer toque se siente equivocado. En contextos premium, esa brecha entre promesa y sensación no se percibe como matiz. Se siente como decepción — y la decepción es costosa.\nValue Tuning opera precisamente en este punto de tensión. Traduce la narrativa de marca en decisiones de diseño tangibles, identificando dónde se rompe la percepción, dónde se pierde el valor y dónde puede amplificarse. En lujo, belleza, automoción y tecnología de consumo, el desafío es siempre el mismo: no solo diseñar productos que funcionen, sino asegurar que se sientan exactamente como se imaginaron — o mejor.\nPorque el valor no se comunica. Se verifica — a través del cuerpo.\n¿Cuando tu producto sea finalmente sostenido, justificará todo lo que vino antes?",
+      body: "Encontramos las marcas primero a través de la pantalla: mediante imágenes, campañas y narrativas cuidadosamente construidas, mucho antes de tocar el producto en sí. Para cuando llega a nuestras manos, la expectativa ya está formada.\nLa primera interacción física es implacable. El peso de una tapa. La temperatura de un material. La resistencia de una bisagra. Estos no son detalles, son veredictos. En un instante, confirman o contradicen silenciosamente todo lo que una marca ha afirmado.\nTrabajar con Signify hizo esto visceral: incluso la tecnología más sofisticada pierde su valor si el primer toque se siente equivocado. En contextos premium, esa brecha entre promesa y sensación no se percibe como matiz. Se siente como decepción, y la decepción es costosa.\nValue Tuning opera precisamente en este punto de tensión. Traduce la narrativa de marca en decisiones de diseño tangibles, identificando dónde se rompe la percepción, dónde se pierde el valor y dónde puede amplificarse. En lujo, belleza, automoción y tecnología de consumo, el desafío es siempre el mismo: no solo diseñar productos que funcionen, sino asegurar que se sientan exactamente como se imaginaron, o mejor.\nPorque el valor no se comunica. Se verifica, a través del cuerpo.\n¿Cuando tu producto sea finalmente sostenido, justificará todo lo que vino antes?",
     },
     service: {
       label: "Servicio",
       heading: "Realiza una auditoría Value Tuning para tu marca",
-      description:
+      paragraphs: [
         "Los compromisos se llevan a cabo durante 2 a 4 días y entregan un informe completo de auditoría sensorial con criterios de diseño y recomendaciones estratégicas. Adecuado para empresas de productos, equipos de packaging y estrategas de marca que se preparan para un reposicionamiento o lanzamiento.",
+        "Cada compromiso se adapta a su producto y contexto, contáctenos para evaluar la adecuación.",
+      ],
       cta: "Trabajemos juntos",
+      email: "studio@valmar.studio",
     },
     footer:
       "Value Tuning es una metodología de investigación original desarrollada por Valentina Marino en Signify (Philips), 2018–2019.\nConcepto, diseño del protocolo y framework © Valentina Marino.\nTodos los derechos reservados.",
