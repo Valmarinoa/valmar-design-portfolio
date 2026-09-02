@@ -26,7 +26,7 @@ const beVietnamPro = Be_Vietnam_Pro({
 
 export const metadata: Metadata = {
   title: "Valmar",
-  description: "Product & Experience Design",
+  description: "Product & Experience Designer",
   icons: {
     icon: "/media/globo.png",
     other: [

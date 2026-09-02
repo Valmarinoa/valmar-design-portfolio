@@ -22,8 +22,8 @@ export default function AboutPage() {
           transition={{ duration: 1.2, ease: easeOutElegant, delay: 0.2 }}
         >
           <h2 className="leading-10 text-4xl mb-2 md:mb-0 whitespace-nowrap ">Valentina Marino</h2>
-          <h4 className="hidden md:inline-block text-base opacity-80 md:text-lg whitespace-nowrap leading-6">Product & Experience Designer and Developer</h4>
-          <h4 className="md:hidden inline-block text-lg opacity-80 md:text-lg whitespace-nowrap md:whitespace-normal leading-6 font-light">Product & Experience <br/>Designer and Developer</h4>
+          <h4 className="hidden md:inline-block text-base opacity-80 md:text-lg whitespace-nowrap leading-6">Design Engineering & Experience Designer</h4>
+          <h4 className="md:hidden inline-block text-lg opacity-80 md:text-lg whitespace-nowrap md:whitespace-normal leading-6 font-light">Design Engineering & Experience Designer</h4>
           
           <div className="md:text-lg whitespace-nowrap gap-2 absolute bottom-14 md:bottom-0">
             <div className="flex flex-col ">
