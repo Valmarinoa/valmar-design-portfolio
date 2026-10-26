@@ -227,8 +227,8 @@ export function getTheme(theme: ThemeKey): ThemeClasses {
   
   export const socialItems = [
     { label: 'email', link: 'mailto:valenmarinocol@gmail.com' },
-    { label: 'GitHub', link: 'https://github.com' },
-    { label: 'LinkedIn', link: 'https://linkedin.com' },
+    { label: 'GitHub', link: 'https://github.com/Valmarinoa' },
+    { label: 'LinkedIn', link: 'https://www.linkedin.com/in/valentina-marino-arboleda/' },
     { label: 'Instagram', link: 'https://instagram.com/valmarino.a' }
     
   ];
